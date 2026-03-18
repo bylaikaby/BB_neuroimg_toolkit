@@ -1,4 +1,4 @@
-# Imaging Toolkit
+# BB_neuroimg_toolkit
 
 A Python toolkit for medical image processing, specifically for CT scan analysis and threshold-based extraction.
 
