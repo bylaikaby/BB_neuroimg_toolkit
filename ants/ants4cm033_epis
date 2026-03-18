@@ -1,0 +1,38 @@
+#!/bin/bash
+# Set paths
+ANTS_DIR=/usr/local/ants/bin
+DATA_DIR=data/sub-01/func
+ANAT=output/sub-01/anat_stripped.nii.gz
+TEMPLATE=templates/template.nii.gz
+OUTPUT_DIR=output/sub-01
+mkdir -p $OUTPUT_DIR
+
+# Skull strip anatomical (run once per subject)
+$ANTS_DIR/antsBrainExtraction.sh -d 3 -a data/sub-01/anat/anat.nii.gz -e templates/brain_template.nii.gz -m templates/brain_prior.nii.gz -o $ANAT
+
+# Register anatomical to template (run once per subject)
+$ANTS_DIR/antsRegistrationSyN.sh -d 3 -f $TEMPLATE -m $ANAT -o $OUTPUT_DIR/anat_to_template_ -t s
+
+# Loop over EPI files
+for EPI in $DATA_DIR/run*.nii.gz; do
+  RUN_NAME=$(basename $EPI .nii.gz)
+  echo "Processing $RUN_NAME..."
+
+  # Compute mean volume
+  $ANTS_DIR/ImageMath 4 $OUTPUT_DIR/mean_$RUN_NAME.nii.gz TimeSeriesMean $EPI
+
+  # Motion correction
+  $ANTS_DIR/antsMotionCorr -d 3 -o [$OUTPUT_DIR/mc_$RUN_NAME,$OUTPUT_DIR/func_mc_$RUN_NAME.nii.gz,$OUTPUT_DIR/mean_$RUN_NAME.nii.gz] -m MI[$OUTPUT_DIR/mean_$RUN_NAME.nii.gz,$EPI,1,32] -t Rigid[0.1] -i 100x50x30 -u 1 -e 1 -s 2x1x0 -f 4x2x1 -n 10
+
+  # Coregister to anatomical
+  $ANTS_DIR/antsRegistrationSyNQuick.sh -d 3 -f $ANAT -m $OUTPUT_DIR/func_mc_$RUN_NAME.nii.gz -o $OUTPUT_DIR/coreg_$RUN_NAME_ -t r
+
+  # Apply coregistration
+  $ANTS_DIR/antsApplyTransforms -d 3 -i $OUTPUT_DIR/func_mc_$RUN_NAME.nii.gz -r $ANAT -t $OUTPUT_DIR/coreg_$RUN_NAME_0GenericAffine.mat -o $OUTPUT_DIR/func_coreg_$RUN_NAME.nii.gz
+
+  # Apply normalization to template
+  $ANTS_DIR/antsApplyTransforms -d 3 -i $OUTPUT_DIR/func_coreg_$RUN_NAME.nii.gz -r $TEMPLATE -t [$OUTPUT_DIR/anat_to_template_0GenericAffine.mat,1] -t $OUTPUT_DIR/anat_to_template_1Warp.nii.gz -t $OUTPUT_DIR/coreg_$RUN_NAME_0GenericAffine.mat -o $OUTPUT_DIR/func_normalized_$RUN_NAME.nii.gz
+
+  # Compute tSNR for quality control
+  $ANTS_DIR/ImageMath 4 $OUTPUT_DIR/tsnr_$RUN_NAME.nii.gz TimeSeriesTSNR $OUTPUT_DIR/func_coreg_$RUN_NAME.nii.gz
+done
