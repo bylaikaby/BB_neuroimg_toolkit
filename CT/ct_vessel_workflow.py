@@ -19,11 +19,37 @@ Examples:
 
     # Already have NIfTI files
     python ct_vessel_workflow.py --ct-native "ct_native.nii.gz" --ct-contrast "ct_contrast.nii.gz"
+
+
+Current setup (now default, and also what --best enforces):
+
+threshold = 70
+native-hu-max = 140
+contrast-hu-min = 140
+contrast-hu-max = 250
+min-relative-increase = 0.45
+min-vessel-size = 50
+mode = vessel
+algorithm = difference
+normalize = off
+
+
+
 """
 
 import argparse
 import sys
 from pathlib import Path
+
+# Best preset tuned from current successful extraction runs.
+BEST_PRESET = {
+    'threshold': 70.0,
+    'native_hu_max': 140.0,
+    'contrast_hu_min': 140.0,
+    'contrast_hu_max': 250.0,
+    'min_relative_increase': 0.45,
+    'min_vessel_size': 50,
+}
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -96,8 +122,8 @@ def parse_args():
     proc_group.add_argument(
         '--threshold', '-t',
         type=float,
-        default=None,
-        help='Threshold for vessel detection. If None, uses Otsu auto-threshold (default: None)'
+        default=70.0,
+        help='Threshold for vessel detection (default: 70)'
     )
     proc_group.add_argument(
         '--normalize',
@@ -125,37 +151,42 @@ def parse_args():
     proc_group.add_argument(
         '--min-vessel-size',
         type=int,
-        default=30,
-        help='Minimum connected component size (voxels) to keep in vessel mask (default: 30)'
+        default=50,
+        help='Minimum connected component size (voxels) to keep in vessel mask (default: 50)'
     )
     proc_group.add_argument(
         '--native-hu-max',
         type=float,
-        default=300.0,
-        help='Upper HU bound in native scan for vessel candidates; suppresses bone/calcification (default: 300)'
+        default=140.0,
+        help='Upper HU bound in native scan for vessel candidates; suppresses bone/calcification (default: 140)'
     )
     proc_group.add_argument(
         '--contrast-hu-min',
         type=float,
-        default=120.0,
-        help='Lower HU bound in contrast scan for vessel candidates; suppresses low-HU skin/soft tissue (default: 120)'
+        default=140.0,
+        help='Lower HU bound in contrast scan for vessel candidates; suppresses low-HU skin/soft tissue (default: 140)'
     )
     proc_group.add_argument(
         '--contrast-hu-max',
         type=float,
-        default=500.0,
-        help='Upper HU bound in contrast scan for vessel candidates; suppresses very dense bone/calcification (default: 500)'
+        default=250.0,
+        help='Upper HU bound in contrast scan for vessel candidates; suppresses very dense bone/calcification (default: 250)'
     )
     proc_group.add_argument(
         '--min-relative-increase',
         type=float,
-        default=0.25,
-        help='Minimum relative enhancement (contrast-native)/max(native,1) for vessel candidates (default: 0.25)'
+        default=0.45,
+        help='Minimum relative enhancement (contrast-native)/max(native,1) for vessel candidates (default: 0.45)'
     )
     proc_group.add_argument(
         '--advanced',
         action='store_true',
         help='Use advanced custom gating arguments instead of simplified best vessel extraction'
+    )
+    proc_group.add_argument(
+        '--best',
+        action='store_true',
+        help='Force best vessel preset (recommended one-switch extraction settings)'
     )
 
     # Utility arguments
@@ -181,6 +212,18 @@ def parse_args():
 
 def main():
     args = parse_args()
+
+    if args.best:
+        args.mode = 'vessel'
+        args.advanced = False
+        args.algorithm = 'difference'
+        args.normalize = False
+        args.threshold = BEST_PRESET['threshold']
+        args.native_hu_max = BEST_PRESET['native_hu_max']
+        args.contrast_hu_min = BEST_PRESET['contrast_hu_min']
+        args.contrast_hu_max = BEST_PRESET['contrast_hu_max']
+        args.min_relative_increase = BEST_PRESET['min_relative_increase']
+        args.min_vessel_size = BEST_PRESET['min_vessel_size']
     
     ct_native_path = None
     ct_contrast_path = None

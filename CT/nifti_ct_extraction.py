@@ -304,7 +304,7 @@ def subtract_contrast_ct(
     native_hu_max: float = 300.0,
     contrast_hu_min: float = 120.0,
     contrast_hu_max: float = 500.0,
-    min_relative_increase: float = 0.25,
+    min_relative_increase: float = 0.55,
     save: bool = True
 ) -> Union[np.ndarray, Tuple[np.ndarray, np.ndarray, nib.Nifti1Header]]:
     """
@@ -559,15 +559,15 @@ def extract_vessels_best(
 
     vessel_mask = enhancement > threshold
 
-    # Robust defaults tuned for CTA-like head scans.
+    # Robust defaults tuned from current working preset.
     body_mask = (data_native > 20.0) | (data_contrast > 20.0)
     hu_gate = (
-        (data_native < 160.0)
+        (data_native < 140.0)
         & (data_contrast > 140.0)
-        & (data_contrast < 320.0)
+        & (data_contrast < 250.0)
     )
     relative_increase = (data_contrast - data_native) / np.maximum(data_native, 20.0)
-    rel_gate = relative_increase > 0.35
+    rel_gate = relative_increase > 0.45
 
     vessel_mask &= body_mask
     vessel_mask &= hu_gate
@@ -700,6 +700,10 @@ def extract_vessels_contrast(
         normalize=True,
         save=True
     )
+
+
+# %%
+# batch_convert_ct_folders('Z:\CT-data\RM80_20260416')
 
 
 # %%
