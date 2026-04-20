@@ -1,37 +1,97 @@
 # BB_neuroimg_toolkit
 
-A Python toolkit for medical image processing, specifically for CT scan analysis and threshold-based extraction.
+Personal neuroimaging utilities: **CT vessel extraction** from native vs contrast volumes, **MRI-style vessel helpers**, **fMRI pipeline scaffolding**, and assorted **shell** helpers for AFNI/FSL/ANTs workflows.
 
-## Features
+Upstream: [github.com/bylaikaby/BB_neuroimg_toolkit](https://github.com/bylaikaby/BB_neuroimg_toolkit)
 
-- Extract CT voxels within Hounsfield Unit (HU) threshold ranges
-- Create binary masks or masked volumes for specific tissue types
-- Convenience functions for common tissue types (bone, lung, soft tissue)
+---
 
-## Usage
+## Repository layout
 
-```python
-from nifti_ct_extraction import extract_ct_threshold, extract_ct_bone
+| Area | Path | Purpose |
+|------|------|---------|
+| **CT** | `CT/` | Contrast subtraction vessel mask; HU gating; DICOM→NIfTI helpers |
+| **MRI** | `MRI/max_intensity_mri_vessel/` | Intensity-window and Frangi-based vessel extraction from NIfTI |
+| **MRI** | `MRI/flicker_1704/` | MATLAB flicker / TTL trigger control for fMRI experiments |
+| **Workflow** | `workflow/`, `config/`, `normalization/`, `glm/`, `activation/` | Config-driven orchestrator (dry-run, ANTs, GLM, optional activation summaries) |
+| **Shell** | `afni_fsl/`, `ants/`, root `*.sh` | Motion correction, alignment, ICA, capture helpers |
 
-# Extract bone using threshold range
-extract_ct_threshold(
-    'input_ct.nii.gz',
-    hu_min=200, 
-    hu_max=3000,
-    mode='mask'
-)
+---
 
-# Or use the convenience function
-extract_ct_bone('input_ct.nii.gz', output_path='bone_mask.nii.gz')
+## CT: contrast vs native vessel extraction
+
+Core library: `CT/nifti_ct_extraction.py`  
+CLI: `CT/ct_vessel_workflow.py`  
+Short reference: `CT/VESSEL_WORKFLOW_NOTE.md`
+
+**Typical run** (defaults match the tuned preset; `--best` forces the same explicitly):
+
+```bash
+python CT/ct_vessel_workflow.py ^
+  --ct-native "path/to/native.nii.gz" ^
+  --ct-contrast "path/to/contrast.nii.gz" ^
+  --output-vessel "path/to/vessels.nii.gz" ^
+  --best
 ```
 
-## Requirements
+**Python import** (run from repo root or adjust `PYTHONPATH`):
 
-- nibabel
-- numpy
+```python
+from CT.nifti_ct_extraction import subtract_contrast_ct, extract_vessels_best
+```
+
+**Dependencies:** `numpy`, `nibabel`; optional `pydicom` for DICOM conversion; `scipy` improves connected-component cleanup.
+
+---
+
+## MRI: intensity and Frangi vessel extraction
+
+Path: `MRI/max_intensity_mri_vessel/`
+
+- `intensity_vessel_extract.py` — binary mask from a scalar intensity band (good when thresholds are chosen in ITK-SNAP or similar).
+- `frangi_vessel_extract.py` — 3D Frangi vesselness + mask (`scikit-image`, `scipy`).
+- `notes_itksnap_intensity_threshold.md` — why display windowing can disagree with hard thresholds.
+
+Example:
+
+```bash
+python MRI/max_intensity_mri_vessel/frangi_vessel_extract.py --input your_volume.nii.gz --out-mask vessel_mask_frangi.nii.gz
+```
+
+---
+
+## fMRI: orchestrator (optional)
+
+Config-driven stages (normalize, GLM backends, optional activation summaries):
+
+```bash
+python -m workflow.orchestrator --config config/env.example.json --dry-run
+```
+
+See `config/env.example.json`, `config/env.optofmri.bids.json`, and `config/env.example.yaml` for field shapes.
+
+---
 
 ## Installation
 
 ```bash
-pip install nibabel numpy
+pip install -r requirements.txt
 ```
+
+`requirements.txt` covers the orchestrator stack. For **Frangi** MRI scripts, also install:
+
+```bash
+pip install scipy scikit-image
+```
+
+For **DICOM** conversion in `CT/nifti_ct_extraction.py`:
+
+```bash
+pip install pydicom
+```
+
+---
+
+## License and data
+
+Scripts are provided as-is for research workflows. **Do not commit patient-identifiable data or large binary series** unless your project policy explicitly allows it; use `.gitignore` for local NIfTI/DICOM trees.
