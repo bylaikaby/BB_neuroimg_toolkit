@@ -397,6 +397,7 @@ isRunning     = false;
         end
 
         dqOut = []; dqIn = [];
+        runAborted = false;
         stopRequested = false; isRunning = true;
         setControlsEnabled(false);
 
@@ -418,47 +419,53 @@ isRunning     = false;
                 cleanupIn = onCleanup(@() delete(dqIn));
                 ok = waitForTrigger(dqIn, p.trigLine, p.nDummy, p.timeout_s);
                 if ~ok
-                    if stopRequested; setStatus('Stopped during trigger wait.'); end
-                    return;
+                    runAborted = true;
+                    if stopRequested
+                        setStatus('Stopped during trigger wait.');
+                    else
+                        setStatus('Trigger timeout.');
+                    end
                 end
             end
 
             % Loop
-            setStatus('Running...');
-            totalElapsed = 0;
-            for r = 1:p.nRepeats
-                if stopRequested; break; end
-                setInfo(r, p.nRepeats, totalElapsed);
-                setProgress(100 * (r-1) / p.nRepeats);
-
-                writeLo(dqOut, p);
-                if ~responsivePause(p.preOff); break; end
-                totalElapsed = totalElapsed + p.preOff;
-                setInfo(r, p.nRepeats, totalElapsed);
-
-                for k = 1:p.n
+            if ~runAborted
+                setStatus('Running...');
+                totalElapsed = 0;
+                for r = 1:p.nRepeats
                     if stopRequested; break; end
-                    writeHi(dqOut, p);
-                    if ~responsivePause(p.ton); break; end
+                    setInfo(r, p.nRepeats, totalElapsed);
+                    setProgress(100 * (r-1) / p.nRepeats);
+
                     writeLo(dqOut, p);
-                    if ~responsivePause(p.toff); break; end
+                    if ~responsivePause(p.preOff); break; end
+                    totalElapsed = totalElapsed + p.preOff;
+                    setInfo(r, p.nRepeats, totalElapsed);
+
+                    for k = 1:p.n
+                        if stopRequested; break; end
+                        writeHi(dqOut, p);
+                        if ~responsivePause(p.ton); break; end
+                        writeLo(dqOut, p);
+                        if ~responsivePause(p.toff); break; end
+                    end
+                    if stopRequested; break; end
+
+                    writeLo(dqOut, p);
+                    totalElapsed = totalElapsed + p.onWin;
+                    if ~responsivePause(p.postOff); break; end
+                    totalElapsed = totalElapsed + p.postOff;
+                    setInfo(r, p.nRepeats, totalElapsed);
                 end
-                if stopRequested; break; end
 
                 writeLo(dqOut, p);
-                totalElapsed = totalElapsed + p.onWin;
-                if ~responsivePause(p.postOff); break; end
-                totalElapsed = totalElapsed + p.postOff;
-                setInfo(r, p.nRepeats, totalElapsed);
-            end
-
-            writeLo(dqOut, p);
-            setProgress(100);
-            if stopRequested
-                setStatus('Stopped by user.');
-            else
-                setStatus('Completed.');
-                setInfo(p.nRepeats, p.nRepeats, p.total);
+                setProgress(100);
+                if stopRequested
+                    setStatus('Stopped by user.');
+                else
+                    setStatus('Completed.');
+                    setInfo(p.nRepeats, p.nRepeats, p.total);
+                end
             end
 
         catch ME
@@ -476,7 +483,12 @@ isRunning     = false;
     end
 
     function stopStimulation()
+        if ~isRunning
+            setStatus('Not running.');
+            return;
+        end
         stopRequested = true;
+        btnStop.Enable = 'off';
         setStatus('Stopping...');
     end
 
@@ -497,6 +509,7 @@ isRunning     = false;
         if p.n < 1
             text(ax, 0.5, 0.5, 'Adjust parameters (ON window too short) ...', ...
                 'Units', 'normalized', 'HorizontalAlignment', 'center');
+            hold(ax, 'off');
             return;
         end
 
