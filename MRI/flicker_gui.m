@@ -517,6 +517,8 @@ isRunning     = false;
         nViz = min(2, p.nRepeats);
         totalViz = nViz * p.repDur;
         yBot = p.vLo - 0.6; yTop = p.vHi + 0.6;
+        phaseBoundaries = [];
+        repeatJunctionBoundaries = [];
 
         % Draw each repeat as blocks
         for r = 0:nViz-1
@@ -583,10 +585,26 @@ isRunning     = false;
                     'Color', [0.5 0.5 0.5], 'FontWeight', 'bold');
             end
 
-            % Repeat boundary lines to separate OFF blocks across repeats
-            xline(ax, base, '--', 'Color', [0.55 0.55 0.55], 'LineWidth', 1.0, ...
+            % Collect boundaries:
+            % - phase transitions (OFF <-> FLICKER)
+            % - repeat junctions (OFF -> OFF) for repeat separation
+            phaseBoundaries = [phaseBoundaries, tPreEnd, tOnEnd];
+            repeatJunctionBoundaries = [repeatJunctionBoundaries, base, tPostEnd];
+        end
+
+        % Draw one line per unique OFF/FLICKER boundary.
+        pb = unique(round(phaseBoundaries, 6));
+        for xb = pb
+            plot(ax, [xb xb], [yBot yTop], ...
+                'LineStyle', ':', 'Color', [0.65 0.65 0.65], 'LineWidth', 0.9, ...
                 'HandleVisibility', 'off');
-            xline(ax, base + p.repDur, '--', 'Color', [0.55 0.55 0.55], 'LineWidth', 1.0, ...
+        end
+
+        % Draw one line per unique repeat junction (OFF -> OFF) with a distinct style.
+        rb = unique(round(repeatJunctionBoundaries, 6));
+        for xb = rb
+            plot(ax, [xb xb], [yBot yTop], ...
+                'LineStyle', '--', 'Color', [0.50 0.50 0.50], 'LineWidth', 1.0, ...
                 'HandleVisibility', 'off');
         end
 
