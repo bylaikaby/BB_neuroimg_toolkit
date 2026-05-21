@@ -8,7 +8,8 @@ function flicker_gui
 %   4. Visualisation of the stimulation paradigm (simplified schematic)
 %   5. Run stimulation directly from the GUI (requires Data Acquisition Toolbox)
 %   6. Emergency stop during run
-%   7. Export current configuration as a MATLAB script (File menu)
+%   7. Monitor trigger input (live line level and pulse count)
+%   8. Export current configuration as a MATLAB script (File menu)
 %
 % See also: daq, flicker_fixed_control, flicker_trigger_control
 
@@ -57,8 +58,8 @@ outType.SelectionChangedFcn = @(~,~) updateViz();
 
 % ── 2. Trigger Mode ──
 trigPanel = uipanel(leftGrid, 'Title', 'Trigger Mode', 'FontWeight', 'bold');
-trigGrid = uigridlayout(trigPanel, [5 2], ...
-    'RowHeight', {34, 34, 34, 34, 34}, ...
+trigGrid = uigridlayout(trigPanel, [6 2], ...
+    'RowHeight', {34, 34, 34, 34, 34, 34}, ...
     'ColumnWidth', {120, '1x'}, ...
     'Padding', [12 10 12 10], ...
     'RowSpacing', 8, ...
@@ -79,6 +80,13 @@ uilabel(trigGrid, 'Text', 'Timeout (s):', 'HorizontalAlignment', 'right');
 trigTimeout = uispinner(trigGrid, 'Value', 300, 'Limits', [1 3600]);
 
 trigEnable.ValueChangedFcn = @(~,~) updateViz();
+
+btnMonitorTrig = uibutton(trigGrid, 'push', ...
+    'Text', 'Monitor Trigger Input', ...
+    'ButtonPushedFcn', @(~,~) monitorTriggerInput(), ...
+    'FontWeight', 'bold');
+btnMonitorTrig.Layout.Row = 6;
+btnMonitorTrig.Layout.Column = [1 2];
 
 % ── 3. Stimulation Parameters ──
 stimPanel = uipanel(leftGrid, 'Title', 'Stimulation Parameters', 'FontWeight', 'bold');
@@ -218,8 +226,10 @@ btnDefaults = uibutton(btnGrid, 'push', ...
 % ═══════════════════════════════════════════════════════════════════
 %  STATE
 % ═══════════════════════════════════════════════════════════════════
-stopRequested = false;
-isRunning     = false;
+stopRequested        = false;
+isRunning            = false;
+isMonitoring         = false;
+monitorStopRequested = false;
 
     function s = getParams()
         s.freqHz    = stimFields.f1.Value;
@@ -285,6 +295,7 @@ isRunning     = false;
         trigLine.Enable = state;
         trigDummy.Enable = state;
         trigTimeout.Enable = state;
+        btnMonitorTrig.Enable = state;
         stimFields.f1.Enable = state;
         stimFields.f2.Enable = state;
         stimFields.f3.Enable = state;
@@ -320,36 +331,133 @@ isRunning     = false;
     end
 
 % ═══════════════════════════════════════════════════════════════════
-%  TRIGGER WAIT
+%  TRIGGER WAIT / MONITOR
 % ═══════════════════════════════════════════════════════════════════
+    function setTriggerWaitInfo(pulseCount, nDummy, lineVal, elapsed)
+        infoLine.Text = sprintf('Dummy pulse: %d / %d  |  line: %g  |  %.1f s', ...
+            pulseCount, nDummy, lineVal, elapsed);
+        drawnow('limitrate');
+    end
+
     function triggered = waitForTrigger(dqIn, ln, nD, to)
         setStatus(sprintf('Waiting for trigger on %s...', ln));
-        setInfo(0, nD);
+        setTriggerWaitInfo(0, nD, NaN, 0);
         setProgress(0);
-        pollDt = 0.001; thr = 0.5;
-        prevHigh = false; pulseCount = 0;
-        t0 = tic; triggered = false;
+        pollDt = 0.001;
+        debounceMs = 3;
+        thr = 0.5;
+        prevHigh = readDigitalHigh(dqIn, thr);
+        pulseCount = 0;
+        t0 = tic;
+        triggered = false;
         while toc(t0) < to
-            if stopRequested; return; end
+            if stopRequested
+                return;
+            end
+            elapsed = toc(t0);
             try
-                v = read(dqIn); x = double(v(1));
-            catch; x = 0; end
-            curHigh = x > thr;
+                x = readScalarDigital(dqIn);
+                curHigh = x > thr;
+            catch ME
+                setStatus(sprintf('Trigger read error: %s', ME.message));
+                pause(pollDt);
+                drawnow('limitrate');
+                continue;
+            end
             if ~prevHigh && curHigh
-                pulseCount = pulseCount + 1;
-                if pulseCount > nD
-                    triggered = true;
-                    setStatus('Trigger acquired!');
-                    return;
-                else
-                    setInfo(pulseCount, nD);
+                if waitStableHigh(dqIn, thr, debounceMs / 1000, pollDt)
+                    pulseCount = pulseCount + 1;
+                    if pulseCount > nD
+                        triggered = true;
+                        setStatus('Trigger acquired!');
+                        setTriggerWaitInfo(pulseCount, nD, x, elapsed);
+                        return;
+                    end
+                    setStatus(sprintf('Dummy pulse %d / %d on %s', pulseCount, nD, ln));
                 end
             end
+            setTriggerWaitInfo(pulseCount, nD, x, elapsed);
             prevHigh = curHigh;
             pause(pollDt);
             drawnow('limitrate');
         end
         setStatus('Trigger timeout.');
+    end
+
+    function monitorTriggerInput()
+        if isRunning || isMonitoring
+            uialert(fig, 'Stop the current run or monitor first.', 'Busy', ...
+                'Icon', 'warning');
+            return;
+        end
+        s = getParams();
+        try
+            dqtest = daq("ni");
+            clear dqtest;
+        catch
+            uialert(fig, 'Data Acquisition Toolbox or NI support not available.', ...
+                'DAQ Error', 'Icon', 'error');
+            return;
+        end
+
+        dur = min(max(s.timeout_s, 5), 600);
+        thr = 0.5;
+        pollDt = 0.001;
+        dqIn = [];
+        isMonitoring = true;
+        monitorStopRequested = false;
+        setControlsEnabled(false);
+        btnStop.Enable = 'on';
+
+        try
+            dqIn = daq("ni");
+            addinput(dqIn, s.device, s.trigLine, "Digital");
+            setStatus(sprintf('Monitoring %s / %s', s.device, s.trigLine));
+            t0 = tic;
+            pulseCount = 0;
+            prevHigh = readDigitalHigh(dqIn, thr);
+            while toc(t0) < dur && ~monitorStopRequested
+                elapsed = toc(t0);
+                try
+                    x = readScalarDigital(dqIn);
+                catch ME
+                    setStatus(sprintf('Monitor read error: %s', ME.message));
+                    pause(pollDt);
+                    drawnow('limitrate');
+                    continue;
+                end
+                curHigh = x > thr;
+                if ~prevHigh && curHigh
+                    pulseCount = pulseCount + 1;
+                end
+                setTriggerWaitInfo(pulseCount, s.nDummy, x, elapsed);
+                setStatus(sprintf('Monitor %s  |  HIGH=%d', s.trigLine, curHigh));
+                setProgress(100 * elapsed / dur);
+                prevHigh = curHigh;
+                pause(pollDt);
+                drawnow('limitrate');
+            end
+            if monitorStopRequested
+                setStatus(sprintf('Monitor stopped (%d pulse(s)).', pulseCount));
+            else
+                setStatus(sprintf('Monitor done (%d pulse(s) in %.0f s).', pulseCount, dur));
+            end
+        catch ME
+            setStatus('Monitor error - see console.');
+            uialert(fig, sprintf('DAQ error:\n%s', ME.message), ...
+                'Monitor Error', 'Icon', 'error');
+        end
+
+        isMonitoring = false;
+        monitorStopRequested = false;
+        setControlsEnabled(true);
+        setProgress(0);
+        try
+            if ~isempty(dqIn) && isvalid(dqIn)
+                delete(dqIn);
+            end
+        catch
+        end
     end
 
 % ═══════════════════════════════════════════════════════════════════
@@ -483,6 +591,11 @@ isRunning     = false;
     end
 
     function stopStimulation()
+        if isMonitoring
+            monitorStopRequested = true;
+            setStatus('Stopping monitor...');
+            return;
+        end
         if ~isRunning
             setStatus('Not running.');
             return;
@@ -724,11 +837,11 @@ if isTrigger
     txt = [txt sprintf('dqIn = daq("ni");') nl];
     txt = [txt sprintf('addinput(dqIn, "%s", trigLine, "Digital");', p.device) nl];
     txt = [txt 'fprintf("Waiting for trigger...\n");' nl];
-    txt = [txt 't0=tic; ph=false; tr=false; pc=0;' nl];
+    txt = [txt 't0=tic; ph=readDigitalHigh(dqIn,thr); tr=false; pc=0;' nl];
     txt = [txt 'while toc(t0)<to' nl];
     txt = [txt '    drawnow("limitrate");' nl];
-    txt = [txt '    v=read(dqIn); ch=double(v(1))>thr;' nl];
-    txt = [txt '    if ~ph && ch' nl];
+    txt = [txt '    ch=readDigitalHigh(dqIn,thr);' nl];
+    txt = [txt '    if ~ph && ch && waitStableHigh(dqIn,thr,0.003,pd)' nl];
     txt = [txt '        pc=pc+1; if pc>nd, tr=true; break;' nl];
     txt = [txt '        else, fprintf("Dummy %d/%d\n",pc,nd); end' nl];
     txt = [txt '    end; ph=ch; pause(pd);' nl];
@@ -750,10 +863,50 @@ txt = [txt sprintf('write(dqOut,%s);', loStr) nl];
 txt = [txt 'clear cleanupObj; fprintf("Done.\n");' nl];
 txt = [txt nl];
 txt = [txt 'function writeSafe(dq,v); try write(dq,v); catch; end; end' nl];
+txt = [txt 'function high=readDigitalHigh(dq,thr); high=readScalarDigital(dq)>thr; end' nl];
+txt = [txt 'function x=readScalarDigital(dq); v=read(dq);' nl];
+txt = [txt 'if isnumeric(v)||islogical(v), x=double(v(1));' nl];
+txt = [txt 'elseif istable(v)||isa(v,"timetable"), a=table2array(v); x=double(a(1));' nl];
+txt = [txt 'else, error("read(): unsupported type %%s",class(v)); end; end' nl];
+txt = [txt 'function ok=waitStableHigh(dq,thr,win,pd); t=tic; ok=true;' nl];
+txt = [txt 'while toc(t)<win, if ~readDigitalHigh(dq,thr), ok=false; return; end; pause(pd); end; end' nl];
 end
 
 function out = iif(cond, tVal, fVal)
 if cond; out = tVal; else; out = fVal; end
+end
+
+function high = readDigitalHigh(dq, thr)
+if nargin < 2
+    thr = 0.5;
+end
+high = readScalarDigital(dq) > thr;
+end
+
+function x = readScalarDigital(dq)
+v = read(dq);
+if isnumeric(v) || islogical(v)
+    x = double(v(1));
+    return;
+end
+if istable(v) || isa(v, "timetable")
+    a = table2array(v);
+    x = double(a(1));
+    return;
+end
+error("read(): unsupported type %s", class(v));
+end
+
+function ok = waitStableHigh(dq, thr, winSec, pollDt)
+t = tic;
+ok = true;
+while toc(t) < winSec
+    if ~readDigitalHigh(dq, thr)
+        ok = false;
+        return;
+    end
+    pause(pollDt);
+end
 end
 
 function showPreviewDialog(parentFig, scriptText, fname)
