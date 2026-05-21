@@ -70,14 +70,22 @@ trigEnable = uicheckbox(trigGrid, 'Text', 'Enable trigger (MRI pulse)', ...
 trigEnable.Layout.Row = 1;
 trigEnable.Layout.Column = [1 2];
 
-uilabel(trigGrid, 'Text', 'Trigger line:', 'HorizontalAlignment', 'right');
+lblTrigLine = uilabel(trigGrid, 'Text', 'Trigger line:', 'HorizontalAlignment', 'right');
+lblTrigLine.Layout.Row = 2; lblTrigLine.Layout.Column = 1;
 trigLine = uieditfield(trigGrid, 'text', 'Value', 'port2/line0');
+trigLine.Layout.Row = 2; trigLine.Layout.Column = 2;
 
-uilabel(trigGrid, 'Text', 'Dummy pulses:', 'HorizontalAlignment', 'right');
-trigDummy = uispinner(trigGrid, 'Value', 8, 'Limits', [0 99]);
+lblTrigDummy = uilabel(trigGrid, 'Text', 'Dummy pulses:', 'HorizontalAlignment', 'right');
+lblTrigDummy.Layout.Row = 3; lblTrigDummy.Layout.Column = 1;
+trigDummy = uispinner(trigGrid, 'Value', 8, 'Limits', [0 99], ...
+    'ValueDisplayFormat', '%.0f', 'RoundFractionalValues', 'on', ...
+    'ValueChangedFcn', @(~,~) updateViz());
+trigDummy.Layout.Row = 3; trigDummy.Layout.Column = 2;
 
-uilabel(trigGrid, 'Text', 'Timeout (s):', 'HorizontalAlignment', 'right');
+lblTrigTimeout = uilabel(trigGrid, 'Text', 'Timeout (s):', 'HorizontalAlignment', 'right');
+lblTrigTimeout.Layout.Row = 4; lblTrigTimeout.Layout.Column = 1;
 trigTimeout = uispinner(trigGrid, 'Value', 300, 'Limits', [1 3600]);
+trigTimeout.Layout.Row = 4; trigTimeout.Layout.Column = 2;
 
 trigEnable.ValueChangedFcn = @(~,~) updateViz();
 
@@ -236,7 +244,7 @@ monitorStopRequested = false;
         s.preOff    = stimFields.f2.Value;
         s.onWin     = stimFields.f3.Value;
         s.postOff   = stimFields.f4.Value;
-        s.nRepeats  = round(stimFields.f5.Value);
+        s.nRepeats  = readSpinnerInt(stimFields.f5);
         s.vHi       = stimFields.f6.Value;
         s.vLo       = stimFields.f7.Value;
         s.device    = strtrim(portDev.Value);
@@ -245,8 +253,14 @@ monitorStopRequested = false;
         s.isDigital = rbDigital.Value;
         s.isTrigger = trigEnable.Value;
         s.trigLine  = strtrim(trigLine.Value);
-        s.nDummy    = round(trigDummy.Value);
+        s.nDummy    = readSpinnerInt(trigDummy);
         s.timeout_s = trigTimeout.Value;
+    end
+
+    function v = readSpinnerInt(sp)
+        % Commit in-progress spinner edits before read (MATLAB UI quirk).
+        drawnow('limitrate');
+        v = round(double(sp.Value));
     end
 
     function p = calcStim(s)
@@ -339,9 +353,9 @@ monitorStopRequested = false;
         drawnow('limitrate');
     end
 
-    function triggered = waitForTrigger(dqIn, ln, nD, to)
+    function triggered = waitForTrigger(dqIn, ln, ~, to)
         setStatus(sprintf('Waiting for trigger on %s...', ln));
-        setTriggerWaitInfo(0, nD, NaN, 0);
+        setTriggerWaitInfo(0, readSpinnerInt(trigDummy), NaN, 0);
         setProgress(0);
         pollDt = 0.001;
         debounceMs = 3;
@@ -354,6 +368,7 @@ monitorStopRequested = false;
             if stopRequested
                 return;
             end
+            nDummyNow = readSpinnerInt(trigDummy);
             elapsed = toc(t0);
             try
                 x = readScalarDigital(dqIn);
@@ -367,16 +382,16 @@ monitorStopRequested = false;
             if ~prevHigh && curHigh
                 if waitStableHigh(dqIn, thr, debounceMs / 1000, pollDt)
                     pulseCount = pulseCount + 1;
-                    if pulseCount > nD
+                    if pulseCount > nDummyNow
                         triggered = true;
                         setStatus('Trigger acquired!');
-                        setTriggerWaitInfo(pulseCount, nD, x, elapsed);
+                        setTriggerWaitInfo(pulseCount, nDummyNow, x, elapsed);
                         return;
                     end
-                    setStatus(sprintf('Dummy pulse %d / %d on %s', pulseCount, nD, ln));
+                    setStatus(sprintf('Dummy pulse %d / %d on %s', pulseCount, nDummyNow, ln));
                 end
             end
-            setTriggerWaitInfo(pulseCount, nD, x, elapsed);
+            setTriggerWaitInfo(pulseCount, nDummyNow, x, elapsed);
             prevHigh = curHigh;
             pause(pollDt);
             drawnow('limitrate');
@@ -430,7 +445,7 @@ monitorStopRequested = false;
                 if ~prevHigh && curHigh
                     pulseCount = pulseCount + 1;
                 end
-                setTriggerWaitInfo(pulseCount, s.nDummy, x, elapsed);
+                setTriggerWaitInfo(pulseCount, readSpinnerInt(trigDummy), x, elapsed);
                 setStatus(sprintf('Monitor %s  |  HIGH=%d', s.trigLine, curHigh));
                 setProgress(100 * elapsed / dur);
                 prevHigh = curHigh;
@@ -525,7 +540,8 @@ monitorStopRequested = false;
                 dqIn = daq("ni");
                 addinput(dqIn, p.device, p.trigLine, "Digital");
                 cleanupIn = onCleanup(@() delete(dqIn));
-                ok = waitForTrigger(dqIn, p.trigLine, p.nDummy, p.timeout_s);
+                ok = waitForTrigger(dqIn, p.trigLine, [], p.timeout_s);
+                p = calcStim(getParams());  % refresh repeats after trigger wait
                 if ~ok
                     runAborted = true;
                     if stopRequested
@@ -616,8 +632,8 @@ monitorStopRequested = false;
         % Update quick-summary labels
         sumFreq.Text  = sprintf('Freq: %.1f Hz', p.freqHz);
         sumOn.Text    = sprintf('ON: %.1f s', p.onWin);
-        sumTotal.Text = sprintf('Total: %.0f s (%.1f min)', ...
-            p.total, p.total/60);
+        sumTotal.Text = sprintf('Repeats: %d  |  Dummy: %d  |  %.0f s', ...
+            p.nRepeats, p.nDummy, p.total);
 
         if p.n < 1
             text(ax, 0.5, 0.5, 'Adjust parameters (ON window too short) ...', ...
@@ -733,8 +749,13 @@ monitorStopRequested = false;
         ax.Box = 'on';
 
         % Figure title
-        fig.Name = sprintf('Flicker Stimulation - %d x %.0f s = %.0f s (%.1f min)', ...
-            p.nRepeats, p.repDur, p.total, p.total/60);
+        if p.isTrigger
+            fig.Name = sprintf('Flicker - %d repeats, %d dummy, %.0f s total', ...
+                p.nRepeats, p.nDummy, p.total);
+        else
+            fig.Name = sprintf('Flicker Stimulation - %d x %.0f s = %.0f s (%.1f min)', ...
+                p.nRepeats, p.repDur, p.total, p.total/60);
+        end
     end
 
 % ═══════════════════════════════════════════════════════════════════
