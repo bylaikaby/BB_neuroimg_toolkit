@@ -354,13 +354,19 @@ monitorStopRequested = false;
     end
 
     function triggered = waitForTrigger(dqIn, ln, ~, to)
-        setStatus(sprintf('Waiting for trigger on %s...', ln));
-        setTriggerWaitInfo(0, readSpinnerInt(trigDummy), NaN, 0);
+        % Rising-edge count; no debounce (MRI TTL pulses are often < 3 ms).
+        % Same logic as flicker_trigger_control_Dig_ttl.m.
+        nDummyNow = readSpinnerInt(trigDummy);
+        setStatus(sprintf('Waiting for trigger on %s (skip %d dummy, then start)...', ln, nDummyNow));
+        setTriggerWaitInfo(0, nDummyNow, NaN, 0);
         setProgress(0);
         pollDt = 0.001;
-        debounceMs = 3;
         thr = 0.5;
-        prevHigh = readDigitalHigh(dqIn, thr);
+        try
+            prevHigh = readDigitalHigh(dqIn, thr);
+        catch
+            prevHigh = false;
+        end
         pulseCount = 0;
         t0 = tic;
         triggered = false;
@@ -380,23 +386,21 @@ monitorStopRequested = false;
                 continue;
             end
             if ~prevHigh && curHigh
-                if waitStableHigh(dqIn, thr, debounceMs / 1000, pollDt)
-                    pulseCount = pulseCount + 1;
-                    if pulseCount > nDummyNow
-                        triggered = true;
-                        setStatus('Trigger acquired!');
-                        setTriggerWaitInfo(pulseCount, nDummyNow, x, elapsed);
-                        return;
-                    end
-                    setStatus(sprintf('Dummy pulse %d / %d on %s', pulseCount, nDummyNow, ln));
+                pulseCount = pulseCount + 1;
+                if pulseCount > nDummyNow
+                    triggered = true;
+                    setStatus('Trigger acquired — starting flicker.');
+                    setTriggerWaitInfo(pulseCount, nDummyNow, x, elapsed);
+                    return;
                 end
+                setStatus(sprintf('Dummy pulse %d / %d on %s', pulseCount, nDummyNow, ln));
             end
             setTriggerWaitInfo(pulseCount, nDummyNow, x, elapsed);
             prevHigh = curHigh;
             pause(pollDt);
             drawnow('limitrate');
         end
-        setStatus('Trigger timeout.');
+        setStatus(sprintf('Trigger timeout (%d s). Uncheck trigger or reduce dummy count.', round(to)));
     end
 
     function monitorTriggerInput()
@@ -519,70 +523,75 @@ monitorStopRequested = false;
                 'DAQ Error', 'Icon', 'error'); return;
         end
 
-        dqOut = []; dqIn = [];
+        dq = [];
         runAborted = false;
         stopRequested = false; isRunning = true;
         setControlsEnabled(false);
 
         try
-            % Output session
-            dqOut = daq("ni");
-            if p.isDigital
-                addoutput(dqOut, p.device, p.digPort, "Digital");
-            else
-                addoutput(dqOut, p.device, p.analogPort, "Voltage");
-            end
-            writeLo(dqOut, p);
-            cleanupOut = onCleanup(@() safeWriteLo(dqOut, p));
-
-            % Input session (optional)
+            % One NI session: trigger input first, then output (same as scripts).
+            dq = daq("ni");
             if p.isTrigger
-                dqIn = daq("ni");
-                addinput(dqIn, p.device, p.trigLine, "Digital");
-                cleanupIn = onCleanup(@() delete(dqIn));
-                ok = waitForTrigger(dqIn, p.trigLine, [], p.timeout_s);
-                p = calcStim(getParams());  % refresh repeats after trigger wait
+                addinput(dq, p.device, p.trigLine, "Digital");
+            end
+            if p.isDigital
+                addoutput(dq, p.device, p.digPort, "Digital");
+            else
+                addoutput(dq, p.device, p.analogPort, "Voltage");
+            end
+            writeLo(dq, p);
+            cleanupDq = onCleanup(@() safeWriteLo(dq, p));
+
+            if p.isTrigger
+                ok = waitForTrigger(dq, p.trigLine, [], p.timeout_s);
+                p = calcStim(getParams());
                 if ~ok
                     runAborted = true;
                     if stopRequested
                         setStatus('Stopped during trigger wait.');
                     else
-                        setStatus('Trigger timeout.');
+                        uialert(fig, sprintf(['No trigger after %d dummy pulse(s) within %.0f s.\n' ...
+                            'Try: uncheck Enable trigger, lower Dummy pulses, or start the scanner.'], ...
+                            p.nDummy, p.timeout_s), 'Trigger Timeout', 'Icon', 'warning');
                     end
                 end
             end
 
             % Loop
             if ~runAborted
-                setStatus('Running...');
+                if p.isTrigger
+                    setStatus('Running flicker (triggered)...');
+                else
+                    setStatus('Running flicker (fixed schedule)...');
+                end
                 totalElapsed = 0;
                 for r = 1:p.nRepeats
                     if stopRequested; break; end
                     setInfo(r, p.nRepeats, totalElapsed);
                     setProgress(100 * (r-1) / p.nRepeats);
 
-                    writeLo(dqOut, p);
+                    writeLo(dq, p);
                     if ~responsivePause(p.preOff); break; end
                     totalElapsed = totalElapsed + p.preOff;
                     setInfo(r, p.nRepeats, totalElapsed);
 
                     for k = 1:p.n
                         if stopRequested; break; end
-                        writeHi(dqOut, p);
+                        writeHi(dq, p);
                         if ~responsivePause(p.ton); break; end
-                        writeLo(dqOut, p);
+                        writeLo(dq, p);
                         if ~responsivePause(p.toff); break; end
                     end
                     if stopRequested; break; end
 
-                    writeLo(dqOut, p);
+                    writeLo(dq, p);
                     totalElapsed = totalElapsed + p.onWin;
                     if ~responsivePause(p.postOff); break; end
                     totalElapsed = totalElapsed + p.postOff;
                     setInfo(r, p.nRepeats, totalElapsed);
                 end
 
-                writeLo(dqOut, p);
+                writeLo(dq, p);
                 setProgress(100);
                 if stopRequested
                     setStatus('Stopped by user.');
@@ -593,7 +602,7 @@ monitorStopRequested = false;
             end
 
         catch ME
-            try writeLo(dqOut, p); catch; end
+            try writeLo(dq, p); catch; end
             setStatus('Error - see console.');
             uialert(fig, sprintf('DAQ error:\n%s', ME.message), ...
                 'Run Error', 'Icon', 'error');
@@ -602,8 +611,7 @@ monitorStopRequested = false;
         % Cleanup
         isRunning = false; stopRequested = false;
         setControlsEnabled(true);
-        try if ~isempty(dqOut) && isvalid(dqOut); delete(dqOut); end; catch; end
-        try if ~isempty(dqIn) && isvalid(dqIn); delete(dqIn); end; catch; end
+        try if ~isempty(dq) && isvalid(dq); delete(dq); end; catch; end
     end
 
     function stopStimulation()
@@ -862,7 +870,7 @@ if isTrigger
     txt = [txt 'while toc(t0)<to' nl];
     txt = [txt '    drawnow("limitrate");' nl];
     txt = [txt '    ch=readDigitalHigh(dqIn,thr);' nl];
-    txt = [txt '    if ~ph && ch && waitStableHigh(dqIn,thr,0.003,pd)' nl];
+    txt = [txt '    if ~ph && ch' nl];
     txt = [txt '        pc=pc+1; if pc>nd, tr=true; break;' nl];
     txt = [txt '        else, fprintf("Dummy %d/%d\n",pc,nd); end' nl];
     txt = [txt '    end; ph=ch; pause(pd);' nl];
@@ -889,8 +897,6 @@ txt = [txt 'function x=readScalarDigital(dq); v=read(dq);' nl];
 txt = [txt 'if isnumeric(v)||islogical(v), x=double(v(1));' nl];
 txt = [txt 'elseif istable(v)||isa(v,"timetable"), a=table2array(v); x=double(a(1));' nl];
 txt = [txt 'else, error("read(): unsupported type %%s",class(v)); end; end' nl];
-txt = [txt 'function ok=waitStableHigh(dq,thr,win,pd); t=tic; ok=true;' nl];
-txt = [txt 'while toc(t)<win, if ~readDigitalHigh(dq,thr), ok=false; return; end; pause(pd); end; end' nl];
 end
 
 function out = iif(cond, tVal, fVal)
@@ -916,18 +922,6 @@ if istable(v) || isa(v, "timetable")
     return;
 end
 error("read(): unsupported type %s", class(v));
-end
-
-function ok = waitStableHigh(dq, thr, winSec, pollDt)
-t = tic;
-ok = true;
-while toc(t) < winSec
-    if ~readDigitalHigh(dq, thr)
-        ok = false;
-        return;
-    end
-    pause(pollDt);
-end
 end
 
 function showPreviewDialog(parentFig, scriptText, fname)
