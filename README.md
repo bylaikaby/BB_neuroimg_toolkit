@@ -75,6 +75,21 @@ See `config/env.example.json`, `config/env.optofmri.bids.json`, and `config/env.
 
 ---
 
+## MATLAB path setup
+
+Add repo MATLAB code (flicker GUI, AgLogo in-repo sources) from any session:
+
+```matlab
+addpath('D:\imaging_toolkit\matlab');
+add_imaging_toolkit_paths('verbose', true);
+```
+
+**Persistent (recommended):** copy `matlab/startup.m` to `Documents\MATLAB\startup.m`, or append its `addpath` + `add_imaging_toolkit_paths()` lines to your existing user `startup.m`. Edit the `toolkit` path if the clone is not on `D:\imaging_toolkit`.
+
+AgLogo third-party bundles (`toolbox/`, `utils/`) are added automatically when present next to `MRI/aglogos_toolbox/`. See `MRI/aglogos_toolbox/README.md`.
+
+---
+
 ## Installation
 
 ```bash

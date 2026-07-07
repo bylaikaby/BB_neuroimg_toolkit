@@ -12,3 +12,14 @@ MATLAB and shell helpers for macaque/rodent fMRI, stimulation control, vessel ex
 | `figures/` | Example QC figures for vessel/threshold workflows. |
 
 **Data files** (`*.nii`, `*.nii.gz`) are gitignored; keep local test volumes outside the repo or in ignored paths.
+
+## MATLAB paths
+
+From the repo root:
+
+```matlab
+addpath('D:\imaging_toolkit\matlab');
+add_imaging_toolkit_paths();
+```
+
+This adds `MRI/`, `MRI/flicker_1704/`, and AgLogo code via `aglogos_toolbox/aglogo_addpath.m`. For a permanent setup, use `matlab/startup.m` (see root `README.md`).

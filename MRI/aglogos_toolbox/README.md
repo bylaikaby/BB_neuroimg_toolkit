@@ -24,6 +24,21 @@ Lab analysis package for combined fMRI and electrophysiology workflows (ParaVisi
 
 ## Setup (MATLAB R2017a+)
 
+### Option A — via imaging_toolkit (recommended)
+
+Works from any MATLAB working directory; does not require this folder as start-in:
+
+```matlab
+addpath('D:\imaging_toolkit\matlab');
+add_imaging_toolkit_paths('verbose', true);
+```
+
+Or enable `matlab/startup.m` in `Documents\MATLAB\startup.m` (see repo root `README.md`).
+
+`add_imaging_toolkit_paths` calls `aglogo_addpath.m` here, which adds in-repo AgLogo paths and any local `toolbox/` / `utils/` siblings if present.
+
+### Option B — lab-style shortcut (original)
+
 1. Copy or clone this tree to a local path (e.g. `D:\imaging_toolkit\MRI\aglogos_toolbox`).
 2. Create a MATLAB shortcut whose **Start in** / `-sd` directory is this folder.
 3. Set **Preferences → General → Initial working folder** to something like `Documents\MATLAB` (not “last folder”), so `startup.m` path logic stays predictable.
