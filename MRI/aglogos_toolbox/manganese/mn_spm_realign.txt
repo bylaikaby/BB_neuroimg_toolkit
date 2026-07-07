@@ -1,0 +1,26 @@
+% Image Realignment with SPM2
+% verson:
+% 02.06.05 YM : thanks to A.Bartels for his help.
+
+
+1. Run mn_dat2spm(SESSION,GRPNAME), this will create 
+   .hdr/.img files that SPM can handle into "SESSION/spm".
+  >> mn_dat2pm('m02th1','mdeftinj')
+
+2. Run SPM2 GUI and press "fMRI time-series" button.
+  >> spm
+   or
+  >> spm mri
+
+3. Select "Realign" in "Spatial pre-processing" panel (left-top).
+4. Set "Num subjects", then "Num sessions, subj" in left-bottom panel.
+5. Select all .img files created by mn_dat2spm(), then press "Done" button.
+6. Select "Which option?" as "Coregister & Reslice" in left-bottom panel.
+7. Select "Create what?" as "all Images + Mean Image",
+   then SPM will generate realigned .hdr/.img with "r" prefix.
+   This will take a time to finish, ~5min/10files of "m02th1".
+8. To check the result, press "Check Reg" button in "SPM for functional MRI" panel,
+   then select several realigned .img files, and press "Done".
+
+
+

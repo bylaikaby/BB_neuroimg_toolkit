@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>getrf</title>
+</head>
+<body>
+ GETRF - Compute RF of the recording sites by means of reverse correlation.<br>
+&nbsp;&nbsp;GETRF(SESSION,ExpNo,ARGS) The function reads the bandpass signals<br>
+&nbsp;&nbsp;(e.g. Lfp, Mua) and determines the times at which the signal<br>
+&nbsp;&nbsp;passes through a particular value determined by the user. It then<br>
+&nbsp;&nbsp;uses this time information to determine the vide frames that were<br>
+&nbsp;&nbsp;presented at those times.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One must be extremely careful for timing.&nbsp;&nbsp;Movie data (Sig.movie) is not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clock-corrected value but Sig.dx is usually corrected for MRI.&nbsp;&nbsp;So we<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;need to undo correction to get RF structure, otherwise no structure appears.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 xx.xx.03 YM/NKL pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 27.10.07 YM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bug fix on MRI clock-correction.<br>
+ <br>
+&nbsp;&nbsp;See also GETRFDYN SIGGETRF SESGETRF <br>
+<br>
+</body>
+</html>

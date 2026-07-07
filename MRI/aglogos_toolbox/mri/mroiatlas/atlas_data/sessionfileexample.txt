@@ -1,0 +1,5 @@
+ANAP.mroi.atlas.set='Hor'; %Hor or Cor Atlas
+ANAP.mroi.atlas.slice=[155 157 159]; %give the array of atlas images corresponding to anatomical images
+ANAP.mroi.atlas.imgcrop=[100 327 152 68]; % preselected region in atlas image
+ANAP.mroi.atlas.imgscale=[20 30];% scaling of x/y of the atlas image in percent
+ANAP.mroi.atlas.overlay=1; % overlay 0/1

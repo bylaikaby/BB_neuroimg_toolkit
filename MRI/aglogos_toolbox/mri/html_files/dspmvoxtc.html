@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>dspmvoxtc</title>
+</head>
+<body>
+ DSPMVOXTC - displays a mean time course of ROITS structure by mvoxselect<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DSPMVOXTC(ROITS,...) displays a mean time course of ROITS structure <br>
+&nbsp;&nbsp;&nbsp;&nbsp;of that voxsels are&nbsp;&nbsp;selected by mvoxselect based on the certain statistics/alpha.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HAXES = DSPMVOXTC(ROITS,...) does the same things, returing the axes handle.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Supported options are :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axes&nbsp;&nbsp;&nbsp;&nbsp;: the axes handle to plot.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;: color of the plot.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend : legend string<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig = mvoxselect('e04ds1','visesmix','all','glm[2]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> dspmvoxtc(sig);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig1 = mvoxselect('e04ds1','visesmix','v1','glm[1]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> h = dspmvoxtc(sig1,'color','r');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig2 = mvoxselect('e04ds1','visesmix','v2','glm[1]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> h = dspmvoxtc(sig2,'color','g','axes',h);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE 3:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> dspmvoxtc({sig1 sig2},'color',{'r','g'},'legend',{'v1','v2'})<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 12.03.07 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 15.03.07 YM&nbsp;&nbsp;supports 'hold on' capability, ROITS as a cell array.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also mvoxselect mvoxselectmask dspmvox dspmvoxmap anaload mview<br>
+<br>
+</body>
+</html>

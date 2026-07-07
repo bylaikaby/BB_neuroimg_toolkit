@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mratatlas2roi</title>
+</head>
+<body>
+ MRATATLAS2ROI -- extracts ROIs from the rat atlas.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MRATATLAS2ROI(SES)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MROIATLAS2ROI(SES,GRPNAME) extracts ROIs from the rat atlas then saves ROIs into "Roi.mat".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;!! IMPORTANT !!!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Inplane anatomy and functional images must be CORONAL section to match with ATLAS.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;+X=left, +Y=posterior, +Z=ventral.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Correct ASCAN.xxx.permute, GRPP.permute, GRP.xxx.permute if needed.<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sesascan('rat7tHA1');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> anaview('rat7tHA1',1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % make sure CORONAL, otherwise edit "permute" then re-run sesascan()/mnimgload()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mratInplane2analyze('rat7tHA1','mdeftinj');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % do some photoshop work here, if needed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % mratraw2img('rat7tHA1','mdeftinj');&nbsp;&nbsp;% run this if needed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mratatlas2roi('rat7tHA1','mdeftinj')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % modify the description file here.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mroi('rat7tHA1','mdeftinj');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% check ROIs<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inplane anatomy/functional images must be 'coronal' section,&nbsp;&nbsp;+X=left,+Y=post., +Z=vent.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlas directory can be set in getdirs() as .rat_atlas.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optional flags for spm_coreg() can be set as following, see spm_coreg() for detail.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.anap.spm_coreg.sep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [4 2];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% optimisation sampling steps (mm)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.anap.spm_coreg.params&nbsp;&nbsp;&nbsp;&nbsp;= [0 0 0&nbsp;&nbsp;0 0 0]; % starting estimates (6 elements)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.anap.spm_coreg.cost_fun = 'nmi';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% cost function string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.anap.spm_coreg.fwhm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [7 7];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% smoothing to apply to 256x256 joint histogram<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;REQUITEMENT :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPM2, http://www.fil.ion.ucl.ac.uk/spm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ATLAS database by AJ Schwarz et. al<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MUST ACCEPT LICENCE AGREEMENT IN ratBrain_copyright_licence_2007-02-13.doc and README.v5.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 06.08.07 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 08.08.07 YM&nbsp;&nbsp;bug fix.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 09.08.07 YM&nbsp;&nbsp;supports INFO.minvoxels to ignore very small structure.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 20.08.07 YM&nbsp;&nbsp;also adds the entire brain as ROI.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also mratatlas_defs mratatlas_roitable mratInplane2analyze spm_coreg mroi<br>
+<br>
+</body>
+</html>

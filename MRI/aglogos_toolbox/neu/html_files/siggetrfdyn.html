@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>siggetrfdyn</title>
+</head>
+<body>
+ SIGGETRFDYN - Compute site-RF structure by means of reverse correlation.<br>
+&nbsp;&nbsp;OSIG = SIGGETRFDYN(iSig,offsetT,NoAvg,NoStep) reads the<br>
+&nbsp;&nbsp;bandpass signals (e.g. Lfp, Mua) created with getlfpmuaflt<br>
+&nbsp;&nbsp;and determines the times at which the signal passes through a<br>
+&nbsp;&nbsp;particular activity value determined by the user. It then uses this time<br>
+&nbsp;&nbsp;information to determine the vide frames that were presented at<br>
+&nbsp;&nbsp;those times.<br>
+ <br>
+&nbsp;&nbsp;The process requires precise alignment of vide frames with the<br>
+&nbsp;&nbsp;neural data acquisition. The alignment is done by digitizing the<br>
+&nbsp;&nbsp;output of an LED that signifies the onset of a video frame.<br>
+&nbsp;&nbsp;The RF structures are scaled to 0 - 255 (ie. UINT8) by channel basis.<br>
+&nbsp;&nbsp;To reconstruct original values, use oSig.datmax, oSig.datmin etc.<br>
+ <br>
+&nbsp;&nbsp;ISIG is the LFP/MUA/SUA Signals<br>
+&nbsp;&nbsp;OFFSETT is the time before or after the trigger frame<br>
+&nbsp;&nbsp;NoAvg is the minimum number of frames to average<br>
+&nbsp;&nbsp;method = "range" "baseline" etc.<br>
+ <br>
+&nbsp;&nbsp;VSig Structure:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session: 'c98nm1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grpname: 'movie1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpNo: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dsp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;usr: {}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evt: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stm: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chan: [1...]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dx: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;movie: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range: [10 120]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vid: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dat: [5-D uint8]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std: [5-D uint8]<br>
+ <br>
+&nbsp;&nbsp;SEEALSO siggetrf.m, getdir.m, utils/mex_avi, sesgetrf.m<br>
+ <br>
+&nbsp;&nbsp;VERSION//DATE/AUTHOR/NOTES<br>
+&nbsp;&nbsp;&nbsp;&nbsp;0.90 17.10.03&nbsp;&nbsp;YM,&nbsp;&nbsp;modified from siggetrf.m.<br>
+ <br>
+<br>
+</body>
+</html>

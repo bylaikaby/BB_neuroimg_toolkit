@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>gettrialinfo</title>
+</head>
+<body>
+ GETTRIALINFO - Returns information regarding individual trials<br>
+&nbsp;&nbsp;GETTRIALINFO (SesName,GrpName/ExpNo) returns information regarding the<br>
+&nbsp;&nbsp;trials within an observation period for SesName and group<br>
+&nbsp;&nbsp;"GrpName" or "ExpNo".<br>
+ <br>
+&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gettrialinfo('c01ph1',17)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;par = getsortpars('c01ph1',17)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[IDX,PAR] = findtrialpar(par,0);<br>
+&nbsp;&nbsp;VERSION : 0.90 18.04.04 YM&nbsp;&nbsp;&nbsp;&nbsp;first release<br>
+ <br>
+&nbsp;&nbsp;See also GETSORTPARS, FINDTRIALPAR, GETSTIMINFO<br>
+<br>
+</body>
+</html>

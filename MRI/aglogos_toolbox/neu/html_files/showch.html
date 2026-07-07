@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showch</title>
+</head>
+<body>
+ SHOWCH - Group all contrast of a group by calling catconfunc<br>
+&nbsp;&nbsp;SHOWCH invokes catconfunc(SESSION, GrpName, SigName) and<br>
+&nbsp;&nbsp;concatanates all computed contrast functions.<br>
+&nbsp;&nbsp;SHOWCH ('c98nm1','movie1') all signals in group movie1 (chLfp, ..)<br>
+&nbsp;&nbsp;SHOWCH ('c98nm1',1) all signals in experiment 1<br>
+&nbsp;&nbsp;SHOWCH ('m02lx1','movie1','mrich') BOLD-coherence in group movie1<br>
+ <br>
+&nbsp;&nbsp;CF-Related variables<br>
+&nbsp;&nbsp;ses.confunc.algs		= {'kc'};<br>
+&nbsp;&nbsp;ses.confunc.maxchan	= 16;<br>
+&nbsp;&nbsp;ses.confunc.idist		= 1;	% 1mm<br>
+&nbsp;&nbsp;ses.confunc.eleconfig	= [ 01 02 03 04; ...<br>
+&nbsp;&nbsp;							05 06 07 08; ...<br>
+&nbsp;&nbsp;						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;09 10 11 12; ...<br>
+&nbsp;&nbsp;							13 14 15 16];<br>
+<br>
+</body>
+</html>

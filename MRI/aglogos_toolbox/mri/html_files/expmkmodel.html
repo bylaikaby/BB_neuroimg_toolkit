@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>expmkmodel</title>
+</head>
+<body>
+ EXPMKMODEL - Creates a model for corr/glm analysis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MODEL = EXPMKMODEL(SES,EXPNO,MODELSTR,...) creates a model for <br>
+&nbsp;&nbsp;&nbsp;&nbsp;corr/glm analysis.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR can be a string of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boxcar, hemo, fhemo, irhemo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delta, Theta, ThetaR, Alpha, Beta, Gamma, LFP, LFPR, LFPN, MUA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sdf, pLfpL, pLfpM, pLfpH, pMua, vital<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trial[X], trialhemo[X], trialfhemo[X]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stim[X], stimhemo[X], stimfhemo[X]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anyone of roi-name, function handle<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;If MODELSTR is a name of neural signal then it will be convolved with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'gampdf' as a kernel.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;If MODELSTR has a prefix of 'inv' then model will be inversed (*-1).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Channel selection for neural signals can be specified as postfix of the signal name.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For examples, channel 1 of 'gamma' as 'gamma[1]' or <br>
+&nbsp;&nbsp;&nbsp;&nbsp;average of [1,3:4] 'mua' channels as 'mua[1,3:4]'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If no channel information, then all channels will be averaged to create the model.<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;If MODELSTR is a functional handle, the program will call it.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For example, MODELSTR = @mymodel, then the program will call mymodel(Ses,GrpExp).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If MODELSTR is a string for a function handle, the program will call it.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For exapple, MODELSTR = '@mymodel(1)', then the program will call mymodel(1,Ses,GrpExp).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;If user-defined model is simple enough (ie. just changing .val/.t),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;then one can set GRP.xxx.model{x} as following and set use model{x}.name for <br>
+&nbsp;&nbsp;&nbsp;&nbsp;.corana{x}.mdlsct and .glmana{x}.mdlsct .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.corana{1}.mdlsct&nbsp;&nbsp;&nbsp;&nbsp;= 'boxcar';&nbsp;&nbsp;% normal boxcar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.corana{2}.mdlsct&nbsp;&nbsp;&nbsp;&nbsp;= 'step';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% will refer to model{1}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.corana{3}.mdlsct&nbsp;&nbsp;&nbsp;&nbsp;= 'pulse';&nbsp;&nbsp;&nbsp;&nbsp;% will refer to model{2}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.model{1}.name&nbsp;&nbsp;= 'step';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% model-name, must be unique<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.model{1}.type&nbsp;&nbsp;= 'boxcar';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% kernel type, can be boxcar,hemo etc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.model{1}.val&nbsp;&nbsp;&nbsp;&nbsp;= {[0 0 0 0 0 0 1 1 1 1 1 1]};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.model{2}.name&nbsp;&nbsp;= 'pulse';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.model{2}.type&nbsp;&nbsp;= 'boxcar';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.model{2}.val&nbsp;&nbsp;&nbsp;&nbsp;= {[0 0 0 0 0 0 1 0.4 0.3 0.2 0.1 0]};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% GRP.xxx.model{2}.HemoDelay = 0;&nbsp;&nbsp;% optional for type==boxcar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% GRP.xxx.model{2}.HemoTail&nbsp;&nbsp;= 0;&nbsp;&nbsp;% optional for type==boxcar<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR == 'boxcar' is a function of zeros during the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;non-stimulation and of Ret.val during stimulation periods.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this mode, one may set HemoDelay and HemoTail like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ret = EXPMKMODEL (Ses,ExpNo,'boxcar','HemoDelay',2,'HemoTail',6).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As default, HemoDelay = 2s and HemoTail = 6s or, one can control values<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by ANAP.HemoDelay/HemoTail in the description file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Values for stimuli can be defined as grp.val{[0 1 0...]}.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR == 'hemo' is a boxcar convolved with a gamma function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;representing the hemodynamic response of the neurovascular<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR == 'fhemo' is a boxcar convolved with a fast gamma function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;representing the negative? hemodynamic response of the neurovascular<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR == 'fhemo' is a boxcar convolved with a fast gamma function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;representing the negative? hemodynamic response of the neurovascular<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR == 'Cohen' is a boxcar convolved with Cohen's hemo dynamic response.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR == 'roi name' is a mean time course of corresponding roi.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR == 'trial[X]' is a boxcar for trial X.&nbsp;&nbsp;X must be >= 0.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'trialhemo[X]'&nbsp;&nbsp;&nbsp;&nbsp;convolved with gampdf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'trialfhemo[X]'&nbsp;&nbsp;convolved with fast-gampdf<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODELSTR == 'stim[X]' is a boxcar for trial X.&nbsp;&nbsp;X must be >= 0.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'stimhemo[X]'&nbsp;&nbsp;&nbsp;&nbsp;convolved with gampdf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'stimfhemo[X]'&nbsp;&nbsp;convolved with fast-gampdf<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If anap.gettrial.status > 0, then the program returns MODEL(s) for each trials as<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a cell array.<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 05.01.06 YM&nbsp;&nbsp;clean-up from expgetstm().<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 05.01.06 YM&nbsp;&nbsp;supports trial-based models.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 06.01.06 YM&nbsp;&nbsp;bug fix on 'varargin', 'boxcar'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 09.01.06 YM&nbsp;&nbsp;supports where anap.gettrial.trial2obsp = 1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.94 10.01.06 YM&nbsp;&nbsp;use hnanmean() instead of mean() and replaces NaN with 0.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.95 18.01.06 YM&nbsp;&nbsp;supports ModelStr as a function handle.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.96 20.01.06 YM&nbsp;&nbsp;supports ModelStr as a roi name.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.97 25.01.06 YM&nbsp;&nbsp;use ANAP.HemoDelay/HemoTail if exists.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.98 23.03.06 YM&nbsp;&nbsp;supports "Cohen" hemo dynamic response.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.99 27.03.06 YM&nbsp;&nbsp;supports channel selection with the postfix of 'ModelStr'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.00 30.03.06 YM&nbsp;&nbsp;checks unique coordinates for ROI-model.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.01 02.04.06 YM&nbsp;&nbsp;supports ModelStr as GRP.xxx.model{x}.name, filename(.mat).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.02 06.04.06 YM&nbsp;&nbsp;supports roiTsPca and troiTsPca, see sigpca.m also.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.03 20.04.06 YM&nbsp;&nbsp;supports "trial[xxx]".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.04 13.03.07 YM&nbsp;&nbsp;supports 'awake' stuff.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.05 27.06.07 YM&nbsp;&nbsp;supports "stim[xxx]".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.06 17.10.07 YM&nbsp;&nbsp;supports "vfgampdf".<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also EXPGETPAR EXPGETSTM MHEMOKERNEL<br>
+<br>
+</body>
+</html>

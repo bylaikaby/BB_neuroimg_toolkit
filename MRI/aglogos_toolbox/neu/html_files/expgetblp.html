@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>expgetblp</title>
+</head>
+<body>
+ EXPGETBLP - Separate the Cln signal into freqeuncy bands for SesName/ExpNo<br>
+&nbsp;&nbsp;EXPGETBLP (SESSION, ExpNo) invokes BANDGRAM to extract band-limited signals of high<br>
+&nbsp;&nbsp;temporal resolution.<br>
+ <br>
+&nbsp;&nbsp;The bandgram will spling the signal in the bands shown below. Following extraction the<br>
+&nbsp;&nbsp;signals will be Hibert-Transformed and the amplitude of the transformation will resampled<br>
+&nbsp;&nbsp;at 500Hz. The amplitude of the Hiblert transforms is the exact envelop of the band-limited<br>
+&nbsp;&nbsp;signal, and its resampled (after low pass filtering) form will be used for the study of<br>
+&nbsp;&nbsp;BOLD physiology, dependecne between recording sites, spike-triggered averaging etc.<br>
+ <br>
+&nbsp;&nbsp;TODO:<br>
+&nbsp;&nbsp;Need to CHECK whether the number (500Hz) etc are ok for our purposes!<br>
+ <br>
+&nbsp;&nbsp;See also SIGGETBLP SESGETBLP<br>
+ <br>
+&nbsp;&nbsp;NKL 28.07.04<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mnnormalize</title>
+</head>
+<body>
+ MNNORMALIZE - computes data for normalization or normalize the given signal.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mnnormalize(SESSION,GRPNAME) computes data for normalization and save to matfiles.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mnnormalize(SIG,NORM) normalize the givn signal by "NORM".<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;USAGE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mnnormalize('o02wu1','mdeftinj');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% creating data for normalization<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcImg = mnnormalize(tcImg,'global');&nbsp;&nbsp;% normalize 'tcImg' by 'global'<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTES :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If memory problem, run Matlab witout java, (-nojvm).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTES 2: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Any mat file can be used as normalization data.&nbsp;&nbsp;The matfile should have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the signal structure named as the group name like following.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(grpname).dat&nbsp;&nbsp;:&nbsp;&nbsp;must be a vector, the same length as grouped scans, (grp.exps).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the 'grpname' is 'mdeftinj', then it should be like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mdeftinj.dat = [323.32 135.23 ... 100.03].<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Example : <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create your own data for normalization.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mdeftinj = [];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% createting the data (use the group name)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mdeftinj.dat = [1 2 3 ... 10];&nbsp;&nbsp;% setting data for normalization as .dat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> save('mynorm.mat','mdeftinj');&nbsp;&nbsp;% save data as a matlab file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then edit the session file to set normalization method for any statistics.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnttest.normalize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'mynorm.mat';	% none|global|regress|matfile<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnttest2.normalize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'mynorm.mat';	% none|global|regress|matfile<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 12.07.05 YM&nbsp;&nbsp;&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 19.07.05 YM&nbsp;&nbsp;&nbsp;&nbsp;avoid memory problem of 'm02th1'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 20.03.08 YM&nbsp;&nbsp;&nbsp;&nbsp;supports user-defined matfile for normalization.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 31.08.10 YM&nbsp;&nbsp;&nbsp;&nbsp;more options for normalization<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also mk_water mnttest mnttest2<br>
+<br>
+</body>
+</html>

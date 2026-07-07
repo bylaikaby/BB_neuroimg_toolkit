@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>matsttest</title>
+</head>
+<body>
+ MATSTTEST - Apply unpaired T-Test analysis to the roiTs time series<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[roiTs,hval,pval] = matsttest(roiTs,epochX,epochY) apply unpaired T-test between<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"epochX" and "epochY".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[roiTs,hval,pval] = matsttest(roiTs,epochX,epochY,alpha,tail,bonferroni) uses<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"alpha" as alpha-value, "tail" for three alternative hypotheses and <br>
+&nbsp;&nbsp;&nbsp;&nbsp;"bonferroni" as a flag to alpha-value correction.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As default, alpah=0.05, tail = 'both' and bonferroni = 1.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"epochX/Y" can be either numeric indices for compariing periods or a string <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specifying the stmulus like 'blank'.&nbsp;&nbsp;"epochY" can be a cell array of strings/indices.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail = 'both'&nbsp;&nbsp;: mean(epoch1) ~= mean(epoch2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail = 'right' : mean(epoch1) >&nbsp;&nbsp;mean(epoch2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail = 'left'&nbsp;&nbsp;: mean(epoch1) <&nbsp;&nbsp;mean(epoch2)<br>
+ <br>
+&nbsp;&nbsp;APPENDED STRUCTURE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roiTs{1} = ....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ttest: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ttest.epoch: {{1x2 cell}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<--- indices for each epoch<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ttest.h: {[1x2520 double]} <-- h values<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p: {[1x2520 double]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- p values<br>
+ <br>
+ <br>
+&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[roiTs, h, p] = matsttest(roiTs,'blank','polar', 0.05, 0, 1);<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;idxX = getStimIndices(roiTs{1},'blank',HemoDelay,HemoTail);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;idxY = getStimIndices(roiTs{1},'movie',HemoDelay,HemoTail);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[roiTs, h, p] = matsttest(roiTs,idxX,idxY, 0.05, 0, 1);<br>
+ <br>
+&nbsp;&nbsp;VERSION : 01.08.04 YM&nbsp;&nbsp;&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;See also GETSTIMINDICES, TTEST2, MATSCOR<br>
+<br>
+</body>
+</html>

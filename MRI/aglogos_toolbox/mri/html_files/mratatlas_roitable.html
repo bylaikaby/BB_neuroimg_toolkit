@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mratatlas_roitable</title>
+</head>
+<body>
+ MRATATLAS_ROITABLE - returns a table of ROIs in rat atlas package.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MRATATLAS_ROITABLE(FILENAME) returns a table of ROIs in rat atlas package.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;This function is called by MRATATLAS2ROI.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> filedir&nbsp;&nbsp;= 'y:\DataMatlab\Anatomy\Rat_Atlas\GSKrat97templateMRI+atlas.v5\v5\96x96x120';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> filename = 'atlas_structDefs';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> roitable = mratatlas_roitable(fullfile(filedir,filename));%<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roitable{1} = { [4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'oculomotor nucleus'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'3'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0.1078] }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uniq.num&nbsp;&nbsp;fullname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Abbrev.&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The character " will be remove from the string.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The character ' will be replaced by ^ for matlab.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 08.08.07 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also mratatlas2roi mratatlas_defs<br>
+<br>
+</body>
+</html>

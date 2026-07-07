@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mk_vitamin</title>
+</head>
+<body>
+ MK_VITAMIN - makes normalization data from 'vitaminE'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MK_VITAMIN(SESSION,GRPNAME) makes normalization data from 'vitaminE'.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mk_vitamin(SESSION,GRPNAME);&nbsp;&nbsp;% export 2dseq as a template of mask data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % HERE DO SOME WORK BY YOURSELF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % extract mask area as white and outside as black by photoshop or analyze etc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % MAKE SURE THE MASK DATA IS SAVED AS 8BITS (uint8).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mk_vitamin(SESSION,GRPNAME);&nbsp;&nbsp;% create normalization data from masked regions<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The program makes 'tcvitamin.mat' for normalization.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;REQUIREMENT :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mask_vitamin/*.hdr/img as mask data.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 20.03.08 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 31.03.08 YM&nbsp;&nbsp;export as ANALYZE format<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 08.04.08 YM&nbsp;&nbsp;bug fix<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also mk_water mk_earbar mnnormalize bru2analyze anz_read<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,229 @@
+RESULT
+===========================================
+ N = 20:  DUR=300.00s
+===========================================
+ Cln-Chan corr: -0.0001 +- 0.0010
+=BLP-RAW==========================================
+ BLP-Chan corr  Delta [  0    4]:  0.0048 +- 0.0757
+ BLP-Chan corr  Theta [  4    8]: -0.0036 +- 0.0535
+ BLP-Chan corr  Alpha [  8   14]: -0.0073 +- 0.0174
+ BLP-Chan corr   Beta [ 14   24]:  0.0027 +- 0.0161
+ BLP-Chan corr GammaL [ 24   35]:  0.0002 +- 0.0147
+ BLP-Chan corr GammaM [ 35   80]:  0.0023 +- 0.0055
+ BLP-Chan corr GammaH [ 80  100]:  0.0007 +- 0.0077
+ BLP-Chan corr    LFP [  0  100]:  0.0013 +- 0.0033
+ BLP-Chan corr    MID [100  400]:  0.0000 +- 0.0043
+ BLP-Chan corr    MUA [400 3000]:  0.0003 +- 0.0034
+=BLP-RAW==========================================
+ BLP-BLP corr  Delta- Theta:  0.0191 +- 0.0171
+ BLP-BLP corr  Delta- Alpha: -0.0131 +- 0.0097
+ BLP-BLP corr  Delta-  Beta: -0.0057 +- 0.0038
+ BLP-BLP corr  Delta-GammaL: -0.0023 +- 0.0015
+ BLP-BLP corr  Delta-GammaM: -0.0014 +- 0.0010
+ BLP-BLP corr  Delta-GammaH: -0.0004 +- 0.0003
+ BLP-BLP corr  Delta-   LFP:  0.2206 +- 0.0051
+ BLP-BLP corr  Delta-   MID:  0.0018 +- 0.0043
+ BLP-BLP corr  Delta-   MUA:  0.0006 +- 0.0026
+-------------------------------------------
+ BLP-BLP corr  Theta- Delta:  0.0191 +- 0.0171
+ BLP-BLP corr  Theta- Alpha:  0.0242 +- 0.0011
+ BLP-BLP corr  Theta-  Beta:  0.0001 +- 0.0002
+ BLP-BLP corr  Theta-GammaL:  0.0000 +- 0.0001
+ BLP-BLP corr  Theta-GammaM:  0.0000 +- 0.0001
+ BLP-BLP corr  Theta-GammaH:  0.0000 +- 0.0000
+ BLP-BLP corr  Theta-   LFP:  0.1377 +- 0.0027
+ BLP-BLP corr  Theta-   MID: -0.0011 +- 0.0036
+ BLP-BLP corr  Theta-   MUA: -0.0006 +- 0.0043
+-------------------------------------------
+ BLP-BLP corr  Alpha- Delta: -0.0131 +- 0.0097
+ BLP-BLP corr  Alpha- Theta:  0.0242 +- 0.0011
+ BLP-BLP corr  Alpha-  Beta:  0.0831 +- 0.0021
+ BLP-BLP corr  Alpha-GammaL:  0.0001 +- 0.0001
+ BLP-BLP corr  Alpha-GammaM:  0.0000 +- 0.0001
+ BLP-BLP corr  Alpha-GammaH:  0.0000 +- 0.0000
+ BLP-BLP corr  Alpha-   LFP:  0.2780 +- 0.0035
+ BLP-BLP corr  Alpha-   MID:  0.0011 +- 0.0034
+ BLP-BLP corr  Alpha-   MUA:  0.0000 +- 0.0028
+-------------------------------------------
+ BLP-BLP corr   Beta- Delta: -0.0057 +- 0.0038
+ BLP-BLP corr   Beta- Theta:  0.0001 +- 0.0002
+ BLP-BLP corr   Beta- Alpha:  0.0831 +- 0.0021
+ BLP-BLP corr   Beta-GammaL:  0.0904 +- 0.0011
+ BLP-BLP corr   Beta-GammaM:  0.0007 +- 0.0001
+ BLP-BLP corr   Beta-GammaH:  0.0000 +- 0.0000
+ BLP-BLP corr   Beta-   LFP:  0.3608 +- 0.0025
+ BLP-BLP corr   Beta-   MID: -0.0027 +- 0.0043
+ BLP-BLP corr   Beta-   MUA:  0.0004 +- 0.0042
+-------------------------------------------
+ BLP-BLP corr GammaL- Delta: -0.0023 +- 0.0015
+ BLP-BLP corr GammaL- Theta:  0.0000 +- 0.0001
+ BLP-BLP corr GammaL- Alpha:  0.0001 +- 0.0001
+ BLP-BLP corr GammaL-  Beta:  0.0904 +- 0.0011
+ BLP-BLP corr GammaL-GammaM:  0.0758 +- 0.0011
+ BLP-BLP corr GammaL-GammaH:  0.0000 +- 0.0000
+ BLP-BLP corr GammaL-   LFP:  0.3777 +- 0.0024
+ BLP-BLP corr GammaL-   MID:  0.0006 +- 0.0035
+ BLP-BLP corr GammaL-   MUA:  0.0004 +- 0.0035
+-------------------------------------------
+ BLP-BLP corr GammaM- Delta: -0.0014 +- 0.0010
+ BLP-BLP corr GammaM- Theta:  0.0000 +- 0.0001
+ BLP-BLP corr GammaM- Alpha:  0.0000 +- 0.0001
+ BLP-BLP corr GammaM-  Beta:  0.0007 +- 0.0001
+ BLP-BLP corr GammaM-GammaL:  0.0758 +- 0.0011
+ BLP-BLP corr GammaM-GammaH:  0.1235 +- 0.0013
+ BLP-BLP corr GammaM-   LFP:  0.7369 +- 0.0013
+ BLP-BLP corr GammaM-   MID: -0.0002 +- 0.0033
+ BLP-BLP corr GammaM-   MUA:  0.0009 +- 0.0030
+-------------------------------------------
+ BLP-BLP corr GammaH- Delta: -0.0004 +- 0.0003
+ BLP-BLP corr GammaH- Theta:  0.0000 +- 0.0000
+ BLP-BLP corr GammaH- Alpha:  0.0000 +- 0.0000
+ BLP-BLP corr GammaH-  Beta:  0.0000 +- 0.0000
+ BLP-BLP corr GammaH-GammaL:  0.0000 +- 0.0000
+ BLP-BLP corr GammaH-GammaM:  0.1235 +- 0.0013
+ BLP-BLP corr GammaH-   LFP:  0.3548 +- 0.0025
+ BLP-BLP corr GammaH-   MID: -0.0004 +- 0.0028
+ BLP-BLP corr GammaH-   MUA:  0.0003 +- 0.0046
+-------------------------------------------
+ BLP-BLP corr    LFP- Delta:  0.2206 +- 0.0051
+ BLP-BLP corr    LFP- Theta:  0.1377 +- 0.0027
+ BLP-BLP corr    LFP- Alpha:  0.2780 +- 0.0035
+ BLP-BLP corr    LFP-  Beta:  0.3608 +- 0.0025
+ BLP-BLP corr    LFP-GammaL:  0.3777 +- 0.0024
+ BLP-BLP corr    LFP-GammaM:  0.7369 +- 0.0013
+ BLP-BLP corr    LFP-GammaH:  0.3548 +- 0.0025
+ BLP-BLP corr    LFP-   MID: -0.0003 +- 0.0030
+ BLP-BLP corr    LFP-   MUA:  0.0008 +- 0.0033
+-------------------------------------------
+ BLP-BLP corr    MID- Delta:  0.0018 +- 0.0043
+ BLP-BLP corr    MID- Theta: -0.0011 +- 0.0036
+ BLP-BLP corr    MID- Alpha:  0.0011 +- 0.0034
+ BLP-BLP corr    MID-  Beta: -0.0027 +- 0.0043
+ BLP-BLP corr    MID-GammaL:  0.0006 +- 0.0035
+ BLP-BLP corr    MID-GammaM: -0.0002 +- 0.0033
+ BLP-BLP corr    MID-GammaH: -0.0004 +- 0.0028
+ BLP-BLP corr    MID-   LFP: -0.0003 +- 0.0030
+ BLP-BLP corr    MID-   MUA: -0.0784 +- 0.0019
+-------------------------------------------
+ BLP-BLP corr    MUA- Delta:  0.0006 +- 0.0026
+ BLP-BLP corr    MUA- Theta: -0.0006 +- 0.0043
+ BLP-BLP corr    MUA- Alpha:  0.0000 +- 0.0028
+ BLP-BLP corr    MUA-  Beta:  0.0004 +- 0.0042
+ BLP-BLP corr    MUA-GammaL:  0.0004 +- 0.0035
+ BLP-BLP corr    MUA-GammaM:  0.0009 +- 0.0030
+ BLP-BLP corr    MUA-GammaH:  0.0003 +- 0.0046
+ BLP-BLP corr    MUA-   LFP:  0.0008 +- 0.0033
+ BLP-BLP corr    MUA-   MID: -0.0784 +- 0.0019
+-------------------------------------------
+=BLP-HIL==========================================
+ BLP-Chan corr  Delta [  0    4]:  0.1604 +- 0.1465
+ BLP-Chan corr  Theta [  4    8]:  0.0730 +- 0.0880
+ BLP-Chan corr  Alpha [  8   14]:  0.0274 +- 0.0320
+ BLP-Chan corr   Beta [ 14   24]:  0.0087 +- 0.0189
+ BLP-Chan corr GammaL [ 24   35]:  0.0050 +- 0.0175
+ BLP-Chan corr GammaM [ 35   80]:  0.0009 +- 0.0076
+ BLP-Chan corr GammaH [ 80  100]: -0.0025 +- 0.0096
+ BLP-Chan corr    LFP [  0  100]:  0.0008 +- 0.0045
+ BLP-Chan corr    MID [100  400]:  0.0000 +- 0.0043
+ BLP-Chan corr    MUA [400 3000]:  0.0003 +- 0.0034
+=BLP-HIL==========================================
+ BLP-BLP corr  Delta- Theta:  0.0429 +- 0.0723
+ BLP-BLP corr  Delta- Alpha:  0.0379 +- 0.0684
+ BLP-BLP corr  Delta-  Beta:  0.0229 +- 0.0375
+ BLP-BLP corr  Delta-GammaL:  0.0077 +- 0.0226
+ BLP-BLP corr  Delta-GammaM:  0.0054 +- 0.0096
+ BLP-BLP corr  Delta-GammaH: -0.0007 +- 0.0067
+ BLP-BLP corr  Delta-   LFP:  0.0227 +- 0.0230
+ BLP-BLP corr  Delta-   MID:  0.0001 +- 0.0021
+ BLP-BLP corr  Delta-   MUA: -0.0010 +- 0.0029
+-------------------------------------------
+ BLP-BLP corr  Theta- Delta:  0.0429 +- 0.0723
+ BLP-BLP corr  Theta- Alpha:  0.0229 +- 0.0397
+ BLP-BLP corr  Theta-  Beta:  0.0112 +- 0.0213
+ BLP-BLP corr  Theta-GammaL:  0.0031 +- 0.0110
+ BLP-BLP corr  Theta-GammaM:  0.0020 +- 0.0060
+ BLP-BLP corr  Theta-GammaH: -0.0001 +- 0.0057
+ BLP-BLP corr  Theta-   LFP:  0.0093 +- 0.0104
+ BLP-BLP corr  Theta-   MID: -0.0007 +- 0.0029
+ BLP-BLP corr  Theta-   MUA: -0.0005 +- 0.0023
+-------------------------------------------
+ BLP-BLP corr  Alpha- Delta:  0.0379 +- 0.0684
+ BLP-BLP corr  Alpha- Theta:  0.0229 +- 0.0397
+ BLP-BLP corr  Alpha-  Beta:  0.0112 +- 0.0221
+ BLP-BLP corr  Alpha-GammaL:  0.0040 +- 0.0098
+ BLP-BLP corr  Alpha-GammaM: -0.0001 +- 0.0049
+ BLP-BLP corr  Alpha-GammaH: -0.0003 +- 0.0105
+ BLP-BLP corr  Alpha-   LFP:  0.0350 +- 0.0351
+ BLP-BLP corr  Alpha-   MID: -0.0007 +- 0.0019
+ BLP-BLP corr  Alpha-   MUA: -0.0015 +- 0.0023
+-------------------------------------------
+ BLP-BLP corr   Beta- Delta:  0.0229 +- 0.0375
+ BLP-BLP corr   Beta- Theta:  0.0112 +- 0.0213
+ BLP-BLP corr   Beta- Alpha:  0.0112 +- 0.0221
+ BLP-BLP corr   Beta-GammaL:  0.0028 +- 0.0112
+ BLP-BLP corr   Beta-GammaM: -0.0009 +- 0.0067
+ BLP-BLP corr   Beta-GammaH: -0.0027 +- 0.0106
+ BLP-BLP corr   Beta-   LFP:  0.0577 +- 0.0578
+ BLP-BLP corr   Beta-   MID: -0.0018 +- 0.0036
+ BLP-BLP corr   Beta-   MUA: -0.0020 +- 0.0035
+-------------------------------------------
+ BLP-BLP corr GammaL- Delta:  0.0077 +- 0.0226
+ BLP-BLP corr GammaL- Theta:  0.0031 +- 0.0110
+ BLP-BLP corr GammaL- Alpha:  0.0040 +- 0.0098
+ BLP-BLP corr GammaL-  Beta:  0.0028 +- 0.0112
+ BLP-BLP corr GammaL-GammaM:  0.0016 +- 0.0047
+ BLP-BLP corr GammaL-GammaH: -0.0002 +- 0.0099
+ BLP-BLP corr GammaL-   LFP:  0.0654 +- 0.0655
+ BLP-BLP corr GammaL-   MID: -0.0014 +- 0.0034
+ BLP-BLP corr GammaL-   MUA: -0.0029 +- 0.0041
+-------------------------------------------
+ BLP-BLP corr GammaM- Delta:  0.0054 +- 0.0096
+ BLP-BLP corr GammaM- Theta:  0.0020 +- 0.0060
+ BLP-BLP corr GammaM- Alpha: -0.0001 +- 0.0049
+ BLP-BLP corr GammaM-  Beta: -0.0009 +- 0.0067
+ BLP-BLP corr GammaM-GammaL:  0.0016 +- 0.0047
+ BLP-BLP corr GammaM-GammaH:  0.0045 +- 0.0083
+ BLP-BLP corr GammaM-   LFP:  0.2567 +- 0.2567
+ BLP-BLP corr GammaM-   MID: -0.0061 +- 0.0065
+ BLP-BLP corr GammaM-   MUA: -0.0093 +- 0.0099
+-------------------------------------------
+ BLP-BLP corr GammaH- Delta: -0.0007 +- 0.0067
+ BLP-BLP corr GammaH- Theta: -0.0001 +- 0.0057
+ BLP-BLP corr GammaH- Alpha: -0.0003 +- 0.0105
+ BLP-BLP corr GammaH-  Beta: -0.0027 +- 0.0106
+ BLP-BLP corr GammaH-GammaL: -0.0002 +- 0.0099
+ BLP-BLP corr GammaH-GammaM:  0.0045 +- 0.0083
+ BLP-BLP corr GammaH-   LFP:  0.0563 +- 0.0564
+ BLP-BLP corr GammaH-   MID: -0.0019 +- 0.0037
+ BLP-BLP corr GammaH-   MUA: -0.0042 +- 0.0047
+-------------------------------------------
+ BLP-BLP corr    LFP- Delta:  0.0227 +- 0.0230
+ BLP-BLP corr    LFP- Theta:  0.0093 +- 0.0104
+ BLP-BLP corr    LFP- Alpha:  0.0350 +- 0.0351
+ BLP-BLP corr    LFP-  Beta:  0.0577 +- 0.0578
+ BLP-BLP corr    LFP-GammaL:  0.0654 +- 0.0655
+ BLP-BLP corr    LFP-GammaM:  0.2567 +- 0.2567
+ BLP-BLP corr    LFP-GammaH:  0.0563 +- 0.0564
+ BLP-BLP corr    LFP-   MID: -0.0102 +- 0.0106
+ BLP-BLP corr    LFP-   MUA: -0.0202 +- 0.0204
+-------------------------------------------
+ BLP-BLP corr    MID- Delta:  0.0001 +- 0.0021
+ BLP-BLP corr    MID- Theta: -0.0007 +- 0.0029
+ BLP-BLP corr    MID- Alpha: -0.0007 +- 0.0019
+ BLP-BLP corr    MID-  Beta: -0.0018 +- 0.0036
+ BLP-BLP corr    MID-GammaL: -0.0014 +- 0.0034
+ BLP-BLP corr    MID-GammaM: -0.0061 +- 0.0065
+ BLP-BLP corr    MID-GammaH: -0.0019 +- 0.0037
+ BLP-BLP corr    MID-   LFP: -0.0102 +- 0.0106
+ BLP-BLP corr    MID-   MUA: -0.0392 +- 0.0393
+-------------------------------------------
+ BLP-BLP corr    MUA- Delta: -0.0010 +- 0.0029
+ BLP-BLP corr    MUA- Theta: -0.0005 +- 0.0023
+ BLP-BLP corr    MUA- Alpha: -0.0015 +- 0.0023
+ BLP-BLP corr    MUA-  Beta: -0.0020 +- 0.0035
+ BLP-BLP corr    MUA-GammaL: -0.0029 +- 0.0041
+ BLP-BLP corr    MUA-GammaM: -0.0093 +- 0.0099
+ BLP-BLP corr    MUA-GammaH: -0.0042 +- 0.0047
+ BLP-BLP corr    MUA-   LFP: -0.0202 +- 0.0204
+ BLP-BLP corr    MUA-   MID: -0.0392 +- 0.0393
+-------------------------------------------

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showchan</title>
+</head>
+<body>
+ SHOWCHAN - Display the signal of each channel separately<br>
+&nbsp;&nbsp;SHOWCHAN shows all channels, each in a separate subplot to assess<br>
+&nbsp;&nbsp;differences between sites. If no signal is defined the LfpH is used<br>
+&nbsp;&nbsp;as default.<br>
+ <br>
+&nbsp;&nbsp;SHOWCHAN (SesName,ExpNo,'LfpM','Mua'); Will plot superimposed the<br>
+&nbsp;&nbsp;signals LfpM and Mua. Each channels separately. Data are read<br>
+&nbsp;&nbsp;from the mat file catfilename(SesName,ExpNo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWCHAN(SesName,GrpName,'LfpM','Mua'); Same but date are read<br>
+&nbsp;&nbsp;from a group file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWCHAN(LfpM,Mua); Same but the signals were already loaded by<br>
+&nbsp;&nbsp;the user, and are passed as function arguments.<br>
+ <br>
+&nbsp;&nbsp;See also SHOW, SHOWCLN<br>
+ <br>
+&nbsp;&nbsp;VERSION : 1.00 NKL, 01.05.03<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.01 YM,&nbsp;&nbsp;03.11.04&nbsp;&nbsp;bug fix, plot also low-passed signals.<br>
+<br>
+</body>
+</html>

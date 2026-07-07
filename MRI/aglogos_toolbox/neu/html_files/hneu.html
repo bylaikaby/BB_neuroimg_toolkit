@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>hneu</title>
+</head>
+<body>
+ HNEU - General neural-signal processing functions used by all projects<br>
+ <br>
+&nbsp;&nbsp;See also<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HHELP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Guide for the documentation of all Phys+fMRI Software<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/MATLAB/NEU/CONTENTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Project Specific Functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;Preprocessing ofr Neurophysiology Data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESDUMPPAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Read all parameters and dump them in SesPar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESGETCLN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Clean/Decimate the physiology signals<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESGETBLP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Split the Cln structure into different frequency bands<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESGETSPK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Extract spike times and create Spike Density Functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FINDCHAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Find bad channels and exclude by setting the findch field<br>
+ <br>
+&nbsp;&nbsp;Visualization of Neurophysiology Data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Group all contrast of a group by calling catconfunc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWCHAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Display the signal of each channel separately<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWCLN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Cln Display (Time, spectra, amplitude-distribution & RMS)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSPSIG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Display a signal <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSPPSTH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Display histogram data from single units<br>
+ <br>
+&nbsp;&nbsp;------------------------------------------------------------------------------------------<br>
+ <br>
+&nbsp;&nbsp;Old Analysis Steps (Currently we use the BLP-Extraction Method)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESGETSIGS - This function cleans or decimates (or both) the raw neurophysiological<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;signal, and then extracts the basic bands that we use for our analysis; It invokes the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;following matlab functions, each of which can be called directly when the data are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;already partly processed;<br>
+ 	SESDUMPPAR - Read all parameters and dump them in SesPar<br>
+ 	SESGETCLN - Clean/Decimate the physiology signals<br>
+ 	SESCLNSPC - Generate spectrograms for denoised signal Cln<br>
+ 	SESGETLFPMUAFLT - Filter, rectify and decimate<br>
+ 	SESGETLFPMUA - Average spectrogram bands<br>
+ 	SESGETSPK - Extract spike times and create Spike Density Functions<br>
+ 	FINDCHAN - Find bad channels and exclude by setting the findch field<br>
+ <br>
+&nbsp;&nbsp;Detailed Explanation of Individual Steps<br>
+&nbsp;&nbsp;SESDUMPPAR - Read all parameters and dump them in SesPar<br>
+&nbsp;&nbsp;SESGETCLN - Clean/Decimate the physiology signals<br>
+&nbsp;&nbsp;"Cln" functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLNHELP<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESCLNADJEVT - Creates the "ClnAdjEvt" file with corrected MRI events<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLNADJEVT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESGETCLN - Read ADF files, eliminate Gradient Noise and/or Decimate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GETCLN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLNMAIN, VCLNMAIN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DECMAIN, VDECMAIN<br>
+ <br>
+&nbsp;&nbsp;SESCLNSPC - Generate spectrograms for denoised signal Cln<br>
+&nbsp;&nbsp;"ClnSpc" functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESCLNSPC - Make spectrograms for the Cln signal of each experiment<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIGSPC<br>
+ <br>
+&nbsp;&nbsp;SESGETLFPMUA - "pLfpL", "pLfpM", "pLfpH", pMua ClnSpc-averages<br>
+&nbsp;&nbsp;"Lfp/Mua/Spkt" functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESGETLFPMUAFLT - Get Lfp/Mua/Gamma etc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GETBANDSFLT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESGETLFPMUA - Get spectral powers with the Lfp and Mua ranges<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GETLFPMUA<br>
+ <br>
+&nbsp;&nbsp;We use two types of band-passed signals: (a) Signals that are filtered and resampled with<br>
+&nbsp;&nbsp;250Hz, and (b) Signals that are created by averaging between certain frequency bands of the<br>
+&nbsp;&nbsp;spectrogram, which has a temporal resolution of TR; The following lines illustrate the<br>
+&nbsp;&nbsp;frequency ranges used for filtering (dots are replace by dashes because they confuse the<br>
+&nbsp;&nbsp;Matlab parser, which stops treating the capital names as links):<br>
+ <br>
+&nbsp;&nbsp;anap-bands-Lfp		= [1 90];		% entire "lfp" range (unrectified)<br>
+&nbsp;&nbsp;anap-bands-Gamma		= [24 90];		% gamm "lfp" range (unrectified)<br>
+&nbsp;&nbsp;anap-bands-LfpL		= [1 12];		% delta-theta (rectified)<br>
+&nbsp;&nbsp;anap-bands-LfpM		= [12 24];		% alpha-beta (rectified)<br>
+&nbsp;&nbsp;anap-bands-LfpH		= [24 90];		% gamma (rectified)<br>
+&nbsp;&nbsp;anap-bands-Mua		= [500 2500];	% spiking (rectified)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;anap-bands-lfpcutoff	= 10;			% Low pass filter after rectification<br>
+&nbsp;&nbsp;anap-bands-muacutoff	= 100;			% Low pass filter after rectification<br>
+&nbsp;&nbsp;anap-bands-samprate	= 250;			% Resample at 250Hz<br>
+ <br>
+&nbsp;&nbsp;In addition, we have the pLfpL, pLfpM, pLfpH, and pMua that are<br>
+&nbsp;&nbsp;averages of the spectrogram within the ranges:<br>
+ <br>
+&nbsp;&nbsp;anap-bands-LfpL		= [1 12];		% delta-theta (rectified)<br>
+&nbsp;&nbsp;anap-bands-LfpM		= [12 24];		% alpha-beta (rectified)<br>
+&nbsp;&nbsp;anap-bands-LfpH		= [24 90];		% gamma (rectified)<br>
+&nbsp;&nbsp;anap-bands-Mua		= [500 2500];	% spiking (rectified)<br>
+ <br>
+&nbsp;&nbsp;SESGETSPK - Extracts spikes and SDFs from "Cln" data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GETSPK<br>
+ <br>
+&nbsp;&nbsp;FINDCHAN - Find channels driven by the stimulus (for exclusion) Before continuing with<br>
+&nbsp;&nbsp;analysis and in particular before applying statistical test the user *must* check of the<br>
+&nbsp;&nbsp;quality of individual channels; You can visualize the channels by loading a signal and<br>
+&nbsp;&nbsp;invoking the function showchan(Sig); To ensure bias-free decision is better to use the<br>
+&nbsp;&nbsp;FINDCHAN utility;<br>
+ <br>
+&nbsp;&nbsp;varargout = FINDCHAN (SesName,GrpName,SigName) loads the desired signal (SigName) from a<br>
+&nbsp;&nbsp;control group during which stimulation is expected to cause changes in neural activity and<br>
+&nbsp;&nbsp;examines whether stimulus-induced modulation is significant; It returns all channels driven<br>
+&nbsp;&nbsp;by the stimulus;<br>
+ <br>
+&nbsp;&nbsp;H = FINDCHAN (SesName,GrpName,SigName) returns a string of zeros and ones; Zero means the<br>
+&nbsp;&nbsp;default assumption (H0) cannot be rejected, and in this case means bad channel (default is<br>
+&nbsp;&nbsp;that background and stimulus activity are coming from the same population); One means they<br>
+&nbsp;&nbsp;are different;<br>
+ <br>
+&nbsp;&nbsp;[H,p] = FINDCHAN (SesName,GrpName,SigName) the probability of 0/1 over all experiments of the<br>
+&nbsp;&nbsp;group;<br>
+ <br>
+&nbsp;&nbsp;Important Note:<br>
+ <br>
+&nbsp;&nbsp;To select channels according to whether or not they show changes in neural activity elicited<br>
+&nbsp;&nbsp;by the stimulus one cannot simply apply a t-test between the values of the signal during<br>
+&nbsp;&nbsp;stimulation and during blank; For all unretified signal the mean of stimulus-induced activity<br>
+&nbsp;&nbsp;will be the same with that observed in the resting state; We have to compare rectified<br>
+&nbsp;&nbsp;signals or variances; The onset of the stimulus causes increase of variance; Alternatively we<br>
+&nbsp;&nbsp;can compare rms values;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;"VLfp/VMua/VSpk" functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESGETRF - Compute receptive fields of cells by reverse correlation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GETRF<br>
+ <br>
+&nbsp;&nbsp;I/O Functions<br>
+&nbsp;&nbsp;-----------------------------<br>
+&nbsp;&nbsp;SIGLOAD - Loads the signal for Ses, ExpNo/GrpName<br>
+&nbsp;&nbsp;STMLOAD - generate stimulus data for plotting<br>
+&nbsp;&nbsp;ADFINFO - read adf file information<br>
+&nbsp;&nbsp;ADFREAD - read adf file<br>
+ <br>
+&nbsp;&nbsp;Analysis Utilities<br>
+&nbsp;&nbsp;-----------------------------<br>
+&nbsp;&nbsp;EXPGETPAR - return experiment parameters, evt, pvpar and stm<br>
+&nbsp;&nbsp;GETSTIMINFO - print information regarding individual stimuli<br>
+&nbsp;&nbsp;GETTRIALINFO - print information regarding individual trials<br>
+&nbsp;&nbsp;GETSORTPARS - Get parameters to reshape/sort signals with SIGSORT<br>
+&nbsp;&nbsp;SIGSORT - Sort out signals by given parameter<br>
+&nbsp;&nbsp;SIGSELEPOCH - select the signal during "EPOCH"<br>
+&nbsp;&nbsp;XFORM - converts Sig's unit accoring to 'Method' and 'Epoch'<br>
+&nbsp;&nbsp;GOTO - Read session file and go to the corresponding directory<br>
+&nbsp;&nbsp;GETGRP - Returns the group-structure by experiment number or group name<br>
+&nbsp;&nbsp;EXPGETRMS - Get RMS for signal SigName read from file<br>
+&nbsp;&nbsp;RMS - Compute RMS of signal passed as argument<br>
+&nbsp;&nbsp;SIGHIST - Makes histogram of signal-values<br>
+&nbsp;&nbsp;DSPHIST - Displays histogram<br>
+&nbsp;&nbsp;EXPGETHIST - Runs SIGHIST for all signals in HISTSIGS<br>
+&nbsp;&nbsp;SESGETHIST - Runs EXPGETHIST for entire session<br>
+ <br>
+&nbsp;&nbsp;Display Functions<br>
+&nbsp;&nbsp;-----------------------------<br>
+&nbsp;&nbsp;HSHOW<br>
+&nbsp;&nbsp;SHOW - display signals of mat and group files<br>
+ <br>
+<br>
+</body>
+</html>

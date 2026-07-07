@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>imgload</title>
+</head>
+<body>
+ IMGLOAD - Load Paravision 2dseq files<br>
+ 	OtcImg = IMGLOAD(SesName,ExpNo,ARGS) uses read2dseq to read the<br>
+ 	reconstructed MR images and preprocess them according to the flags set<br>
+ 	in the structure ARGS. The file name is determined by ExpNo, which<br>
+ 	indexes the expp(ExpNo).scanreco in the description file.<br>
+ <br>
+ 	NKL, 24.02.01<br>
+ 	CORRECT DESCRIPTION!!!!!!!!!!!!!!<br>
+ 	otcImg = IMGLOAD(...) returns the structure:<br>
+ <br>
+&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Setting parameters can be controlled by ANAP.imgload.xxx.<br>
+ <br>
+&nbsp;&nbsp;EXTENSION : if DEF.SAVEAS_IMG == 1, 'tcImg.dat' will be saved as a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;separate file.&nbsp;&nbsp;06.02.04 YM<br>
+ <br>
+&nbsp;&nbsp;VERSION : 1.00 24.02.01 NKL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.01 09.02.04 YM&nbsp;&nbsp;&nbsp;&nbsp;bug fix on empty frange{3} (when imgtr>0.36s).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.02 23.04.04 YM&nbsp;&nbsp;&nbsp;&nbsp;remove unused fields.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.03 26.01.06 YM&nbsp;&nbsp;&nbsp;&nbsp;normalize time by time if large data like d04zn1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.04 07.04.06 YM&nbsp;&nbsp;&nbsp;&nbsp;bug fix on Ses.expp(ExpNo).slice.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.05 08.10.06 YM&nbsp;&nbsp;&nbsp;&nbsp;computes a time course of centroid for awake MRI.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.06 13.03.07 YM&nbsp;&nbsp;&nbsp;&nbsp;bug fix when grp.imgcrop is empty.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.07 31.08.07 YM&nbsp;&nbsp;&nbsp;&nbsp;support ISUBSTITUTE_RAND.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.08 20.10.07 YM&nbsp;&nbsp;&nbsp;&nbsp;checks initial transients.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.09 15.11.07 YM&nbsp;&nbsp;&nbsp;&nbsp;supports IDC_RECOVER<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.10 26.11.07 YM&nbsp;&nbsp;&nbsp;&nbsp;supports ISLICROP<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.11 03.12.07 YM&nbsp;&nbsp;&nbsp;&nbsp;supports EXPP(X).DataMri/dirname.<br>
+ <br>
+&nbsp;&nbsp;See also MGETTCIMG, SESIMGLOAD, READ2DSEQ, SESASCAN, SESCSCAN,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMRESIZE, IMFEATURE, EPI13, MSIGFFT,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMG_WRITE, IMG_READ, IMG_INFO<br>
+<br>
+</body>
+</html>

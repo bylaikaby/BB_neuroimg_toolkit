@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>dspclnspc</title>
+</head>
+<body>
+ DSPCLNSPC - shows the spectrograms of the Cln signal (e.g. ClnSpc)<br>
+ <br>
+&nbsp;&nbsp;DSPCLNSPC (Spc, ExpNo) shows the spectrogram of the "ChanNo"<br>
+&nbsp;&nbsp;recording channel of the Cln signal as surface plot in three<br>
+&nbsp;&nbsp;dimensions. X is time, Y frequency, and Z power.<br>
+ <br>
+&nbsp;&nbsp;DSPCLNSPC (Spc) shows the spectrogram of all channels averaged.<br>
+ <br>
+&nbsp;&nbsp;DSPCLNSPC (...ARGS) shows the spectrogram with parameters<br>
+&nbsp;&nbsp;defined by the user.<br>
+ <br>
+&nbsp;&nbsp;Default Parameters:<br>
+&nbsp;&nbsp;-----------------------------<br>
+&nbsp;&nbsp;PLOT3D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% 3D or Color-Coded-Only Surface<br>
+&nbsp;&nbsp;COLBAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Color bar requested<br>
+&nbsp;&nbsp;WALLPLOTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Plot on the wall the signal averages<br>
+&nbsp;&nbsp;RANGELINES	= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Draw lines showing LFP/MUA Ranges<br>
+&nbsp;&nbsp;RANGEVALS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Display the range values<br>
+&nbsp;&nbsp;STIMULUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Plot lines at Sig.stm{ObsNo}.stm...<br>
+&nbsp;&nbsp;LFPRANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [30 100];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Range within which LFPs are averaged<br>
+&nbsp;&nbsp;MUARANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [500 2000];&nbsp;&nbsp;&nbsp;&nbsp;% Range within which LFPs are averaged<br>
+&nbsp;&nbsp;FRANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [20 3000];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Frequency range to plot<br>
+&nbsp;&nbsp;TRANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Time range to plot<br>
+&nbsp;&nbsp;SDUNITS		= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% if 0, then in dB units (log power)<br>
+&nbsp;&nbsp;FEXTENTION	= 6000;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% push y axis back to see the time courses wall<br>
+&nbsp;&nbsp;UNITLABEL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'SD Units';&nbsp;&nbsp;&nbsp;&nbsp;% Z-units<br>
+ <br>
+&nbsp;&nbsp;NKL, 20.02.01<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,39 @@
+Faster sesgetcln.m 
+==================
+
+Sonja Engert
+12.09.13
+
+Original version:
+----------------
+
+- in the cleaning algorithm (sesgetcln.m) the calculation of singular values and vectors is the most time consuming routine, because it is done for a large "unstructured" matrix
+- in the subfunction clnadf.m the MATLAB internal function svds.m is called, which executes the principal component analysis (PCA)
+
+New version:
+-----------
+
+- replaced function svds.m by lansvd.m (line 206 in clnadf.m)
+- lansvd.m does PCA for a symmetric matrix based on symmetric Lanczos algorithm
+- In symmetric Lanczos algorithm a tridiagonal matrix is formed by simple matrix multiplications. The eigenvalues and vectors are a good approximation of the eigenvalues and vectors of the original matrix [1], [2], [3]
+- the function lansvd.m and its subfunctions are a part of the PROPACK software package [2]
+
+Functions:
+---------
+
+- for a better clearness the function lansvd.m and its subfunctions got the prefix "svds":
+svds_lansvd.m, svds_lanbpro.m, svds_compute_int.m, svds_reorth.m, svds_bdsqr.m, svds_refinebounds
+- until the final decision about the implementation has been taken, the mother-functions got the prefix "test":
+test_sesgetcln.m, test_clnmain.m, test_clnadf.m
+- a rough structure of the programs can be found in sesgetcln_faster.png; in the comments one can see in which line of the mother-function the subfunction is called
+
+References:
+----------
+
+[1] R.M. Larsen, Ph.D. Thesis, Aarhus University, 1998.
+
+[2] B. N. Parlett, "The Symmetric Eigenvalue Problem", Prentice-Hall, Englewood Cliffs, NJ, 1980.
+
+[3] H. D. Simon, "The Lanczos algorithm with partial reorthogonalization", Math. Comp. 42 (1984), no. 165, 115--142.
+
+[4] http://sun.stanford.edu/~rmunk/PROPACK/

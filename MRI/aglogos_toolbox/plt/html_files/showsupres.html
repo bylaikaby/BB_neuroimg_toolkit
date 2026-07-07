@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showsupres</title>
+</head>
+<body>
+ SHOWSUPRES - Show all data for the SFN03 analysis<br>
+&nbsp;&nbsp;SHOWSUPRES shows the coherence and information-theoretical<br>
+&nbsp;&nbsp;analysis we have applied on the physiology-MRI data<br>
+ <br>
+&nbsp;&nbsp;See also<br>
+ <br>
+&nbsp;&nbsp;Physiology (Single Experiment or Group Files)<br>
+&nbsp;&nbsp;====================================================================&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWRES (session, GrpName) - shows all results of each group<br>
+&nbsp;&nbsp;SHOWCH (session, GrpName) - shows coherence analysis<br>
+&nbsp;&nbsp;SHOWCF (session, GrpName) - shows contrast functions<br>
+&nbsp;&nbsp;SHOWRF (session, GrpName/ExpNo) - shows rf structures<br>
+&nbsp;&nbsp;--------<br>
+&nbsp;&nbsp;Example:<br>
+&nbsp;&nbsp;SHOWRF ('c98nm1','zmovie01')<br>
+&nbsp;&nbsp;SHOWRF ('c98nm1','zmovie01',1,'lum');<br>
+&nbsp;&nbsp;--------<br>
+&nbsp;&nbsp;SHOWSIGFFT Shows the spectra of all signals in an experiment file<br>
+&nbsp;&nbsp;SHOWGRPRF (session,GrpName | SuperGrpName) shows rf computed from a group<br>
+ <br>
+&nbsp;&nbsp;Imaging (Single Experiment or Group Files)<br>
+&nbsp;&nbsp;====================================================================&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWICADENOISE (session, ExpNo)<br>
+&nbsp;&nbsp;SHOWROI (session, GrpName, RoiName)<br>
+&nbsp;&nbsp;SHOWMODEL (session,GrpName) Shows the model of a group; It is a good<br>
+&nbsp;&nbsp;SHOWXCOR (session,arg2) can be used to see the results of xcor by<br>
+&nbsp;&nbsp;SHOWXCORPLOT (session,GrpName) can be used to see the results of group<br>
+&nbsp;&nbsp;SHOWMOVIETTEST (session,ExpNo/GrpName)<br>
+&nbsp;&nbsp;SHOWANAIMG (session,'gefi') see anatomy and print for reference<br>
+ <br>
+&nbsp;&nbsp;Physiology & Imaging (Super-Group Files)<br>
+&nbsp;&nbsp;====================================================================&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWSUPRF (session) shows rf from supergroups<br>
+ <br>
+&nbsp;&nbsp;To generate super groups<br>
+&nbsp;&nbsp;====================================================================&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SESSUPGRP ('c98nm1','movie1','cf')	kernel-covariance for group movie1<br>
+&nbsp;&nbsp;SESSUPGRP ('c98nm1','movie1','ch')	coherence for group movie1<br>
+&nbsp;&nbsp;SESSUPGRP ('c98nm1','movie1','rf')	receptive field analysis<br>
+&nbsp;&nbsp;SESSUPGRP ('c98nm1',[],'cf')			for all groups<br>
+&nbsp;&nbsp;SESSUPGRP ('c98nm1',[],'ch')			coherence for all groups.<br>
+ <br>
+&nbsp;&nbsp;NKL 13.10.03<br>
+&nbsp;&nbsp;Session: G02NM1, Date: 17JUN03<br>
+&nbsp;&nbsp;Session: C98NM1, Date: 13AUG03<br>
+&nbsp;&nbsp;Session: G97NM1, Date: 06AUG03<br>
+&nbsp;&nbsp;Session: R97NM1, Date: 15AUG03<br>
+&nbsp;&nbsp;Session: C98NM2, Date: 18SEP03<br>
+&nbsp;&nbsp;Session: A98NM1, Date: 24SEP03<br>
+&nbsp;&nbsp;Session: S02NM1, Date: 01OCT03<br>
+&nbsp;&nbsp;Session: B02NM2, Date: 06OCT03<br>
+&nbsp;&nbsp;Session: C01NM1, Date: 10OCT03<br>
+&nbsp;&nbsp;Session: C98NM3, Date: 13OCT03<br>
+&nbsp;&nbsp;Session: D98AT1, Date: UNKNOWN<br>
+&nbsp;&nbsp;Session: D98AT2, Date: UNKNOWN<br>
+&nbsp;&nbsp;Session: C01NM2, Date: 21OCT03<br>
+ <br>
+<br>
+</body>
+</html>

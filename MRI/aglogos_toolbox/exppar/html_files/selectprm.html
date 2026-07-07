@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>selectprm</title>
+</head>
+<body>
+ SELECTPRM - Returns event parameters of certain type/subtype<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[EVPARAMS, IDX] = SELECTPRM(DATA,OBSP,ETYPE,[PRMIDX],[ESUBTYPE])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: the data structure returned by dg_read(filename)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;obsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: selected observation period<br>
+&nbsp;&nbsp;&nbsp;&nbsp;etype&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: selected event type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;esubtype : selected event subtype<br>
+&nbsp;&nbsp;&nbsp;&nbsp;evparams : parameter(s) that event occurred<br>
+&nbsp;&nbsp;&nbsp;&nbsp;idx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: indices of the requested events<br>
+&nbsp;&nbsp;VERSION : 1.00 YM, 26.04.03&nbsp;&nbsp;derived from getEVTObsParam.m by DAL.&nbsp;&nbsp;<br>
+&nbsp;&nbsp;NOTE :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;some floating values may have a small offset like 1.2e-8,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;probably, due to float->double conversion.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If needed, correct values before making comparisons ('==' and "~="),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;like, for example, p = round(p/100000)*100000.&nbsp;&nbsp;----------30.05.03 YM<br>
+ <br>
+&nbsp;&nbsp;See also DG_READ SELECTEVT EXPGETEVT<br>
+<br>
+</body>
+</html>

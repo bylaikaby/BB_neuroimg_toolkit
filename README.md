@@ -11,8 +11,11 @@ Upstream: [github.com/bylaikaby/BB_neuroimg_toolkit](https://github.com/bylaikab
 | Area | Path | Purpose |
 |------|------|---------|
 | **CT** | `CT/` | Contrast subtraction vessel mask; HU gating; DICOM→NIfTI helpers |
+| **MRI** | `MRI/` | Index: `MRI/README.md` |
+| **MRI** | `MRI/aglogos_toolbox/` | Lab AgLogo MATLAB package (fMRI + neural analysis; needs external `toolbox/` + `utils/`) |
 | **MRI** | `MRI/max_intensity_mri_vessel/` | Intensity-window and Frangi-based vessel extraction from NIfTI |
 | **MRI** | `MRI/flicker_1704/` | MATLAB flicker / TTL trigger control for fMRI experiments |
+| **MRI** | `MRI/anat_to_binary_mask.sh` | FSL anatomical → binary mask helper |
 | **Workflow** | `workflow/`, `config/`, `normalization/`, `glm/`, `activation/` | Config-driven orchestrator (dry-run, ANTs, GLM, optional activation summaries) |
 | **Shell** | `afni_fsl/`, `ants/`, root `*.sh` | Motion correction, alignment, ICA, capture helpers |
 

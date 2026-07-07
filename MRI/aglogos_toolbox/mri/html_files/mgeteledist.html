@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mgeteledist</title>
+</head>
+<body>
+ MGETELEDIST - returns distance from the electrode.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DIST = MGETELEDIST(COORDS,ELEPOS,DS)&nbsp;&nbsp;returns distance from the electrode.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COORDS : (voxels,3) in voxels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELEPOS : (x,y,z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in voxels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: (x,y,z)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in mm<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> elepos = mgetelepos(Session,ExpNo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> roiTs&nbsp;&nbsp;= sigload(Session,ExpNo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> dist&nbsp;&nbsp;&nbsp;&nbsp;= mgeteledist(roiTs{1}.coords,elepos(1,:),roiTs{1}.ds)<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 12.03.06 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MGETELEPOS<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sesroi</title>
+</head>
+<body>
+ SESROI - Generate the regions of interest (ROIs) used for analysis<br>
+&nbsp;&nbsp;SESROI (SesName) - Invokes MROI for interactive definition of the<br>
+&nbsp;&nbsp;ROIs, whose names are specified in Ses.roi.names.<br>
+ <br>
+&nbsp;&nbsp;SESROI (SesName, Mode) - permits the definition of operation<br>
+&nbsp;&nbsp;mode. Valid operation modes are:<br>
+ <br>
+&nbsp;&nbsp;Mode == 'getroi' equivalent to SESROI (Sesname)<br>
+ <br>
+&nbsp;&nbsp;Mode == 'update' invokes mcorana and logially "ANDs" the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correlation maps with the existing ROIs. SESROI will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;append new structures in Roi.mat, each bearing the name of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a reference group (see HROI for details). SESROI can only<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be used in the 'update' mode if the ROIs have already been<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;created by means of a SESROI(SesName) call.<br>
+ <br>
+&nbsp;&nbsp;Mode ==&nbsp;&nbsp;'reset' will remove any additional groups from the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.mat file, which were created by the 'update' mode.<br>
+ <br>
+&nbsp;&nbsp;NKL 16.04.04<br>
+<br>
+</body>
+</html>

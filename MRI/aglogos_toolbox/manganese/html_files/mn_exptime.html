@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mn_exptime</title>
+</head>
+<body>
+ MN_EXPTIME - get experiment time in hours since Mn injection.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXPTIME = MN_EXPTIME(SESSION,GRPNAME) returns a array of experiment<br>
+&nbsp;&nbsp;&nbsp;&nbsp;time since Mn injection.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[EXPTIME TIMESTR] = MN_EXPTIME(SESSION,GRPNAME) returns also time strings.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTES :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRPP.mninject is required in the session file. !!!!!!!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRPP.mninject = '11:00:00 13 Oct 2004';,&nbsp;&nbsp;for example<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Its format must be 'HH:MM:SS dd mmm yyyy' to match ACQ_time.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 16.06.05 YM&nbsp;&nbsp;&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 27.06.05 YM&nbsp;&nbsp;&nbsp;&nbsp;can also return time strings.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 08.08.05 YM&nbsp;&nbsp;&nbsp;&nbsp;bug fix for negative time.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also EXPGETPAR, GETPVPARS, DATENUM, DATEVEC<br>
+<br>
+</body>
+</html>

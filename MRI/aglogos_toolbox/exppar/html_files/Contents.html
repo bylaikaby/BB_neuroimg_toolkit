@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Contents</title>
+</head>
+<body>
+&nbsp;&nbsp;EVT<br>
+&nbsp;&nbsp;Event Reading, Handling and Viewing<br>
+&nbsp;&nbsp;The directory contains all initial QNX event stuff and the functions, which based on these<br>
+&nbsp;&nbsp;events can reorganize the data. Particularly important are the utilities that can be used<br>
+&nbsp;&nbsp;to convert long observation periods into trial sorted according to the task or stimulus.<br>
+ <br>
+&nbsp;&nbsp;Experiment Parameters (e.g. for updating stm in Signals)J<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expgetpar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Returns experiment parameters, evt, pvpar and stm (See sesdumppar)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expgetstm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Provide stimulus-related information (stm, epoch, boxcar, hemo)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sesdumppar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Get/Load all experimental parameteters of the session.<br>
+ <br>
+&nbsp;&nbsp;Information Needed Before Sorting Signals According to Trial or Stimulus<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getstiminfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Returns information regarding individual stimuli<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gettrialinfo&nbsp;&nbsp;&nbsp;&nbsp;- - Returns information regarding individual trials<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getexpinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Get information about SesName, ExpNo and Group<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;findstimpar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Get index and parameters of stimID (SortPar is returned from getsortpar)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;findtrialpar&nbsp;&nbsp;&nbsp;&nbsp;- - Get index and parameters of trialID (SortPar is returned from getsortpar)<br>
+ <br>
+&nbsp;&nbsp;Sorting Data According to Trial or Stimulus (e.g. stimXX or tiralXX, XX = 01,02,...)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sesgettrial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Split observation periods into trials<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gettrial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Split observation period in trials and return average response per trial.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sesgetsortpars - - Get parameters for re-sorting signal in trials<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getsortpars&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Get parameters required to reshape/sort signals with the sigsort function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sessigsort&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Sort out signals by given parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigsort&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Sort out signals by given parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigselepoch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Select Epoch of Signal (blank, nonblank, stimXX, triaXX)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getstim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Return trial from observation period<br>
+ <br>
+&nbsp;&nbsp;Vital Signs and Eye Movements<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expgeteyemov&nbsp;&nbsp;&nbsp;&nbsp;- - Read eye movement traces<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sesgeteyemov&nbsp;&nbsp;&nbsp;&nbsp;- - Read eye position data and save in MAT file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expgetvitevt&nbsp;&nbsp;&nbsp;&nbsp;- - Read vital signs, i.e. plethysmogram and respiration<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sesgetvitevt&nbsp;&nbsp;&nbsp;&nbsp;- - Read ecg/resp signals of entire session and save the in MAT files<br>
+ <br>
+&nbsp;&nbsp;Loading and Saving of Event Files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dumpdgz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - print event information in given trials of DGZ.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expgetevt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Uses adf_info/dg_read to get all events of experiment ExpNo<br>
+ <br>
+&nbsp;&nbsp;Small Utilities<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selectevt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Select an event with certain type/subtype<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selectprm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Returns event parameters of certain type/subtype<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getevtcodes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Get event codes used by the QNX programs (E_MAGIC, E_NAME,...)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expgettfactor&nbsp;&nbsp;- - returns timing factor for adf/evt/img.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hevt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Invokes Help browser for "evt" functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trial2obsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Convert trial-based time series into continuous obserpvation periods<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Overloaded functions or methods (ones with the same name in other directories)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help icinterface/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help instrument/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help serial/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help timer/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help audioplayer/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help audiorecorder/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help strel/Contents.m<br>
+<br>
+</body>
+</html>

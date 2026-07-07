@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/hn/!svn/ver/6699/projects/compr_sense/glm-ie/mat/@matFFTtrans
+END
+get_k.m
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/hn/!svn/ver/6573/projects/compr_sense/glm-ie/mat/@matFFTtrans/get_k.m
+END
+matFFTtrans.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/hn/!svn/ver/6697/projects/compr_sense/glm-ie/mat/@matFFTtrans/matFFTtrans.m
+END
+mvm.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/hn/!svn/ver/6699/projects/compr_sense/glm-ie/mat/@matFFTtrans/mvm.m
+END
+d.m
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/hn/!svn/ver/6573/projects/compr_sense/glm-ie/mat/@matFFTtrans/d.m
+END
+mvmAtA.m
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/hn/!svn/ver/6573/projects/compr_sense/glm-ie/mat/@matFFTtrans/mvmAtA.m
+END

@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>hroi</title>
+</head>
+<body>
+ HROI - Description of ROI selection performed by MROI<br>
+&nbsp;&nbsp;MROI - Is the ROI-Selection tool, used to define regions of interest.<br>
+ <br>
+&nbsp;&nbsp;* MROI expects that all paravision, 2dseq, files were loaded and<br>
+&nbsp;&nbsp;saved as mat-files. They include all anatomy scans (e.g. gefi,<br>
+&nbsp;&nbsp;mdeft, etc), the control scans (e.g. Epi13), and the actual data,<br>
+&nbsp;&nbsp;which are saved in the directory DataMatlab/SesDir/SIGS. The<br>
+&nbsp;&nbsp;conversion can be done by invoking individual processes, such as<br>
+&nbsp;&nbsp;sesascan(SesName), sescscan(SesName), sesimgload(SesName) etc.,<br>
+&nbsp;&nbsp;or by running the sesload function which creates the SesPar.mat<br>
+&nbsp;&nbsp;file and loads all existing physiology and imaging data.<br>
+ <br>
+&nbsp;&nbsp;* MROI also expects the existence of averaged imaging data. That is,<br>
+&nbsp;&nbsp;it assumes that you have already run the sestcimg(SesName)<br>
+&nbsp;&nbsp;function. The latter saves the average imaging data of each group as<br>
+&nbsp;&nbsp;structures having the group's name in the tcImg.mat file.<br>
+&nbsp;&nbsp;sestcimg(SesName) applies certain basic signal processing steps<br>
+&nbsp;&nbsp;before averaging the experiments of the group. They usually include,<br>
+&nbsp;&nbsp;removal of respiratory artifacts, detrending and temporal low-pass<br>
+&nbsp;&nbsp;filtering. If you want to change the defaults you will have to<br>
+&nbsp;&nbsp;edit the mgrptcimg.m function, or use the ARGS input argument to<br>
+&nbsp;&nbsp;define new preprocessing steps.<br>
+ <br>
+&nbsp;&nbsp;* In addition, proper function of MROI depends on the following<br>
+&nbsp;&nbsp;definitions in the session's description file:<br>
+ <br>
+&nbsp;&nbsp;ROI.groups - Experiment-Groups that can be averaged to obtain the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;best possible anatomical detail (Default: 'all')<br>
+&nbsp;&nbsp;ROI.names&nbsp;&nbsp;- Names of the desired ROIs/Areas (e.g. {'brain'; 'V1'; 'V2'})<br>
+&nbsp;&nbsp;ROI.model&nbsp;&nbsp;- Group to use as model (e.g. V1)<br>
+ <br>
+&nbsp;&nbsp;GRP.grpname.actmap - The reference group whose average-tcImg is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used to compute activation maps. For example, if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actmap == 'movie1', then tcImg =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matsigload('tcImg.mat','movie1'); loads the data, from<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which correlation maps are computed.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The definition of the reference group is important and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;must be done immediately after the generation of the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description file. Eeach group may have the same or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different reference group. The rationale of the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reference group can be explained as follows:<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let's assume that a session has 3 groups each with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different stimulus duration and contrast. For<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance, the first stimulus is a polar stimulus of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100% contrast and of 12s duration (p12c100). The<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;second is p8c50, and the 3rd is p2c80. To examine the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;effects of stimulus parameters on activation, the user<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;may prefer to compare the time series of the same<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;voxels in all three conditions. The description file,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in this case, should be prepared as follows:<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.p12c100.actmap = {'p12c100'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.p8c50.actmap = {'p12c100'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.p2c80.actmap = {'p12c100'};<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whereby, p12c100 is taken as *reference-group* because<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it is expected to have the most robust activation.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;Note that the reference group name is an item of a cell array rather<br>
+&nbsp;&nbsp;than a string. Definition of a single group name implies that each<br>
+&nbsp;&nbsp;experimental run contains a single continuous observation<br>
+&nbsp;&nbsp;period. Definition of a second string, indicates the existence of<br>
+&nbsp;&nbsp;trials within the observation period. In this case, the string<br>
+&nbsp;&nbsp;(e.g. {'GrpName','trial8'}) is the trial-ID, and it points to the<br>
+&nbsp;&nbsp;trial whose analysis will provide the activity maps used as<br>
+&nbsp;&nbsp;reference. An example can be found in the session C01.ph1, the<br>
+&nbsp;&nbsp;second group of which contains observation periods with mutliple<br>
+&nbsp;&nbsp;trials (N=9). The groups in this session have the following<br>
+&nbsp;&nbsp;definitions:<br>
+ <br>
+&nbsp;&nbsp;GRP.p125c100.exps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [1:10];<br>
+&nbsp;&nbsp;GRP.p125c100.actmap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {'p125c100'};<br>
+&nbsp;&nbsp;.............................................<br>
+&nbsp;&nbsp;GRP.polarflash.exps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [11:71 73:130];<br>
+&nbsp;&nbsp;GRP.polarflash.actmap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {'polarflash'; 'trial8'};<br>
+ <br>
+&nbsp;&nbsp;To find out the trial ID (if you do not remember the trial types<br>
+&nbsp;&nbsp;in your last experiment..) type gettrialinfo(SesName,GrpName) or<br>
+&nbsp;&nbsp;gettrialinfor(SesName,ExpNo); To findout about the stimulus type<br>
+&nbsp;&nbsp;getstiminfo(SesName,GrpName) etc.<br>
+ <br>
+&nbsp;&nbsp;GETTRIALINFO will return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRIAL-RELATED PARAMETERS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAR1----------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'trial0'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nrep: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgtr: 0.250 (sec)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tlen:&nbsp;&nbsp;14.032 (sec)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmv:&nbsp;&nbsp;0 1 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmt:&nbsp;&nbsp;0 8 16 (volumes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmdt: 8 8 40 (volumes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prm'nframes' = 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAR2----------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'trial1'&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. . . . . . . . . . . . . . . .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAR9----------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'trial8'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nrep: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgtr: 0.250 (sec)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tlen:&nbsp;&nbsp;16.562 (sec)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmv:&nbsp;&nbsp;0 1 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmt:&nbsp;&nbsp;0 8 16 (volumes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmdt: 8 8 40 (volumes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prm'nframes' = 60<br>
+ <br>
+&nbsp;&nbsp;Let's id=8, be the selection, then we use the function<br>
+&nbsp;&nbsp;findtrialpar to obtain the actual cell-array index for trial 8,<br>
+&nbsp;&nbsp;as follows:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID = 8;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp = getgrpbyname(Ses,GrpName);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpNo = grp.exps(1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[IDX,PAR] = findtrialpar(getsortpars(Ses,ExpNo),ID);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IDX will be "9"<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;An additional important reason for using different refences groups<br>
+&nbsp;&nbsp;to compute the activation maps is that many sessions may examine<br>
+&nbsp;&nbsp;activity of more than one areas. In this case different<br>
+&nbsp;&nbsp;stimulation conditions may be optimal for different groups, and<br>
+&nbsp;&nbsp;thus each group may have a distinct reference-map.<br>
+ <br>
+&nbsp;&nbsp;In contrast to the cases above, experiments in which exactly the<br>
+&nbsp;&nbsp;same voxels must be analyzed for every group condition<br>
+&nbsp;&nbsp;(e.g. Dependence analysis) must always have the same reference<br>
+&nbsp;&nbsp;group. In this case, the only reason for computing an activation map<br>
+&nbsp;&nbsp;is to exclude accidental inclusion of white-matter during the<br>
+&nbsp;&nbsp;definition of the ROIs by the user. For dependence analysis the best<br>
+&nbsp;&nbsp;strategy is to (a) define the ROIs based on anatomical information,<br>
+&nbsp;&nbsp;(b) Compute the correllation or z-score map for the entire brain,<br>
+&nbsp;&nbsp;and (c) Compute the "AND" between the brain-activation map and the<br>
+&nbsp;&nbsp;individual ROIs. The process should be applied to the group expected<br>
+&nbsp;&nbsp;to have the most robust activation, and the name of this group<br>
+&nbsp;&nbsp;should go to the actmap field of all the other groups.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;In summary, the process of ROI definition goes as follows:<br>
+ <br>
+&nbsp;&nbsp;*** UPDATE all description-file definitions<br>
+ <br>
+&nbsp;&nbsp;*** RUN sesload(SesName) to load all paravision files<br>
+ <br>
+&nbsp;&nbsp;*** RUN sestcimg(SesName) to generate the averaged imaging data <br>
+ <br>
+&nbsp;&nbsp;*** RUN sesroi(SesName) to draw all ROIs specified in ses.roi.names<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by using sesroi<br>
+ <br>
+&nbsp;&nbsp;*** RUN mcorana(SesName,GrpName) for all critical groups. mcorana<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;without an output argument will automatically display the data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for visual inspection. This stage *must* be done interactively<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to make sure the activation maps are usable. The model for the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cross-correlation analysis is always obtained from the stm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field by invoking the EXPGETSTIM(SesName,grp.exps(1),'hemo'),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which returns a boxcar function with the on/off periods<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defined in the stm field, convolved with a gamma-function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kernel to mimic the hemodynamic response profile. If you are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not satisfied with the result of mcorana, check the quality<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of individual experiments and the time course of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the average file by using "dspimg". You may change<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thresholds or the clustering parameters to see if the maps<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;improve. Remember, that there definitely are "bad-session",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the data of whih are simply not "usable". If you manage to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get decent maps, then<br>
+ <br>
+&nbsp;&nbsp;*** RUN sesroi(SesName,'update'). This will generate new ROIs in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the Roi.mat file, each having the name of a reference<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group. The new ROIs are simply the original ROIs "AND" the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brain activity map (e.g. BrainAct.grpname). To remove the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newly created ROIs run sesroi(SesName,'reset'). Further<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;analysis of the data will access either the original ROI<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;groups or those containing the activation reference maps.<br>
+ <br>
+&nbsp;&nbsp;When MROI is invoked, it searches for all groups that may have<br>
+&nbsp;&nbsp;other ROI-definition sets than the default one (e.g. RoiDef). The<br>
+&nbsp;&nbsp;detected ROIs are placed into the "Group" menu-box. To complete<br>
+&nbsp;&nbsp;the ROI-definition step, each ROI-set found in the menu-box must<br>
+&nbsp;&nbsp;be defined by the user. All defined ROIs will be save in Roi.mat,<br>
+&nbsp;&nbsp;each with the name defined in the ses.grp.grproi.<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;*****************************************************************<br>
+&nbsp;&nbsp;THE ROI STRUCTURE<br>
+&nbsp;&nbsp;*****************************************************************<br>
+ 	ROi.session		= tcImg.session;<br>
+ 	ROi.grpname		= tcImg.grpname;<br>
+ 	ROi.exps		= grp.exps;<br>
+ 	ROi.anainfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= grp.ana;<br>
+ 	ROi.roinames	= Ses.roinames;<br>
+ <br>
+ 	ROi.dir			= tcImg.dir;<br>
+ 	ROi.dir.dname	= 'Roi';<br>
+ 	ROi.dsp.func	= 'dsproi';<br>
+ 	ROi.dsp.args	= {};<br>
+ 	ROi.dsp.label	= {};<br>
+ <br>
+ 	ROi.grp			= tcImg.grp;<br>
+ 	ROi.usr			= tcImg.usr;<br>
+ 	ROi.ana			= anaImg.dat(:,:,grp.ana{3});<br>
+ 	ROi.img			= mean(tcImg.dat,4);<br>
+ 	ROi.ds			= [tcImg.ds tcImg.usr.pvpar.slithk];<br>
+ 	ROi.dx			= tcImg.dx;<br>
+ 	ROi.roi			= {};<br>
+ 	ROi.ele			= {};<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;"Roi.roi" will be like...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.name: 'brain'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.slice: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.mask: [34x22 logical]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.px: [28x1 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.py: [28x1 double]<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;"Roi.ele" will be like...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.ele: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.slice: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.anax: 91.6161<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.anay: 68.5793<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.x: 23<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.y: 17<br>
+ <br>
+&nbsp;&nbsp;*****************************************************************<br>
+&nbsp;&nbsp;FUNCTIONS USED FOR ROI AND ROI-TIME-SERIES DEFINITIONS<br>
+&nbsp;&nbsp;*****************************************************************<br>
+&nbsp;&nbsp;See also<br>
+ <br>
+&nbsp;&nbsp;ROI generation procedure<br>
+&nbsp;&nbsp;================================================<br>
+&nbsp;&nbsp;MROI (Session) - Draw ROIs and Electrode positions and<br>
+ 	save them in the matfile Roi<br>
+&nbsp;&nbsp;MAREATS (Session,ExpNo) - Selects Area-TS (eg all V1 ROIs, all V2 ROIs etc) and<br>
+ 	saves them into the matfile "catfilename(Ses,ExpNo,'mat');<br>
+ <br>
+&nbsp;&nbsp;Utilities Used to Create Area-Time-Series<br>
+&nbsp;&nbsp;================================================<br>
+&nbsp;&nbsp;MROISCT Returns a structure of roi, mainly called by mroigui<br>
+&nbsp;&nbsp;MROIDSP - Display image in gcf to obtain rois<br>
+&nbsp;&nbsp;MSIGROITC - Select time series based on predefined rois<br>
+&nbsp;&nbsp;MROIGET - Get Roi of name RoiName for slice 'Slice'<br>
+&nbsp;&nbsp;MGETELEDIST - Get distance between electrode tips (to be done!)<br>
+&nbsp;&nbsp;MTCFROMCOORDS - Get time series&nbsp;&nbsp;based on coords (called by mtimeseries)<br>
+&nbsp;&nbsp;MTIMESERIES - Function to obtain time series form voxels of coords<br>
+&nbsp;&nbsp;MAREATS - Selects Time Series of Each Area (eg all V1 ROIs etc)<br>
+&nbsp;&nbsp;MLOADROITS - Load ROI Time Series for ExpNo<br>
+&nbsp;&nbsp;MGETROIIDX - Select roiTs indices corresponding to a desired area<br>
+ <br>
+&nbsp;&nbsp;Auxilliary functions used by MROI/MAREATS<br>
+&nbsp;&nbsp;================================================<br>
+&nbsp;&nbsp;[pleth,resp] = EXPGETVITEVT (Session, ExpNo) - Returns the pleth<br>
+&nbsp;&nbsp;signal, which can be used to estimate the model or filter for<br>
+&nbsp;&nbsp;removing respiratory artifacts<br>
+&nbsp;&nbsp;EXPGETVITEVT (SESSION, ExpNo) - w/ nargout=0, will show the signals<br>
+&nbsp;&nbsp;MROIGUI - gui interface to define rois.<br>
+ <br>
+&nbsp;&nbsp;*****************************************************************<br>
+&nbsp;&nbsp;EXAMPLES DEMONSTRATING ROI-USAGE<br>
+&nbsp;&nbsp;*****************************************************************<br>
+ <br>
+&nbsp;&nbsp;Example 1: Compute Kernel Covariance for Roi 'V1'<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;roiTs = MLOADROITS (Ses,ExpNo);<br>
+&nbsp;&nbsp;roiIdx = MGETROIIDX (roiTs, 'V1');<br>
+ 	The function uses roiTs_roiname to obtain the index<br>
+&nbsp;&nbsp;CONFUNC (roiTs{roiIdx});&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;Example 2: Display mean/err of time series of an experiment<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;roiTs = mtimeseries ('m02lx1',1,'V1');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The input arguments are:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESSION = 'm02lx1';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpNo = 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RoiName = 'V1';<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ses = goto(SESSION);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp = getgrp(Ses,ExpNo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi = matsigload('roi.mat',grp.grproi);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename = catfilename(Ses,ExpNo,'tcimg');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;load(filename,'tcImg');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oRoi = mroiget(Roi,[],RoiName);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[coords(1),coords(2),coords(3)] = find(?????????)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tc=mtcfromcoords(tcImg,coords);<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The output structure is:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roiTs = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session: 'm02lx1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grpname: 'movie1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roiname: 'V1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exps: [1 16]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dsp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;usr: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ds: [0.7500 0.7500 2]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dx: 0.2500<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ele: {[1x1 struct]&nbsp;&nbsp;[1x1 struct]}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mask: [34x22x2 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coords: [153x3 double]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- THEY GO TO CFUNC<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dat: [1560x153 double]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- THESE ARE THE TIME SERIES<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The function mareats will convert the .dat field in SD units<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and add the following fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roiTs = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.......: ...............<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tosdu: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;avg: [1560x1 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;err: [1560x1 double]<br>
+ <br>
+&nbsp;&nbsp;*****************************************************************<br>
+&nbsp;&nbsp;TO-DO's<br>
+&nbsp;&nbsp;*****************************************************************<br>
+&nbsp;&nbsp;* MCGRPCOR - Make activation maps for ses.roi.cgrp<br>
+&nbsp;&nbsp;* MROIUPDATE - "AND" maps of ROI with activation&nbsp;&nbsp;<br>
+&nbsp;&nbsp;* MROIRESET - Delete updated maps and use the original ORIs again<br>
+ <br>
+<br>
+</body>
+</html>

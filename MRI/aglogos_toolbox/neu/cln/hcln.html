@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>hcln</title>
+</head>
+<body>
+ HCLN - Help for cleaning inteferance noise<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cleaning of interference noise from neural signals is based on PCA.&nbsp;&nbsp;Image sesgmentation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and slicing introduces unique noise pattern in term of timing, then PCA will be applied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;segment/slice by segment/slice.&nbsp;&nbsp;&nbsp;&nbsp;For example, 2 segmetns, 2 slices corresponds to 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unique patterns and 4 PCA will be applied.&nbsp;&nbsp;Gradient noise pattern must be recorded into<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ADF/ADFW file and ParaVision must send every trigger signal for each MRI event to QNX.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SESCLNADJEVT detects precise timings of MRI event.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SESGETCLN runs cleaning functions CLNMAIN and CLNADF.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Control flags/setting for cleaning is, (as of 19.08.05)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.DEBUG		= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Debug flag for clnadf, not clnmain<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.DECFRAC		= 3;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Decimation factor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.HIGHPASS		= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Cutoff freq for high pass (in Hz)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.PREPCA		= 0.0015;&nbsp;&nbsp;&nbsp;&nbsp;% Pre-period for PCA data in sec.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.PCALAGS		= 5;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Lags for selecting PC's to remove<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.PCACOEF		= 0.25;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% correlation coefficient (works fine)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.NOPCS		= 6;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Number of singular values to compute<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.NOREM		= 6;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Number of PCs to remove<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.PCAGAP		= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Removes gaps around edges of PCA data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.OUTLIERS		= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Set if check for outliers is desired<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.SAVE			= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Create/Append MAT file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.SAVEAS_ADX	= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Save decimated data into a separate data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.SAVEGRA		= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Save gradient noise<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;TIPS :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Cleaning parameters can be set in the description file as ANAP.clnpar.xxxx.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* If memory problem, run Matlab without java virtual machine (-nojvm option).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Since cleaning function uses decimate() that allocates 2 more memory of data, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make sure that you have enough memory (2G) when data is large (~30min collected data).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;TROUBLE SHOOT :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- memory problem<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Run the Matlab without java virtal machine (-nojvm option).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Make sure enough memory (2GB) when data is large (~30min collected data).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- memory problem, STILL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* DO NOT RUN ANY OTHER PROGRAMS (OUTLOOK,IE,NETSCAPE,etc) OTHER THAN MATLAB.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Next time, collect data with shorter duration.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Basically cleaning including decimation of 10min data will require...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21000(Hz)*60(sec)*10(min)*8(bytes)*3/1024/1024 = 288.4MB<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and 1/3 of 288.4MB must be allocated in CONTINUOUS SPACE.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* You can test like following<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> DATA_minutes = 30;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> rawdata = rand(21000*60*DATA_minutes,1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> decdata = decimate(rawdata,3);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- NOISE REMAINED<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Set ANAP.clnpar.PCACOEF in the session file with lower value like 0.15 and run again.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Make sure that you have enough data for PCA, interferance pattern is unique in each<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;segment/slice.&nbsp;&nbsp;Therefore, if the pattern doen't appear many times in data, PCA will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not detect meaningful noise componets.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sesdumppar(SESSION,ExpNo);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% saves experiment parameters as matlab files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sesclnadjevt(SESSION,ExpNo);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% detects precise timings of MRI event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sesgetcln(SESSION,ExpNo);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% cleans noise<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also SESGETCLN CLNADJEVT CLNMAIN CLNADF SESDUMPPAR<br>
+<br>
+</body>
+</html>

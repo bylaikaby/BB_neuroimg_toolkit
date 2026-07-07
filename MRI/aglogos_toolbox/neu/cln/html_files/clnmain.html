@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>clnmain</title>
+</head>
+<body>
+ CLNMAIN - Remove electromagnetic interference patterns from physiology signal.<br>
+ 	CLNMAIN(SESSION,ExpNo,ARGS) uses clnadf.m to denoise the<br>
+ 	physiology signal. It must be used after the MRI events have been<br>
+ 	readjusted and the file ClnAdjEvt.mat is created under the<br>
+ 	session's home directory. CLNMAIN will use these events to separate the<br>
+ 	gradient-interference patterns and compute the mean interference and<br>
+ 	correlated PCs of each gradient type.&nbsp;&nbsp;The mean interference and correlated PC<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will be subtracted from the signal.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;TIPS :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analysis parameters can be set as ANAP.clnpar.xxx in the session description file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the signal is not stable enough even during no gradient noise periods, then,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set ANAP.clnpar.PCACOEF = xxx in the description file with lower value like 0.15.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.anap.clnpar is also effective with highest priority.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTES :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analysis parameter for cleaning is like follwing, and these values can be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set as ANAP.clnpar.xxx in the description file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.DECFRAC	 = 3;			% Decimation factor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.HIGHPASS&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Cutoff freq for high pass (in Hz)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.PREPCA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0.0015;		% Pre-period for PCA data in sec.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.PCALAGS	 = 5;			% Lags for selecting PC's to remove<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.PCACOEF	 = 0.25;		% correlation coefficient (works fine)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.NOPCS	 = 6;			% Number of singular values to compute<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.NOREM	 = 6;			% Number of PCs to remove<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.PCAGAP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;			% Removes gaps around edges of PCA data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.OUTLIERS&nbsp;&nbsp;= 1;			% Set if check for outliers is desired<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.SAVE	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;			% Create/Append MAT file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.SAVEAS_ADX&nbsp;&nbsp;= 0;			% Save decimated data into a separate data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.SAVEGRA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;			% Save gradient noise<br>
+ <br>
+ 	============================================<br>
+ 	Cln structure:<br>
+ 	============================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session: 'n00eb1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grpname: 'injs'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpNo: 16<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dsp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;usr: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dx: 1.4400e-004<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dat: [8575030x1 double]<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+ 	1.00 YM&nbsp;&nbsp;24.05.05&nbsp;&nbsp;derived from clnmain.m of NKL.<br>
+ 	1.01 YM&nbsp;&nbsp;03.08.05&nbsp;&nbsp;bug fix.<br>
+ 	1.02 YM&nbsp;&nbsp;15.08.05&nbsp;&nbsp;checks Ses.anap.clnpar as cleaning params.&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;See also SESGETCLN, CLNADJEVT<br>
+<br>
+</body>
+</html>

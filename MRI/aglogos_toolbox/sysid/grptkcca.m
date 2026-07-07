@@ -1,0 +1,316 @@
+function RES = grptkcca(Ses, GrpName, varargin)
+%GRPTKCCA - Applies tkCCA between neural and BOLD singals.
+%  RES = GRPTKCCA(Ses, GrpName,...) applies tkCCA between neural and 
+%  BOLD signals.
+%
+%  Supported options are :
+%    'maxlag'     : max. lag in seconds
+%    'RoiName'    : Roi name(s)
+%    'AddSdf'     : includes SDF or not.
+%    'ResampleHz' : resampling Hz, can be as 'bold' or any numeric
+%
+%  VERSION : 
+%    0.90 08.09.09 YM, NKL 18.03.2011
+% 
+%  See also tkcca plot_tkcca exptcor
+
+if nargin < 2,  eval(sprintf('help %s',mfilename)); return;  end
+
+% SET OPTIONS
+RoiName         = 'all';
+MriSig          = 'croiTs';
+NeuSig          = 'cblp';
+NeuChans        = [];
+NeuBands        = [];
+MriNorm         = 'zscore';
+
+VERBOSE         = 1;
+ResampleHz      = 'bold';
+MAX_LAGS_SEC    = 15;
+ADD_SDF         = 0;
+
+
+SIG_SELECT      = 'all';
+
+
+ANAP = getanap(Ses,GrpName);
+if isfield(ANAP,'tkcca'),
+  NeuSig = ANAP.tkcca.neusig;
+  MriSig = ANAP.tkcca.mrisig;
+  MriNorm = ANAP.tkcca.mrinorm;
+  NeuChans = ANAP.tkcca.chans;
+  NeuBands = ANAP.tkcca.bands;
+  MAX_LAGS_SEC = ANAP.tkcca.maxlagsec;
+  ADD_SDF = ANAP.tkcca.addsdf;
+  ResampleHz = ANAP.tkcca.resamplehz;
+  
+  SIG_SELECT = ANAP.tkcca.ppSigSelect;  
+end;
+
+for N = 1:2:length(varargin),
+  switch lower(varargin{N}),
+   case {'verbose'}
+    VERBOSE = varargin{N+1};
+   case {'mrinorm'}
+    MriNorm = varargin{N+1};
+   case {'roi','roiname','roinames'}
+    RoiName = varargin{N+1};
+   case {'sdf','addsdf','add_sdf'}
+    ADD_SDF = varargin{N+1};
+   case {'resample','resamplehz'}
+    ResampleHz = varargin{N+1};
+   case {'neusig'},
+    NeuSig = varargin{N+1};
+   case {'mrisig'},
+    MriSig = varargin{N+1};
+   case {'ele','elename','elenames','chans','chan'}
+    NeuChans = varargin{N+1};
+   case {'band','bands','bandname','bandnames'}
+    NeuBands = varargin{N+1};
+   
+   case {'sigsel','sel'},
+    SIG_SELECT = varargin{N+1};
+
+  end
+end
+
+if isempty(ResampleHz),  ResampleHz = 'bold';  end
+
+Ses = goto(Ses);
+grp = getgrpbyname(Ses, GrpName);
+
+if VERBOSE,
+  fprintf('**** %s(Group=%s) ', upper(mfilename), GrpName);
+end
+
+RES = {};
+if ~isrecording(Ses,grp),
+  return
+end
+[roits blp] = mrineu_load(Ses,GrpName,...
+                          'MriSig',MriSig,'RoiName',RoiName,...
+                          'NeuSig',NeuSig,'EleName',NeuChans,'bands',NeuNeuBands,'AddSpike',ADD_SDF,...
+                          'ResampleHz',ResampleHz);
+
+if isempty(roits) || isempty(roits.dat),
+  fprintf(' no roits for ''%s'', skipping.\n',RoiName);
+  return
+end
+
+% ======================================================================================================
+%                                           START PROCESSING....
+% ======================================================================================================
+try,
+% BOLD data
+switch lower(MriNorm),
+ case 'tosdu',
+  roits = xform(roits,'tosdu','blank');
+ case 'tosdu-bandpass',
+  roits = xform(roits,'tosdu','blank');
+  roits = sigfilt(roits,[0.01 0.3], 'bandpass');
+ case 'tosdu-meanOfROI',
+  roits = xform(roits,'tosdu','blank');
+  roits = sigfilt(roits,[0.01 0.3], 'bandpass');
+  m = nanmean(roits.dat,2);
+  roits.dat = roits.dat - repmat(m, [1 size(roits.dat,2)]);
+ case 'bandpass',
+  roits.dat = zscore(roits.dat);
+  roits = sigfilt(roits,[0.008 0.6], 'bandpass');
+ case 'zscore',
+  roits.dat = zscore(roits.dat);
+ case 'diffroimean',
+  m = nanmean(roits.dat,2);
+  roits.dat = roits.dat - repmat(m, [1 size(roits.dat,2)]);
+ case 'zscore_diffroimean',
+  roits.dat = zscore(roits.dat);
+  m = nanmean(roits.dat,2);
+  roits.dat =roits.dat - repmat(m, [1 size(roits.dat,2)]);
+ case 'dispderiv',
+  roits = dispderiv(roits,5);
+end;
+fprintf(' (MriNorm=%s) ', MriNorm);
+
+catch,
+  disp(lasterr);
+  keyboard
+end;
+
+
+roits.dat = roits.dat';   % make (time,vox) as (vox,time)
+
+
+% NEURAL data
+NChan = size(blp.dat,2);
+NBANDS = size(blp.dat,3);
+
+if length(size(blp.dat)>2),
+  fprintf('%s(%d,%d,%d) ', upper(blp.dir.dname), size(blp.dat));
+else
+  fprintf('%s(%d,%d) ', upper(blp.dir.dname), size(blp.dat));
+end;
+
+for iCh = 1:NChan,
+  for K = 1:NBANDS,
+    blp.dat(:,iCh,K) = zscore(blp.dat(:,iCh,K));
+  end
+end
+
+if 0,
+  % just for test..
+  %pre-whitening with lowe-frequecies
+  roits.dat = roits.dat';
+  for iCh = 1:NChan,
+    for K = 1:3,
+      a = th2poly(ar(blp.dat(:,iCh,K),5,'fb0'));
+      blp.dat(:,iCh,K) = filter(a,1,blp.dat(:,iCh,K));
+      roits.dat        = filter(a,1,roits.dat);
+    end
+  end
+  roits.dat = roits.dat';
+end
+
+neusz = size(blp.dat);
+blp.dat = reshape(blp.dat,[neusz(1) prod(neusz(2:end))]);
+blp.dat = blp.dat';   % make (time,chan/band) as (chan/band,time)
+
+if roits.dx < 1,
+  XLAGS = round(MAX_LAGS_SEC/roits.dx);
+  XLAGS = -XLAGS:XLAGS;
+  
+  % 1sec bin
+  %XLAGS = round([-MAX_LAGS_SEC:MAX_LAGS_SEC]/roits.dx);
+else
+  XLAGS = round([-MAX_LAGS_SEC:roits.dx:MAX_LAGS_SEC]/roits.dx);
+end
+
+if VERBOSE,
+  fprintf('lag=%d ', round(XLAGS(end)*roits.dx));
+end
+
+% calculate cca
+if VERBOSE,
+  fprintf('tkcca(X=%dx%d,Y=%dx%d)\n',...
+          size(blp.dat,1),size(blp.dat,2),size(roits.dat,1),size(roits.dat,2));
+end
+
+[c U V kappaOpt] = tkcca(blp.dat,roits.dat, XLAGS);
+
+NLAGS = length(XLAGS);
+
+if VERBOSE,  fprintf(' results...');  end
+
+RES.session                 = Ses.name;
+RES.grpname                 = GrpName;
+RES.exps                    = grp.exps;
+RES.canonical_correlogram   = c;
+RES.dx                      = roits.dx;
+RES.lags                    = XLAGS;
+
+RES.opts.algorithm          = 'tkcca';
+RES.opts.mrinorm            = MriNorm;
+RES.opts.maxlags            = XLAGS(end)*roits.dx;
+RES.opts.roiname            = RoiName;
+RES.opts.sigs               = {NeuSig, MriSig};
+RES.opts.chans              = NeuChans;
+RES.opts.bands              = NeuBands;
+RES.opts.anap               = ANAP;
+
+RES.fmri.x                  = roits.dat;
+RES.fmri.weights            = V;
+RES.fmri.projected          = V'*roits.dat;
+RES.fmri.coords             = roits.coords;
+RES.fmri.ana                = roits.ana;
+RES.fmri.dx                 = roits.dx;
+RES.fmri.ds                 = roits.ds;
+
+if nanmean(RES.fmri.weights(:)) < 0,
+  RES.fmri.weights = -RES.fmri.weights;
+  RES.fmri.projected = -RES.fmri.projected;
+  U = -U;
+end
+
+[X, timeidx, tauidx] = embed(blp.dat,XLAGS);
+
+tpos = find(XLAGS*roits.dx > 0 & XLAGS*roits.dx <= 10);
+U = reshape(U,[NChan NBANDS NLAGS]);
+Yp = RES.fmri.projected(timeidx);
+Yp = Yp(:);
+for iCh = 1:NChan,
+  chanoffs = (iCh-1)*NBANDS*NLAGS;
+  weights = squeeze(U(iCh,:,:));
+  projected = [];
+  tmpidx = 1:NLAGS:NBANDS*NLAGS;
+  neudat = [];
+  for K = 1:NLAGS,
+    projected = cat(1,projected,weights(:,K)'*X(tmpidx+K-1+chanoffs,:));
+    if XLAGS(K) == 0,
+      neudat = X(tmpidx+K-1+chanoffs,:);
+    end
+  end
+
+  tmpxc = corr([Yp, projected']);
+  tmpxc = tmpxc(2:end,1);
+  
+  RES.ephys(iCh).weights = weights;
+  RES.ephys(iCh).projected = projected;
+  RES.ephys(iCh).xcorr   = tmpxc;
+  RES.ephys(iCh).lags    = XLAGS;
+  RES.ephys(iCh).band    = blp.info.band;
+  RES.ephys(iCh).dx      = blp.dx;
+  
+  % convolve neural bands with univarHRF
+  tmplag = find(XLAGS == 0);
+  tmpsel = [1:size(neudat,2)] + tmplag;
+  for K = 1:size(neudat,1),
+    tmpdat = conv(neudat(K,:),fliplr(weights(K,:))); % flip to match with HRF
+    neudat(K,:) = tmpdat(tmpsel);
+  end
+  neudat = nanmean(neudat,1);  % average across bands
+  [tmpr tmpp] = corrcoef(Yp,neudat);
+  RES.ephys(iCh).ccr_conv = tmpr(1,2);
+  RES.ephys(iCh).ccp_conv = tmpp(1,2);
+end
+
+% check correlogram
+if VERBOSE,  fprintf(' done.\n');  end
+return
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [eX, timeidx, tauidx] = embed(X,tau)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% embed the first signal in its temporal context
+opt.detrend = 0;%1
+opt.window	= '';%'hamming';
+[D T] = size(X);
+% in case tau is a scalar, make it a vector from -tau to tau
+if prod(size(tau))==1,tau = -tau:tau;end
+startInd 	= tau(end) + 1;
+stopInd		= T + tau(1);
+len			= stopInd - startInd + 1;
+
+% create a column vector that contains the indices of the first segment
+idx = repmat((startInd:stopInd)', 1, length(tau)) + repmat(tau, len, 1); 	
+% create (linear) indices for the different dimensions
+dim_offset = repmat( (0:D-1)*T, length(tau)*len, 1);
+idx = repmat(idx(:), 1, D) + dim_offset;
+
+% for the linear indices we need column-signals
+X = X';
+
+% get the data (D channels, segments are concatenated)
+eX = X(idx);
+switch opt.window
+ case 'hanning'
+  wind = repmat(hanning(len), 1, length(tau)*D);
+ otherwise
+  wind = ones(len, length(tau)*D);
+end
+eX = reshape(eX, len, length(tau)*D);
+if opt.detrend, 
+  eX = (detrend(eX).*wind)';
+else
+  eX = (eX.*wind)';
+end
+tauidx = repmat(tau',D,1); 
+timeidx = startInd:stopInd;
+return;

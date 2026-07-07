@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>expgetparNOTRICKS</title>
+</head>
+<body>
+ EXPGETPAR - Returns experiment parameters, evt, pvpar and stm (See sesdumppar)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPGETPAR(SES,EXPNO,1) reads experiment parameters from<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;original data files like dgz,adf,reco etc., then saves them<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;into the matlab file (SesPar.mat).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAR = EXPGETPAR(SES,EXPNO)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAR = EXPGETPAR(SES,GRPNAME) reads parameters from SesPar.mat and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validates their values usually by group information if need.<br>
+ <br>
+&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-- get it from matfile. -----------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpPar = expgetpar('g02mn1',16)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpPar = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evt: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pvpar: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adf: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stm: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-- special cases ------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;par = expgetpar('c01ph1',18)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;par.stm = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labels: {'obsp1'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ntrials: 9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmtypes: {'blank'&nbsp;&nbsp;'polar'&nbsp;&nbsp;'blank'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;voldt: 0.2500&nbsp;&nbsp;(in sec)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v: {[0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2]}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dt: {[2&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;10...]}&nbsp;&nbsp;(in sec)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t: {[0&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;14&nbsp;&nbsp;16&nbsp;&nbsp;18&nbsp;&nbsp;28&nbsp;&nbsp;30&nbsp;&nbsp;32...]}&nbsp;&nbsp;(in sec)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tvol: {[0&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;16&nbsp;&nbsp;56&nbsp;&nbsp;64&nbsp;&nbsp;72 112 120 128...]}&nbsp;&nbsp;(in volume-TR)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time: {[0 2.0060 2.0730 14.0330 16.0060 16.1390 28.0360...]}&nbsp;&nbsp;(in sec)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmpars: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pdmpars: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hstpars: [1x1 struct]<br>
+&nbsp;&nbsp;In this example, the stm.t values are inaccurate, because the<br>
+&nbsp;&nbsp;stimulus presentation was shorter than the TR of the imaging<br>
+&nbsp;&nbsp;experiment. Note that QNX stimulus-times are multiples of the<br>
+&nbsp;&nbsp;image TR. This types of scans must have the "grp.framerate" field<br>
+&nbsp;&nbsp;set for the analysis to obtain the accurate timing of the<br>
+&nbsp;&nbsp;stimulus. Based on this frame rate and the pdmpars that include<br>
+&nbsp;&nbsp;the number of video-frames for which the stimulus was presented<br>
+&nbsp;&nbsp;the stm.time field is calculated.<br>
+ <br>
+&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;All timing is based on imaging TR, for examples, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;evt.obs{X}.times, adf.dx/obslen etc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;evt.tfactor, adf.tfactor represents correction factor for event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and adf/adfw.<br>
+ <br>
+&nbsp;&nbsp;VERSION : 0.90 13.04.04 YM&nbsp;&nbsp;first release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 16.04.04 YM&nbsp;&nbsp;bug fix for b00nm1, evt.interVolumeTime = -1001.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 18.04.04 YM&nbsp;&nbsp;adds ExpPar.adf. corrects timings by imaging tr.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 29.04.04 YM&nbsp;&nbsp;create missing info to make other programs run.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.94 30.06.04 YM&nbsp;&nbsp;return also experiment date as evt.date,stm.date<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.95 03.07.04 YM&nbsp;&nbsp;bug fix of "tfactor" for multiple-obsp.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.96 14.01.05 YM&nbsp;&nbsp;avoid error for D98.at1/at2.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.97 11.03.05 YM&nbsp;&nbsp;bug fix for D01nm4.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.98 27.04.05 YM&nbsp;&nbsp;bug fix for sessions in early 2003.<br>
+ <br>
+&nbsp;&nbsp;See also SESDUMPPAR, CATFILENAME, GETPVPARS, EXPGETEVT,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STM_READ, PDM_READ, HST_READ, RFP_READ<br>
+<br>
+</body>
+</html>

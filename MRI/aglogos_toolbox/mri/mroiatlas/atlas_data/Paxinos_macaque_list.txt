@@ -1,0 +1,930 @@
+[255 255 200]	hippocampus	Hip	_Hip
+[255   0   0]	parts of general white matter	[WM]	-
+[ 45 110 100]	area 1 of cortex (somatosensory)	1#1	_S1
+[110  10 100]	"unnamed region sections 102-114, called 23 more anteriorly"	23x	_23
+[145 110 100]	"area 2 of cortex, vestibular part"	2Ve	-
+[ 15  55  50]	agranular insular cortex	AI	_INS
+[ 65 110 200]	"amygdalohippocampal area, parvicellular part"	AHiPC	-
+[ 95  10 200]	"auditory koniocortex, medial part"	AKM	-
+[  0 100   0]	azygos anterior cerebral artery	azac	-
+[ 90 115 250]	"basolateral amygdaloid nucleus, dorsal part"	BLD	_BL#2
+[135 180 100]	"basolateral amygdaloid nucleus, dorsallateral part"	BLDL	_BL#2
+[145 185 200]	"basolateral amygdaloid nucleus, ventrolateral part"	BLVL	_BL#2
+[150 185 250]	"basolateral amygdaloid nucleus, ventromedial part"	BLVM	_BL#2
+[ 45  20 150]	centromedian thalamic nucleus	CMn	_CMn
+[ 50  20 200]	"centromedian thalamic nucleus, medial part"	CMnM	_CMn
+[ 55  20 250]	"centromedian thalamic nucleus, lateral part"	CMnL	_CMn
+[115 125 200]	"entorhinal cortex, rostral part"	ER#1	_Ent
+[100  10 250]	gustatory thalamic nucleus	Gus	-
+[  0 150   0]	indusium griseum	IG	_Hip
+[  5  85 200]	internal medullary lamina	iml	-
+[ 55  60  50]	"paraauditory area, lateral part"	PaAL	-
+[180 165 150]	parasubiculum	PaS	_Sub
+[130 160  50]	"parietal area PF, opercular part"	PFOp	_PF#1
+[125 160 250]	area PGM/31 of cortex	PGM/31	-
+[100  30 150]	olfactory bulb	Olb	-
+[105  10  50]	posterior thalamic nucleus	Po	-
+[145 165  50]	prostriate area	ProST	-
+[225  50  50]	lateral pulvinar	Lpul	_Pul#1
+[230  50 100]	inferior pulvinar	Ipul	_Pul#1
+[235  50 150]	anterior pulvinar	Apul	_Pul#1
+[160  55 250]	subparafascicular thalamic nucleus	SPF	_SPf#2
+[ 80  80 200]	supracallosal subiculum	SS	_Sub
+[205 105 150]	superior temporal sulcus area 1	ST1	-
+[205 105 100]	"superior temporal sulcus area, gyral part"	ST2g	-
+[205 105  50]	"superior temporal sulcus area, sulcal part"	ST2s	-
+[160 180 150]	"area TF, medial part"	TFM	_TF
+[150 180 150]	temporal area TAa	TAa	-
+[170 180 100]	"temporal area TH, occipital part"	Tho	_TH
+[  5  85  50]	"temporal area TL, occipital part (area 36O)"	TLO(36O)	_TL
+[205 100 200]	"area TL, rostral part (area 36R)"	TLR(R36)	_TL
+[205 105 200]	temporal parietooccipital associated area in sts	TPO	_TPO
+[  0  85 250]	temporoparietal cortex	Tpt	-
+[205 105 250]	temporopolar periallocortex	TTPAl	-
+[175  55 100]	"ventral anterior thalamic nucleus, lateral part, pallidal territory of thalamus"	VAL(pal)	-
+[ 35  85 150]	"ventral anterior thalamic nucleus, lateral part, ventralis oralis nucleus+pallidal territory of thalamus"	VAL(VO)+pal	-
+[ 40  85 200]	"ventral anterior thalamic nucleus, lateral part, ventralis oralis nucleus"	VAL(VO)	-
+[ 45  85 245]	"ventral anterior thalamic nucleus, medial part"	VAM	-
+[105 185 250]	ventral cortical amygdaloid nucleus	VCo	_VCo
+[105 185  50]	"ventral cortical amygdaloid nucleus, intermediate part"	VCoIn	_VCo
+[165  55  50]	"ventral lateral thalamic nucleus, lateral part"	VLL	-
+[160  25 150]	"ventral lateral thalamic nucleus, medial part"	VLM#1	-
+[ 10 195 100]	external globus pallidus	EGP	_Pall
+[  0 190  50]	basal nucleus (Meynert)	BM#4	-
+[ 15 200 150]	islands of Calleja	ICj	_IC#1
+[  0   0  50]	A5 noradrenaline cells	A5	-
+[  5   0 100]	abducens nucleus	6N	-
+[ 10   0 150]	accessory facial nucleus	Acs7	-
+[ 15   0 200]	accessory neurosecretory nuclei	Acc	-
+[ 20   0 250]	accumbens nucleus	Acb	_Acc
+[ 25   0  50]	"accumbens nucleus, core"	AcbC	_Acc
+[ 30   0 100]	"accumbens nucleus, shell"	AcbSh	_Acc
+[ 35   0 150]	acoustic radiation	ar	-
+[ 40   0 200]	acoustic stria	as	-
+[ 45   0 250]	alar nucleus	Al#3	-
+[ 50   0  50]	ambiguus nucleus	Amb	-
+[ 55   0 100]	amiculum of the olive	ami	-
+[ 60   0 150]	"amygdalohippocampal area, magnocellular part"	AHiMC	-
+[ 65   0 200]	"amygdalohippocampal area, posteromedial part"	AHiPM	-
+[ 70   0 250]	amygdaloid fissure	af	-
+[ 75   0  50]	amygdaloid intramedullary gray	IMG	-
+[ 80   0 100]	amygdalopiriform transition area	APir	-
+[ 85   0 150]	angular thalamic nucleus	Ang	-
+[ 90   0 200]	ansa lenticularis	al	-
+[ 95   0 250]	ansoparamedian fissure	apmf	-
+[100   0  50]	anterior amygdaloid area	AA	-
+[105   0 100]	"anterior amygdaloid area, dorsal part"	AAD	-
+[110   0 150]	"anterior amygdaloid area, ventral part"	AAV	-
+[115   0 200]	anterior cerebral artery	acer	-
+[120   0 250]	anterior cingulate gyrus	ACG	-
+[125   0  50]	"anterior commissure, olfactory limb"	aco	-
+[130   0 100]	anterior hypothalamic area	AHi	-
+[135   0 150]	"anterior hypothalamic area, anterior part"	AHA	-
+[140   0 200]	"anterior hypothalamic area, central part"	AHC	-
+[145   0 250]	"anterior hypothalamic area, posterior part"	AHP	-
+[150   0  50]	anterior lobe of pituitary	APit	-
+[155   0 100]	anterior middle temporal sulcus	amt	-
+[160   0 150]	anterior olfactory nucleus	AO	-
+[165   0 200]	"anterior olfactory nucleus, lateral part"	AOL	-
+[170   0 250]	"anterior olfactory nucleus, medial part"	AOM	-
+[175   0  50]	anterior pretectal nucleus	APT	-
+[180   0 100]	anterior subcentral dimple	asd	-
+[185   0 150]	anterodorsal preoptic nucleus	ADP	-
+[190   0 200]	anterodorsal thalamic nucleus	AD#1	-
+[195   0 250]	anteromedial thalamic nucleus	AM#1	-
+[200   0  50]	"anteromedial thalamic nucleus, ventral part"	AMV	-
+[205   0 100]	anteroventral periventricular nucleus	AVPe	-
+[210   0 150]	anteroventral thalamic nucleus	AV	-
+[215   0 200]	"arcuate nucleus, dorsal part"	ArcD	-
+[220   0 250]	"arcuate nucleus, lateral part"	ArcL	-
+[225   0  50]	"arcuate nucleus, lateral part"	ArcL	-
+[230   0 100]	"arcuate nucleus, medial part"	ArcM	-
+[235   0 150]	arcuate sulcus spur	arsp	-
+[250   0  50]	area 10 of cortex	10	_10
+[255   0 100]	"area 10 of cortex, dorsal part"	10D	_10
+[  0   5 150]	"area 10 of cortex, lateral part"	10L	_10
+[  0 100 150]	"area 10 of cortex, medial part"	10M	_10
+[  5   5 200]	"area 10 of cortex, ventral part"	10V	_10
+[ 10   5 250]	area 11 of cortex	11	_11
+[ 10 100 250]	"area 11 of cortex, medial part"	11m	_11
+[ 15   5  50]	"area 11 of cortex, lateral part"	11L	_11
+[ 20   5 100]	area 13 of cortex	13	_13
+[ 25   5 150]	"area 13 of cortex, lateral part"	13L	_13
+[ 30   5 200]	"area 13 of cortex, medial part"	13M	_13
+[ 35   5 250]	area 13a of cortex	13a	_13
+[ 40   5  50]	"area 14 of cortex, medial part"	14M	-
+[ 40 100  50]	area 14o	14o	-
+[ 45   5 100]	area 2 of cortex (somatosensory)	2#1	_S1
+[ 50   5 150]	area 23a of cortex	23a	_23
+[ 55   5 200]	area 23b of cortex	23b	_23
+[ 60   5 250]	area 23c of cortex	23c	_23
+[ 65   5  50]	area 23d of cortex	23d	_23
+[ 70   5 100]	area 24/23 of cortex	24/23	_24/23
+[ 75   5 150]	area 24/23a of cortex	24/23a	_24/23
+[ 80   5 200]	area 24/23b of cortex	24/23b	_24/23
+[ 85   5 250]	area 24/23c of cortex	24/23c	_24/23
+[ 90   5  50]	area 24a of cortex	24a	_24
+[ 95   5 100]	area 24b of cortex	24b	_24
+[100   5 150]	area 24c of cortex	24c	_24
+[105   5 200]	area 24d of cortex	24d	_24
+[110   5 250]	area 25 of cortex	25	-
+[115   5  50]	area 29 of cortex	29	_29
+[120   5 100]	area 29a of cortex	29a	_29
+[125   5 250]	area 29a-c of cortex	29a-c	_29
+[130   5 200]	area 29a-d of cortex	29a-d	_29
+[135   5 250]	area 29d of cortex	29d	_29
+[140   5  50]	area 31 of cortex	31	-
+[145   5 100]	area 32 of cortex	32	-
+[150   5 150]	area 35 of cortex	35	-
+[155   5 200]	area 36O of cortex	36O	-
+[160   5 250]	area 3a of cortex (somatosensory)	3a	_S1
+[165   5  50]	area 3b of cortex (somatosensory)	3b	_S1
+[170   5 100]	area 4 of cortex (primary motor)	4#1	-
+[175   5 150]	area 44 of cortex	44	-
+[180   5 200]	area 45A of cortex	45A	_45
+[185   5 250]	area 45B of cortex	45B	_45
+[190   5  50]	area 46 of cortex	46	_46
+[195   5 100]	area 46V of cortex	46V	_46
+[195 100 100]	area 46D of cortex	46D	_46
+[200   5 150]	area 47 (old 12) of cortex	47(12)	_47(12)
+[205   5 200]	"area 47 (old 12) of cortex, lateral part"	47(12)L	_47(12)
+[210   5 250]	"area 47 (old 12) of cortex, orbital part"	47(12)O	_47(12)
+[215   5  50]	area 47 of cortex	47	-
+[220   5 100]	area 47 of cortex (old 12)	47(12)	-
+[225   5 150]	area 4C of cortex	4C	-
+[230   5 200]	area 5 of cortex	5	-
+[255 100  50]	area 6/32 of cortex	6/32	-
+[235   5 250]	"area 6 of cortex, dorsocaudal part (Matelli's F2)"	6DC(F2)	_6
+[240 100  50]	"area 6 of cortex, dorsorostral part (Matelli's F7)"	6DR(F7)	_6
+[240   5  50]	"area 6 of cortex, medial (supplementary motor) part"	6M	_6
+[245   5 100]	area 6 of cortex	6	_6
+[200 100 150]	"area 6 of cortex, ventral part, caudal subdivision (Matelli's F4)"	6VC(F4)	_6
+[200 100 100]	"area 6 of cortex, ventral part, rostral subdivision (Matelli's F5)"	6VR(F5)	_6
+[250   5 150]	"area 6 of cortex, ventral part, ventral subdivision"	6VV	_6
+[255   5 200]	"area 8 of cortex, anterodorsal part"	8AD	_8A
+[  0  10 250]	"area 8 of cortex, anteroventral part"	8AV	_8A
+[  5  10  50]	area 8/32 of cortex	8/32	-
+[ 10 100 100]	area 8A of cortex	8A	_8A
+[ 15 100 150]	area 8B of cortex	8B	-
+[ 20  10 200]	"area 9 of cortex, lateral part"	9L	_9
+[ 25  10 250]	"area 9 of cortex, medial part"	9M	_9
+[ 30  10  50]	area 9/32 of cortex	9/32	-
+[ 35  10 100]	area 9/32 of cortex	9/36	-
+[ 35 100 100]	"area 9/46 of cortex, dorsal part"	9/46D	_9/46
+[ 40  10 150]	"area 9/46 of cortex, ventral part"	9/46V	_9/46
+[ 40 100 150]	area 9/46 of cortex	9/46	_9/46
+[ 50  10 250]	area PGM/31 of cortex	PGM/31	-
+[ 55  10  50]	area postrema	AP	-
+[ 60  10 100]	area ProM (promotor)	proM#1	-
+[ 65  10 150]	area TL (area 36)	TL(36)	_TL
+[ 70  10 200]	"area TL, occipital part"	TLO	_TL
+[ 75  10 250]	areas 2/1 of cortex (somatosensory)	2/1	_S1
+[ 80  10  50]	artery	a	-
+[ 85  10 100]	ascending fibers of the facial nerve	asc7	-
+[ 90  10 150]	"auditory koniocortex, lateral part"	AKL	-
+[115  10 150]	B9 serotonin cells	B9	-
+[120  10 200]	basal interstitial	BI	-
+[125  10 250]	basilar artery	bas	-
+[130  10  50]	basolateral amygdaloid nucleus	BL#2	_BL#2
+[135  10 100]	"basolateral amygdaloid nucleus, intermediate part"	BLI	_BL#2
+[140  10 150]	"basolateral amygdaloid nucleus, posterior part"	BLP	_BL#2
+[145  10 200]	"basolateral amygdaloid nucleus, ventral part"	BLV	_BL#2
+[150  10 250]	basomedial amygdaloid nucleus	BM#3	_BM#3
+[155  10  50]	"basomedial amygdaloid nucleus, magnocellular part"	BMMC	_BM#3
+[160  10 100]	"basomedial amygdaloid nucleus, parvicellular part"	BMPC	_BM#3
+[165  10 150]	"basomedial amygdaloid nucleus, parvicellular part, dorsal division"	BMPCD	_BM#3
+[170  10 200]	"basomedial amygdaloid nucleus, parvicellular part, ventral division"	BMPCV	_BM#3
+[180  10  50]	"basomedial amygdaloid nucleus, parvicellular part, ventromedial division"	BMPCVM	_BM#3
+[185  10 100]	bed nucleus of the stria terminalis	BST	_BST
+[190  10 150]	"bed nucleus of the stria terminalis, intraamygdaloid division"	BSTIA	_BST
+[195  10 200]	"bed nucleus of the stria terminalis, lateral division"	BSTL	_BST
+[200  10 250]	"bed nucleus of the stria terminalis, lateral division, dorsal part"	BSTLD	_BST
+[205  10  50]	"bed nucleus of the stria terminalis, lateral division, intermediate part"	BSTLI	_BST
+[215  10 150]	"bed nucleus of the stria terminalis, lateral division, juxtacapsular part"	BSTLJ	_BST
+[225  10 250]	"bed nucleus of the stria terminalis, medial division"	BSTM	_BST
+[230  10  50]	"bed nucleus of the stria terminalis, medial division, anterior part"	BSTMA	_BST
+[235  10 100]	"bed nucleus of the stria terminalis, medial division, posterior part"	BSTMP	_BST
+[240  10 150]	"bed nucleus of the stria terminalis, medial division, posterolateral part"	BSTMPL	_BST
+[250  10 250]	"bed nucleus of the stria terminalis, medial division, posteromedial part"	BSTMPM	_BST
+[  0  15 100]	"bed nucleus of the stria terminalis, medial division, ventral part"	BSTMV	_BST
+[  5  15 150]	brachium of the superior colliculus	bsc	-
+[ 10  15 200]	brachium pontis (stem of middle cerebellar peduncle)	bp	-
+[ 35  15 200]	calcarine artery	cala	-
+[ 40  15 250]	calcarine sulcus	cal	-
+[ 45  15  50]	callosal sulcus	cas	-
+[ 50  15 100]	caudal linear nucleus of the raphe	CLi	-
+[ 55  15 150]	caudal part of vagus	Ca	-
+[ 60  15 200]	caudal periolivary nucleus	CPO	-
+[ 65  15 250]	caudate nucleus	Cd	-
+[ 70  15  50]	cell bridges of the ventral striatum	CB	-
+[ 75  15 100]	central amygdaloid nucleus	Ce	-
+[ 80  15 150]	"central amygdaloid nucleus, capsular part"	CeC	-
+[ 85  15 200]	"central amygdaloid nucleus, lateral division"	CeL	-
+[ 90  15 250]	"central amygdaloid nucleus, medial division"	CEm#1	-
+[ 95  15  50]	central canal	CC	-
+[100  15 100]	central cervical nucleus	CeCv	-
+[105  15 150]	central gray of the pons	CGPn	-
+[110  15 200]	central medial thalamic nucleus	CM#2	-
+[115  15 250]	central nucleus of the inferior colliculus	CIC	-
+[120  15  50]	central sulcus	cs	-
+[125  15 100]	central tegmental tract	ctg	-
+[130  15 150]	centrolateral thalamic nucleus	Cl#2	-
+[135  15 200]	cerebellar lobule	6b	-
+[140  15 250]	cerebellar lobule	6c	-
+[145  15  50]	cerebellar lobule 1	Cb1	-
+[150  15 100]	cerebellar lobule 10	Cb10	-
+[155  15 150]	cerebellar lobule 11	Cb11	-
+[160  15 200]	cerebellar lobule 12	Cb12	-
+[165  15 250]	cerebellar lobule 2	Cb2	-
+[170  15  50]	cerebellar lobule 3	Cb3	-
+[175  15 100]	cerebellar lobule 5	Cb5	-
+[180  15 150]	cerebellar lobule 6	Cb6	-
+[185  15 200]	cerebellar lobule 7	Cb7	-
+[190  15 250]	cerebellar lobule 9	Cb9	-
+[195  15  50]	cerebral cortex	Cx	-
+[200  15 100]	"cerebral peduncle, basal part"	cp	-
+[205  15 150]	"cingulate cortex, area 1"	Cg1	-
+[210  15 200]	"cingulate cortex, area 2"	Cg2	-
+[215  15 250]	cingulate gyrus	CG	_23
+[220  15  50]	cingulate sulcus	cgs	-
+[225  15 100]	cingulum	cg	-
+[230  15 150]	claustrum	Cl	-
+[235  15 200]	cochlear root of the vestibulocochlear nerve	8cn	-
+[240  15 250]	comb system	comb	-
+[245  15  50]	commissure of the inferior colliculus	cic	-
+[250  15 100]	commissure of the lateral lemniscus	cll	-
+[255  15 150]	commissure of the superior colliculus	csc	-
+[  0  20 200]	compact interfascicular nucleus	CIF	-
+[  5  20 250]	copula of the pyramis	Cop	-
+[ 10  20  50]	corona radiata	cr	-
+[ 15  20 100]	corpus callosum	cc	-
+[ 20  20 150]	cortex-amygdala transition zone	CxA	-
+[ 25  20 200]	cuneate fasciculus	cu	-
+[ 30  20 250]	cuneate gyrus	CuG	-
+[ 35  20  50]	"cuneate nucleus, triangular part"	CuT	-
+[ 40  20 100]	cuneiform nucleus	CnF	-
+[ 65  20 100]	decussation of the superior cerebellar peduncle	xscp	-
+[ 70  20 150]	deep gray layer of the superior colliculus	DpG	-
+[ 75  20 200]	deep mesencephalic nucleus	DpMe	-
+[ 80  20 250]	deep white layer of the superior colliculus	DpWh	-
+[ 85  20  50]	dentate gyrus	DG	_Hip
+[ 90  20 100]	depth intraparietal area	DIP	-
+[ 95  20 150]	dorsal 3rd ventricle	D3V	-
+[100  20 200]	dorsal acoustic stria	das	-
+[105  20 250]	dorsal cerebellar artery (branch of basilar)	dcba	-
+[110  20  50]	dorsal endopiriform nucleus	DEn	-
+[115  20 100]	dorsal hippocampal commissure	dhc	-
+[120  20 150]	dorsal hypothalamic area	DH	-
+[125  20 200]	dorsal lateral geniculate nucleus	DLG	_GL
+[130  20 250]	dorsal longitudinal fasciculus	dlf	-
+[135  20  50]	dorsal motor nucleus of vagus	10N	-
+[140  20 100]	"dorsal motor nucleus of vagus, caudal part"	Ca	-
+[145  20 150]	"dorsal motor nucleus of vagus, caudointermediate part"	CaI	-
+[150  20 200]	"dorsal motor nucleus of vagus, dorsorostral part"	DoR	-
+[155  20 250]	"dorsal motor nucleus of vagus, medial fringe"	MeF	-
+[160  20  50]	"dorsal motor nucleus of vagus, ventrointermediate subnucleus"	VeI	-
+[165  20 100]	"dorsal motor nucleus of vagus, ventrorostral subnucleus"	VeR	-
+[170  20 150]	dorsal nucleus of the lateral lemniscus	DLL	-
+[175  20 200]	dorsal paraflocculus	DPFl	-
+[180  20 250]	dorsal paragigantocellular nucleus	DPGi	-
+[185  20  50]	dorsal peduncular pontine nucleus	DPPn	-
+[190  20 100]	dorsal periolivary region	DPO	-
+[195  20 150]	dorsal raphe nucleus	DR	-
+[200  20 200]	"dorsal raphe nucleus, caudal part"	DRC	-
+[205  20 250]	"dorsal raphe nucleus, dorsal part"	DRD	-
+[210  20  50]	"dorsal raphe nucleus, interfascicular part"	DRI	-
+[215  20 100]	"dorsal raphe nucleus, ventral part"	DRV	-
+[220  20 150]	"dorsal raphe nucleus, ventrolateral part"	DRVL	-
+[225  20 200]	dorsal reticular nucleus	DRt	-
+[230  20 250]	dorsal spinocerebellar tract	dsc	-
+[235  20  50]	dorsal tegmental bundle	dtg	-
+[240  20 100]	dorsal tegmental decussation	dtgx	-
+[245  20 150]	dorsal tegmental nucleus	DTg	-
+[250  20 200]	"dorsal tegmental nucleus, central part"	DTgC	-
+[255  20 250]	"dorsal tegmental nucleus, pericentral part"	DTgP	-
+[  0  25  50]	dorsolateral periaqueductal gray	DLPAG	-
+[  5  25 100]	dorsomedial hypothalamic nucleus	DM	-
+[ 10  25 150]	"dorsomedial hypothalamic nucleus, compact part"	DMC	-
+[ 15  25 200]	"dorsomedial hypothalamic nucleus, dorsal part"	DMD	-
+[ 20  25 250]	"dorsomedial hypothalamic nucleus, ventral part"	DMV	-
+[ 25  25  50]	dorsomedial periaqueductal gray	DMPAG	-
+[ 30  25 100]	dorsomedial pontine nucleus	DMPn	-
+[ 35  25 150]	dorsomedial spinal trigeminal nucleus	DMSp5	-
+[ 40  25 200]	"dorsomedial spinal trigeminal nucleus, dorsal part"	DMSp5D	-
+[ 45  25 250]	dysgranular insular cortex	DI#2	_INS
+[ 50  25  50]	dorsal parietal area	Dpt	-
+[ 70  25 250]	ectocalcarine sulcus	ecal	-
+[ 75  25  50]	Edinger-Westphal nucleus	EW	-
+[ 80  25 100]	entorhinal cortex	Ent	_Ent
+[ 85  25 150]	"entorhinal cortex, caudal limited part"	ECL	_Ent
+[ 90  25 200]	"entorhinal cortex, caudal part"	EC#2	_Ent
+[ 95  25 250]	"entorhinal cortex, lateral part"	EL	_Ent
+[100  25  50]	"entorhinal cortex, lateral part, caudal division"	ELC	_Ent
+[105  25 100]	"entorhinal cortex, lateral part, rostral division"	ELR	_Ent
+[110  25 150]	"entorhinal Cx, intermediate part"	EI	_Ent
+[115  25 200]	"entorhinal Cx, olfactory part"	EOl	_Ent
+[120  25 250]	ependyma and subependymal layer	E	-
+[125  25  50]	epiolivary lateral reticular nucleus	EO	-
+[130  25 100]	extended amygdala	EA	-
+[135  25 150]	external arcuate fibers	ear	-
+[140  25 200]	external capsule	ec	-
+[145  25 250]	external cortex of the inferior colliculus	ECIC	-
+[150  25  50]	external cuneate nucleus	ECu	-
+[155  25 100]	external medullary lamina	eml	-
+[180  25 100]	F cell group of the vestibular complex	FVe	-
+[185  25 150]	facial nucleus	7N	-
+[190  25 200]	"facial nucleus, dorsal intermediate subnucleus"	7DI	-
+[195  25 250]	"facial nucleus, dorsal subnucleus"	7D	-
+[200  25  50]	"facial nucleus, dorsal/lateral subnucleus"	7D/L	-
+[205  25 100]	"facial nucleus, dorsolateral subnucleus"	7DL	-
+[210  25 150]	"facial nucleus, dorsomedial subnucleus"	7DM	-
+[215  25 200]	"facial nucleus, lateral subnucleus"	7L	-
+[225  25  50]	"facial nucleus, ventral intermediate subnucleus"	7VI	-
+[230  25 100]	"facial nucleus, ventral subnucleus"	7I	-
+[235  25 150]	"facial nucleus, ventral subnucleus"	7V	-
+[240  25 200]	"facial nucleus, ventromedial subnucleus"	7VM	-
+[245  25 250]	fasciculosus nucleus	Fa	-
+[250  25  50]	fasciculus retroflexus	fr	-
+[255  25 100]	fasciola cinereum	FC	-
+[  0  30 150]	field CA1 of hippocampus	CA1	_Hip
+[  5  30 200]	field CA1' of hippocampus	CA1'	_Hip
+[ 10  30 250]	field CA3 of hippocampus	CA3	_Hip
+[ 15  30  50]	field CA4 of the hippocampus	CA4	_Hip
+[ 20  30 100]	flocculus	Fl	-
+[ 25  30 150]	fornix	f	-
+[ 30  30 200]	fundus of superior temporal sulcus	FST	-
+[ 35  30 250]	fundus striati	FStr	-
+[ 40  30 250]	field CA2 of hippocampus	CA2	_Hip
+[ 60  30 250]	gamma pontine nucleus	gamma	-
+[ 65  30  50]	gelatinous layer of the caudal spinal trigeminal nucleus	Ge5	-
+[ 70  30 100]	gemini hypothalamic nucleus	Gem	-
+[ 75  30 150]	genu of the corpus callosum	gcc	-
+[ 80  30 200]	genu of the facial nerve	g7	-
+[ 85  30 250]	gigantocellular reticular nucleus	Gi	-
+[ 90  30  50]	"gigantocellular reticular nucleus, alpha part"	Gi$a	-
+[ 95  30 100]	"gigantocellular reticular nucleus, ventral part"	GiV	-
+[100  30 160]	glomerular layer of the olfactory bulb	Gl	-
+[105  30 200]	glossopharyngeal nerve	9n	-
+[110  30 250]	gracile nucleus	Gr	-
+[115  30  50]	granular insular cortex	GI	_INS
+[120  30 100]	granular layer of cerebellum	GrCb	-
+[125  30 150]	granular layer of the dentate gyrus	GrDG	_Hip
+[130  30 200]	granular layer of the olfactory bulb	GrO	-
+[135  30 250]	granule cell layer of the accessory olfactory bulb	GrA	-
+[140  30  50]	gustatory cortex	Gu	-
+[165  30  50]	habenular commissure	hbc	-
+[170  30 100]	hippocampal fissure	hf	-
+[175  30 150]	hypoglossal nucleus	12N	-
+[200  30 150]	interposed cerebellar nucleus	Int	-
+[205  30 200]	inferior arcuate sulcus	iar	-
+[210  30 250]	inferior calcarine sulcus	ical	-
+[215  30  50]	inferior cerebellar peduncle (restiform body)	icp	-
+[220  30 100]	inferior colliculus	IC	-
+[225  30 150]	inferior medullary velum	IMV	-
+[230  30 200]	inferior occipital sulcus	ios	-
+[235  30 250]	"inferior olive, beta subnucleus"	$b	-
+[240  30  50]	"inferior olive, dorsal nucleus"	IOD	-
+[245  30 100]	"inferior olive, medial nucleus"	IOM	-
+[250  30 150]	"inferior olive, principal nucleus"	IOPr	-
+[255  30 200]	"inferior olive, subnucleus A of medial nucleus"	IOA	-
+[  0  35 250]	"inferior olive, subnucleus B of medial nucleus"	IOB	-
+[  5  35  50]	"inferior olive, subnucleus C of medial nucleus"	IOC	-
+[ 10  35 100]	"inferior olive, ventrolateral protrusion"	IOVL	-
+[ 15  35 150]	inferior parietal gyrus	IPG	-
+[ 20  35 200]	inferior thalamic peduncle	ithp	-
+[ 25  35 250]	infracerebellar nucleus	Inf	-
+[ 30  35  50]	infraprincipal dimple	ipd	-
+[ 35  35 100]	infundibular recess	IRe	-
+[ 40  35 150]	infundibular stem	InfS	-
+[ 45  35 200]	insular proisocortex	IPro	_INS
+[ 50  35 250]	interanterodorsal thalamic nucleus	IAD	-
+[ 55  35  50]	interanteromedial thalamic nucleus	IAM	-
+[ 60  35 100]	"intercalated amygdaloid nucleus, main part"	IM	-
+[ 65  35 150]	intercalated nuclei of the amygdala	I#2	-
+[ 70  35 200]	intercalated nucleus of the medulla	In	-
+[ 75  35 250]	intercrural fissure	icf	-
+[ 80  35  50]	interfascicular nucleus	IF	-
+[ 85  35 100]	intermediate gray layer of the superior colliculus	InG	-
+[ 90  35 150]	intermediate nucleus of the lateral lemniscus	ILL	-
+[ 95  35 200]	intermediate orbital sulcus	iorb	-
+[100  35 250]	intermediate white layer of the superior colliculus	InWh	-
+[105  35  50]	intermediodorsal thalamic nucleus	IMD	-
+[110  35 100]	intermedius nucleus of the medulla	InM	-
+[115  35 150]	internal arcuate fibers	ia	-
+[120  35 200]	internal basilar nucleus	IB	-
+[125  35 250]	internal capsule	ic	-
+[130  35  50]	internal carotid artery	ictd	-
+[135  35 100]	internal globus pallidus	IGP	_Pall
+[145  35 200]	interpeduncular nucleus	IP	-
+[150  35 250]	"interpeduncular nucleus, caudal subnucleus"	IPC	-
+[155  35  50]	"interpeduncular nucleus, lateral"	IPL	-
+[160  35 100]	"interpeduncular nucleus, rostral subnucleus"	IPR	-
+[165  35 150]	"interposed cerebellar nucleus, anterior part"	IntA	-
+[170  35 200]	"interposed cerebellar nucleus, posterior part"	IntP	-
+[175  35 250]	"interposed cerebellar nucleus, posterior parvicellular part"	IntPPC	-
+[180  35  50]	interstitial nucleus of the medial longitudinal fasciculus	IMLF	-
+[185  35 100]	interstitial nucleus of the posterior limb of the anterior commissure	IPAC	-
+[190  35 150]	interventricular foramen	IVF	-
+[195  35 200]	intramedullary thalamic area	IMA	-
+[240 160 150]	intraparietal sulcus associated area in the superior temporal sulcus	IPa	-
+[205  35  50]	"islands of Calleja, major island"	ICjM	_IC#1
+[230  35  50]	juxtastriate area	JxSt	-
+[255  35  50]	Koelliker-Fuse nucleus	KF	-
+[ 20  40  50]	lacunosum moleculare layer of the hippocampus	LMol	_Hip
+[ 25  40 100]	lambdoid septal zone	Ld	-
+[ 30  40 150]	lamina cornice	LCor	-
+[ 35  40 200]	lateral (dentate) cerebellar nucleus	Lat	-
+[ 40  40 250]	lateral amygdaloid nucleus	La#3	-
+[ 45  40  50]	"lateral amygdaloid nucleus, dorsolateral part"	LaDL	-
+[ 50  40 100]	"lateral amygdaloid nucleus, ventrolateral part"	LaVL	-
+[ 55  40 150]	"lateral amygdaloid nucleus, ventromedial part"	LaVM	-
+[ 60  40 200]	"lateral cerebellar nucleus, parvicellular part"	LatPC	-
+[ 65  40 250]	"lateral dorsal thalamic nucleus, superficial part"	LDSF	-
+[ 70  40  50]	lateral fissure	lf	-
+[ 75  40 100]	lateral geniculate	LG	_GL
+[ 80  40 150]	lateral geniculate artery	lga	-
+[ 85  40 200]	lateral habenular nucleus	LHb	-
+[ 90  40 250]	"lateral habenular nucleus, lateral part"	LHbL	-
+[ 95  40  50]	"lateral habenular nucleus, medial part"	LHbM	-
+[100  40 100]	lateral hypothalamic area	LH	-
+[105  40 150]	lateral intraparietal area	(LIP)	-
+[110  40 200]	lateral intraparietal area	(LIP)	-
+[115  40 250]	"lateral intraparietal area, external part"	(LIPE)	-
+[120  40  50]	"lateral intraparietal area, interal part"	(LIPI)	-
+[125  40 100]	lateral mammillary nucleus	LM	-
+[130  40 150]	lateral medullary lamina	lml	-
+[135  40 200]	lateral olfactory tract	lo	-
+[140  40 250]	lateral orbital suclus	lorb	-
+[145  40  50]	lateral parabrachial nucleus	LPB	-
+[150  40 100]	"lateral parabrachial nucleus, central part"	LPBC	-
+[155  40 150]	"lateral parabrachial nucleus, crescent part"	LPBCr	-
+[160  40 200]	"lateral parabrachial nucleus, ventral part"	LPBV	-
+[165  40 250]	lateral paragigantocellular nucleus	LPGi	-
+[170  40  50]	lateral periaqueductal gray	LPAG	-
+[175  40 100]	lateral pericuneate nucleus	LPCu	-
+[180  40 150]	lateral periolivary nucleus	LPOl	-
+[185  40 200]	lateral preoptic area	LPO	-
+[190  40 250]	lateral pterygoid subnucleus of the motor trigeminal nucleus	LPtg5	-
+[195  40  50]	lateral reticular nucleus	LRt	-
+[200  40 100]	"lateral reticular nucleus, parvicellular part"	LRtPC	-
+[205  40 150]	"lateral reticular nucleus, subtrigeminal part"	LRtS5	-
+[210  40 200]	"lateral septal nucleus, dorsal part"	LSD	-
+[210 140 200]	"lateral septal nucleus, ventral part"	lsv	-
+[215  40 250]	lateral septum	LS	-
+[220  40  50]	lateral superior cerebellar artery (branch of superior cerebellar)	lscb	-
+[225  40 100]	lateral superior olive	LSO	-
+[230  40 150]	lateral tegmental tract	ltg	-
+[235  40 200]	lateral terminal nucleus of the accessory optic tract	LT	-
+[240  40 250]	lateral tuberal nucleus	LTu	-
+[245  40  50]	lateral ventricle	LV	-
+[250  40 100]	lateral vestibular nucleus	LVe	-
+[255  40 150]	lateral vestibulospinal tract	lvs	-
+[  0  45 200]	lateral vestibulospinal tract	lvsp	-
+[  5  45 250]	laterodorsal tegmental nucleus	LDTg	-
+[ 10  45  50]	"laterodorsal tegmental nucleus, ventral part"	LDTgV	-
+[ 15  45 100]	"laterodorsal thalamic nucleus, dorsomedial part"	LDDM	-
+[ 20  45 150]	lateroventral periolivary nucleus	LVPO	-
+[ 25  45 200]	layer 1 of cortex	1$	-
+[ 30  45 250]	layer 1 of cortex	L1	-
+[ 35  45  50]	layer 1 of dorsal lateral geniculate	$1	_GL
+[ 40  45 100]	layer 2 of cortex	2$	-
+[ 45  45 150]	layer 2 of dorsal lateral geniculate	$2	_GL
+[ 50  45 200]	layer 3 of cortex	3$	-
+[ 55  45 250]	layer 3 of cortex	L3	-
+[ 60  45  50]	layer 3 of dorsal lateral geniculate	$3	_GL
+[ 65  45 100]	layer 4 of cortex	L4	-
+[ 70  45 150]	layer 4 of dorsal lateral geniculate	$4	_GL
+[ 75  45 200]	layer 5 of cortex	5$	-
+[ 85  45  50]	layer 5 of cortex	L5	-
+[ 90  45 100]	layer 5 of dorsal lateral geniculate	$5	_GL
+[ 95  45 150]	layer 6 of cortex	6$	-
+[100  45 200]	layer 6 of cortex	L6	-
+[105  45 250]	layer 6 of dorsal lateral geniculate	$6	_GL
+[110  45  50]	lamina terminalis	LTer	-
+[115  45 100]	lenticular fasciculus	lenf	-
+[120  45 150]	lenticular fasciculus (field H2)	H2	-
+[125  45 200]	linear nucleus of the medulla	Li	-
+[130  45 250]	locus coeruleus	LC	-
+[135  45  50]	lunate sulcus	lu	-
+[160  45  50]	magnocellular layer of the caudal spinal trigeminal nucleus	MC5	-
+[165  45 100]	magnocellular nucleus of the lateral hypothalamus	MCLH	-
+[170  45 150]	magnocellular nucleus of the posterior commissure	MCPC	-
+[175  45 200]	mammillary body	MB	-
+[180  45 250]	mammillary peduncle	mp	-
+[185  45  50]	mammillary recess of the 3rd ventricle	MRe	-
+[190  45 100]	mammillothalamic tract	mt	-
+[195  45 150]	marginal zone of the caudal spinal trigeminal nucleus	MZ5	-
+[200  45 200]	marginal zone of the medial geniculate	MZMG	_MG
+[205  45 250]	masseter subnucleus of the motor trigeminal nucleus	Ma5	-
+[210  45  50]	medial (fastigial) cerebellar nucleus	Med	-
+[215  45 100]	medial accessory oculomotor nucleus	MA3	-
+[220  45 150]	medial amygdaloid nucleus	Me	_Me
+[225  45 200]	"medial amygdaloid nucleus, mediodorsal part"	CeMD	_Me
+[230  45 250]	"medial amygdaloid nucleus, medioventral part"	CeMV	_Me
+[235  45  50]	"medial eminence, external layer"	MEE	-
+[240  45 100]	"medial eminence, internal layer"	MEI	-
+[245  45 150]	"medial geniculate nucleus, dorsal part"	MGD	_MG
+[250  45 200]	"medial geniculate nucleus, medial part"	MGM	_MG
+[255  45 250]	"medial geniculate nucleus, ventral part"	MGV	_MG
+[  0  50  50]	medial habenular nucleus	MHb	-
+[  5  50 100]	medial lemniscus	ml	-
+[ 10  50 150]	medial longitudinal fasciculus	mlf	-
+[ 15  50 200]	"medial mammillary nucleus, lateral"	ML	-
+[ 20  50 250]	medial medullar lamina	mml	-
+[ 25  50  50]	medial orbital sulcus	morb	-
+[ 30  50 100]	medial pericuneate nucleus	MPCu	-
+[ 35  50 150]	medial periolivary nucleus	MPOl	-
+[ 40  50 200]	medial preoptic area	MPA	-
+[ 45  50 250]	medial preoptic nucleus	MPO	-
+[ 50  50  50]	"medial preoptic nucleus, lateral part"	MPOL	-
+[ 55  50 100]	"medial preoptic nucleus, medial part"	MPOM	-
+[ 60  50 150]	medial pretectal nucleus	MPT	-
+[ 65  50 200]	medial pterygoid subnucleus of the motor trigeminal nucleus	MPtg	-
+[ 70  50 250]	medial pulvinar	MPul	_Pul#1
+[ 75  50  50]	medial reticular nucleus	MRt	-
+[ 80  50 100]	medial septal nucleus	MS	-
+[ 85  50 150]	medial superior olive	MSO	-
+[ 90  50 200]	medial superior temporal area	MST	-
+[ 95  50 250]	"medial vestibular nucleus, magnocellular part"	MVeMC	-
+[100  50  50]	"medial vestibular nucleus, parvicellular part"	MVePC	-
+[105  50 100]	median eminence	ME	-
+[110  50 150]	median preoptic nucleus	MnPO	-
+[115  50 200]	median raphe nucleus	MnR	-
+[120  50 250]	mediodorsal thalamic nucleus	MD	_MD
+[125  50  50]	"mediodorsal thalamic nucleus, central part"	MDC	_MD
+[130  50 100]	"mediodorsal thalamic nucleus, dorsal part"	MDD	_MD
+[135  50 150]	"mediodorsal thalamic nucleus, lateral part"	MDL	_MD
+[140  50 200]	"mediodorsal thalamic nucleus, medial part"	MDM	_MD
+[145  50 250]	"medullary reticular nucleus, dorsal part"	MdD	-
+[150  50  50]	mesencephalic trigeminal nucleus	Me5	-
+[155  50 100]	mesencephalic trigeminal tract	me5	-
+[160  50 150]	microcellular tegmental nucleus	MiTg	-
+[165  50 200]	middle cerebellar peduncle	mcp	-
+[170  50 250]	middle cerebral artery	mcer	-
+[175  50  50]	middle superior cerebellar artery	mscb	-
+[180  50 100]	middle temporal area (visual area 5)	MT(V5)	-
+[185  50 150]	mitral cell layer of the olfactory bulb	Mi	-
+[190  50 200]	molecular layer of the cochlear nucleus	MoC	-
+[195  50 250]	molecular layer of the dentate gyrus	Mol	_Hip
+[200  50  50]	molecular layer of the dorsal cochlear nucleus	MoDC	-
+[205  50 100]	"motor trigeminal nucleus, dorsolateral part"	Mo5DL	-
+[210  50 150]	"motor trigeminal nucleus, ventromedial part"	Mo5VM	-
+[215  50 200]	myelohyoid subnucleus of the motor trigeminal nucleus	MHy5	-
+[220  50 250]	myelohyoid subnucleus of the motor trigeminal nucleus	My5	-
+[245  50 250]	nanocellular hypothalamic nucleus	NC	-
+[250  50  50]	nigrostriatal bundle	ns	-
+[255  50 100]	noto cuneate nucleus	Nt	-
+[  0  55 150]	nucleus L	L	-
+[  5  55 200]	nucleus of Darkschewitsch	Dk	-
+[ 10  55 250]	nucleus of Roller	Ro	-
+[ 20  55 100]	nucleus of the brachium of the inferior colliculus	BIC	-
+[ 25  55 150]	nucleus of the horizontal limb of the diagonal band	HDB	-
+[ 30  55 200]	nucleus of the lateral olfactory tract	LOT	-
+[ 35  55 250]	nucleus of the posterior commissure	PCom	-
+[ 40  55  50]	nucleus of the vertical limb of the diagonal band	VDB	-
+[ 45  55 100]	nucleus Y	Y	-
+[105  55 200]	occipitoparietal area	OPt	-
+[ 75  55 150]	oculomotor nerve or its root	3n	-
+[ 80  55 200]	oculomotor nucleus	3N	-
+[ 85  55 250]	"oculomotor nucleus, parvicellular part"	3PC	-
+[ 90  55  50]	olfactory sulcus	olfs	-
+[ 95  55 100]	olfactory tubercle	Tu	-
+[100  55 150]	olfactory ventricle (olfactory part of lateral ventricle)	OV	-
+[ 70  55 100]	olivary pretectal nucleus	OPT	-
+[110  55 250]	olivocochlear bundle	ocb	-
+[115  55  50]	optic chiasm	ox	-
+[120  55 100]	optic nerve	2n	-
+[125  55 150]	optic nerve layer of the superior colliculus	Op	-
+[130  55 200]	oral dorsal paramedian nucleus	ODPMn	-
+[135  55 250]	oral pulvinar	OPul	_Pul#1
+[140  55  50]	orbital gyrus	OG	-
+[145  55 100]	orbital periallocortex	OPAl	-
+[150  55 150]	orbital proisocortex	OPro	-
+[155  55 200]	oriens layer of the hippocampus	Or	_Hip
+[180  55 200]	paraabducens nucleus	Pa6	-
+[185  55 250]	"paraauditory area, caudal part"	PaAC	-
+[190  55  50]	"paraauditory cortex, rostral part"	PaAR	-
+[195  55 100]	parabigeminal nucleus	PBG	-
+[200  55 150]	parabrachial pigmented nucleus	PBP	-
+[205  55 200]	paracentral thalamic nucleus	Pc#3	-
+[210  55 250]	paracochlear glial substance	PCGS	-
+[215  55  50]	paracollicular tegmentum	PCTg	-
+[220  55 100]	parafascicular thalamic nucleus	Pf#2	-
+[225  55 150]	parafloccular sulcus	pfs	-
+[230  55 200]	paraflocculus	PFl	-
+[235  55 250]	parahippocampal gyrus	PHG	-
+[240  55  50]	parainsular area	PaI	_PaI
+[245  55 100]	"parainsular cortex, lateral part"	PaIL	_PaI
+[250  55 150]	"parainsular cortex, medial part"	PaIM	_PaI
+[255  55 200]	paralaminar amygdaloid nucleus	PaL	_PaL
+[  0  60 250]	"paralaminar amygdaloid nucleus, glomerular part"	PaLGl	_PaL
+[  5  60  50]	paramedian raphe nucleus	PMnR	-
+[ 10  60 100]	paramedian reticular nucleus	PMn	-
+[ 15  60 150]	paramedian sulcus	pms	-
+[ 20  60 200]	paranigral nucleus	PN	-
+[ 25  60 250]	parapyramidal nucleus	PPy	-
+[ 30  60  50]	parasubthalamic nucleus	PSTh	-
+[ 35  60 100]	paratenial thalamic nucleus	PT#2	-
+[ 40  60 150]	paratrigeminal nucleus	Pa5	-
+[ 45  60 200]	"paraventricular hypothalamic nucleus, anterior magnocellular part"	PaAM	-
+[ 50  60 250]	"paraventricular hypothalamic nucleus, anterior parvicellular part"	PaAP	-
+[ 60  60 100]	"paraventricular hypothalamic nucleus, magnocellular part, dorsal division"	PaMD	-
+[ 65  60 150]	"paraventricular hypothalamic nucleus, posterior part"	PaPo	-
+[ 70  60 200]	paraventricular thalamic nucleus	PV	_PV
+[ 75  60 250]	"paraventricular thalamic nucleus, anterior part"	PVA	_PV
+[ 80  60  50]	"paraventricular thalamic nucleus, posterior part"	PVP	_PV
+[ 85  60 100]	parietal area PE	PE#1	_PE#1
+[ 90  60 150]	"parietal area PE, caudal part"	PEC	_PE#1
+[ 95  60 200]	"parietal area PE, cingulate part"	PECg	_PE#1
+[100  60 250]	parietal area PEa	PEa	-
+[105  60  50]	parietal area PEa	Pea	-
+[110  60 100]	parietal area PF (cortex)	PFCx	_PF#1
+[115  60 150]	parietal area PFG	PFG#1	-
+[120  60 200]	parietal area PG	PG#1	_PG#1
+[125  60 250]	"parietal area PG, medial part"	PGM	_PG#1
+[130  60  50]	"parietal area PG, opercular part"	PGOp	_PG#1
+[135  60 100]	"parietal area POa, external part"	POaE	-
+[140  60 150]	"parietal area POa, internal part"	POaI	-
+[145  60 200]	parietal association cortex	PtA	-
+[150  60 250]	parietal pontine fibers	ptpn	-
+[155  60  50]	parieto-occipital area	PO#1	-
+[160  60 100]	parietooccipital associated area in the intraparietal sulcus	POa	-
+[165  60 150]	parietooccipital suclus	pos	-
+[170  60 200]	parvicellular motor trigeminal nucleus	PC5	-
+[175  60 250]	parvicellular oculomotor nucleus	PC3	-
+[180  60  50]	parvicellular reticular nucleus	PCRt	-
+[185  60 100]	"parvicellular reticular nucleus, alpha part"	PCRt$a	-
+[190  60 150]	pedunculopontine tegmental nucleus	PPTg	-
+[195  60 200]	periaqueductal gray	PAG	-
+[200  60 250]	pericuneate matrix	PCuMx	-
+[205  60  50]	perifacial zone	P7	-
+[210  60 100]	perifornical nucleus	PeF	-
+[215  60 150]	"perifornical nucleus, medial part"	PeFM	-
+[220  60 200]	peripeduncular nucleus	PP	-
+[225  60 250]	peritrigeminal zone	P5	-
+[230  60  50]	periventricular gray	PVG	-
+[235  60 100]	periventricular hypothalamic nucleus	Pe	-
+[240  60 150]	area PG associated region of the superior temporal sulcus	PGa	-
+[245  60 200]	pineal gland	Pi	-
+[250  60 250]	pineal recess	PiRe	-
+[255  60  50]	piriform cortex	Pir	-
+[  0  65 100]	pontine nuclei	Pn	-
+[  5  65 150]	pontine raphe nucleus	PnR	-
+[ 10  65 200]	"pontine reticular nucleus, caudal part"	PnC	-
+[ 15  65 250]	"pontine reticular nucleus, oral part"	PnO	-
+[ 20  65  50]	posterior commissure	pc	-
+[ 25  65 100]	posterior communicating artery	pcom	-
+[ 30  65 150]	posterior hypothalamic area	PH	-
+[ 35  65 200]	posterior inferior cerebellar artery	pica	-
+[ 40  65 250]	"posterior inferotemporal area, dorsal part"	(PITD)	-
+[ 45  65  50]	posterior limitans thalamic nucleus	PLi	-
+[ 50  65 100]	posterior middle temporal sulcus	pmt	-
+[ 55  65 150]	posterior paraflocculus	PPFl	-
+[ 60  65 200]	posterior parietal area	PPt#1	-
+[ 65  65 250]	posterior superior fissure	psf	-
+[ 70  65  50]	posterior supraprincipal dimple	pspd	-
+[ 75  65 100]	posterodorsal preoptic nucleus	PDP	-
+[ 80  65 150]	posterodorsal tegmental nucleus	PDTg	-
+[ 85  65 200]	posterolateral fissure	plf	-
+[ 90  65 250]	posteromedian thalamic nucleus	PoMn	-
+[ 95  65  50]	precommissural fornix	pcf	-
+[100  65 100]	preculminate fissure	pcuf	-
+[105  65 150]	predorsal bundle	pd	-
+[110  65 200]	pregeniculate nucleus	PrG	-
+[115  65 250]	premammillary nucleus	PrM	-
+[120  65  50]	"premammillary nucleus, dorsal part"	PMD	-
+[125  65 100]	"premammillary nucleus, ventral part"	PMV	-
+[130  65 150]	preoptic recess of 3V	P3V	-
+[135  65 200]	prepositus nucleus	Pr	-
+[140  65 250]	prepyramidal fissure	ppf	-
+[145  65  50]	presubiculum	PrS	_Sub
+[150  65 100]	primary fissure	prf	-
+[155  65 150]	"principal sensory trigeminal nucleus, dorsomedial part"	Pr5DM	-
+[160  65 200]	pro-insular cortex	ProI	-
+[165  65 250]	prokoniocortex	ProK	_ProK
+[170  65  50]	"prokoniocortex, lateral part"	ProKL	_ProK
+[175  65 100]	"prokoniocortex, medial part"	ProKM	_ProK
+[180  65 150]	prosubiculum	ProS#2	_Sub
+[185  65 200]	pterigoid subnucleus of the motor trigeminal nucleus	Ptg5	-
+[190  65 250]	pulvinar nuclei	Pul#1	_Pul#1
+[195  65  50]	Purkinje layer of cerebellum	Pk	-
+[200  65 100]	putamen	Pu	-
+[205  65 150]	pyramidal cell layer of the hippocampus	Py	_Hip
+[210  65 200]	pyramidal fissure	pf	-
+[215  65 250]	pyramidal tract	py	-
+[240  65 250]	raphe interpositus nucleus	RIP	-
+[245  65  50]	raphe magnus nucleus	RMg	-
+[250  65 100]	raphe obscurus nucleus	ROb	-
+[255  65 150]	raphe pallidus nucleus	RPa	-
+[  0  70 200]	recess of the inferior colliculus	ReIC	-
+[  5  70 250]	rectus gyrus	RG	-
+[ 10  70  50]	red nucleus	R	-
+[ 15  70 100]	"red nucleus, magnocellular part"	RMC	-
+[ 20  70 150]	"red nucleus, parvicellular part"	RPC	-
+[ 25  70 200]	reticular thalamic nucleus	R#4	-
+[ 30  70 250]	reticulotegmental nucleus of the pons	RtTg	-
+[ 35  70  50]	"reticulotegmental nucleus of the pons, pericentral part"	RtTgP	-
+[ 40  70 100]	retroambiguus nucleus	RAmb	-
+[ 45  70 150]	retroinsular area	ReI	_ReI
+[ 50  70 200]	"retroinsular area, parietal part"	ReIP	_ReI
+[ 55  70 250]	"retroinsular area, temporal part"	ReIT	_ReI
+[ 60  70  50]	retrolemniscal nucleus	RL	-
+[ 65  70 100]	retrorubral field	RRF	-
+[ 70  70 150]	reuniens thalamic nucleus	Re	-
+[ 75  70 200]	rhabdoid nucleus	Rbd	-
+[ 80  70 250]	rhinal fissure	rf	-
+[ 85  70  50]	rhomboid thalamic nucleus	Rh	-
+[ 90  70 100]	root of abducens nerve	6n	-
+[ 95  70 150]	root of hypoglossal nerve	12n	-
+[100  70 200]	rostral interstitial nucleus of medial longitudinal fasciculus	RI	-
+[105  70 250]	rostral linear nucleus of the raphe	RLi	-
+[110  70  50]	rostral medial accessory olive	RMAO	-
+[115  70 100]	rostral sulcus	ros	-
+[120  70 150]	rostrum of the corpus callosum	rcc	-
+[125  70 200]	rubrospinal tract	rs	-
+[150  70 200]	sagulum nucleus	Sag	-
+[155  70 250]	secondary fissure	sf	-
+[160  70  50]	secondary somatosensory cortex	S2	_S2
+[165  70 100]	"secondary somatosensory cortex, external part"	S2E	_S2
+[170  70 150]	"secondary somatosensory cortex, internal part"	S2I	_S2
+[175  70 200]	septofimbrial nucleus	SFi	-
+[180  70 250]	septohippocampal nucleus	SHi	-
+[185  70  50]	septohypothalamic nucleus	SHy	-
+[190  70 100]	septum	Spt	-
+[195  70 150]	simple lobule	Sim	-
+[200  70 200]	simplex fissure	simf	-
+[205  70 250]	"solitary nucleus, central part"	SolCe	-
+[210  70  50]	"solitary nucleus, commissural part"	SolC	-
+[215  70 100]	"solitary nucleus, dorsal subnucleus"	SolD	-
+[220  70 150]	"solitary nucleus, dorsolateral subnucleus"	SolDL	-
+[225  70 200]	"solitary nucleus, dorsomedial part"	SolDM	-
+[230  70 250]	"solitary nucleus, gelatinous part"	SolG	-
+[235  70  50]	"solitary nucleus, intermediate part"	SolIM	-
+[240  70 100]	"solitary nucleus, medial part"	SolM	-
+[245  70 150]	"solitary nucleus, paracommissural part"	SolPaC	-
+[250  70 200]	"solitary nucleus, rostrolateral part"	SolRL	-
+[255  70 250]	"solitary nucleus, ventral subnucleus"	SolV	-
+[  0  75  50]	solitary tract	sol	-
+[  5  75 100]	spinal chord layer 9	Sp9	-
+[ 10  75 150]	"spinal trigeminal nucleus, caudal part"	Sp5C	-
+[ 15  75 200]	"spinal trigeminal nucleus, interpolar part"	Sp5I	-
+[ 20  75 250]	"spinal trigeminal nucleus, oral part"	Sp5O	-
+[ 25  75  50]	spinal trigeminal tract	sp5	-
+[ 30  75 100]	spinothalamic tract	spth	-
+[ 35  75 150]	stratum lucidum of the hippocampus	Lu	_Hip
+[ 40  75 200]	stratum radiatum of the hippocampus	Rad	_Hip
+[ 45  75 250]	stria medullaris of the thalamus	sm	-
+[ 50  75  50]	stria terminalis	st	-
+[ 55  75 100]	striohypothalamic nucleus	StHy	-
+[ 60  75 150]	subbrachial nucleus	SubB	-
+[ 65  75 200]	subcoeruleus nucleus	SubC	-
+[ 70  75 250]	"subcoeruleus nucleus, dorsal part"	SubCD	-
+[ 75  75  50]	"subcoeruleus nucleus, ventral part"	SubCV	-
+[ 80  75 100]	subcommissural nucleus	SCom	-
+[ 85  75 150]	subfornical organ	SFO	-
+[ 90  75 200]	subgeniculate nucleus	SubG	-
+[140  70 100]	subiculum	S#1	_Sub
+[ 95  75 250]	subincertal nucleus	SubI	-
+[100  75  50]	submammillothalamic nucleus	SMT	-
+[105  75 100]	submedius thalamic nucleus	Sub	-
+[110  75 150]	"submedius thalamic nucleus, dorsal part"	SubD	-
+[115  75 200]	"submedius thalamic nucleus, ventral part"	SubV	-
+[120  75 250]	"subparafascicular thalamic nucleus, parvicellular part"	SPFPC	_SPf#2
+[125  75  50]	subparaventricular zone of the hypothalamus	SPa	-
+[130  75 100]	subpedencular tegmental nucleus	SPTg	-
+[135  75 150]	subprincipal dimple	subpd	-
+[140  75 200]	subsolitary nucleus	SSol	-
+[145  75 250]	substantia innominata	SI#2	-
+[150  75  50]	substantia nigra	SN	-
+[155  75 100]	"substantia nigra compact part, ventral division"	SNV	-
+[160  75 150]	"substantia nigra compact part, ventrolateral division"	SNVL	-
+[165  75 200]	"substantia nigra, compact part"	SNC	-
+[170  75 250]	"substantia nigra, compacta part, ventral tier"	SNCV	-
+[175  75  50]	"substantia nigra, dorsal part"	SND	-
+[180  75 100]	"substantia nigra, lateral part"	SNL	-
+[185  75 150]	subthalamic nucleus	STh	-
+[190  75 200]	sulcus limitans	sl	-
+[195  75 250]	sulcus limitans	slim	-
+[200  75  50]	superficial glial zone of the cochlear nuclei	SGl	-
+[205  75 100]	superficial gray layer of the superior colliculus	SuG	-
+[210  75 150]	superficial zone of the cochlear nucleus	SGl	-
+[215  75 200]	superior arcuate sulcus	sar	-
+[220  75 250]	superior calcarine sulcus	scal	-
+[225  75  50]	superior cerebellar peduncle (brachium conjunctivum)	scp	-
+[230  75 100]	superior colliculus	SC	-
+[235  75 150]	superior medullary velum	SMV	-
+[240  75 200]	superior olive	SOl	-
+[245  75 250]	superior paraolivary nucleus	SPO	-
+[250  75  50]	superior parietal gyrus	SPG	-
+[255  75 100]	superior postcentral dimple	su	-
+[  0  80 150]	superior precentral dimple	spcd	-
+[  5  80 200]	superior salivatory nucleus	SuS	-
+[ 10  80 250]	superior temporal gyrus	STG	-
+[ 15  80  50]	superior temporal sulcus	sts	-
+[ 20  80 100]	superior temporal sulcus area 3	ST3	-
+[ 25  80 150]	superior thalamic radiation	str	-
+[ 30  80 200]	suprageniculate thalamic nucleus	SG	-
+[ 35  80 250]	supragenual nucleus	SGe	-
+[ 40  80  50]	supralemniscal nucleus	SuL	-
+[ 45  80 100]	supramammillary decussation	sumx	-
+[ 50  80 150]	supramammillary nucleus	SuM	-
+[ 55  80 200]	supraoculomotor cap	Su3C	-
+[ 60  80 250]	supraoculomotor periaqueductal gray	Su3	-
+[ 65  80  50]	supraoptic decussation	sox	-
+[ 70  80 100]	supraoptic nucleus	SO	-
+[ 75  80 150]	supratrigeminal nucleus	Su5	-
+[100  80 150]	"temporal area TE, medial part"	TEM	-
+[105  80 200]	"temporal area TE, occipital part"	TEO	_TEO
+[110  80 250]	"temporal area TE, occipitomedial part"	TEOM	_TEO
+[115  80  50]	temporal area TE1	TE1#1	-
+[120  80 100]	"temporal area TE1, lateral part"	TE1L	-
+[125  80 150]	"temporal area TE1, medial part"	TE1M	-
+[130  80 200]	temporal area TE2	TE2#1	-
+[135  80 250]	"temporal area TE2, lateral part"	TE2L	-
+[140  80  50]	"temporal area TE2, medial part"	TE2M	-
+[145  80 100]	temporal area TE3	TE3#1	-
+[150  80 150]	temporal area TEa	TEa#1	-
+[155  80 200]	temporal area TF	TF	_TF
+[160  80 250]	"temporal area TF, lateral part"	TFL	_TF
+[165  80  50]	"temporal area TF, occipital part"	TFO	_TF
+[170  80 100]	temporal area TH	TH	_TH
+[175  80 150]	temporal area TL	TL	_TL
+[180  80 200]	temporal association cortex	TeA	-
+[185  80 250]	"temporal parietooccipital associated area in sts, caudal part"	TPOC	_TPO
+[190  80  50]	temporalis subnucleus of the motor trigeminal nucleus	Te5	-
+[195  80 100]	temporopolar allocortex	TPAl	-
+[200  80 150]	temporopolar periallocortex	TPPAl	-
+[205  80 200]	temporopolar proisocortex	TPPro	-
+[210  80 250]	tenia tecta	TT	-
+[220  80 100]	terminal pericallosal artery (branch of azygos pericallosal)	tep	-
+[225  80 150]	trapezoid body	tz	-
+[230  80 200]	triangular septal nucleus	TS	-
+[235  80 250]	trigeminal ganglion	5Gn	-
+[240  80  50]	trigeminothalamic tract	tth	-
+[245  80 100]	trochlear decussation	4x	-
+[250  80 150]	trochlear nerve or its root	4n	-
+[ 15  85 150]	uncinate fasciculus	unc	-
+[ 20  85 200]	Uncus	Uncus	-
+[ 25  85 250]	uvular fissure	uf	-
+[ 50  85 250]	vagus nerve or its root	10n	-
+[ 55  85  50]	vascular organ of the lamina terminalis	VOLT	-
+[ 60  85 100]	vein	v	-
+[ 65  85 150]	ventral  paraflocculus	VPFl	-
+[ 70  85 200]	ventral amygdalofugal pathway	vaf	-
+[ 75  85 250]	ventral anterior cortical nucleus of the amygdala	VACo	-
+[ 80  85  50]	ventral anterior thalamic nucleus	VA	-
+[ 85  85 100]	"ventral anterior thalamic nucleus, magnocellular part"	VAMC	-
+[ 90  85 150]	ventral cochlear nucleus	VC	-
+[ 95  85 200]	"ventral cochlear nucleus, anterior part"	VCA	-
+[100  85 250]	"ventral cochlear nucleus, posterior part"	VCP	-
+[105  85  50]	"ventral cortical amygdaloid nucleus, inferior part"	VCoInf	_VCo
+[110  85 100]	"ventral cortical amygdaloid nucleus, superior part"	VCoSu	_VCo
+[115  85 150]	ventral corticospinal tract	vcsp	-
+[120  85 200]	ventral endopiriform nucleus	VEn	-
+[125  85 250]	ventral hippocampal commissure	vhc	-
+[130  85  50]	ventral horn	VH	-
+[135  85 100]	ventral intraparietal sulcal area	(VIP)	-
+[140  85 150]	ventral lateral geniculate nucleus	VLG	_GL
+[145  85 200]	"ventral lateral thalamic nucleus, posterior part, external division"	VLPE	-
+[150  85 250]	"ventral lateral thalamic nucleus, posterior part, internal division"	VLPI	-
+[155  85  50]	ventral nucleus of the lateral lemniscus	VLL	-
+[160  85 100]	ventral pallidum	VP#3	_Pall
+[165  85 150]	ventral peduncular pontine nucleus	VPPn	-
+[170  85 200]	"ventral posterior thalamic nucleus, parvicellular part"	VPPC	-
+[175  85 250]	ventral posteroinferior thalamic nucleus	VPI	-
+[180  85  50]	ventral posterolateral thalamic nucleus	VPL#1	-
+[185  85 100]	ventral posteromedial thalamic nucleus	VPM	-
+[190  85 150]	ventral reticular nucleus	VRt	-
+[195  85 200]	ventral spinocerebellar tract	vsc	-
+[200  85 250]	ventral tegmental area	VTA	-
+[205  85  50]	ventral tegmental decussation	vtgx	-
+[210  85 100]	ventral tegmental nucleus	VTg	-
+[215  85 150]	"ventral tegmental nucleus, suprafascicular part"	VTgS	-
+[220  85 200]	ventral tuberomammillary nucleus	VTM	-
+[225  85 250]	ventrolateral hypothalamic nucleus	VLH	-
+[230  85  50]	ventrolateral preoptic nucleus	VLPO	-
+[235  85 100]	ventrolateral tegmental area	VLTg	-
+[240  85 150]	ventromedial hypothalamic nucleus	VMH	-
+[245  85 200]	"ventromedial hypothalamic nucleus, central part"	VMHC	-
+[250  85 250]	"ventromedial hypothalamic nucleus, dorsomedial part"	VMHDM	-
+[255  85  50]	"ventromedial hypothalamic nucleus, ventrolateral part"	VMHVL	-
+[  0  90 100]	ventromedial preoptic nucleus	VMPO	-
+[  5  90 150]	ventromedial thalamic nucleus	VM	-
+[ 10  90 200]	ventromedian fissure	vmf	-
+[ 15  90 250]	vestibulocochlear nerve	8n	-
+[ 20  90  50]	vestibulomesencephalic tract	veme	-
+[ 25  90 100]	visual area 1 (primary visual cortex)	V1	-
+[ 30  90 150]	"visual area 3, dorsal part"	V3D	-
+[ 35  90 200]	"visual area 3, ventral part"	V3V	-
+[ 40  90 250]	visual area 3A	V3A	-
+[ 45  90  50]	"visual area 4, dorsal part"	V4D	_V4
+[ 50  90 100]	"visual area 4, transitional part"	V4T	-
+[ 55  90 150]	"visual area 4, ventral part"	V4V	_V4
+[ 60  90 200]	visual area 4A	V4A	-
+[ 65  90 250]	visual area 2	V2	-
+[ 70  90  50]	visual area 4	V4	_V4
+[ 85  90 200]	xiphoid thalamic nucleus	Xi	-
+[110  90 200]	zona incerta	ZI	-
+[115  90 250]	"zona incerta, dorsal part"	ZID	-
+[120  90  50]	"zona incerta, ventral part"	ZIV	-
+[125  90 100]	zonal layer of the superior colliculus	Zo	_Amygdala

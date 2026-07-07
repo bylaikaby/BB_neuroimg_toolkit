@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mroi_cursor</title>
+</head>
+<body>
+ MROI_CURSOR - Utility of MROI that changes the cursor shape<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MROI_CURSOR(CURSORTYPE) makes the pointer as CURSORTYPE.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[POINTER, SHAPEDATA, HOTSPOT] = MROI_CURSOR(CURSORTYPE,GCF) makes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the pointer of GCF as CURSORTYPE and returns the previous pointer data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(before change).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;MROI_CURSOR will call set(handle,'Pointer',...).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Supported CURSORTYPE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crosshair, arrow, watch, circle, fullcross, white dot, black dot, reset<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mroi_cursor('dot');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% the same as mroi_cursor('black dot');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mroi_cursor('reset');&nbsp;&nbsp;&nbsp;&nbsp;% the same as mroi_cursor('arrow').<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If want to change the cursor after ROIPOLY call, I must use TIMER to overwrite<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor setting by ROIPOLY/GETLINE, avoiding focus-lock by ROIPOLY.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The code should be like,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> figure;&nbsp;&nbsp;imagesc(rand(10,10));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> tobj = timer('TimerFcn','mroi_cursor(''circle'');','StartDelay',0.1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> start(tobj);&nbsp;&nbsp;[mask,x,y] = roipoly;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> delete(tobj);<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 30.05.01&nbsp;&nbsp;YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MROI, ROIPOLY, GETLINE, FIGURE, TIMER<br>
+<br>
+</body>
+</html>

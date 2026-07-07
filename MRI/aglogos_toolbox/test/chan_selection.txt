@@ -1,0 +1,87 @@
+[C98NM3 13OCT03 4x4 2mm V1/Musimol]
+ - some are good activation.
+ - remove 'movie1' and 'movie2' from chcfGrps.
+ - GRP.movie3.findch = [14 15];
+ - GRP.polar1.findch : difficult to select
+
+[G02NM1 17JUN03 4x4 1mm]
+ - good activation
+ - GRP.movie1.findch = [14];
+ - GRP.movie2.findch = [];
+ - GRP.movie3.findch = [4 6 14];
+
+[G97NM1 06AUG03 4x4 1mm]
+ - very good activation
+ - GRP.movie1.findch = [];
+ - GRP.movie2.findch = [];
+ - GRP.movie3.findch = [];
+
+[C98NM1 13AUG03 4x4 1mm]
+ - good activation
+ - GRP.movie1.findch = [12 15];
+ - GRP.movie2.findch = [12 15];
+ - GRP.movie3.findch = [12 15];
+
+[R97NM1 15AUG03 4x4 1mm]
+ - not bad
+ - GRP.movie1.findch = [2 4 8 13 15];
+ - GRP.movie2.findch = [4 8 10 13 15];
+ - GRP.movie2.findch = [4 6 8 10 13 15];
+
+[C98NM2 18SEP03 4x4 1mm]
+ - not bad
+ - GRP.movie1.findch = [7];  % can be []
+ - GRP.movie2.findch = [6];  % can be []
+ - GRP.movie3.findch = [];
+ - GRP.movie4.findch = [7];  % can be []
+ - GRP.movie5.findch = [7];  % can be []
+ - GRP.movie3.findch = [];
+
+[A98NM1 24SEP03 4x4 2mm JPL]
+ - not good
+ - GRP.movie2.findch = [1:10 12 16];
+ - GRP.movie3.findch = [1:10 12 14 16];
+ - GRP.movie4.findch = [1:11 14 16];
+ - GRP.movie5.findch = [1:11 14 16];
+ - GRP.movie6.findch = [1 3:10 16];
+ - GRP.movie7.findch = [1 3:10 16];
+ - GRP.movie7.findch = [1:11 16];
+
+[S02NM1 01OCT03 4x4 2mm JPLS]
+ - movie3 is not so good (suppression observed)
+ - movie4 is good
+ - may be better to remove 'movie3' from chcfGrps.
+ - GRP.movie3.findch = [1 3 4 5 7 9:11 14];
+ - GRP.movie4.findch = [2:3];
+
+[B02NM2 06OCT03 4x4 3mm JPLS]
+ - not so bad (suppression observed).
+ - GRP.movie4.findch = [3 5 6];
+ - GRP.movie5.findch = [];
+
+[C01NM1 10OCT03 4x4 2mm STS/IT]
+ - not good at all
+ - GRP.movie1.findch = [1 3:15];  % only 1 ch available...
+ - GRP.morph...finch : difficult to select.
+
+[C01NM2 22OCT03 5x3 3mm STS/IT]
+ - not so good
+ - GRP.movie1.findch = [2:4 8];
+ - GRP.movie2.findch = [2:4 7 8];
+ - GRP.movie3.findch = [3:4 7 8];
+ - GRP.movie4.findch = [3 7 8];
+ - GRP.polar1.findch : difficult to select
+
+[E02NM1 27OCT03 16x2 1mm Scotoma]
+ - pretty bad at all
+ - GRP.movie2.findch = [1:16];  % no activated channels
+ - GRP.movie3.findch = [1:15];  % only 1 ch available...
+
+[J97NM1 25JUN04 16x1 1mm V1]
+ - not so good
+ - GRP.movie1.findch = [1 2 4 5 7 9];
+ - GRP.movie2.findch = [1 2 4 8 9];
+ - GRP.movie3.findch = [4 9];
+ - GRP.movie4.findch = [2 4 9];
+ - GRP.movie5.findch = [2 4 8 9];
+

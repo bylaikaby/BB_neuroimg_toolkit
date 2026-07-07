@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showcscan</title>
+</head>
+<body>
+ SHOWCSCAN - Show control scans (e.g. epi13, tcImg, etc.)<br>
+&nbsp;&nbsp;SHOWCSCAN (SESSION, ScanType, ScanNo, varargin) - Shows all cscan fields<br>
+&nbsp;&nbsp;If the cScan matfile does not exist the function will load and analyze<br>
+&nbsp;&nbsp;all standard scans that may not even have event files etc. The<br>
+&nbsp;&nbsp;scans will be all saved under the cScan.mat file, with each scan<br>
+&nbsp;&nbsp;represented by one variable (epi13, tcImg, etc.).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWCSCAN() calls DSPCORIMG() and DSPFUSED().&nbsp;&nbsp;Optional arguments for those functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;can be passed as a pair of optional name and value.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSPFUSED() uses <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEF.SWCLIP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [0.1 0.9];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEF.SWCOLORBAR = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEF.SWGAMMA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0.7;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEF.SWLUTSIZE&nbsp;&nbsp;= 64;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEF.SWLUTSCALE = 1.1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To change those values, call SHOWSCAN() like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showscan(SESSION,ScanType,ScanNo,'SWCLIP',[0.1 0.3],'SWGAMMA',1.2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Those values also can be set in the description file like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSCAN.epi13{2}.showcscan.SWCLIP = [0.1 0.3];<br>
+ <br>
+&nbsp;&nbsp;Examples:<br>
+&nbsp;&nbsp;showcscan('n03ow1') -- will show Epi13 scans<br>
+&nbsp;&nbsp;showcscan('e04pb1') -- will show tcImg scans<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> showcscan('d02hm1','epi13',2);&nbsp;&nbsp;% will show CSCAN.epi13{2}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> showcscan('d02hm1','epi13',2,'SWCLIP',[0.1 0.9]);<br>
+ <br>
+&nbsp;&nbsp;NKL, 13.12.01<br>
+&nbsp;&nbsp;YM,&nbsp;&nbsp;08.05.07&nbsp;&nbsp;&nbsp;&nbsp;supports ARGS for dspcorimg()/dspfused().<br>
+&nbsp;&nbsp;YM,&nbsp;&nbsp;05.10.07&nbsp;&nbsp;&nbsp;&nbsp;rewrite to supports GLM stuff, not compatible to old data.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also sescscan dspcorimg dspglmimg dspfused<br>
+<br>
+</body>
+</html>

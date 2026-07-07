@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>expgetevt</title>
+</head>
+<body>
+ EXPGETEVT - Uses adf_info/dg_read to get all events of experiment ExpNo<br>
+&nbsp;&nbsp;EXPEVT = EXPGETEVT(SES,EXPNO) gets recorded events for SES/EXPNO.<br>
+&nbsp;&nbsp;EXPEVT = EXPGETEVT(DGZFILE)<br>
+&nbsp;&nbsp;NKL, 4.10.02<br>
+ <br>
+&nbsp;&nbsp;NOTES : 03.02.04&nbsp;&nbsp;YM<br>
+&nbsp;&nbsp;&nbsp;&nbsp;evt.interVolumeTime is given by DGZ and it may not be corrent some cases.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Use GETPVPARS to get a correct value from IMND/RECO/ACQP.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For awake MRI, jawpo is normally collected in dgz, but if needed,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;can be load from adfw, setting GRPP.jawpo = {'adfw',[4 5]};&nbsp;&nbsp;% chan4/5 as jaw/pow.<br>
+ <br>
+&nbsp;&nbsp;VERSION : 1.00 04.10.02 NKL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.01 03.02.04 YM&nbsp;&nbsp;use getpvpars() for imgtr. --> obsolete.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.02 13.02.04 YM&nbsp;&nbsp;improved speed x4 (2.5s-->0.6s for L00au2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.03 08.10.04 YM&nbsp;&nbsp;supports "Ses" as dgzfile.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.04 01.03.06 YM&nbsp;&nbsp;warns if obsp differs between dgz/adf.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.05 09.07.06 YM&nbsp;&nbsp;adds new events.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.06 06.10.06 YM&nbsp;&nbsp;supports eye/jawpo for awake MRI.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.07 13.03.07 YM&nbsp;&nbsp;supports 'MriFixate'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.08 22.05.07 YM&nbsp;&nbsp;returns 'systempar' also.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.09 05.12.07 YM&nbsp;&nbsp;bug fix on evt.systempar.<br>
+ <br>
+&nbsp;&nbsp;See also EXPGETPAR, GOTO, GETSES, CATFILENAME, GETGRP, GETEVTCODES<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADF_INFO, DG_READ, SELECTEVT, SELECTPRM, GETCLN<br>
+<br>
+</body>
+</html>

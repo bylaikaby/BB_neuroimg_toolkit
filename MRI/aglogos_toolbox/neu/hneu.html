@@ -1,0 +1,1229 @@
+
+
+
+
+<h1 style="font-style: italic;"><a name="HNEU_-_Help_for_neural_signal_processing"></a><small>HNEU - Help for neural signal processing (05.Dec.2007)</small></h1>
+
+
+
+<br>
+
+
+
+<div style="margin-left: 40px;">This help is organized as<br>
+
+
+
+<div style="margin-left: 40px;"><a href="#Preprocessing_for_Neurophysiology_Data">Preprocessing for Neurophysiology Data</a><br>
+
+
+
+<a href="#Visualization_of_Neurophysiology_Data">Visualization of Neurophysiology Data</a><br>
+
+
+
+Receptive Field Mapping by movie stimuli<br>
+
+
+
+Function list: &nbsp;<a href="#Functions_for_Signal_Extraction">Signal Extraction</a><br>
+
+
+
+Function list: &nbsp;<a href="#IO_Functions">IO Functions</a><br>
+
+Function list: &nbsp;<a href="#Functions_for_Visualization">Visualization</a><br>
+
+
+
+Function list: &nbsp;<a href="#Analysis_Utilities">Analysis Utilities</a><br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<div style="margin-left: 40px;">See also <a href="../evt/hevt.html">hevt</a> <a href="../neu/cln/hcln.html">hcln</a> <a href="../mri/hmri.htm">hmri</a> <a href="../toolbox/stc/hstc.html">hstc</a> <a href="../io/hio.html">hio</a> &nbsp;<a href="../docs/hgetstarted.html">hgetstarted</a> &nbsp;</div>
+
+
+
+<br>
+
+
+
+<div style="text-align: right;"><a href="#HNEU_-_Help_for_neural_signal_processing">Go To the TOP</a><br>
+
+
+
+</div>
+
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+<h3><a name="Preprocessing_for_Neurophysiology_Data"></a>Preprocessing for Neurophysiology Data</h3>
+
+
+
+<div style="text-align: left;"><br>
+
+
+
+</div>
+
+
+
+<table style="width: 717px; height: 32px; text-align: left; margin-right: auto; margin-left: 40px;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td style="background-color: rgb(255, 255, 204);"><small><span style="font-family: monospace;">&gt;&gt; Session = 'a98nmX';<br>
+
+
+
+&gt;&gt; goto(Session)<br>
+
+
+
+&gt;&gt; sesdumppar(Sessin) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp;% saving experiment parameters into "SesPar.mat"<br>
+
+
+
+&gt;&gt; sesgetcln(Session) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp;% creating Cln signal (decimated full-band signal)<br>
+
+
+
+&gt;&gt; sesclnspc(Session) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;% creating ClnSpc, spectgram of Cln<br>
+
+
+
+&gt;&gt; sesgetlfpmuaflt(Session) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;% computing Lfp/Gamma/Mua by band-pass filtering from Cln<br>
+
+
+
+&gt;&gt; sesgetspk(Session) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp;% extracting spikes from Cln, simply by
+threshoulding data<br>
+
+
+
+&gt;&gt;<br>
+
+
+
+&gt;&gt; sigload(Session,1,'Mua','ClnSpc') &nbsp; % loading extracted Mua and ClnSpc<br>
+
+
+
+&gt;&gt;<br>
+
+
+
+&gt;&gt; showchan(Mua) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; % plotting Mua<br>
+
+
+
+&gt;&gt; show(ClnSpc) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;% plotting ClnSpc</span></small></td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+<div style="text-align: left; margin-left: 40px;"><br>
+
+
+
+</div>
+
+
+
+<div style="margin-left: 40px;">Frequency bands for <span style="font-weight: bold;"> Gamma/Lfp/Mua/LfpLHM</span>&nbsp;can be defined in the description file like<br>
+
+
+
+<table style="text-align: left; width: 720px; height: 192px;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td style="background-color: rgb(255, 255, 204);"><small><span style="font-family: monospace;">ANAP.bands.Lfp&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;= [ &nbsp;0
+&nbsp;500];&nbsp;&nbsp;&nbsp;&nbsp;% entire "lfp" range<br>
+
+
+
+ANAP.bands.GammaL&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;= [ 24 &nbsp; 35];&nbsp;&nbsp;&nbsp;&nbsp;% gamm "lfp" range (unrectified)<br>
+
+
+
+ANAP.bands.GammaM&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;= [ 35 &nbsp; 80];&nbsp;&nbsp;&nbsp;&nbsp;% delta-theta (envelop)<br>
+
+
+
+ANAP.bands.GammaH&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;= [ 80 &nbsp;100];&nbsp;&nbsp;&nbsp;&nbsp;% alpha-beta (envelop)<br>
+
+
+
+ANAP.bands.Mid&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;= [100 &nbsp;400];&nbsp;&nbsp;&nbsp;&nbsp;% gamma (envelop)<br>
+
+
+
+ANAP.bands.Mua&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;= [400 3000];&nbsp;&nbsp;&nbsp; % spiking<br>
+
+
+
+ANAP.bands.lfpcutoff&nbsp;&nbsp;&nbsp; = 10;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; % Low pass filter after
+rectification<br>
+
+
+
+ANAP.bands.muacutoff&nbsp;&nbsp;&nbsp; = 100;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;% Low pass filter after
+rectification<br>
+
+
+
+ANAP.bands.samprate&nbsp;&nbsp;&nbsp; &nbsp;= 250;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;% Resample at 250Hz<br>
+
+
+
+      <br>
+
+
+
+% for backward compatibility<br>
+
+
+
+anap.bands.LfpL&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; = [ 1
+12];&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; % delta-theta (envelop)<br>
+
+
+
+anap.bands.LfpM&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; = [12
+24];&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; % alpha-beta (envelop)<br>
+
+
+
+anap.bands.LfpH&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; = [24 90];&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; % gamma (envelop)<br>
+
+
+
+anap.bands.Gamma&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; = [24
+90];&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; % gamm "lfp" range
+(unrectified)</span></small></td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+<br>
+
+
+
+Frequency bands for<span style="font-weight: bold;"> blp</span> is hard-coded in <a href="html_files/siggetblp.html">siggetblp</a> like<br>
+
+
+
+<table style="text-align: left; width: 730px; height: 59px;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td style="background-color: rgb(255, 255, 204);"><small><span style="font-family: monospace;">% ========================================================</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% WE MAY NEED TO PUT THIS BACK??? 24.11.2005 NKL</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% ========================================================</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 1}&nbsp;&nbsp; = {[&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 4] 'Delta'&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 2}&nbsp;&nbsp; = {[&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp; 8] 'Theta'&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 3}&nbsp;&nbsp; = {[&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp; 14] 'Alpha'&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 4}&nbsp;&nbsp; = {[&nbsp; 14&nbsp;&nbsp;&nbsp; 24] 'Beta'&nbsp;&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 5}&nbsp;&nbsp; = {[&nbsp; 24&nbsp;&nbsp;&nbsp; 35] 'GammaL'&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 6}&nbsp;&nbsp; = {[&nbsp; 35&nbsp;&nbsp;&nbsp; 80] 'GammaM'&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 7}&nbsp;&nbsp; = {[&nbsp; 80&nbsp;&nbsp; 100] 'GammaH'&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 8}&nbsp;&nbsp; = {[&nbsp;&nbsp; 0&nbsp;&nbsp; 100] 'LFP'&nbsp;&nbsp;&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{ 9}&nbsp;&nbsp; = {[ 100&nbsp;&nbsp; 400] 'MID'&nbsp;&nbsp;&nbsp;&nbsp; 'MID'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.band{10}&nbsp;&nbsp; = {[ 400&nbsp; 3000] 'MUA'&nbsp;&nbsp;&nbsp;&nbsp; 'MUA'};</span><br style="font-family: monospace;">
+
+
+
+      <br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.lBands&nbsp;&nbsp;&nbsp;&nbsp; = [1:8];&nbsp;&nbsp;&nbsp; % Bands in the LFP range</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">% info.mBands&nbsp;&nbsp;&nbsp;&nbsp; = [9:10];&nbsp;&nbsp; % Bands in the MUA range</span><br style="font-family: monospace;">
+
+
+
+      <br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.band{ 1}&nbsp;&nbsp; = {[&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 4] 'Delta'&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.band{ 2}&nbsp;&nbsp; = {[&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp; 8] 'Theta'&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.band{ 3}&nbsp;&nbsp; = {[&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp; 14] 'Alpha'&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.band{ 4}&nbsp;&nbsp; = {[&nbsp; 14&nbsp;&nbsp;&nbsp; 24] 'Beta'&nbsp;&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.band{ 5}&nbsp;&nbsp; = {[&nbsp; 24&nbsp;&nbsp;&nbsp; 90] 'Gamma'&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.band{ 6}&nbsp;&nbsp; = {[&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 90] 'LFP'&nbsp;&nbsp;&nbsp;&nbsp; 'LFP'};</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.band{ 7}&nbsp;&nbsp; = {[ 400&nbsp; 3000] 'MUA'&nbsp;&nbsp;&nbsp;&nbsp; 'MUA'};</span><br style="font-family: monospace;">
+
+
+
+      <br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.lBands&nbsp;&nbsp;&nbsp;&nbsp; = [1:6];&nbsp;&nbsp;&nbsp; % Bands in the LFP range</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.mBands&nbsp;&nbsp;&nbsp;&nbsp; = [7];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Bands in the MUA range</span><br style="font-family: monospace;">
+
+
+
+      <br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.lcutoff&nbsp;&nbsp;&nbsp; = 500;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Before splitting the LFP region (to avoid singularities)</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.mcutoff&nbsp;&nbsp;&nbsp; = 100;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Before splitting the MUA region (to avoid singularities)</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.NewFs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1000;&nbsp;&nbsp;&nbsp;&nbsp; % All signals will be resampled at 250Hz</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.lenvelop&nbsp;&nbsp; =&nbsp;&nbsp; 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % If zero do not rectify...</span><br style="font-family: monospace;">
+
+
+
+      <span style="font-family: monospace;">info.menvelop&nbsp;&nbsp; =&nbsp;&nbsp; 1;</span></small><br>
+
+
+
+      </td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+as of 2007.12, frequency bands looks like<small><br>
+</small> 
+<table style="text-align: left; width: 730px; height: 519px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="background-color: rgb(255, 255, 204);"><small><span style="font-family: monospace;">ANDREI_ARTHUR_STEFANO = 1;</span><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <span style="font-family: monospace;">if ANDREI_ARTHUR_STEFANO,</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 1}&nbsp;
+= {[&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 4] 'ep'&nbsp;&nbsp;&nbsp;
+'LFP',&nbsp; 0};&nbsp;&nbsp;&nbsp; % Evoked potential</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 2}&nbsp;
+= {[&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp; 12] 'stmnm' 'LFP',&nbsp;
+2};&nbsp;&nbsp;&nbsp; % Stim-related &amp; Neuromodulatory?</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 3}&nbsp;
+= {[&nbsp; 15&nbsp;&nbsp;&nbsp; 60] 'nm'&nbsp;&nbsp;&nbsp; 'LFP',&nbsp;
+4};&nbsp;&nbsp;&nbsp; % Stim-unrelated; Neuromodulatory</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 4}&nbsp;
+= {[&nbsp; 70&nbsp;&nbsp; 110] 'stm'&nbsp;&nbsp; 'LFP',&nbsp;
+4};&nbsp;&nbsp;&nbsp; % Stim-related; independent of MUA (50%)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 5}&nbsp;
+= {[&nbsp; 10&nbsp;&nbsp; 110] 'lfp'&nbsp;&nbsp; 'LFP',&nbsp;
+4};&nbsp;&nbsp;&nbsp; % Traditional LFPs</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 6}&nbsp; = {[ 400&nbsp; 3000] 'mua'&nbsp;&nbsp; 'MUA', 45};&nbsp;&nbsp;&nbsp; % Traditional Analog MUA</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; </span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;
+info.lBands&nbsp;&nbsp;&nbsp;&nbsp; =
+[1:5];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% Bands in the LFP range</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;
+info.mBands&nbsp;&nbsp;&nbsp;&nbsp; =
+[6];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% Bands in the MUA range</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">else&nbsp; </span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{
+1}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp; 4] 'Delta'&nbsp;&nbsp; 'LFP', 0};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{
+2}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp;&nbsp;
+4&nbsp;&nbsp;&nbsp;&nbsp; 8] 'Theta'&nbsp;&nbsp; 'LFP', 0};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 3}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp; 8] 'ThetaR'&nbsp; 'LFP', 2};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 4}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp; 14] 'Alpha'&nbsp;&nbsp; 'LFP', 3};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 5}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp; 14&nbsp;&nbsp;&nbsp; 24] 'Beta'&nbsp;&nbsp;&nbsp; 'LFP', 4};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 6}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp; 24&nbsp;&nbsp;&nbsp; 90] 'Gamma'&nbsp;&nbsp; 'LFP', 30};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{
+7}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp; 90] 'LFP'&nbsp;&nbsp;&nbsp;&nbsp; 'LFP', 0};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 8}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp; 90&nbsp;&nbsp; 130] 'LFPH'&nbsp;&nbsp;&nbsp; 'LFP', 30};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{ 9}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[&nbsp; 40&nbsp;&nbsp; 130] 'LFPN'&nbsp;&nbsp;&nbsp; 'LFP', 45};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; info.band{10}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {[ 400&nbsp; 3000] 'MUA'&nbsp;&nbsp;&nbsp;&nbsp; 'MUA', 45};</span><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;
+info.lBands&nbsp;&nbsp;&nbsp;&nbsp; =
+[1:9];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% Bands in the LFP range</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;
+info.mBands&nbsp;&nbsp;&nbsp;&nbsp; =
+[10];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% Bands in the MUA range</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">end;</span><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.lcutoff&nbsp;&nbsp;&nbsp; = 500;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Before splitting the LFP region (to avoid singularities)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.mcutoff&nbsp;&nbsp;&nbsp; = 100;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Before splitting the MUA region (to avoid singularities)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.NewFs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 250;&nbsp;&nbsp;&nbsp;&nbsp; % All signals will be resampled at 250Hz</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.NewFsTr&nbsp;&nbsp;&nbsp; = info.NewFs*0.08;</span><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <span style="font-family: monospace;">% parameters for FIR filter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.flttype&nbsp;&nbsp;&nbsp; = 'kaiser';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.lstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.mstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 50;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.hstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 50;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.dB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 60;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.passripple = 0.1;</span><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.NewFsTr&nbsp;&nbsp;&nbsp; = info.NewFs*0.08;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % 60dB decay width for above resampling</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.LowFs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 110;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % downsample low freq bands for filter stability</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.LowFsTr&nbsp;&nbsp;&nbsp; = 10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % 60dB decay width for low freq downsample</span><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <span style="font-family: monospace;">info.lenvelop&nbsp;&nbsp;&nbsp; = 1;</span></small></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Note that any members of "info" structure in <span style="font-weight: bold;">siggetblp</span> can be set in the desctipton file as <span style="font-weight: bold;">ANAP.siggetblp.xxxx</span> or <span style="font-weight: bold;">GRP.[grpname].anap.siggetblp.xxxx</span>.<br>
+
+
+
+</div>
+
+
+
+<br>
+
+
+
+<div style="text-align: right;"><a href="hneu.html#HNEU_-_Help_for_neural_signal_processing">Go To the TOP</a><br>
+
+
+
+</div>
+
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+<h3><a name="Visualization_of_Neurophysiology_Data"></a>Visualization of Neurophysiology Data</h3>
+
+
+
+<a href="html_files/nview.html">nview</a> can display continuous signals such as Cln, blp etc. &nbsp;<a href="html_files/spkview.html">spkview</a> can display spike timings in Spkt signal.<br>
+<div style="margin-left: 40px;"><br>
+<span style="font-family: monospace;">EXAMPLE :<br>
+&gt;&gt; nview(Session,GrpName,'blp');<br>
+&gt;&gt; spkview(Session,GrpName);<br>
+</span></div>
+<br>
+
+
+
+<div style="text-align: right;"><a href="hneu.html#HNEU_-_Help_for_neural_signal_processing">Go To the TOP</a><br>
+
+
+
+</div>
+
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+<h3>Receptive Field Mapping by movie stimuli</h3>
+
+
+
+<div style="margin-left: 40px;">To map receptive fields (RFs) of
+recording sites by movie clips, two additional signals (1. swap signal
+from OpenGL card, 2. photodiode signal placed over &nbsp;small
+flickering&nbsp;area (white rectangle) near the right edge of the movie
+clip) must be recored at the same time with neuronal signals.
+&nbsp;When generating Cln structure, <a href="../neu/cln/html_files/vdecmain.html">vdecmain</a> or <a href="../neu/cln/html_files/vclnmain.html">vclnmain</a> will be called automatically from <a href="../neu/cln/html_files/sesgetcln.html">sesgetcln</a> function and it attaches movie frame information into Cln structure as Cln.movie. &nbsp;<a href="html_files/sesgetrf.html">sesgetrf</a>
+averages movie frames around threshoulded neural data and generates
+VMua3 or VSdf3 structure (prefix of "V" and postfix of threshould).
+&nbsp;The extracted RF data can be visualized with <a href="../plt/html_files/showrf.html">showrf</a>
+function. &nbsp;Parameters for RF extraction can be set as
+ANAP.revcorr.xxx like following. &nbsp;TOFFSET of &nbsp;-50 to 0ms will
+show some RF structure for V1 recording.<br>
+</div>
+<div style="text-align: left; margin-left: 40px;">
+<table style="text-align: left; width: 589px; height: 60px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="background-color: rgb(255, 255, 204);"><small><span style="font-family: monospace;"></span><span style="font-family: monospace;">ANAP.revcor.TOFFSET &nbsp; &nbsp;= [0]; &nbsp;% Time onset in seconds for movie averaging</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.LFP_THR &nbsp; &nbsp;= [3]; &nbsp;% threshould for LFP</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.MUA_THR &nbsp; &nbsp;= [3]; &nbsp;% threshould for MUA</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;"></span></small><small><span style="font-family: monospace;">ANAP.revcor.Frame
+&nbsp; &nbsp; &nbsp;= 1;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;% For display
+purpose</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;"></span></small><small><span style="font-family: monospace;">ANAP.revcor.BadRFChan &nbsp;= [2 14 15];&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;% For display purpose</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.MovPos &nbsp; &nbsp; = [-1.8 -2.9 14 10.5]; &nbsp;% For display purpose</span></small><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<span style="font-family: monospace;">EXAMPLE :<br>
+&gt;&gt; sesgetcln(Session,GrpName);<br>
+&gt;&gt; sesgetblp(Session,GrpName);<br>
+&gt;&gt; seslfpmuaflt(Session,GrpName);<br>
+&gt;&gt; sesgetrf(Session,GrpName);<br>
+&gt;&gt; sesgrpmake(Session,GrpName,{'VMua3','VLfp3'});<br>
+&gt;&gt; showrf(Session,GrpName);<br>
+</span><br>
+</div>
+
+
+
+<br>
+
+
+
+<div style="text-align: right;"><a href="hneu.html#HNEU_-_Help_for_neural_signal_processing">Go To the TOP</a><br>
+
+
+
+</div>
+
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+<h3><a name="Functions_for_Signal_Extraction"></a>Functions for Signal Extraction</h3>
+
+
+
+<table style="text-align: left; width: 735px; height: 200px;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sesclnspc.html">sesclnspc (Ses, Exps/GrpName)</a></td>
+
+
+
+      <td>Generate <span style="font-weight: bold;">ClnSpc</span>, spectrograms for denoised signal Cln</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sesgetlfpmua.html">sesgetlfpmua (Ses, Exps/GrpName)</a></td>
+
+
+
+      <td>Generate <span style="font-weight: bold;">pMua/pLfp</span> etc, average spectrogram bands from ClnSpc</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sesgetlfpmuaflt.html">sesgetlfpmuaflt (Ses, Exps/GrpName)</a></td>
+
+
+
+      <td>Generate<span style="font-weight: bold;"> Gamma/Lfp/Mua/LfpLHM</span> by filter, rectify and decimate</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sesgetblp.html">sesgetblp (Ses, Exps/GrpName)</a></td>
+
+
+
+      <td>Separate the Cln signal into freqeuncy bands, <span style="font-weight: bold;">blp</span></td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sesgetspk.html">sesgetspk (Ses, Exps/GrpName)</a></td>
+
+
+
+      <td>Extract spike times and create Spike Density Functions, <span style="font-weight: bold;">Spkt/Sdf</span></td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sesspktrigavr.html">sesspktrigavr (Ses, Exps/GrpName)</a></td>
+
+
+
+      <td>Computes spike triggered averages of signal, <span style="font-weight: bold;">SpktCln</span> etc</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sesgetrf.html">sesgetrf (Ses, Exps/GrpName)</a></td>
+
+
+
+      <td>Compute RF of the cells by means of reverse correlation.</td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+<br>
+
+
+
+<table style="text-align: left; width: 736px; height: 228px;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sigspc.html">sigspc (Sig, &nbsp;WT, dT, NFFT, WinFct)</a></td>
+
+
+
+      <td>Make spectrogram from the given signal</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/getlfpmua.html">getlfpmua (Ses, ExpNo)</a></td>
+
+
+
+      <td>Extract power signals from ClnSpc (LfpPow,MuaPow)</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/getbandsflt.html">getbandsflt (Ses, ExpNo, SigNames)</a></td>
+
+
+
+      <td>Extract Gamma/Lfp/Mua/LfpLHM by bandpass filtering</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/expgetblp.html">expgetblp (Ses, ExpNo)</a></td>
+
+
+
+      <td>Separate the Cln signal into freqeuncy bands for SesName/ExpNo</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/getspk.html">getspk (Ses, ExpNo)</a></td>
+
+
+
+      <td>Extracts spikes and SDFs from Cln.dat</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/sigspktrigavr.html">sigspktrigavr (Spkt, Sig, MaxLagsInSec)</a></td>
+
+
+
+      <td>Computes spike-triggered average of SIG.</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/getrf.html">getrf (Ses, ExpNo)</a></td>
+
+
+
+      <td>Compute RF of the recording sites calling siggetrf() function</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/siggetrf.html">siggetrf (Sig,Threshold,...)</a></td>
+
+
+
+      <td>Compute site-RF structure by means of reverse correlation.</td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+<div style="text-align: right;"><a href="hneu.html#HNEU_-_Help_for_neural_signal_processing">Go To the TOP</a><br>
+
+
+
+</div>
+
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+<h3><a name="IO_Functions"></a>I/O Functions</h3>
+
+
+
+<div style="text-align: right;">
+<div style="text-align: left;">
+<table style="text-align: left; width: 730px; height: 88px;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../io/html_files/sigload.html">io/ sigload (See,ExpNo/GrpName,SigName)</a></td>
+
+
+
+      <td>Loads the signal for Ses, ExpNo/GrpName</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../io/html_files/adfinfo.html">io/ adfinfo (Ses, ExpNo)</a></td>
+
+
+
+      <td>read adf file information</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../io/html_files/adfread.html">io/ adfread (Ses, ExpNo, Obsp, Chan, beg, len)</a></td>
+
+
+
+      <td>read adf file</td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+</div>
+
+
+
+<br>
+
+<a href="hneu.html#HNEU_-_Help_for_neural_signal_processing">Go To the TOP</a><br>
+
+
+
+</div>
+
+
+
+<hr style="width: 100%; height: 2px;">
+<h3><a name="Functions_for_Visualization"></a>Functions for Visualization</h3>
+
+<br>
+
+<table style="text-align: left; width: 731px; height: 60px;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><a href="html_files/nview.html">nview (Ses,ExpNo/GrpName,SigName)</a></td>
+
+      <td>Displays neural signals</td>
+
+    </tr>
+
+    <tr>
+
+      <td><a href="html_files/spkview.html">spkview (Ses,ExpNo/GrpName,SigName)</a></td>
+
+      <td>Displays neural signals of spikes (Spkt)</td>
+
+    </tr>
+    <tr>
+      <td><a href="../plt/html_files/showrf.html">plt/ showrf (Ses,ExpNo/GrpName)</a></td>
+      <td>Show site-RF structure for different frequency bands</td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+<br>
+
+<div style="text-align: right;"><a href="#HNEU_-_Help_for_neural_signal_processing">Go To the TOP</a><br>
+
+</div>
+
+<hr style="width: 100%; height: 2px;">
+<h3><a name="Analysis_Utilities"></a>Analysis Utilities</h3>
+
+
+
+<table style="text-align: left; width: 737px; height: 328px;" border="1" cellpadding="2" cellspacing="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td><a href="html_files/siggetburst.html">siggetburst&nbsp;(Spkt,Nspikes,Duration_msec,MinInterval_msec)</a></td>
+
+
+
+      <td>Extract bursts from Spkt signal</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../evt/html_files/sesdumppar.html">evt/ sesdumppar (Ses, Exps/GrpName)</a></td>
+
+
+
+      <td>Get/Load all experimental parameteters of the session.</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../evt/html_files/expgetpar.html">evt/ expgetpar (Ses, ExpNo)</a></td>
+
+
+
+      <td>&nbsp;return experiment parameters, evt, pvpar and stm</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../evt/html_files/getsortpars.html">evt/ getsortpars (Ses, ExpNo)</a></td>
+
+
+
+      <td>&nbsp;Get parameters to reshape/sort signals with SIGSORT</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../evt/html_files/sigsort.html">evt/ sigsort (Sig, SortPar)</a></td>
+
+
+
+      <td>&nbsp;Sort out signals by given parameter</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../utils/html_files/goto.html">utils/ goto (Ses)</a></td>
+
+
+
+      <td>&nbsp;Read session file and go to the corresponding directory</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../utils/html_files/getgrp.html">utils/ getgrp (Ses, ExpNo/GrpName)</a></td>
+
+
+
+      <td>Returns the group-structure by experiment number or group name</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../utils/html_files/getanap.html">utils/ getanap (Ses, ExpNo)</a></td>
+
+
+
+      <td>Returns default analysis parameters</td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><a href="../utils/html_files/xform.html">utils/ xform (Sig, Method, Epoch)</a></td>
+
+
+
+      <td>converts Sig's unit accoring to 'Method' and 'Epoch'</td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+<br>
+
+
+
+<div style="text-align: right;"><a href="hneu.html#HNEU_-_Help_for_neural_signal_processing">Go To the TOP</a><br>
+
+
+
+</div>
+
+
+
+<hr style="width: 100%; height: 2px;">

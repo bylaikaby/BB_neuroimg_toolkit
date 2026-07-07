@@ -1,0 +1,268 @@
+function sescatexps(SESSION,GRPNAMES,SIGNAMES)
+%SESCATEXPS - concatinates 'experiments' and creates a new exp/group. 
+%  SESCATEXPS(SESSION,GRPNAMES,SIGNAMES) concatinate 'experiments' and
+%  creates a new exp/group.  This vertual group should be in the description
+%  file like following.
+%    GRP.estimL.exps = [31];
+%    GRP.estimL.catexps.exps = 'estim'; or [1:30]
+%    GRP.estimL.catexps.sigs = {'tcImg'};  % must be tcImg
+%
+%  EXAMPLE :
+%    >> sescatexps('rathx1','estimL')
+%
+%  VERSION :
+%    0.90 22.05.07 YM  pre-release
+%    0.91 28.05.07 YM  bug fix for expmkmodel().
+%
+%  See also CATEXPS EXPGETPAR GETTRIAL SESIMGLOAD
+
+if nargin == 0,  eval(sprintf('help %s',mfilename)); return;  end
+
+ARGS.ISUBSTITUDE             = 0;		% Get rid of magnetization-transients
+ARGS.IFILTER                 = 0;		% Filter w/ a small kernel
+ARGS.IFILTER_KSIZE           = 3;		% Kernel size
+ARGS.IFILTER_SD              = 1.5;		% SD (if half about 90% of flt in kernel)
+ARGS.IDETREND                = 0;		% Linear detrending
+ARGS.ITOSDU                  = 0;		% Convert to SD Units
+ARGS.ITMPFILTER              = 1;		% Reduce samp. rate by this factor
+ARGS.ITMPFLT_LOW             = 0.220;	% Reduce samp. rate by this factor
+ARGS.ITMPFLT_HIGH            = 0.005;  	% Remove slow oscillations
+ARGS.VERBOSE = 0;
+
+
+Ses = goto(SESSION);
+
+if nargin < 2,
+  GRPNAMES = getgrpnames(Ses);
+end
+if nargin < 3,
+  SIGNAMES = { 'tcImg' };
+end
+if ischar(GRPNAMES),  GRPNAMES = { GRPNAMES };  end
+if ischar(SIGNAMES),  SIGNAMES = { SIGNAMES };  end
+
+
+fprintf('%s %s:\n',datestr(now,'HH:MM:SS'),mfilename);
+
+for N = 1:length(GRPNAMES),
+  grp = getgrp(Ses,GRPNAMES{N});
+  anap = getanap(Ses,GRPNAMES{N});
+  ARGS.ITMPFLT_LOW   = anap.mareats.ICUTOFF;
+  ARGS.ITMPFLT_HIGH  = anap.mareats.ICUTOFFHIGH;
+  if ARGS.ITMPFLT_LOW | ARGS.ITMPFLT_HIGH,
+    ARGS.ITMPFILTER = 1;
+  end;
+
+  if ~isfield(grp,'catexps'),  continue;  end
+  if ~isfield(grp.catexps,'exps'),  continue;  end
+  if isempty(grp.catexps.exps),  continue;  end
+  if ischar(grp.catexps.exps),
+    srcgrp = getgrp(Ses,grp.catexps.exps);
+    grp.catexps.exps = srcgrp.exps;
+  end
+  if ~isfield(grp.catexps,'sigs') | isempty(grp.catexps.sigs),
+    grp.catexps.sigs = SIGNAMES;
+  end
+  if ischar(grp.catexps.sigs),  grp.catexps.sigs = { grp.catexps.sigs };  end
+  if ~isfield(grp.catexps,'gettrial'),
+    grp.catexps.gettrial.status = 0;
+  end
+
+  grp.catexps.gettrial.trial2obsp = 1;       % must be 1, otherwise sesareats() won't work
+  grp.catexps.gettrial.Xmethod    = 'none';  % must be 'none'
+
+  
+  EXPS = grp.catexps.exps;
+  SIGS = grp.catexps.sigs;
+  for S = 1:length(SIGS),
+    fprintf(' %s %s (nexps=%d): ',grp.name,SIGS{S},length(EXPS));
+    oSig = []; oPar = [];
+    for iExp = 1:length(EXPS),
+      if mod(iExp,10) == 0,
+        fprintf('%d',iExp);
+      else
+        fprintf('.');
+      end
+      iSig = sigload(Ses,EXPS(iExp),SIGS{S});
+      if strcmpi(SIGS{S},'tcImg'),
+        iSig = mimgpro(iSig,ARGS);
+      end;
+      
+      iPar = expgetpar(Ses,EXPS(iExp));
+      if grp.catexps.gettrial.status > 0,
+        sPar = getsortpars(Ses,EXPS(iExp));
+        tmpanap.gettrial = grp.catexps.gettrial;
+        iSig = gettrial(iSig,tmpanap);
+        iPar = subGetTrial(sPar,iPar,iSig,tmpanap);
+      end
+      oSig = subCatSig(oSig,iSig,grp);
+      oPar = subCatPar(oPar,iPar,oSig);
+      clear iSig iPar sPar;
+    end
+    fprintf(' done.\n');
+    ParName = sprintf('exp%04d',grp.exps(1));
+    eval(sprintf('%s = oPar;',ParName));
+    save('SesPar.mat',ParName,'-append');
+    eval(sprintf('clear %s;',ParName));
+    sigsave(Ses,grp.exps(1),SIGS{S},oSig);
+    clear oSig;
+  end
+end
+
+
+return
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function iPar = subGetTrial(sPar,iPar,iSig,ANAP)
+
+while iscell(iSig),  iSig = iSig{1};  end
+
+iPar.pvpar = iPar.pvpar;
+iPar.evt   = iPar.evt;
+iPar.stm   = iSig.stm;
+
+switch iSig.dir.dname,
+ case {'tcImg','ttcImg'}
+  TLEN_SEC = size(iSig.dat,4) * iSig.dx;
+ otherwise
+  TLEN_SEC = size(iSig.dat,1) * iSig.dx;
+end
+NTRIALS = round(TLEN_SEC/iSig.dx/iSig.sigsort.len_pts);
+if ~isempty(iPar.pvpar),
+  %iPar.pvpar.nt = iSig.sigsort.len_pts;
+  iPar.pvpar.nt = round(TLEN_SEC / iPar.pvpar.imgtr);
+end
+
+if isfield(ANAP.gettrial,'trial2obsp') & ANAP.gettrial.trial2obsp > 0,
+  if ~isempty(iPar.evt),
+    trig_msec = iPar.evt.interVolumeTime/iPar.evt.numTriggersPerVolume;
+    obs = [];
+    obs.adflen = 0;
+    obs.beginE = 0;
+    obs.endE   = TLEN_SEC*1000;
+    obs.mri1E  = [];
+    obs.trialE = [];
+    obs.fixE   = [];
+    %obs.t = [];
+    %obs.v = iPar.stm.v{1};
+    obs.trialID = [0:NTRIALS-1];
+    obs.trialCorrect = ones(1,NTRIALS);
+    obs.times.begin = 0;
+    obs.times.end   = TLEN_SEC*1000;
+    obs.times.ttype = [0:NTRIALS-1]*iSig.sigsort.len_pts*iSig.dx*1000;
+    obs.times.stm   = iPar.stm.time{1}*1000;
+    obs.times.mri   = [0:round(TLEN_SEC*1000/trig_msec)-1]*trig_msec;
+    obs.params.prm     = sPar.trial.prmvals;
+    obs.params.stmid   = iPar.stm.v{1};
+    obs.params.trialid = obs.trialID;
+    obs.params.stmdur  = iPar.stm.dt{1}(1:length(iPar.stm.v{1}))/iPar.evt.interVolumeTime*1000;
+    obs.params.trialCorrect = obs.trialCorrect;
+    obs.origtimes = [];
+    obs.eye = [];
+    obs.jawpo = [];
+    obs.status = 1;
+    
+    iPar.evt.obs = { obs };
+    iPar.evt.tfactor = 1;
+  end
+else
+  keyboard
+end
+
+
+return
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function oPar = subCatPar(oPar,iPar,oSig)
+if isempty(oPar),  oPar = iPar;  return;  end
+
+if ~isempty(oPar.pvpar),
+  oPar.pvpar.nt = oPar.pvpar.nt + iPar.pvpar.nt;
+end
+
+
+if ~isempty(oPar.evt),
+  oPar.evt.dgzfile = '';
+  TOFFS_MSEC = oPar.evt.obs{1}.endE;
+
+  iOBS = iPar.evt.obs{1};
+  oOBS = oPar.evt.obs{1};
+  oOBS.endE   = oOBS.endE + iOBS.endE;
+  oOBS.trialID = cat(2,oOBS.trialID,iOBS.trialID);
+  oOBS.trialCorrect = cat(2,oOBS.trialCorrect,iOBS.trialCorrect);
+  oOBS.times.end   = oOBS.times.end + iOBS.times.end;
+  oOBS.times.ttype = cat(2,oOBS.times.ttype,iOBS.times.ttype+TOFFS_MSEC);
+  oOBS.times.stm   = cat(2,oOBS.times.stm, iOBS.times.stm+TOFFS_MSEC);
+  oOBS.times.mri   = cat(2,oOBS.times.mri, iOBS.times.mri+TOFFS_MSEC);
+  oOBS.params.prm = cat(2,oOBS.params.prm(:)',iOBS.params.prm(:)');
+  oOBS.params.stmid = cat(2,oOBS.params.stmid,iPar.stm.v{1});
+  oOBS.params.trialid = oOBS.trialID;
+  oOBS.params.stmdur = cat(2,oOBS.params.stmdur,iOBS.params.stmdur);
+  oOBS.params.trialCorrect = oOBS.trialCorrect;
+  oPar.evt.obs = { oOBS };
+end
+
+oPar.stm = oSig.stm;  
+
+  
+return
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function oSig = subCatSig(oSig,iSig,NewGrp)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+if isempty(oSig),
+  oSig = iSig;
+  return;
+end
+
+if iscell(iSig),
+  for N = 1:length(iSig),
+    oSig{N} = subCatSig(oSig{N},iSig{N},NewGrp);
+  end
+  return;
+end
+
+if ~isfield(oSig,'catExpNo'),
+  oSig.ExpNo    = NewGrp.exps;
+  oSig.grpname  = NewGrp.name;
+  oSig.catExpNo = iSig.ExpNo;
+else
+  oSig.catExpNo(end+1:end+length(iSig.ExpNo)) = iSig.ExpNo;
+  oSig.catExpNo = sort(oSig.catExpNo);
+end
+
+switch lower(oSig.dir.dname),
+ case {'tcimg'}
+  % tcImg.dat as (x,y,z,t)
+  TOFFS_SEC = size(oSig.dat,4)*oSig.dx;
+  oSig.dat = cat(4,oSig.dat,iSig.dat);
+ otherwise
+  % assume 1st dimension as 'time'
+  TOFFS_SEC = size(oSig.dat,1)*oSig.dx;
+  oSig.dat = cat(1,oSig.dat,iSig.dat);
+end
+
+
+if isfield(oSig.stm,'ntrials'),
+  oSig.stm.ntrials = oSig.stm.ntrials + iSig.stm.ntrials;
+end
+seli = 1:length(iSig.stm.v{1});
+selo = 1:length(oSig.stm.v{1});
+if isfield(oSig.stm,'tvol'),
+    TOFFS_VOL= sum(oSig.stm.tvol{1}(selo));
+end;
+
+oSig.stm.v{1}    = cat(2,oSig.stm.v{1},   iSig.stm.v{1});
+oSig.stm.val{1}  = cat(2,oSig.stm.val{1}, iSig.stm.val{1});
+oSig.stm.dt{1}   = cat(2,oSig.stm.dt{1},  iSig.stm.dt{1});
+oSig.stm.t{1}    = cat(2,oSig.stm.t{1}(selo),   iSig.stm.t{1}(seli) + TOFFS_SEC);
+if isfield(oSig.stm,'tvol'),
+  oSig.stm.tvol{1} = cat(2,oSig.stm.tvol{1}(selo),iSig.stm.tvol{1}(seli) + TOFFS_VOL); 
+end;
+oSig.stm.time{1} = cat(2,oSig.stm.time{1}(selo),iSig.stm.time{1}(seli) + TOFFS_SEC);
+
+
+return

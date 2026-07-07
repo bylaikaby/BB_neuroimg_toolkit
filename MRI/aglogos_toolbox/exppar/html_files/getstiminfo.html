@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>getstiminfo</title>
+</head>
+<body>
+ GETSTIMINFO - Returns information regarding individual stimuli<br>
+&nbsp;&nbsp;GETSTIMINFO (SesName,GrpName/ExpNo) returns information regarding the<br>
+&nbsp;&nbsp;stimuli within an observation period for SesName and group<br>
+&nbsp;&nbsp;"GrpName" or "ExpNo".<br>
+ <br>
+&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getstiminfo('c01ph1',17)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;par = getsortpars('c01ph1',17)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[IDX,PAR] = findstimpar(par,0);<br>
+&nbsp;&nbsp;VERSION : 0.90 18.04.04 YM&nbsp;&nbsp;&nbsp;&nbsp;first release<br>
+ <br>
+&nbsp;&nbsp;See also GETSORTPARS, FINDSTIMPAR, GETTRIALINFO<br>
+<br>
+</body>
+</html>

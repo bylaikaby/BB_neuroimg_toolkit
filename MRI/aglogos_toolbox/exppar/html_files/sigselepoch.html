@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sigselepoch</title>
+</head>
+<body>
+ SIGSELEPOCH - Select Epoch of Signal (blank, nonblank, stimXX, triaXX)<br>
+&nbsp;&nbsp;SIG = SIGSELEPOCH(SIG,EPOCH) cut out the signal in EPOCH using GETSORTPARS and<br>
+&nbsp;&nbsp;SIGSORT.<br>
+ <br>
+&nbsp;&nbsp;SIG = SIGSELEPOCH(SIG,EPOCH,SORTPAR) does the same thing using<br>
+&nbsp;&nbsp;SORTPAR which is usually returned by GETSORTPARS.<br>
+ <br>
+&nbsp;&nbsp;As EPOCH, 'stimulus0', 'stimulus1',... or 'trial0',<br>
+&nbsp;&nbsp;'trial1',... are avialble.&nbsp;&nbsp;To see stimlus/trial information,<br>
+&nbsp;&nbsp;run GETSTIMINFO(SES,EXPNO/GRPNAME) and GETTRIALINFO(SES,EXPNO/GRPNAME).<br>
+ <br>
+&nbsp;&nbsp;VERSION : 0.90 22.04.04 YM&nbsp;&nbsp;first release<br>
+ <br>
+&nbsp;&nbsp;See also GETSTIMINFO, GETTRIALINFO, GETSORTPARS, SIGSORT<br>
+<br>
+</body>
+</html>

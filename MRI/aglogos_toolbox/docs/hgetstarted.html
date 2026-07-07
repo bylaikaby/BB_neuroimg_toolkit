@@ -1,0 +1,444 @@
+
+<h1><a name="HGETSTARTED_-_Help_to_Get_Started"></a><span style="font-style: italic;">HGETSTARTED -- Help to Get Started (22.Nov.2007)</span></h1>
+<div style="margin-left: 40px;">This help tells how to get started with AGLOGO analysis package.<br>
+</div>
+<div style="margin-left: 40px;">Analsys flow can be like&nbsp;&nbsp;&nbsp; <br>
+</div>
+<ol style="margin-left: 40px;">
+  <li><a href="#Raw_data_preparation">Raw data preparation</a> (data conversion, copy of raw data to user's disk etc)</li>
+  <li><a href="#Preparing_a_session_describing_file">Preparing a description file</a></li>
+  <li>Loading experiment information (DGZ, acqp/reco, stm etc.)</li>
+  <li>Loading MRI data (2dseq)</li>
+  <li>Loading neural signals (ADF/ADFW) into matlab format.</li>
+  <li>Preprocessing MRI data (roiTs/troiTs)</li>
+  <li>Preprocessing neural data (ClnSpc, blp Spkt etc.)</li>
+  <li>Statistical analysis (corr./glm analysis)</li>
+  <li>Displaying results (mview(), nview()).</li>
+</ol>
+<div style="margin-left: 40px;">For typical MRI session, the program shuold be run like<br>
+<div style="margin-left: 40px; font-family: monospace;"><small>&gt;&gt; SES = 'XyzAbc';<br>
+&gt;&gt; sesdumppar(SES);&nbsp;&nbsp;&nbsp; &nbsp; % loading experiment information<br>
+&gt;&gt; sesascan(SES); &nbsp; &nbsp; &nbsp; &nbsp;% loading anatomy scans<br>
+&gt;&gt; sesimgload(SES);&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;% loading 2dseq as matlab format as <span style="font-weight: bold;">tcImg</span><br>
+&gt;&gt; mroi(SE); &nbsp;pause; &nbsp;&nbsp;&nbsp;&nbsp;% define ROIs<br>
+&gt;&gt; sesareats(SES); &nbsp; &nbsp; &nbsp;&nbsp;% preprocessing MRI time courses for ROIs as <span style="font-weight: bold;">roiTs</span><br>
+&gt;&gt; sesgettrial(SES); &nbsp; &nbsp;&nbsp;% split roiTs into trials if required, &nbsp;<span style="font-weight: bold;">troiTs</span><br>
+&gt;&gt; sesgrpmake(SES); &nbsp; &nbsp; &nbsp;% average signals over the group<br>
+&gt;&gt; sesgroupcor(SES); &nbsp; &nbsp; % correlation analysis to roiTs/troiTs<br>
+&gt;&gt; sesgroupglm(SES); &nbsp; &nbsp; % glm analysis to roiTs/troiTs<br>
+&gt;&gt; sesgetmask(SES); &nbsp; &nbsp; &nbsp;% create some masking data if required<br>
+&gt;&gt; mview(SES,GrpName); &nbsp;&nbsp;% see results<br>
+</small></div>
+</div>
+<div style="margin-left: 40px;">If neural data,<br>
+<div style="margin-left: 40px; font-family: monospace;"><small>&gt;&gt; sesclnadjevt(SES); &nbsp; &nbsp;% detect timings of gradient noises (only for MRI)<br>
+&gt;&gt; sesgetcln(SES); &nbsp; &nbsp; &nbsp;&nbsp;% loading ADF/ADFW as <span style="font-weight: bold;">Cln</span> with denoising/decimation<br>
+&gt;&gt; sesgetblp(SES); &nbsp; &nbsp; &nbsp;&nbsp;% extract bands from <span style="font-weight: bold;">Cln</span> as <span style="font-weight: bold;">blp<br>
+</span>&gt;&gt; sesgetspk(SES); &nbsp; &nbsp; &nbsp;&nbsp;% extract spikes from Cln as <span style="font-weight: bold;">Spkt/Sdf<br>
+</span>&gt;&gt; sesgrpmake(SES); &nbsp; &nbsp; &nbsp;% average signals over the group<br>
+&gt;&gt; nview(SES,GrpName); &nbsp;&nbsp;% see results</small></div>
+</div>
+<div style="margin-left: 40px;">See also<br>
+</div>
+<div style="margin-left: 80px;"><a href="../atlas/hatlas.html">hatlas</a>&nbsp;&nbsp; &nbsp;Viewer for monkey MRI and Nissle staining<br>
+<a href="../neu/cln/hcln.html">hcln</a>&nbsp;&nbsp; &nbsp;&nbsp; Cleaning gradient noises from neural signals<br>
+<a href="../exppar/hexppar.html">hexppar</a> &nbsp; &nbsp; &nbsp;Event (dgz) related stuff<br>
+<a href="../io/hio.html">hio</a> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;IO functions<br>
+<a href="../lgnv1/hlgnv1.html">hlgnv1</a> &nbsp;&nbsp;LGN-V1 project<br>
+<a href="../lido/hlido.html">hlido</a> &nbsp;&nbsp; &nbsp;Lidocaine project<br>
+<a href="../mri/hmri.htm">hmri</a> &nbsp;&nbsp;&nbsp;&nbsp; MRI related stuff<br>
+<a href="../manganese/hmn.html">hmn</a> &nbsp;&nbsp; &nbsp; Manganese project<br>
+<a href="../microstimulation/hmicrostim.html">hmicrostim</a> &nbsp; &nbsp; &nbsp; Microstimulation project<br>
+<a href="../mrVistaUtils/hmrVistaUtils.html">hmrVistaUtils</a> &nbsp;&nbsp; export utilities for mrVista package<br>
+<a href="../neu/hneu.html">hneu</a> &nbsp;&nbsp;&nbsp; Neural signal related stuff<br>
+<a href="../stc/hstc.html">hstc</a> &nbsp;&nbsp;&nbsp;&nbsp; Spike triggered covariace/average<span style="text-decoration: underline;"></span><br>
+<span style="text-decoration: underline;"></span></div>
+<br>
+<div style="text-align: right;"><a href="#HGETSTARTED_-_Help_to_Get_Started">Back to TOP</a><br>
+</div>
+<hr style="width: 100%; height: 2px;">
+<h2><a name="Raw_data_preparation"></a>Raw data preparation</h2>
+Many types of data file will be created after your data
+acquisition.&nbsp; THERE IS NO PERSON TO TAKE CARE OF DATAFILES OTHER
+THAN YOURSELF.&nbsp; Those files may be deleted by someone else because
+of disk space problem to recover from computer crash. It is very very
+important to copy/move datafile after your experiment.<br>
+According to data collection you made, following datafiles will be created.<br>
+<div style="margin-left: 40px;"><small><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; </span><span style="font-weight: bold; font-family: monospace;">.evt</span><span style="font-family: monospace;">(</span><span style="font-weight: bold; font-family: monospace;">dgz</span><span style="font-family: monospace;">),.emd,.spk,.adf&nbsp; : event timings etc. &nbsp;: &nbsp;/usr/data/ in QNX</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; </span><span style="font-weight: bold; font-family: monospace;">.adfw&nbsp;</span><span style="font-family: monospace;">&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;: analog waveforms &nbsp; &nbsp;:
+&nbsp;Windows running WinStreamer</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; </span><span style="font-weight: bold; font-family: monospace;">.stm,.pdm,.hst,.rfp </span><span style="font-family: monospace;">&nbsp; &nbsp; &nbsp; : stimulus parameters : &nbsp;Windows running Stim/Stimcon</span><br style="font-family: monospace;">
+</small></div>
+Target directory of raw data must be organized as<span style="font-weight: bold;"></span><br>
+<div style="margin-left: 40px;">.dgz .adfw must be stored in "/xxxx/SESSION_NAME".<br>
+</div>
+<div style="margin-left: 40px;">.stm/pdm/hst/rfp must be stored in "/xxxx/SESSION_NAME/stmfiles".<br>
+</div>
+<div style="margin-left: 40px;">&nbsp;MRI raw data must be sored in "yyyy/SESSION_NAME".<br>
+</div>
+Note that dgz/adfw/stm etc can be in the same session directory as MRI
+data. &nbsp;MRI raw data (2dseq, acqp/reco etc) can be found usually in
+"//wks8/guest/SESSION_NAME" (4.7T) or "//wks6/guest/SESSION_NAME" (7T).<br>
+<br>
+<span style="font-weight: bold;">[TO DO IN QNX]</span><br>
+<div style="margin-left: 40px;">1.&nbsp;&nbsp;&nbsp; Run a shell<br>
+2.&nbsp;&nbsp;&nbsp; Mount or Move to your own data directory, NOT INSIDE QNX<br>
+3.&nbsp;&nbsp;&nbsp; Run convdata to compile evt/emd/spk into <span style="font-weight: bold;">dgz</span> file.<br>
+4.&nbsp;&nbsp;&nbsp; Move all relevant file to your directory.<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Example)<br>
+<small><span style="font-family: monospace;">[d2n3:lab] cd /usr/lab/projects/YOUR_DIR&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; % move to your own directory</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">[d2n3:YOUR_DIR] convdata
+filename&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; % generate .dgz in YOUR_DIR</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">[d2n3:YOUR_DIR] mv /usr/data/evtdat/YOURFILE.*&nbsp; .&nbsp;&nbsp;&nbsp; % moving .evt to YOUR_DIR</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">[d2n3:YOUR_DIR] mv /usr/data/spkdat/YOURFILE.*&nbsp; .&nbsp;&nbsp;&nbsp; % moving .spk to YOUR_DIR</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">[d2n3:YOUR_DIR] mv /usr/data/emdat/YOURFILE.*&nbsp; .&nbsp;&nbsp; &nbsp; % moving .emd to YOUR_DIR</span><br style="font-family: monospace;">
+</small></div>
+<br>
+<span style="font-weight: bold;">[TO DO IN WINSTREAMER]</span><br style="font-weight: bold;">
+<div style="margin-left: 40px;">1.&nbsp;&nbsp;&nbsp; Run Korn-shell (MKS toolkit)<br>
+2.&nbsp;&nbsp;&nbsp; Go to the directory where ADFW stored.<br>
+3.&nbsp;&nbsp;&nbsp; Run convadfw to convert raw ADFW to processed <span style="font-weight: bold;">ADFW</span>.<br>
+4.&nbsp;&nbsp;&nbsp; Move ADFW into your own directory.<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Due to machine performance, data
+collection, and conversion (reading/writing/copying whatever causes
+disk access) must be done exclusively, otherwise heavy disk access
+destroys data collection.<br>
+<br>
+Example)<br>
+<small><span style="font-family: monospace;">[F:/adfdat] mkdir
+cvt&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;% make sure cvt
+directory exists</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">[F:/adfdat] convadfw YOURFILE.*&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;% convert ADFW</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">[F:/adfdat] mv cvt/YOURFILE.*&nbsp; YOUR_DRV/YOUR_DIR&nbsp;&nbsp;&nbsp; % move converted ADFW</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">[F:/adfdat] mv YOURFILE.*&nbsp; YOUR_DRV/YOUR_DIR/raw&nbsp;&nbsp;&nbsp; % move the originals, if need</span><br style="font-family: monospace;">
+</small></div>
+<br>
+<br>
+<span style="font-weight: bold;">[TO DO IN STIM COMPUTER]</span><br style="font-weight: bold;">
+<div style="margin-left: 40px;">1.&nbsp;&nbsp;&nbsp; Go to MriStim/params directory.<br>
+2.&nbsp;&nbsp;&nbsp; Move <span style="font-weight: bold;">.stm/.pdm/.hst/.rtp/.prt </span>to your own data direcoty.<br>
+3.&nbsp;&nbsp;&nbsp; If receptive field file (<span style="font-weight: bold;">.rfp</span>) exists, then move it too (it is usually in MriStim/params/rfpfiles).<br>
+</div>
+<br>
+<div style="margin-left: 40px;">Note that MriSim/params directory may
+differ from setup to setup.&nbsp; For example, it is
+D:\Mri\MriStim\params for win26 (as of 5/30/2005).<br>
+</div>
+<br>
+<div style="text-align: right;"><a href="#HGETSTARTED_-_Help_to_Get_Started">Back to TOP</a><br>
+</div>
+<hr style="width: 100%; height: 2px;">
+<h3><a name="Preparing_a_session_describing_file"></a>Preparing a session describing file</h3>
+To analyze data, the AGLOGO package requires a file describing about
+the experiment session. &nbsp;Each session should have its own
+description file. &nbsp;A session is named like animal nubers and
+experiment identification characters, usually like M02lx1 where M02 as
+animal number, lx1 as experiment ID. &nbsp;A template for description
+file is found &nbsp;as "ana/@SessionTemplate.m" and this can be copied
+as SESSION_NAME.m to modify. &nbsp;"ana" directory also has lots of
+examples. &nbsp;For grammer tesing,&nbsp;sescheck() or sescheckLv2()
+can be used.<br>
+<br>
+Session files are suppposed to have direcory settings, analysis&nbsp;parameters, data filenames and so on.<br>
+<div style="margin-left: 40px;">"SYSP" sets data direcories for adf/adfw and 2dseq.<br>
+"ANAP" sets analysis parameters for the session.<br>
+"ASCAN" sets information about anatomical scans.<br>
+"CSCAN" sets information about basic epi13 scans.<br>
+"GRPP"&nbsp; sets default parameters for all groups.&nbsp; If each
+group has the same parameter(s), then programs will overwrite values by
+"GRPP" and use values by group's own.<br>
+"GRP.xxx" sets experimet information for each group (repetition of the same data collection, experiment).<br>
+"EXPP" provides filename, scan/reco number for each data collection.<br>
+</div>
+<br>
+<br>
+Here is an example for the session ABC.def<br>
+<div style="margin-left: 40px;">
+<table style="text-align: left; background-color: rgb(255, 255, 204); width: 527px; height: 1776px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><small><span style="font-family: monospace;">%ABCdef - Experiment Aim here<br>
+% SESSION : AGCdef in the MR-Room<br>
+% EXPDATE : dd.mm.yy<br>
+% NOTES: whatever...<br>
+      <br>
+%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% basic information : data directories, session quality</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">SYSP.DataNeuro = '//Win49/M/DataNeuro/';&nbsp; % dir. for adf/adfw/dgz</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">SYSP.DataMri = '//Wks8/guest/nmr/';&nbsp;&nbsp;&nbsp;&nbsp; % dir. for 2dseq</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">SYSP.dirname = 'ABC.def';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.Quality = -1; % Percent (all exps good activation)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% CATEGORIES (CTG) OF&nbsp; EXPS/GROUPS/SIGS, if exist or needed</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% CTG.exclGrps = ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% CTG.inclGrps = ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% CTG.rfGrps{X} = ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% CTG.chcfGrps{X} = ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% CTG.winGrps{X} = ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% CTG.ImgGrps{X} = ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% CTG.ImgSpoGrps = ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% default analysis parameters : see also getses.m/getanap.m</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% this must be overwritten in each group, if different.</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% ANAP.xxxx = ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% MOVIE analysis (if exist) : THIS MUST BE SET CAREFULLY.</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.Frame&nbsp; = 1;&nbsp; % For display purposes</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.TOFFSET&nbsp; = [0];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.LFP_THR&nbsp; = [3];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.MUA_THR&nbsp; = [3];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.BadRFChan = [];&nbsp; % For display purposes</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.revcor.MovPos&nbsp; = [-2.2 -3.6 20 15];&nbsp; % [centx centy width height]</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%ANAP.revcor.NO_AVG&nbsp; = 2000;&nbsp; % see also getrf.m</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% COHERENCE / CONTRAST analysis (if exist) : THIS MUST BE SET CAREFULLY.</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.confunc.maxchan = 16;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.confunc.eledist = 2; % 2mm</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ANAP.confunc.eleconfig = [ 01 02 03 04; ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 05 06 07 08; ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 09 10 11 12; ...</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13 14 15 16];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% ROI for MRI experiments, if exist or needed, then put here</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% brain-ROI must be defined</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% test-ROI should be defined, because if exists it's used to test</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% scan-stability</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% All roi should be with lower case</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% model roi is the one we may use for xcor analysis</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ROI.groups =
+{'all'};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% SuperAvg (see HROI)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ROI.names = {'brain'; 'ele'; 'v1'; 'v2'; 'test'}; % Define desired ROIs</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ROI.model =
+'ele';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% Group to use as model</span><br style="font-family: monospace;">
+      </small><small><span style="font-family: monospace;">&nbsp;</span></small><br style="font-family: monospace;">
+      <small><span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% ANATOMY scans (if exist gefi/mdeft/ir/msme)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% PLEASE MAKE SURE THE ELECTRODE POSITION AND SLICE IS 100% CORRECT</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.gefi{1}.info&nbsp; = 'Electrode localization scan';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.gefi{1}.scanreco = [1 1];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.gefi{1}.imgcrop = [128 80 136 88];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.mdeft{1}.info&nbsp; = 'Anatomy mdeft';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.mdeft{1}.scanreco = [2 1];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.mdeft{1}.imgcrop = [128 80 136 88];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.mdeft{2}.info&nbsp; = 'Anatomy mdeft';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.mdeft{2}.scanreco = [12 1];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.mdeft{2}.imgcrop = [128 80 136 88];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.ir{1}.info&nbsp; = 'Anatomy ir';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.ir{1}.scanreco = [5 1];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ASCAN.ir{1}.imgcrop&nbsp; = [128 80 136 88];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% EPI13 : basic functional scans (if exist)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">CSCAN.epi13{1}.info&nbsp; = 'Polars Stim';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">CSCAN.epi13{1}.ana&nbsp; = {};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">CSCAN.epi13{1}.scanreco = [7 1];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">CSCAN.epi13{1}.imgcrop = [32 20 34 22];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">CSCAN.epi13{1}.v&nbsp; = {[1 0 1 0 1 0 1 0]};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">CSCAN.epi13{1}.t&nbsp; = {[8 8 8 8 8 8 8 8]};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% default group parameters</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% this must be overwritten in each group, if different.</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRPP.daqver&nbsp; = 2.00;&nbsp; % DAQ program version: 2=nl+ym; 1=nl;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRPP.imgcrop = [56 10 56 36]; % x, y, width, height</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRPP.ana&nbsp; = {'gefi'; 1; [11 14]; [14 14]};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRPP.hwinfo&nbsp; = '';&nbsp; % hardware info</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRPP.hardch&nbsp; = [1 2]; % electrode numbers for ADF_CHANNELs</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRPP.softch&nbsp; = [];&nbsp; % invalidated channels for analysis</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRPP.grproi&nbsp; = 'RoiDef'; % the name of a Group's ROI, RoiDef as default</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% experiment groups</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% test1 : test scan with 'polar'</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test1.exps&nbsp; = [1];&nbsp; % experiment numbers</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test1.expinfo = {'imaging','recording'};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test1.stminfo = 'polar test';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% test2 : test scan with 'polar', no event data (no-dgz)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test2.exps&nbsp; = [10];&nbsp; % experiment numbers</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test2.expinfo = {'imaging','alert'};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test2.stminfo = 'Polar Test';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% if no-dgz or to ignore dgz,</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% then should have these v/t/stmtypes values.</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test2.v&nbsp;&nbsp; = {[1 0 1 0 1 0 1 0]};&nbsp; % stimulus, 0 as blank</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test2.t&nbsp;&nbsp; = {[8 8 8 8 8 8 8 8]};&nbsp; % duration in volumes</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.test2.stmtypes = {'blank','polar'};&nbsp;&nbsp;&nbsp; % 0=blank, 1=polar</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% movie1 : 5 min movie of xxxx.avi</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.movie1.exps&nbsp; = [2:9 11];&nbsp; % experiment numbers</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.movie1.expinfo = {'imaging','recording'};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.movie1.stminfo = 'movie1';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% movie2 : 5 min movie of yyyy.avi</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.movie2.exps&nbsp; = [12 15];&nbsp; % experiment numbers</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.movie2.expinfo = {'imaging','recording'};</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">GRP.movie2.stminfo = 'movie2';</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">% individual files (must cover all 'exps'.)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">%=======================================================================</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">for N = 1:15,</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; EXPP(N).physfile&nbsp; = sprintf('abcdef_%03d.adfw',N);&nbsp;&nbsp;&nbsp; % adf/adfw</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp; EXPP(N).videofile = sprintf('abcdef_%03d_2.adfw',N);&nbsp; % for movie</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;
+EXPP(N).scanreco&nbsp; = [N+8,
+1];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+% 2dseq</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">end</span></small><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div style="text-align: right;"><a href="hgetstarted.html#HGETSTARTED_-_Help_to_Get_Started">Back to TOP</a><br>
+</div>
+<hr style="width: 100%; height: 2px;">
+<h3>Basic functions for MRI analysis</h3>
+<table style="text-align: left; width: 735px; height: 172px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><a href="../exppar/html_files/sesdumppar.html">exppar/ sesdumppar (SES,GRP)</a></td>
+      <td>Get/Load all experimental parameteters of the session.</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/sescscan.html">mri/ sesascan (SES)</a></td>
+      <td>Load all anatomy files</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/sescscan.html">mri/ sescscan (SES)</a></td>
+      <td>Load and analyze control scans</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/sesimgload.html">mri/ sesimgload (SES,GRP)</a></td>
+      <td>Load&nbsp;Paravision 2dseq imagefiles of a Session</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/mroi.html">mri/ mroi (SES,GRP)</a></td>
+      <td>Utility to define Regions of Interests (ROIs)</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/sesareats.html">mri/ sesareats (SES,GRP)</a></td>
+      <td>Generate Time-Series for each area defined in ROI.names</td>
+    </tr>
+    <tr>
+      <td><a href="../exppar/html_files/sesgettrial.html">exppar/ sesgettrial (SES,GRP)</a></td>
+      <td>Split observation period in trials and return average response per trial.</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/sescorana.html">mri/ sescorana (SES,GRP)</a></td>
+      <td>Correlation analysis w/ simple xcor</td>
+    </tr>
+    <tr>
+      <td>glm/ sesglmana (SES,GRP)</td>
+      <td>Performs GLM for a whole group or a set of experiments.</td>
+    </tr>
+    <tr>
+      <td><a href="../procs/html_files/sesgrpmake.html">procs/ sesgrpmake (SES,GRP,SIGNAME)</a></td>
+      <td>group data in the same group</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/sesgroupcor.html">mri/ sesgroupcor (SES,GRP)</a></td>
+      <td>Correlation analysis on all group files</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/sesgroupglm.html">mri/ sesgroupglm (SES,GRP)</a></td>
+      <td>GLM analysis on&nbsp;group files</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/sesgetmask.html">mri/ sesgetmask (SES,GRP)</a></td>
+      <td>Creates mask on the basis of p/r values of reference group to select time-series</td>
+    </tr>
+    <tr>
+      <td><a href="../mri/html_files/mview.html">mri/ mview (SES,GRP)</a></td>
+      <td>Displays roiTs/troiTs</td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: right;"><a href="#HGETSTARTED_-_Help_to_Get_Started">Back to TOP</a><br>
+</div>
+<hr style="width: 100%; height: 2px;">
+<h3>Basic functions for Neural data analysis</h3>
+<table style="text-align: left; width: 733px; height: 172px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><a href="../exppar/html_files/sesdumppar.html">exppar/ sesdumppar (SES,GRP)</a></td>
+      <td>Get/Load all experimental parameteters of the session.</td>
+    </tr>
+    <tr>
+      <td><a href="../cln/html_files/sesclnadjevt.html">cln/ sesclnadjevt (SES,GRP)</a></td>
+      <td>Creates the ClnAdjEvt.mat file with corrected MRI events</td>
+    </tr>
+    <tr>
+      <td><a href="../cln/html_files/sesgetcln.html">cln/ sesgetcln (SES,GRP)</a></td>
+      <td>Read ADF files, eliminate Grad.Noise and/or Decimate</td>
+    </tr>
+    <tr>
+      <td><a href="../neu/html_files/sesclnspc.html">neu/ sesclnspc (SES,GRP)</a></td>
+      <td>Make spectrograms for the Cln signal of each experiment</td>
+    </tr>
+    <tr>
+      <td><a href="../neu/html_files/sesgetblp.html">neu/ sesgetblp (SES,GRP)</a></td>
+      <td>Separate the Cln signal into freqeuncy bands for entire session</td>
+    </tr>
+    <tr>
+      <td><a href="../neu/html_files/sesgetspk.html">neu/ sesgetspk (SES,GRP)</a></td>
+      <td>Extracts spikes and SDFs from Cln.dat</td>
+    </tr>
+    <tr>
+      <td><a href="../exppar/html_files/sesgettrial.html">exppar/ sesgettrial (SES,GRP)</a></td>
+      <td>Split observation periods into trials</td>
+    </tr>
+    <tr>
+      <td><a href="../procs/html_files/sesgrpmake.html">procs/ sesgrpmake (SES,GRP,SIGNAME)</a></td>
+      <td>group data in the same group</td>
+    </tr>
+    <tr>
+      <td><a href="../neu/html_files/nview.html">neu/ nview (SES,GRP)</a></td>
+      <td>Displays neural signals</td>
+    </tr>
+    <tr>
+      <td><a href="../neu/html_files/spkview.html">neu/ spkview (SES,GRP)</a></td>
+      <td>Displays spike signals</td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: right;"><a href="#HGETSTARTED_-_Help_to_Get_Started">Back to TOP</a><br>
+</div>
+<hr style="width: 100%; height: 2px;"><br>
+<br>
+<br>
+<br>
+<span style=""></span><o:p></o:p>

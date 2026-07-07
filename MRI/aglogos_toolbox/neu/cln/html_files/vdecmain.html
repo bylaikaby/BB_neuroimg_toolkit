@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>vdecmain</title>
+</head>
+<body>
+ VDECMAIN - Decimate signal collected with video stimuli.<br>
+&nbsp;&nbsp;VDECMAIN(SESSION,ExpNo,ARGS)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;decimates the original signal from 22300Hz to about 7000Hz.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;There are two important differences between this function<br>
+&nbsp;&nbsp;and decmain: (a) This function concatanates the channel-data from<br>
+&nbsp;&nbsp;two different adf files, and (b)it is customized to work with the files<br>
+&nbsp;&nbsp;collected during the video presentation. A special function is<br>
+&nbsp;&nbsp;required because movie information is included in the Signal<br>
+&nbsp;&nbsp;structure.<br>
+ <br>
+&nbsp;&nbsp;In summary the function does the following:<br>
+&nbsp;&nbsp;1. Read the standard adf file with most of the channels (max 15)j<br>
+&nbsp;&nbsp;2. Read the second adf file, which contains the "16th" signal if<br>
+ 	 all signals are good, and it also contains the movie information.<br>
+&nbsp;&nbsp;3. For each adf file, the channel 16 has the common synchronication signal.<br>
+&nbsp;&nbsp;4. The converted MAT file has maximally 16 channels, whereby the<br>
+ 	 16th will come from the second file.<br>
+&nbsp;&nbsp;5. Decimate the signals etc....&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;STRUCTURE:<br>
+&nbsp;&nbsp;Sig.dat	= [NT,NoChan,NoObsp]<br>
+ <br>
+&nbsp;&nbsp;EXTENSION : if SAVEAS_ADX == 1, 'Cln.dat' will be saved into a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different file.&nbsp;&nbsp;06.02.04 YM<br>
+ <br>
+&nbsp;&nbsp;See also DECMAIN, CLNMAIN, VCLNMAIN, VGETFRAMEDATA,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CATFILENAME, ADX_WRITE, ADX_READ, ADX_INFO<br>
+<br>
+</body>
+</html>

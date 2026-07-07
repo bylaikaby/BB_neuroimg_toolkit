@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>stmobjload</title>
+</head>
+<body>
+ STMOBJLOAD - load stimulus data for plotting.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJ = STMOBJLOAD(STMOBJ) returns stimulus data to plot.&nbsp;&nbsp;STMOBJ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;should be one of .stmpars.stmobj{} obtained by STM_READ or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPGETPAR function.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAR = EXPGETPAR('g02mn1',16);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAR.stm.stmpars.stmobj{2} = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmid: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'polar'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subtype: 'bwpolar'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkfunc: 'GOBJ::MakeMristim'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkargs: ''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJ = STMOBJLOAD(PAR.stm.stmpars.stmobj{2});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJ = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'polar'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subtype: 'bwpolar'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file: 'd:/MriStim/stimuli/images/bwpol.raw'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dat: [241x241x3 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: [1x241 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y: [1x241 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;framerate: 60<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotmode: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotstep: 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotper: 90<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jitmode: 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jitsize: 0.0500<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GAMMA = 1.8;&nbsp;&nbsp;				% most of Widows PC have 2.2.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TMP = IMADJUST(OBJ.dat,[0 1],[0 1],1/GAMMA);&nbsp;&nbsp;% gamma correction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMAGE(OBJ.x,OBJ.y,TMP);		% plot the obtained stimlus.<br>
+ <br>
+&nbsp;&nbsp;VERSION : <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 27.04.04 YM&nbsp;&nbsp;&nbsp;&nbsp;first release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 29.11.07 YM&nbsp;&nbsp;&nbsp;&nbsp;supports pinwheel(as polar), microstim(as jpg).<br>
+ <br>
+&nbsp;&nbsp;See also GETDIRS, READIMGRAW, VAVI_INFO, VAVI_READ<br>
+<br>
+</body>
+</html>

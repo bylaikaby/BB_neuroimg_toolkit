@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sesrealign</title>
+</head>
+<body>
+ SESREALIGN - aligns image and save as time-course of each slices.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SESREALIGN(SESSION,GRPNAME) creates .hdr/.img files that SPM can handle,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;then runs SPM_REALIGN and SPM_RESLICE.&nbsp;&nbsp;SPM_RESLICE creates realigned and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;resliced data with 'r' prefix.&nbsp;&nbsp;Finally, those r-xxxx.img files will be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;concatinated and the program saves data as time-couse of each slices.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For example, spm/m02th1_xxx.img/hdr will be created, then spm/rm02th1_x.img<br>
+&nbsp;&nbsp;&nbsp;&nbsp;as SPM generated files, then m02th1_slxxx.mat as time-course of slice xxx.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;REQUIREMENT :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPM2 package<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 13.03.07 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also sesspmmask exprealign spm_realign spm_reslice<br>
+<br>
+</body>
+</html>

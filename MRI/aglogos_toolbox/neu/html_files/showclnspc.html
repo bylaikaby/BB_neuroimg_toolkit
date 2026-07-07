@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showclnspc</title>
+</head>
+<body>
+ SHOWCLNSPC - Plot spectrograms as surface plots (3D or Flat)<br>
+ <br>
+&nbsp;&nbsp;SHOWCLNSPC (SesName, ExpNo) plots a flat spectrogram, with each<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel in a different subplot.<br>
+ <br>
+&nbsp;&nbsp;SHOWCLNSPC (SesName, ExpNo, ChanNo, PlotType) plots a PlotType<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spectrogram. PlotType can be "3D" or 'flat'; The function will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot the channel ChanNo only; If ChanNo is an empty array, then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all channels will be plotted in separate subplots. If ChanNo is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;negative, then each channel will be plotted in separate subplot.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;Examples<br>
+&nbsp;&nbsp;-----------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWCLNSPC ('c98nm1',1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Plots NoChan subplots w/ flat specs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWCLNSPC ('c98nm1',1,-1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Plots chan-mean in flat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWCLNSPC ('c98nm1',1,[],'3d')&nbsp;&nbsp;&nbsp;&nbsp;- Plots NoChan subplots w/ 3D specs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWCLNSPC ('c98nm1',1,-1,'3d')&nbsp;&nbsp;&nbsp;&nbsp;- Plots chan-mean in 3D<br>
+ <br>
+&nbsp;&nbsp;Default Parameters:<br>
+&nbsp;&nbsp;-----------------------------<br>
+&nbsp;&nbsp;PLOT3D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3D or Color-Coded-Only Surface<br>
+&nbsp;&nbsp;COLBAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Color bar requested<br>
+&nbsp;&nbsp;WALLPLOTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plot on the wall the signal averages<br>
+&nbsp;&nbsp;RANGELINES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Draw lines showing LFP/MUA Ranges<br>
+&nbsp;&nbsp;RANGEVALS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display the range values<br>
+&nbsp;&nbsp;STIMULUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plot lines at Sig.stm{ObsNo}.stm...<br>
+&nbsp;&nbsp;LFPRANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [30 100];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Range within which LFPs are averaged<br>
+&nbsp;&nbsp;MUARANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [500 2000];&nbsp;&nbsp;&nbsp;&nbsp;Range within which LFPs are averaged<br>
+&nbsp;&nbsp;FRANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [20 3000];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Frequency range to plot<br>
+&nbsp;&nbsp;TRANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time range to plot<br>
+&nbsp;&nbsp;SDUNITS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 0, then in dB units (log power)<br>
+&nbsp;&nbsp;FEXTENTION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 6000;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push y axis back to see the time courses wall<br>
+&nbsp;&nbsp;UNITLABEL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'SD Units';&nbsp;&nbsp;&nbsp;&nbsp;Z-units<br>
+ <br>
+&nbsp;&nbsp;See also DSPCLNSPC<br>
+ <br>
+&nbsp;&nbsp;NKL, 20.02.01<br>
+<br>
+</body>
+</html>

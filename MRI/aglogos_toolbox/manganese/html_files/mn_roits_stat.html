@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mn_roits_stat</title>
+</head>
+<body>
+ MN_ROITS_STAT - returns roiTs structure for the given roi with statistics.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ROITS = MN_ROITS_STAT(SESSION,GRPNAME,ROINAME,...) returns roiTs <br>
+&nbsp;&nbsp;&nbsp;&nbsp;structre for ROINAME and SLICE with statistics.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> STATFILE = 'ttest_realign(1)_pca(0)_normalize(baseline)_smooth(1).mat';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> roiTs = mn_roits_stat('rat7tkw1','mdeftinj','HTv','stat',STATFILE);<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 17.04.08 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MN_ROITS_GET, MN_ROITS_CAT, mnstat2excel<br>
+<br>
+</body>
+</html>

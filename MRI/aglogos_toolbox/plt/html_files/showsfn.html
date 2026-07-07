@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showsfn</title>
+</head>
+<body>
+ SHOWSFN - Summary of plots and images from the SFN2003 Data<br>
+&nbsp;&nbsp;SHOWSFN (SupGrp,StmType) shows the coherence and information-theoretical<br>
+&nbsp;&nbsp;analysis we have applied on the physiology-MRI data.<br>
+&nbsp;&nbsp;SHOWSFN ('zmov','chcfGrps');<br>
+&nbsp;&nbsp;SHOWSFN ('zpol','chcfGrps');<br>
+&nbsp;&nbsp;SHOWSFN ('zspo','chcfGrps');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;AVAILABLE GROUPS AND EXPERIMENT TYPES:<br>
+&nbsp;&nbsp;SupGrp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= (zmov,zpol,zspo,zrnd,zpls,zp6c)<br>
+&nbsp;&nbsp;StmType&nbsp;&nbsp;&nbsp;&nbsp;= (chcfGrps,winGrps,SuperGrps)<br>
+&nbsp;&nbsp;ExpType&nbsp;&nbsp;&nbsp;&nbsp;= (neu,mri), See also<br>
+ <br>
+&nbsp;&nbsp;Physiology (Single Experiment or Group Files)<br>
+&nbsp;&nbsp;====================================================================&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWRES (session, GrpName) - shows all results of each group<br>
+&nbsp;&nbsp;SHOWCH (session, GrpName) - shows coherence analysis<br>
+&nbsp;&nbsp;SHOWCF (session, GrpName) - shows contrast functions<br>
+&nbsp;&nbsp;SHOWRF (session, GrpName/ExpNo) - shows rf structures<br>
+&nbsp;&nbsp;SHOWRF ('c98nm1','zmovie01')<br>
+&nbsp;&nbsp;SHOWRF ('c98nm1','zmovie01',1,'lum');<br>
+&nbsp;&nbsp;SHOWSIGFFT Shows the spectra of all signals in an experiment file<br>
+&nbsp;&nbsp;SHOWGRPRF (session,GrpName | SuperGrpName) shows rf computed from a group<br>
+ <br>
+&nbsp;&nbsp;Imaging (Single Experiment or Group Files)<br>
+&nbsp;&nbsp;====================================================================&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWICADENOISE (session, ExpNo)<br>
+&nbsp;&nbsp;SHOWROI (session, GrpName, RoiName)<br>
+&nbsp;&nbsp;SHOWMODEL (session,GrpName) Shows the model of a group; It is a good<br>
+&nbsp;&nbsp;SHOWXCOR (session,arg2) can be used to see the results of xcor by<br>
+&nbsp;&nbsp;SHOWXCORPLOT (session,GrpName) can be used to see the results of group<br>
+&nbsp;&nbsp;SHOWMOVIETTEST (session,ExpNo/GrpName)<br>
+&nbsp;&nbsp;SHOWANAIMG (session,'gefi') see anatomy and print for reference<br>
+ <br>
+&nbsp;&nbsp;Physiology & Imaging (Super-Group Files)<br>
+&nbsp;&nbsp;====================================================================&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWSUPRF (session) shows rf from supergroups<br>
+&nbsp;&nbsp;SHOWCHCF (session,SuperGroup) MRI confunc/coherence<br>
+&nbsp;&nbsp;SHOWCHCF ('n02m21','zmov01');<br>
+&nbsp;&nbsp;SHOWCHCF ('b01mz1','zmov01');<br>
+&nbsp;&nbsp;SHOWCHCF ('b01mz1','zspo01');<br>
+<br>
+</body>
+</html>

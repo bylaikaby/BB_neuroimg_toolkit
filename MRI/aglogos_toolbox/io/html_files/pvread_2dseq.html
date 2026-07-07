@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>pvread_2dseq</title>
+</head>
+<body>
+ PVREAD_2DSEQ - Read ParaVision 2dseq data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[IDATA,ACQP,RECO] = PVREAD_2DSEQ(FILENAME,...)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;IDATA = PVREAD_2DSEQ(FILENAME,...) read ParaVision 2dseq data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Supported options are...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImgCrop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: cropping as [x,y,width,height], can be empty. x,y>=1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImgSize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: image size as [nx, ny, nslices, ntime], must not be empty.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TimeCrop&nbsp;&nbsp;&nbsp;&nbsp;: cropping as [t,nt], can be empty.&nbsp;&nbsp;t>=1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByteOrder&nbsp;&nbsp;: 'littleEndian' or 'bigEndian'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WordType&nbsp;&nbsp;&nbsp;&nbsp;: '_16BIT_SGN_INT' or '_32BIT_SGN_INT'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reco&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: reco sturcture returned by pvread_reco().<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;acqp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: acqp structure returned by pvread_acqp().<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Returned IDATA is NOT 'double', but 'WordType'.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 07.03.07 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also pvread_acqp pvread_reco pvread_imnd<br>
+<br>
+</body>
+</html>

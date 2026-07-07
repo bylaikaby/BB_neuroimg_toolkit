@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sesgetspk</title>
+</head>
+<body>
+ SESGETSPK - Extracts spikes and SDFs from Cln.dat<br>
+ 	oSig = SESGETSPK(Ses, EXPS), high-pass filters<br>
+ 	the signal and extracts the action potentials of usually a couple of<br>
+ 	neurons. An spike density function is subsequently generated (SDF),<br>
+ 	which serves as a probability estimate of occurrence of a given spike.<br>
+ <br>
+ 	NKL, 09.10.02<br>
+ <br>
+ 	oSig = SESGETSPK(Ses, EXPS), where<br>
+ 	SESSION: session name or Ses sturcture<br>
+ 	EXPS: experiment numbers<br>
+ <br>
+ 	Returns signal with structure:<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session: 'm02gs1'<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;physfile: 't:/DataNeuro/M02.gs1/m02gs1_01.adfw'<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evtfile: 't:/DataNeuro/M02.gs1/m02gs1_01.dgz'<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matfile: 'y:/DataMatlab/M02.gs1/m02gs1_01.mat'<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: 'psth'<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disp: 'showpsth0'<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration: 888714<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dx: 1.4400e-004<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;times: {[1741x1 double]}<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: {'Time in sec'&nbsp;&nbsp;'Count'}<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp: [1x1 struct]<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;usr: [1x1 struct]<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evt: {[1x1 struct]}<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stm: {[1x1 struct]}<br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sdf: [888714x1 double]<br>
+ <br>
+ 	See also SPKSDF, XZEROX<br>
+<br>
+</body>
+</html>

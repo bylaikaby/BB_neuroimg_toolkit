@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sesneuana</title>
+</head>
+<body>
+ SESNEUANA - Batch file to run all preprocessing and correlation/GLM analysis for fMRI data<br>
+&nbsp;&nbsp;SESNEUANA(SesName) runs all necessary steps to apply the correlation analysis on fMRI<br>
+&nbsp;&nbsp;data. Models can be stimulus-based or neural-signal based.<br>
+ <br>
+&nbsp;&nbsp;DISPLAY FUNCTIONS:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showcln&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Show the cleaned signal, Cln, and its spectral power<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showclnspc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Plot spectrograms as surface plots (3D or Flat)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showblp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Show BLP Signals of ExpNo/Group<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showelegrid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - shows the grid of electrodes or voxels (ANDREI CHECK)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showchan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Display the signal of each channel separately<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showcra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Apply Wiener analysis to group data (NKL CHECK)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Group all contrast of a group by calling catconfunc (ANDREI CHECK)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showsigcf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Display the signals resulting from depend-analysis (ANDREI CHECK)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;showicadenoise&nbsp;&nbsp;- - show ICA results (DEMO)<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dspsig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Display a neural signal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dspclnspc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - shows the spectrograms of the Cln signal (e.g. ClnSpc)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dspblp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Plot a single BLP signal or all BLPs in form of a spectrogram<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dspfftblp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Show fourier spectrum of BLP signals<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dsppsth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Display histogram data from single units<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dsprf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Plot RF structure of a single experiment<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dspgrprf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Plot RF structure of a single experiment<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dspspktrigavr&nbsp;&nbsp;&nbsp;&nbsp;- - displays 'spkBlp' signal.<br>
+ <br>
+&nbsp;&nbsp;NKL 13.01.2006<br>
+<br>
+</body>
+</html>

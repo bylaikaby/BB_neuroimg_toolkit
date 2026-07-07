@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sigspc</title>
+</head>
+<body>
+ SIGSPC - Make spectrogram from signal iSig<br>
+ 	USE: oSig = SIGSPC(iSig, WT, dT, NFFT, WinFct)<br>
+ 	AUTH: HM, 28.06.00, v1b.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B = SPECGRAM(A,NFFT,Fs,WINDOW,NOVERLAP) calculates the spectrogram for <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the signal in vector A.&nbsp;&nbsp;SPECGRAM splits the signal into overlapping <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;segments, windows each with the WINDOW vector and forms the columns of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B with their zero-padded, length NFFT discrete Fourier transforms.&nbsp;&nbsp;Thus<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;each column of B contains an estimate of the short-term, time-localized<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frequency content of the signal A.&nbsp;&nbsp;Time increases linearly across the <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns of B, from left to right.&nbsp;&nbsp;Frequency increases linearly down <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the rows, starting at 0.&nbsp;&nbsp;If A is a length NX complex signal, B is a <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complex matrix with NFFT rows and <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k = fix((NX-NOVERLAP)/(length(WINDOW)-NOVERLAP)) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns.&nbsp;&nbsp;If A is real, B still has k columns but the higher frequency<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;components are truncated (because they are redundant); in that case,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPECGRAM returns B with NFFT/2+1 rows for NFFT even and (NFFT+1)/2 rows <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for NFFT odd.&nbsp;&nbsp;If you specify a scalar for WINDOW, SPECGRAM uses a <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hanning window of that length.&nbsp;&nbsp;WINDOW must have length smaller than<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or equal to NFFT and greater than NOVERLAP.&nbsp;&nbsp;NOVERLAP is the number of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;samples the sections of A overlap.&nbsp;&nbsp;Fs is the sampling frequency<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which does not effect the spectrogram but is used for scaling plots.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[B,F,T] = SPECGRAM(A,NFFT,Fs,WINDOW,NOVERLAP) returns a column of <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frequencies F and one of times T at which the spectrogram is computed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F has length equal to the number of rows of B, T has length k. If you <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;leave Fs unspecified, SPECGRAM assumes a default of 2 Hz.<br>
+ <br>
+ 	SESCLNSPC - calls this function as:<br>
+ 	T = ep{ExpNo}.img.dx;<br>
+ 	len = T / Cln.dx;<br>
+ 	NFFT = getpow2(len,'ceiling');<br>
+ 	ClnSpc = sigspc(Cln,&nbsp;&nbsp;&nbsp;&nbsp;T,&nbsp;&nbsp;T, NFFT, 'hanning');<br>
+ 	oSig&nbsp;&nbsp;&nbsp;&nbsp;= sigspc(iSig, WT, dT, NFFT,&nbsp;&nbsp;WinFct)<br>
+&nbsp;&nbsp;<br>
+ 	NKL, 13.10.02<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YM,&nbsp;&nbsp;11.10.05&nbsp;&nbsp;use spectrogram instead of specgram in Matlab7.<br>
+ <br>
+ % TODO: Smoothing kernel?<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mcoords2roi</title>
+</head>
+<body>
+ MCOORDS2ROI - returns roinames from given coordinates.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ROINAMES = MCOORDS2ROI(SESSION,GRPEXP,COORDS)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ROINAMES = MCOORDS2ROI(SIG) returns roinames from given coordinates.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The inputs 'COORDS' must be a matrix of (vox,3=xyz).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig = mvoxselect('e04ds1','visesmix','all','glm[2]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> roinames = mcoords2roi('e04ds1','visesmix',sig.coords)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> roinames = mcoords2roi(sig)<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 22.02.07 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also<br>
+<br>
+</body>
+</html>

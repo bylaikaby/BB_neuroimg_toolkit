@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showimg</title>
+</head>
+<body>
+ SHOWIMG - GUI interface to browse images<br>
+&nbsp;&nbsp;SHOWIMG (varargin) is used to browse images and debug scans. It<br>
+&nbsp;&nbsp;will display one slice at a time and permit the definition of<br>
+&nbsp;&nbsp;ROIs. If the Time Display is set the time series for the selected<br>
+&nbsp;&nbsp;ROI will be displayed in the preferred units (SD, Percent, Raw,<br>
+&nbsp;&nbsp;etc). Arguments to SHOWIMG can be:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;SHOWIMG (SESSION,ExpNo)<br>
+&nbsp;&nbsp;SHOWIMG (SESSION,ScanName,ScanNo)<br>
+&nbsp;&nbsp;SHOWIMG (SesDir,pvScanNo,pvRecoNo)<br>
+ <br>
+&nbsp;&nbsp;EXAMPLES:<br>
+&nbsp;&nbsp;================================<br>
+&nbsp;&nbsp;1. SHOWIMG ('m02lx1',1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% With description file<br>
+&nbsp;&nbsp;2. SHOWIMG ('n03.ow1',25);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Without description file; directly 2dseq<br>
+&nbsp;&nbsp;3. SHOWIMG ('e04pb1',1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% With description file; CHECK Variability<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;DISPLAYING A CONTROL SCAN <br>
+&nbsp;&nbsp;================================<br>
+&nbsp;&nbsp;Ses = goto('n03ow1');<br>
+&nbsp;&nbsp;load('cScan.mat');<br>
+&nbsp;&nbsp;dspimg(tcImg);<br>
+ <br>
+&nbsp;&nbsp;NOTE: The example (2.) will not work if the computer is<br>
+&nbsp;&nbsp;not on the network (laptop during trips..) because it directly<br>
+&nbsp;&nbsp;accesses data on Wks8-like data-servers.<br>
+ <br>
+&nbsp;&nbsp;NKL, 10.04.04<br>
+<br>
+</body>
+</html>

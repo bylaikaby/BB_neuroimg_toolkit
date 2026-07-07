@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>spc2model</title>
+</head>
+<body>
+ SPC2MODEL - Generates regressors from frequency ranges of SPC<br>
+&nbsp;&nbsp;spc2model(SesName) - The purpose of this function is to generate frequency specific models<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;info.band{ 1}&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4] 'ep'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP',&nbsp;&nbsp;0};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Evoked potential<br>
+&nbsp;&nbsp;info.band{ 2}&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12] 'stmnm' 'LFP',&nbsp;&nbsp;2};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Stim-related & Neuromodulatory?<br>
+&nbsp;&nbsp;info.band{ 3}&nbsp;&nbsp;= {[&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60] 'nm'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP',&nbsp;&nbsp;4};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Stim-unrelated; Neuromodulatory<br>
+&nbsp;&nbsp;info.band{ 4}&nbsp;&nbsp;= {[&nbsp;&nbsp;70&nbsp;&nbsp;&nbsp;&nbsp;110] 'stm'&nbsp;&nbsp;&nbsp;&nbsp;'LFP',&nbsp;&nbsp;4};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Stim-related; independent of MUA (50%)<br>
+&nbsp;&nbsp;info.band{ 5}&nbsp;&nbsp;= {[&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;110] 'lfp'&nbsp;&nbsp;&nbsp;&nbsp;'LFP',&nbsp;&nbsp;4};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Traditional LFPs<br>
+&nbsp;&nbsp;info.band{ 6}&nbsp;&nbsp;= {[ 400&nbsp;&nbsp;3000] 'mua'&nbsp;&nbsp;&nbsp;&nbsp;'MUA', 45};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Traditional Analog MUA<br>
+ <br>
+&nbsp;&nbsp;NKL 11.02.07<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;27.09.07 upsample-convolve-downsample<br>
+<br>
+</body>
+</html>

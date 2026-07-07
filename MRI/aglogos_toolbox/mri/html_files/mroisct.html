@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mroisct</title>
+</head>
+<body>
+ MROISCT - Returns a structure of ROI, mainly called by MROIGUI.<br>
+&nbsp;&nbsp;[Roi, tcImg, anaImg] = MROISCT (Ses,grp,tcImg,anaImg)<br>
+&nbsp;&nbsp;[Roi, tcImg, anaImg] = MROISCT (Ses,grp,tcImg,anaImg,gamma)<br>
+&nbsp;&nbsp;MROISCT is the analog of gettcimg or getcln and generates <br>
+&nbsp;&nbsp;the approrpiate structure for furhter handling of ROI data.<br>
+&nbsp;&nbsp;USAGE&nbsp;&nbsp;&nbsp;&nbsp;: Roi = mroiselect(Ses,grp,tcImg,anaImg)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi = mroiselect(Ses,grp,tcImg,anaImg,gamma)<br>
+&nbsp;&nbsp;VERSION : 0.90 05.03.04 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 23.11.04 YM&nbsp;&nbsp;adds 'gamma'<br>
+&nbsp;&nbsp;See also MROIGUI<br>
+ <br>
+ 	Roi.session		= tcImg.session;<br>
+ 	Roi.grpname		= tcImg.grpname;<br>
+ 	Roi.exps		= grp.exps;<br>
+ 	Roi.anainfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= grp.ana;<br>
+ 	Roi.roinames	= Ses.roi.names;<br>
+ 	Roi.dir			= tcImg.dir;<br>
+ 	Roi.dir.dname	= 'Roi';<br>
+ 	Roi.dsp.func	= 'dsproi';<br>
+ 	Roi.dsp.args	= {};<br>
+ 	Roi.dsp.label	= {};<br>
+ 	Roi.grp			= tcImg.grp;<br>
+ 	Roi.ana			= anaImg.dat;<br>
+ 	Roi.img			= mean(tcImg.dat,4);<br>
+ 	Roi.ds			= tcImg.ds;<br>
+ 	Roi.dx			= tcImg.dx;<br>
+ 	Roi.gamma		= gamma;<br>
+ 	Roi.roi			= {};<br>
+ 	Roi.ele			= {};<br>
+ <br>
+&nbsp;&nbsp;"Roi.roi" will be like...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.name&nbsp;&nbsp;= 'brain'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.slice = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.mask&nbsp;&nbsp;= [136x88 logical]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.px&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [10x1 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{1}.py&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [10x1 double]<br>
+ <br>
+&nbsp;&nbsp;"Roi.ele" will be like...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.ele&nbsp;&nbsp;&nbsp;&nbsp;= 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.slice = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.px&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [1x1 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.ele{1}.py&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [1x1 double]<br>
+<br>
+</body>
+</html>

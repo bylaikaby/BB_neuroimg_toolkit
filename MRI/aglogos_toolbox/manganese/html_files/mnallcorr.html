@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mnallcorr</title>
+</head>
+<body>
+ MNALLCORR - Apply correlation analysis on the entire brain for Mn-Injections<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MNALLCORR(SESSION,GRPNAME) applies correlation analysis to the entire brain using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;different models, derived from anatomy-based ROIs.&nbsp;&nbsp;After processing,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data will be strored in "allcorr.mat" and can be used in MROI.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[CorTs,modelTs] = MNALLCORR(SESSION,GRPNAME) will return results without saving to <br>
+&nbsp;&nbsp;&nbsp;&nbsp;the file.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;MNALLCORR(SESSION,GRPNAME,MODEL_ROI) will do correlation analysis using time couse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of given MODEL_ROI.&nbsp;&nbsp;MODEL_ROI shoule a call array of strings.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;MNALLCORR(SESSION,GRPNAME,MODEL_ROI,USE_PCA) will use pca-denoised data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for analysis if USE_PCA == 1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mallcorr('m02th1','mdeftinj',{},1)&nbsp;&nbsp;% use PCA denoised data for processing.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!!!! The program will completely overwrite exsiting 'corTs' in 'allcorr.mat'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It took ~8.5hr for m02th1, ~4hr for d03se1.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 14.06.05 YM&nbsp;&nbsp;&nbsp;&nbsp;modified from mncorana2.m, adapted for m02th1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 15.06.05 YM&nbsp;&nbsp;&nbsp;&nbsp;coorporates with MNDENOISE_PCA.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 16.06.05 YM&nbsp;&nbsp;&nbsp;&nbsp;bug fix on sub2ind().<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 17.06.05 YM&nbsp;&nbsp;&nbsp;&nbsp;proj-out a global time course, otherwise high corr.(~0.7) for all in d03se1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 23.06.05 YM&nbsp;&nbsp;&nbsp;&nbsp;no project-out, instead normalize by "global" time cours.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MNSEE_CORR, MNDENOISE_PCA, MN_ROITS_GET, MN_ROITS_CAT, MROI<br>
+<br>
+</body>
+</html>

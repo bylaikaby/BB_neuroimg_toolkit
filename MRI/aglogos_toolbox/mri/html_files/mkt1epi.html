@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mkt1epi</title>
+</head>
+<body>
+ MKT1EPI - Make file with successive T1 maps that can be analyzed like all fMRI EPI files<br>
+&nbsp;&nbsp;mkt1epi(SesName) The function calls rd2dseq to read the 32-bit files reconstructed as<br>
+&nbsp;&nbsp;complex numbers. It then deletes all parts of the images outside the defined BRAIN-ROI,<br>
+&nbsp;&nbsp;and finally invokes [t1img,sdimg,fitresult] = mgetinvrecmap(dat, pvpar, optin) to generate<br>
+&nbsp;&nbsp;the functional T1, EPI-like file.<br>
+&nbsp;&nbsp;version2 ACZ, 21.03.06 - different input parameter handling to be more<br>
+&nbsp;&nbsp;NKL 21.03.06<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;29.03.06 supports GrpName as 2nd arg.<br>
+<br>
+</body>
+</html>

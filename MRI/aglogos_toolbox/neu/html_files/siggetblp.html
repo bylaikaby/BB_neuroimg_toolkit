@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>siggetblp</title>
+</head>
+<body>
+ SIGGETBLP - Separate the Cln signal into freqeuncy bands (10 Bands including the EEG standards)<br>
+&nbsp;&nbsp;OSIG = SIGGETBLP (SIG) splits the singal into sequential frequency bands, very much like a<br>
+&nbsp;&nbsp;spectrogram does, but with high temporal resolution. This function is particularly slow<br>
+&nbsp;&nbsp;because it performs the band separation by bandpass filtering. To ensure minimum<br>
+&nbsp;&nbsp;"filter-induced correlations" between the bands, we use FIR filters of sharp cutoffs.&nbsp;&nbsp;The<br>
+&nbsp;&nbsp;high-order of such filters, however, requires large kernel-sizes (and thus large number of<br>
+&nbsp;&nbsp;multiplications) so that processing of one Cln signal may last quite long for large<br>
+&nbsp;&nbsp;observation periods.<br>
+ <br>
+&nbsp;&nbsp;The SIGGETBLP function corrects for the "oscillations" observed at the two ends of the signal<br>
+&nbsp;&nbsp;(due to the high-order filters) by mirroring these ends, applyling the filtering, and then<br>
+&nbsp;&nbsp;cutting the additional parts off. The unstable portions can be found as "oSig.unstable_sec".<br>
+ <br>
+&nbsp;&nbsp;The bands are given below (23.12.2005). Most of them are rectified following the bandpass<br>
+&nbsp;&nbsp;filtering. The rational of rectification is the following. LFPs include synaptic potentials,<br>
+&nbsp;&nbsp;afterpotentials of somato-dendritic spikes, and voltage-gated membrane oscillations, that<br>
+&nbsp;&nbsp;reflect the input of a given cortical areas as well as its local intracortical processing,<br>
+&nbsp;&nbsp;including the activity of excitatory and inhibitory interneurons. In the case of<br>
+&nbsp;&nbsp;oscillations, usually of several Hz, important is the change in their amplitude over time<br>
+&nbsp;&nbsp;rather than their actual timecourse; in the case of synaptic events important is their<br>
+&nbsp;&nbsp;frequency of occurence as well as their superposition. All these events together result into<br>
+&nbsp;&nbsp;continuous voltage-changes of a frequency range of 0-150Hz.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;The time-varying envelope of those frequencies is the measure that correlates best with<br>
+&nbsp;&nbsp;changes in sensory stimulation. If a frequency range marks the activity of a neuronal class<br>
+&nbsp;&nbsp;(e.g. 12Hz membrane oscillations in the deep cortical layers), then changes in the power at<br>
+&nbsp;&nbsp;this frequency indirectly show activity-changes of the corresponding "deep-layer" neurons. In<br>
+&nbsp;&nbsp;the same vein, if a frequency range marks the interaction between groups<br>
+&nbsp;&nbsp;(e.g. gamma-oscillations that reflect the action of interneurons on the projections cells in<br>
+&nbsp;&nbsp;cortex), then increase of the power at that frequency may indicate an increase in the<br>
+&nbsp;&nbsp;excitation-inhibition ballance of cortex; and so on...&nbsp;&nbsp;In some ways, the story is analogous<br>
+&nbsp;&nbsp;to the well-established AM radio-frequency modulation-demodulation. The carrier identifies<br>
+&nbsp;&nbsp;the source, while the temporal structure of the envelope is the "information" of interest.<br>
+ <br>
+&nbsp;&nbsp;The question is how to accurately obtain the modulating function. The magnitude of the<br>
+&nbsp;&nbsp;Hilbert transform of a narrow frequency band is the best and most precise way of doing this;<br>
+&nbsp;&nbsp;however this does not work if the signal has a DC offect (see A. Gretton for discussion). A<br>
+&nbsp;&nbsp;"practical" way of extracting the modulation is to obtain the absolute value of the BLP<br>
+&nbsp;&nbsp;signal, and subsequently filter out the abs-introduced high frequencies. The selection of the<br>
+&nbsp;&nbsp;lowpass filter cutoff can be done on the basis of the formula (max-min)/2. That is for Theta<br>
+&nbsp;&nbsp;(8-4)/2 = 2Hz. A lowpass cuttof with 2Hz eliminates all unnecessary high-frequency of the<br>
+&nbsp;&nbsp;modulating function.<br>
+ <br>
+&nbsp;&nbsp;With our BLPs the lowest frequency range (0-4) is slow enough to represent stimulus<br>
+&nbsp;&nbsp;changes and too-slow to be rectified as the optimal frequency of 2Hz would "cut off" the<br>
+&nbsp;&nbsp;usefull 4Hz frequencies as well. This is therefore the only signal that *must* be<br>
+&nbsp;&nbsp;evaluated in its raw form.<br>
+ <br>
+&nbsp;&nbsp;All other signals are rectified, each with a different cutoff given in the 4th cell-column<br>
+&nbsp;&nbsp;of the siggetblp.band cell-array below. The LFP (0-90) is provided in a raw-form only for<br>
+&nbsp;&nbsp;analyses computing STAs or STCOVs.<br>
+ <br>
+&nbsp;&nbsp;In short, for signal-independence the following signals should be used for analysis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Delta<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. ThetaR<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Alaph<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Beta<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Gamma<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. MUA<br>
+ <br>
+&nbsp;&nbsp;Any parameters extracting blp can be modified through the session file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp (GRP.xxx.anap.siggetblp will overwrite default settings).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 1}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4] 'Delta'&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 0};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 2}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8] 'Theta'&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 0};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 3}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8] 'ThetaR'&nbsp;&nbsp;'LFP', 2};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 4}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14] 'Alpha'&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 3};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 5}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24] 'Beta'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 4};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 6}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90] 'Gamma'&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 30};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 7}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90] 'LFP'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 0};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 8}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90] 'LFPR'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 30};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{ 9}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;40&nbsp;&nbsp;&nbsp;&nbsp;130] 'LFPN'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 30};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.band{10}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[ 400&nbsp;&nbsp;3000] 'MUA'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MUA', 30};<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.lBands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [1:9];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Bands in the LFP range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.mBands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [10];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Bands in the MUA range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.lcutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 500;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Before split. LFP region (avoid singularities)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.mcutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 100;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Before split. MUA region (avoid singularities)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.NewFs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 250;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% All signals will be resampled at 250Hz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.NewFsTr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= ANAP.siggetblp.NewFs*0.08;<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PARAMETERS FOR THE FIR FILTER<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.flttype&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'cheby2';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.lstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.mstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 50;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.hstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 50;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.dB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 60;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.passripple&nbsp;&nbsp;&nbsp;&nbsp;= 0.1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.NewFsTr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 40;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% 60dB decay width for above resampling<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PARAMETERS TO MINIMIZE UNSTABLE PERIODS IN BOTH TIME EDGES<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.mirror&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;EXAMPLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> Cln = sigload('a98nm4',10,'Cln');&nbsp;&nbsp;% loading the fullband signal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> blp = siggetblp(Cln)&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% decomposing into several bands with FIR filters<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> blpfreqz(blp);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Board plots of used filters<br>
+ <br>
+&nbsp;&nbsp;See also SESGETBLP EXPSIGGETBLP BLPFREQZ RESAMPLE FILTFILT HILBERT<br>
+ <br>
+&nbsp;&nbsp;NKL 29.07.04<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;31.08.04&nbsp;&nbsp;improved memory usage since Matlab7 seems to have memory leaks.<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;22.12.04&nbsp;&nbsp;use decimate() for LFP to make the same time-length of MUA/LFP<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;14.02.05&nbsp;&nbsp;supports FIR filters<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;24.11.05&nbsp;&nbsp;supports the exact way extracting bands developed by Andrei/Arthur.<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;25.11.05&nbsp;&nbsp;returns filter parameters as oSig.filters.<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;20.12.05&nbsp;&nbsp;supports mirroring signal at both time edges to avoid unstable filtering.<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;20.12.05&nbsp;&nbsp;no use of Hilbert transform suggested by Arthur.<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;15.01.06&nbsp;&nbsp;supports iINFO for sesgetblpFIX<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;13.02.06&nbsp;&nbsp;do MUA bands first to avoid memory problems of d01nm5,exp=9<br>
+<br>
+</body>
+</html>

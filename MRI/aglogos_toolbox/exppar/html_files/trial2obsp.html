@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>trial2obsp</title>
+</head>
+<body>
+ TRIAL2OBSP - Convert trial-based time series into continuous obserpvation periods<br>
+&nbsp;&nbsp;oSig = TRIAL2OBSP(Sig, StatName) is useful if we want to do observation-based analysis. It<br>
+&nbsp;&nbsp;"undoes" the results of gettrial, but with one important difference: The trials are now<br>
+&nbsp;&nbsp;sorted by stimulus or trial type, which means the time course of observation periods can be<br>
+&nbsp;&nbsp;averaged. In a randomized stimulus presentation design this is obviously not possible without<br>
+&nbsp;&nbsp;the double conversion (obsp-> sorted-trial -> obsp).<br>
+ <br>
+&nbsp;&nbsp;If StatName is 'none', the multiple occurances of a trial are concatanated serially. (DEFAULT)<br>
+&nbsp;&nbsp;If StatName is mean/median the multiple occurances are averaged; so the obsp is shorter<br>
+&nbsp;&nbsp;than the original one; but with better SNR.<br>
+ <br>
+&nbsp;&nbsp;TO DEBUG:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y04yz1/11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple different trial in obsp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n03qv1/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mutliple same trials in obsp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n03qv1/81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mutliple different trials in obsp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m02lx1/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No trials<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;NOTE: TO SEE THE RESULTS OF THIS FUNCTION CALL IT WITHOUT ARGUMENTS<br>
+ <br>
+&nbsp;&nbsp;See also GETTRIAL DSPSIG<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;NKL 08.01.06<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;22.05.07 supports also 'tcImg'.<br>
+<br>
+</body>
+</html>

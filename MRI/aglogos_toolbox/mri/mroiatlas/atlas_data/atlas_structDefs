@@ -1,0 +1,474 @@
+4	oculomotor nucleus	3	-	0.107820	
+5	trochlear nucleus	4	-	0.0285406	
+18	cortex layer	1a	-	0.0792793	
+19	cortex layer	1b	-	0.0924926	
+24	optic nerve	2n	-	0.294919	
+28	"oculomotor nucleus, parvicellular part"	3PC	-	0.111520	
+40	"hypothalamus, ventral intermediate tissue"	HTv	Hypothalamus	1.14057	
+41	"hypothalamus, dorsal intermediate tissue"	HTd	Hypothalamus	0.890571	
+63	A11 noradrenaline cells	A11	-	0.0417538	
+70	amygdala intermediate tissue	amyg	Amygdala	4.45286	
+72	anterior amygdaloid area 	AA	Amygdala	0.0655376	
+73	"anterior amygdaloid area, dorsal part "	AAD	Amygdala	0.266907	
+74	"anterior amygdaloid area, ventral part "	AAV	Amygdala	0.354643	
+76	anterior commissure	ac	-	0.280120	
+77	"anterior commissure, anterior part"	aca	-	0.396397	
+78	"anterior commissure, anterior part, intraAcb"	aca_intraAcb	-	0.250523	
+79	"accumbens nucleus, core "	AcbC	Accumbens	3.11409	
+80	"accumbens nucleus, shell "	AcbSh	Accumbens	3.04168	
+82	"anterior commissure, intrabulbar part"	aci	-	0.774295	
+83	anterior cortical amygdaloid nucleus	Aco	Amygdala	0.749454	
+84	"anterior commissure, posterior part"	acp	-	0.170715	
+90	anterodorsal thalamic nucleus 	AD	Dorsolateral thalamus	0.217225	
+91	anterodorsal preoptic nucleus	ADP	-	0.0692373	
+94	"anterior hypothalamic area, anterior part "	AHA	Hypothalamus	0.171243	
+95	"anterior hypothalamic area, central part "	AHC	Hypothalamus	0.331388	
+97	"amygdalohippocampal area, anterolateral part "	AHiAL	Amygdala	0.421238	
+99	"amygdalohippocampal area, posteromedial part"	AHiPM	Amygdala	0.530115	
+100	"anterior hypothalamic area, posterior part "	AHP	Hypothalamus	0.170186	
+101	agranular insular cortex	AI	Insular cortex	1.16541	
+102	"agranular insular cortex, dorsal part"	AID	Insular cortex	2.07553	
+104	"agranular insular cortex, posterior part"	AIP	Insular cortex	3.02424	
+105	"agranular insular cortex, ventral part"	AIV	Insular cortex	2.09456	
+106	alar nucleus	Al	-	0.0232553	
+109	alveus of the hippocampus 	alv	Hippocampus	1.22513	
+110	anteromedial thalamic nucleus 	AM	Dorsolateral thalamus	0.489946	
+112	"anteromedial thalamic nucleus, ventral part "	AMV	Ventromedial thalamus	0.0491532	
+113	angular thalamic nucleus 	Ang	Dorsolateral thalamus	0.0972493	
+115	accessory olfactory bulb	AOB	-	0.261622	
+116	"anterior olfactory nucleus, dorsal part"	AOD	Olfactory nuclei	0.832433	
+117	"anterior olfactory nucleus, external part"	AOE	Olfactory nuclei	0.129490	
+118	"anterior olfactory nucleus, lateral part"	AOL	Olfactory nuclei	1.46667	
+119	"anterior olfactory nucleus, medial part"	AOM	Olfactory nuclei	0.890571	
+120	"anterior olfactory nucleus, posterior part"	AOP	Olfactory nuclei	0.887929	
+125	anterior perifornical nucleus	APF	-	0.0396397	
+126	amygdalopiriform transition area	APir	Amygdala	1.57449	
+130	anterior pretectal nucleus	APT	Mesencephalic region	1.21192	
+134	acoustic radiation	ar	-	0.105177	
+136	"arcuate hypothalamic nucleus, dorsal part "	ArcD	Hypothalamus	0.0459820	
+137	"arcuate hypothalamic nucleus, lateral part "	ArcL	Hypothalamus	0.0634235	
+138	"arcuate hypothalamic nucleus, lateroposterior part"	ArcLP	Hypothalamus	0.0903785	
+139	"arcuate hypothalamic nucleus, medial part "	ArcM	Hypothalamus	0.195556	
+140	"arcuate hypothalamic nucleus, medial posterior part "	ArcMP	Hypothalamus	0.0940782	
+143	amygdalostriatal transition area 	AStr	Amygdala	0.359928	
+144	anterior tegmental nucleus	ATg	-	0.0137418	
+145	primary auditory cortex	Au1	Sensory cortex	7.13620	
+146	"secondary auditory cortex, dorsal area"	AuD	Sensory cortex	2.88260	
+147	"secondary auditory cortex, ventral area"	AuV	Sensory cortex	2.52637	
+148	anteroventral thalamic nucleus	AV	Dorsolateral thalamus	0.0845646	
+149	"anteroventral thalamic nucleus, dorsomedial part "	AVDM	Dorsolateral thalamus	0.246823	
+150	anteroventral periventricular nucleus	AVPe	-	0.0280120	
+152	"anteroventral thalamic nucleus, ventrolateral part "	AVVL	Dorsolateral thalamus	0.486247	
+153	basal nucleus (Meynert)	B	-	0.273249	
+157	bed nucleus of the accessory olfactory tract	BAOT	-	0.0607808	
+160	nucleus of the brachium of the inferior colliculus	BIC	-	0.688673	
+161	brachium of the inferior colliculus	bic	-	0.298090	
+163	"basolateral amygdaloid nucleus, anterior part "	BLA	Amygdala	0.877887	
+164	"basolateral amygdaloid nucleus, posterior part "	BLP	Amygdala	0.913298	
+165	"basolateral amygdaloid nucleus, ventral part "	BLV	Amygdala	0.298090	
+167	"basomedial amygdaloid nucleus, anterior part "	BMA	Amygdala	0.681802	
+168	"basomedial amygdaloid nucleus, posterior part "	BMP	Amygdala	0.548613	
+174	"bed nucleus of the stria terminalis, intraamygdaloid division "	BSTIA	Amygdala	0.405910	
+175	"bed nucleus of the stria terminalis, lateral division"	BSTL	BNST	0.169658	
+176	"bed nucleus of the stria terminalis, lateral division, dorsal part"	BSTLD	BNST	0.0692373	
+177	"bed nucleus of the stria terminalis, lateral division, intermediate part"	BSTLI	BNST	0.152745	
+178	"bed nucleus of the stria terminalis, lateral division, juxtacapsular part"	BSTLJ	BNST	0.0132132	
+179	"bed nucleus of the stria terminalis, lateral division, posterior part"	BSTLP	BNST	0.134246	
+180	"bed nucleus of the stria terminalis, lateral division, ventral part"	BSTLV	BNST	0.0718799	
+182	"bed nucleus of the stria terminalis, medial division, anterior part"	BSTMA	BNST	0.490475	
+184	"bed nucleus of the stria terminalis, medial division, posterointermediate part"	BSTMPI	BNST	0.184457	
+185	"bed nucleus of the stria terminalis, medial division, posterolateral part"	BSTMPL	BNST	0.456121	
+186	"bed nucleus of the stria terminalis, medial division, posteromedial part"	BSTMPM	BNST	0.133718	
+187	"bed nucleus of the stria terminalis, medial division, ventral part"	BSTMV	BNST	0.0708229	
+188	"bed nucleus of stria terminalis, supracapsular part"	BSTS	BNST	0.0713514	
+196	"field CA3 of hippocampus, dorsal part"	CA3d	Hippocampus	0.348829	
+197	"field CA3 of hippocampus, ventral part"	CA3v	Hippocampus	1.31604	
+200	corpus collosum	cc	Corpus collosum	22.6538	
+203	"central amygdaloid nucleus, capsular part"	CeC	Amygdala	0.485718	
+205	"central amygdaloid nucleus, lateral division"	CeL	Amygdala	0.225682	
+206	"central amygdaloid nucleus, medial division"	CeM	Amygdala	0.605694	
+212	"cingulate cortex, area 1 "	Cg1	Cingulate cortex	5.17853	
+213	"cingulate cortex, area 2 "	Cg2	Cingulate cortex	2.82499	
+222	circular nucleus 	Cir	Hypothalamus	0.00000	
+223	centrolateral thalamic nucleus 	CL	Midline dorsal thalamus	0.628421	
+224	claustrum	Cl	-	2.08875	
+225	caudal linear nucleus of the raphe 	CLi	Raphe nucleus	0.142703	
+227	central medial thalamic nucleus 	CM	Midline dorsal thalamus	0.675460	
+230	"cerebral peduncle, basal part"	cp	-	2.07448	
+232	caudate putamen (striatum) 	CPu	Caudate putamen	40.4452	
+235	commissure of the superior colliculus	csc	-	0.0206126	
+245	cortex- amygdala transition zone 	CxA	Amygdala	0.180757	
+248	dorsal 3rd ventricle	D3V	-	0.358871	
+249	dorsal hypothalamic area	DA	Hypothalamus	0.578739	
+254	dorsal endopiriform nucleus	DEn	Piriform cortex	3.19760	
+255	dorsal fornix 	df	Septum	0.142174	
+256	"dentate gyrus, dorsal part"	DGd	Hippocampus	0.0803364	
+257	"dentate gyrus, ventral part"	DGv	Hippocampus	1.50684	
+258	dorsal hippocampal commissure	dhc	-	0.240481	
+259	dysgranular insular cortex	DI	Insular cortex	3.20659	
+260	nucleus of Darkschewitsch	Dk	-	0.122090	
+263	dorsal lateral geniculate nucleus	DLG	Dorsolateral thalamus	1.12735	
+265	dorsal lateral olfactory tract	dlo	-	0.0924926	
+266	dorsolateral orbital cortex	DLO	Orbitofrontal cortex	1.57237	
+267	dorsolateral periaqueductal gray	DLPAG	Periaqueductal Grey	0.892685	
+270	"dorsomedial hypothalamic nucleus, compact part "	DMC	Hypothalamus	0.0597238	
+271	"dorsomedial hypothalamic nucleus, dorsal part "	DMD	Hypothalamus	0.330859	
+272	dorsomedial periaqueductal gray	DMPAG	Periaqueductal Grey	0.442907	
+278	"dorsomedial hypothalamic nucleus, ventral part"	DMV	Hypothalamus	0.119976	
+279	deep mesencephalic	DpMe	Mesencephalic region	9.70591	
+280	dorsal peduncular cortex 	DP	Pre-frontal cortex	0.666475	
+281	deep gray layer of the superior colliculus	DpG	Superior colliculus	0.436565	
+282	deep gray/white layers of the superior colliculus	DpGWh	Superior colliculus	2.42806	
+286	deep white layer of the superior colliculus	DpWh	Superior colliculus	0.142174	
+287	dorsal raphe nucleus 	DR	Raphe nucleus	0.0110991	
+288	"dorsal raphe nucleus, caudal part "	DRC	Raphe nucleus	0.00000	
+289	"dorsal raphe nucleus, dorsal part "	DRD	Raphe nucleus	0.0792793	
+291	"dorsal raphe nucleus, ventral part "	DRV	Raphe nucleus	0.0243123	
+292	"dorsal raphe nucleus, ventrolateral part"	DRVL	Raphe nucleus	0.0295976	
+294	lamina dissecans of the entorhinal cortex	Dsc	-	0.430223	
+297	dorsal tegmental bundle	dtg	-	0.0417538	
+301	dorsal tuberomammillary nucleus 4	DTM	Hypothalamus	0.0380541	
+302	dorsal transition zone	DTr	-	0.214054	
+304	ependyma and subependymal layer	E	-	0.0237838	
+305	olfactory ventricle	E/OV	-	0.280649	
+308	external cortex of the inferior colliculus	ECIC	-	0.120505	
+309	ectorhinal cortex	Ect	Piriform cortex	4.01154	
+312	epilemniscal nucleus	ELm	-	0.0105706	
+314	external medullary lamina	eml	-	0.248937	
+317	external plexiform layer of the accessory olfactory bulb	EPIA	-	0.214054	
+319	ethmoid thalamic nucleus 	Eth	Dorsolateral thalamus	0.161730	
+321	Edinger-Westphal nucleus	EW	-	0.0110991	
+323	fornix 	f	Septum	0.601995	
+324	nucleus of the fields of Forel	F	-	0.184985	
+327	fimbria of the hippocampus 	fi	Hippocampus	3.41800	
+330	forceps minor of the corpus callosum	fmi	Corpus collosum	2.31496	
+331	forceps major of the corpus callosum	fmj	Corpus collosum	3.59928	
+332	fasciculus retroflexus 	fr	Midline dorsal thalamus	0.303376	
+333	frontal association cortex	FrA	-	4.61142	
+339	gemini hypothalamic nucleus 	Gem	Hypothalamus	0.0359400	
+341	granular insular cortex	GI	Insular cortex	4.73615	
+344	glomerular layer of the olfactory bulb	Gl	-	1.77427	
+345	glomerular layer of the accessory olfactory bulb	GlA	-	0.137418	
+348	granule cell layer of the accessory olfactory bulb	GrA	-	0.232553	
+351	granular cell layer of the olfactory bulb	GrO	-	2.26158	
+353	habenular commissure	hbc	-	0.0369970	
+354	nucleus of the horizontal limb of the diagonal band	HDB	Diagonal band	1.06869	
+357	intercalated nuclei of the amygdala 	I	Amygdala	0.0998920	
+358	hippocampus fronto-dorsal	hc_fd	Hippocampus	8.67369	
+359	"hippocampus posterior, dorsal part"	hc_d	Hippocampus	15.6704	
+360	"hippocampus posterior, ventral part"	hc_v	Hippocampus	12.1757	
+362	interanterodorsal thalamic nucleus	IAD	Midline dorsal thalamus	0.0338259	
+363	interanteromedial thalamic nucleus 	IAM	Ventromedial thalamus	0.110991	
+366	internal capsule	ic	-	7.32594	
+369	"islands of Calleja, major island"	ICjM	-	0.0512673	
+371	interfascicular nucleus	IF	-	0.0179700	
+372	indusium griseum	IG	-	0.0702944	
+373	intergeniculate leaf	IGL	-	0.0713514	
+375	infralimbic cortex 	IL	Pre-frontal cortex	1.35303	
+377	"intercalated amygdaloid nucleus, main part"	IM	Amygdala	0.0623664	
+378	intramedullary thalamic area	IMA	Dorsolateral thalamus	0.0745226	
+379	intermediodorsal thalamic nucleus 	IMD	Midline dorsal thalamus	0.0623664	
+380	amygdaloid intramedullary gray 	IMG	Amygdala	0.0153273	
+382	internal medullary lamina 	iml	Midline dorsal thalamus	0.0364685	
+383	interstitial nucleus of the medial longitudinal fasciculus	IMLF	Mesencephalic region	0.122090	
+384	"interstitial nucleus of medial longitudinal fasciculus, greater part"	IMLFG	Mesencephalic region	0.465634	
+386	intermedioventral thalamic commissure 	imvc	Midline dorsal thalamus	0.00317117	
+390	intercollicular nucleus	InCo	-	0.231496	
+393	intermediate gray layer of the superior colliculus	InG	Superior colliculus	1.72565	
+401	intermediate white layer of the superior colliculus	InWh	Superior colliculus	1.48517	
+414	interpeduncular nucleus	IP	Interpeduncular nucleus	0.125261	
+415	"interpeduncular nucleus, apical subnucleus"	IPA	Interpeduncular nucleus	0.0142703	
+416	interstitial nucleus of the posterior limb of the anterior commissure	IPAC	IPAC	0.552841	
+418	"interstitial nucleus of the posterior limb of the anterior commissure, lateral part"	IPACL	IPAC	0.448721	
+419	"interstitial nucleus of the posterior limb of the anterior commissure, medial part"	IPACM	IPAC	0.226210	
+420	"interpeduncular nucleus, dorsolateral and dorsomedial subnuclei"	IPD	Interpeduncular nucleus	0.142703	
+424	internal plexiform layer of the olfactory bulb	IPl	-	0.646919	
+427	"interpeduncular nucleus, lateral subnucleus"	IPL	Interpeduncular nucleus	0.103063	
+428	"interpeduncular nucleus, rostral subnucleus"	IPR	Interpeduncular nucleus	0.0903785	
+429	"interpeduncular nucleus, rostrolateral subnucleus"	IPRL	Interpeduncular nucleus	0.0338259	
+434	Part of 3V	3V	-	0.0412253	
+439	lateroanterior hypothalamic nucleus 	LA	Hypothalamus	0.138475	
+441	lateral accumbens shell	LAcbSh	Accumbens	0.803364	
+442	"lateral amygdaloid nucleus, dorsolateral part "	LaDL	Amygdala	0.638992	
+446	"lateral amygdaloid nucleus, ventrolateral part "	LaVL	Amygdala	0.170715	
+447	"lateral amygdaloid nucleus, ventromedial part "	LaVM	Amygdala	0.601995	
+449	lambdoid septal zone 	Ld	Septum	0.0792793	
+451	"laterodorsal thalamic nucleus, dorsomedial part "	LDDM	Dorsolateral thalamus	0.736769	
+454	"laterodorsal thalamic nucleus, ventrolateral part "	LDVL	Dorsolateral thalamus	0.984121	
+456	lateral entorhinal cortex 	LEnt	Piriform cortex	9.06744	
+457	longitudinal fasciculus of the pons	lfp	Pons	0.322403	
+458	lateral globus pallidus	LGP	Globus Pallidus	3.49833	
+459	lateral hypothalamic area 	LH	Hypothalamus	3.88944	
+460	lateral habenular nucleus 	LHb	Midline dorsal thalamus	0.0639520	
+461	"lateral habenular nucleus, lateral part"	LHbL	Midline dorsal thalamus	0.206126	
+462	"lateral habenular nucleus, medial part"	LHbM	Midline dorsal thalamus	0.201898	
+464	lateral lemniscus	ll	-	0.130018	
+465	lateral mammillary nucleus 	LM	Hypothalamus	0.118919	
+467	lateral olfactory tract	lo	-	1.98833	
+468	lateral orbital cortex 	LO	Orbitofrontal cortex	4.08289	
+469	nucleus of the lateral olfactory tract	LOT	-	0.0147988	
+471	lateral periaqueductal gray	LPAG	Periaqueductal Grey	0.752625	
+480	lateral posterior thalamic nucleus	LPL	Dorsolateral thalamus	0.0919640	
+481	"lateral posterior thalamic nucleus, laterocaudal part"	LPLC	Dorsolateral thalamus	0.163844	
+482	"lateral posterior thalamic nucleus, laterorostral part"	LPLR	Dorsolateral thalamus	0.270078	
+483	"lateral posterior thalamic nucleus, mediocaudal part"	LPMC	Dorsolateral thalamus	0.389526	
+484	"lateral posterior thalamic nucleus, mediorostral part "	LPMR	Dorsolateral thalamus	0.749454	
+486	lateral preoptic area	LPO	Hypothalamus	1.03750	
+493	"lateral septal nucleus, dorsal part "	LSD	Septum	0.661190	
+494	"lateral septal nucleus, intermediate part"	LSI	Septum	2.90744	
+497	lateral stripe of the striatum	LSS	-	0.400096	
+498	"lateral septal nucleus, ventral part "	LSV	Septum	0.683388	
+499	lateral terminal nucleus of the accessory optic tract	LT	-	0.100949	
+502	lateral ventricle	LV	-	2.79010	
+506	primary motor cortex 	M1	Motor cortex	24.8794	
+507	secondary motor cortex	M2	Motor cortex	15.4632	
+508	motor root of the trigeminal nerve	m5	-	0.344072	
+509	medial accessory oculomotor nucleus	MA3	-	0.0665947	
+512	medial corticohypothalamic tract	mch	-	0.165430	
+513	magnocellular nucleus of the lateral hypothalamus 	MCLH	Hypothalamus	0.0755796	
+514	middle cerebellar peduncle	mcp	-	0.495760	
+515	magnocellular nucleus of the posterior commissure	MCPC	-	0.122090	
+516	magnocellular preoptic nucleus	MCPO	-	0.477790	
+517	mediodorsal thalamic nucleus 	MD	Midline dorsal thalamus	0.234138	
+518	"mediodorsal thalamic nucleus, central part"	MDC	Midline dorsal thalamus	0.397982	
+520	"mediodorsal thalamic nucleus, lateral part"	MDL	Midline dorsal thalamus	0.377898	
+521	"mediodorsal thalamic nucleus, medial part"	MDM	Midline dorsal thalamus	0.689730	
+522	"mediodorsal thalamic nucleus, paralaminar part "	MDPL	Midline dorsal thalamus	0.00951352	
+529	"medial amygdaloid nucleus, anterior dorsal "	MeAD	Amygdala	0.646919	
+530	"medial amygdaloid nucleus, anteroventral part "	MeAV	Amygdala	0.0317117	
+533	"medial eminence, external layer "	MEE	Hypothalamus	0.0211412	
+534	"medial eminence, internal layer "	MEI	Hypothalamus	0.0174415	
+535	medial entorhinal cortex 	MEnt	-	1.57502	
+537	"medial amygdaloid nucleus, posterodorsal part "	MePD	Amygdala	0.337202	
+538	"medial amygdaloid nucleus, posteroventral part "	MePV	Amygdala	0.237838	
+543	"medial geniculate nucleus, dorsal part"	MGD	Medial geniculate nucleus	0.352529	
+546	"medial geniculate nucleus, ventral part"	MGV	Medial geniculate nucleus	1.15272	
+547	medial habenular nucleus	MHb	-	0.204012	
+548	mitral cell layer of the olfactory bulb (?)	Mi	-	0.147988	
+550	minimus nucleus	Min	-	0.0200841	
+551	microcellular tegmental nucleus	MiTg	-	0.162258	
+552	medial lemniscus	ml	Mesencephalic region	1.23993	
+553	"medial mammillary nucleus, lateral part"	ML	Hypothalamus	0.147988	
+554	medial longitudinal fasciculus	mlf	-	0.176000	
+555	"medial mammillary nucleus, medial part"	MM	Hypothalamus	0.428637	
+556	"medial mammillary nucleus, median part"	MMn	Hypothalamus	0.0158559	
+558	median preoptic nucleus	MnPo	-	0.0708229	
+559	median raphe nucleus 	MnR	Raphe nucleus	0.0264264	
+560	medial orbital cortex 	MO	Orbitofrontal cortex	1.18655	
+565	mammillary peduncle 	mp	Hypothalamus	0.0924926	
+566	medial preoptic area 	MPA	Hypothalamus	0.655376	
+570	medial preoptic nucleus 	MPO	Hypothalamus	0.0909070	
+572	"medial preoptic nucleus, lateral part"	MPOL	Hypothalamus	0.138475	
+573	"medial preoptic nucleus, medial part"	MPOM	Hypothalamus	0.147460	
+574	medial pretectal nucleus	MPT	-	0.208240	
+576	mammillary recess of the 3rd ventricle	MRe	Hypothalamus	0.0147988	
+578	medial septal nucleus 	MS	Septum	0.236252	
+580	mammillothalamic tract 	mt	Ventromedial thalamus	0.227267	
+581	medial terminal nucleus of the accessory optic tract	MT	-	0.0845646	
+582	mammillotegmental tract	mtg	-	0.0391111	
+583	medial tuberal nucleus 	MTu	Hypothalamus	0.163315	
+588	marginal zone of the medial geniculate	MZMG	-	0.172300	
+589	nigrostriatal bundle	ns	-	0.0221982	
+596	olfactory nerve layer	ON	-	1.82712	
+597	optic nerve layer of the superior colliculus	Op	Superior colliculus	1.59933	
+598	oval paracentral thalamic nucleus 	OPC	Midline dorsal thalamus	0.0792793	
+599	olivary pretectal nucleus	OPT	-	0.135832	
+600	optic tract	opt	-	1.58876	
+602	nucleus of the optic tract	OT	-	0.268493	
+604	optic chiasm	ox	-	0.608865	
+608	paratrochlear nucleus	Pa4	-	0.0845646	
+609	periaqueductal grey	PAG	Periaqueductal Grey	0.588781	
+611	"paraventricular hypothalamic nucleus, anterior magnocellular"	PaAM	Hypothalamus	0.0121562	
+612	"paraventricular hypothalamic nucleus, anterior parvicellular part "	PaAP	Hypothalamus	0.197141	
+613	"paraventricular hypothalamic nucleus, dorsal cap "	PaDC	Hypothalamus	0.00211412	
+615	"paraventricular hypothalamic nucleus, lateral magnocellular part "	PaLM	Hypothalamus	0.0158559	
+617	"paraventricular hypothalamic nucleus, medial parvicellular part "	PaMP	Hypothalamus	0.0512673	
+618	"paraventricular hypothalamic nucleus, posterior part "	PaPo	Hypothalamus	0.0438679	
+619	pararubral nucleus	PaR	Mesencephalic region	0.423352	
+620	parasubiculum	PaS	Hippocampus	0.948710	
+621	"paraventricular hypothalamic nucleus, ventral part "	PaV	Hypothalamus	0.0153273	
+623	parabigeminal nucleus	PBG	-	0.0491532	
+624	parabrachial pigmented nucleus 	PBP	Substantia Nigra	0.117333	
+626	posterior commissure	pc	-	0.180228	
+627	paracentral thalamic nucleus 	PC	Midline dorsal thalamus	0.416481	
+632	nucleus of the posterior commissure	PCom	-	0.179171	
+638	posterodorsal preoptic nucleus	PDP	-	0.0190270	
+640	periventricular hypothalamic nucleus 	Pe	Hypothalamus	0.210355	
+641	perifornical nucleus 	PeF	Hypothalamus	0.111520	
+643	parafascicular thalamic nucleus 	PF	Midline dorsal thalamus	0.573982	
+646	posterior hypothalamic area 	PH	Hypothalamus	0.900613	
+648	posterior intralaminar thalamic nucleus	PIL	Dorsolateral thalamus	0.288577	
+650	pineal recess	PiRe	-	0.135303	
+651	paralemniscal nucleus	PL	-	0.298090	
+652	posterolateral cortical amygdaloid nucleus (C2)	PLCo	Amygdala	0.601995	
+653	paralambdoid septal nucleus 	PLd	Septum	0.0808649	
+655	posterior limitans thalamic nucleus	PLi	-	0.126847	
+656	principal mammillary tract 	pm	Hypothalamus	0.0174415	
+658	posteromedial cortical amygdaloid nucleus (C3)	PMCo	Amygdala	1.75630	
+659	"premammillary nucleus, dorsal part "	PMD	Hypothalamus	0.126318	
+660	external plexiform layer of the olfactory bulb	EPl	-	0.700829	
+661	paramedian raphe nucleus 	PMnR	Raphe nucleus	0.0697658	
+663	"premammillary nucleus, ventral part "	PMV	Hypothalamus	0.107820	
+664	pontine nuclei	Pn	Pons	1.55335	
+665	paranigral nucleus 	PN	Substantia Nigra	0.0570811	
+667	"pontine reticular nucleus, oral part"	PnO	Pons	0.870487	
+670	posterior thalamic nuclear group 	Po	Dorsolateral thalamus	2.47827	
+672	posteromedian thalamic nucleus 	PoMn	Midline dorsal thalamus	0.393226	
+673	postsubiculum	Post	Hippocampus	2.20819	
+674	"posterior thalamic nuclear group, triangular part"	PoT	Dorsolateral thalamus	0.469334	
+675	peripeduncular nucleus	PP	-	0.156445	
+678	posterior pretectal nucleus	PPT	-	0.176000	
+679	pedunculopontine tegmental nucleus	PPTg	-	0.194499	
+681	prerubral field	PR	-	0.348829	
+688	precommissural nucleus	PrC	-	0.127904	
+690	perirhinal cortex	PRh	Piriform cortex	2.18864	
+691	prelimbic cortex 	PrL	Pre-frontal cortex	4.45286	
+693	presubiculum	PrS	Hippocampus	0.923869	
+694	parastrial nucleus	PS	-	0.0644805	
+697	parasubthalamic nucleus	PSTh	-	0.0792793	
+698	paratenial thalamic nucleus 	PT	Midline dorsal thalamus	0.269021	
+699	parietal association cortex	PtA	Parietal association cortex	5.29797	
+700	periventricular fibre system	pv	Midline dorsal thalamus	0.470919	
+701	paraventricular thalamic nucleus	PV	Midline dorsal thalamus	0.0718799	
+702	"paraventricular thalamic nucleus, anterior part "	PVA	Ventromedial thalamus	0.244180	
+704	"paraventricular thalamic nucleus, posterior part "	PVP	Midline dorsal thalamus	0.199255	
+708	red nucleus	R	-	0.292805	
+715	retrochiasmatic area 	RCh	Hypothalamus	0.313418	
+716	reuniens thalamic nucleus 	Re	Ventromedial thalamus	0.441850	
+718	retroethmoid nucleus	REth	Mesencephalic region	0.115219	
+720	rhomboid thalamic nucleus 	Rh	Ventromedial thalamus	0.152745	
+721	rhinal incisura	ri	-	0.0422823	
+722	rostral interstitial nucleus of medial longitudinal fasciculus	RI	-	0.0993635	
+726	rostral linear nucleus of the raphe 	RLi	Raphe nucleus	0.306547	
+727	"red nucleus, magnocellular part"	RMC	Mesencephalic region	0.144288	
+732	"red nucleus, parvicellular part"	RPC	Mesencephalic region	0.0872073	
+735	retrorubral nucleus	RR	-	0.116276	
+736	retrorubral field	RRF	-	0.525358	
+738	rubrospinal tract	rs	-	0.0475676	
+739	retrosplenial agranular cortex	RSA	Retrosplenial cortex	5.67482	
+741	retrosplenial granular a cortex	RSGa	Retrosplenial cortex	1.79964	
+742	retrosplenial granular b cortex	RSGb	Retrosplenial cortex	6.17322	
+743	reticular thalamic nucleus 	Rt	Dorsolateral thalamus	2.32024	
+744	reticulotegmental nucleus of the pons	RtTg	Pons	0.0465106	
+745	"reticulotegmental nucleus of the pons, pericentral part"	RtTgP	Pons	0.0116276	
+746	"subiculum, dorsal part"	DS	Hippocampus	1.24891	
+747	"subiculum, ventral part"	VS	Hippocampus	1.86254	
+748	"subiculum, transition area"	STr	Hippocampus	3.50679	
+749	primary somatosensory cortex	S1	Sensory cortex	1.73358	
+750	"primary somatosensory cortex, barrel field"	S1BF	Sensory cortex	23.5333	
+751	"primary somatosensory cortex, dysgranular region"	S1DZ	Sensory cortex	3.62888	
+752	"primary somatosensory cortex, forelimb region "	S1FL	Sensory cortex	8.19643	
+753	"primary somatosensory cortex, hindlimb region "	S1HL	Sensory cortex	4.19916	
+754	"primary somatosensory cortex, jaw region"	S1J	Sensory cortex	10.3290	
+755	"primary somatosensory cortex, jaw region, oral surface"	S1JO	Sensory cortex	2.74729	
+757	dorsal fornix	df	-	0.00422823	
+758	"primary somatosensory cortex, trunk region"	S1Tr	Sensory cortex	4.83815	
+759	"primary somatosensory cortex, upper lip region"	S1ULp	Sensory cortex	4.43542	
+760	secondary somatosensory cortex	S2	Sensory cortex	10.5024	
+761	sensory root of the trigeminal nerve	s5	-	1.43760	
+764	scaphoid thalamic nucleus 	Sc	Dorsolateral thalamus	0.0221982	
+765	superior colliculus	SC	-	0.124733	
+767	suprachiasmatic nucleus	SCh	-	0.0544385	
+771	subcommissural nucleus	SCom	-	0.0174415	
+772	superior cerebellar peduncle (brachium conjunctivum)	scp	-	0.223039	
+775	septofimbrial nucleus 	SFi	Septum	0.561826	
+776	subfornical organ	SFO	-	0.128433	
+777	suprageniculate thalamic nucleus	SG	Dorsolateral thalamus	0.144288	
+780	septohippocampal nucleus 	SHi	Septum	0.129490	
+782	substantia innominata	SI	Substantia Innominata	1.15959	
+783	"substantia innominata, basal part"	SIB	Substantia Innominata	0.507916	
+784	"substantia innominata, dorsal part"	SID	Substantia Innominata	0.292805	
+789	"substantia innominata, ventral part"	SIV	Substantia Innominata	0.155916	
+790	semilunar nucleus 	SL	Septum	0.211940	
+796	stria medullaris	SM	Midline dorsal thalamus	0.147460	
+797	stria medullaris of the thalamus 	sm	Midline dorsal thalamus	0.573982	
+798	submammillothalamic nucleus 	SMT	Hypothalamus	0.0359400	
+801	substantia nigra	SN	Substantia Nigra	0.155388	
+802	"substantia nigra, compact part, dorsal tier "	SNCD	Substantia Nigra	0.563940	
+804	"substantia nigra, lateral part "	SNL	Substantia Nigra	0.122619	
+805	"substantia nigra, medial part "	SNM	Substantia Nigra	0.0576097	
+806	"substantia nigra, reticular part"	SNR	Substantia Nigra	1.56497	
+807	"substantia nigra, reticular part, dorsomedial tier"	SNRDM	Substantia Nigra	0.233081	
+808	"substantia nigra, reticular part, ventrolateral tier"	SNRVL	Substantia Nigra	0.169658	
+809	supraoptic nucleus	SO	-	0.0713514	
+824	supraoptic decussation	sox	-	0.245766	
+832	subparafascicular thalamic nucleus	SPF	Midline dorsal thalamus	0.130018	
+833	"subparafascicular thalamic nucleus, parvicellular part"	SPFPC	Midline dorsal thalamus	0.0940782	
+838	stria terminalis	st	-	0.803364	
+839	strial part of the preoptic area	StA	-	0.0412253	
+841	subthalamic nucleus	STh	-	0.228853	
+842	striohypothalamic nucleus	StHy	-	0.0956637	
+843	superior thalamic radiation	str	-	0.184457	
+844	supraoculomotor periaqueductal gray	Su3	Periaqueductal Grey	0.200841	
+845	supraoculomotor cap	Su3C	Periaqueductal Grey	0.0697658	
+847	submedius thalamic nucleus 	Sub	Ventromedial thalamus	0.223568	
+848	subbrachial nucleus	SubB	-	0.325574	
+853	"submedius thalamic nucleus, dorsal part"	SubD	Ventromedial thalamus	0.0840361	
+854	subgeniculate nucleus	SubG	-	0.101478	
+855	subincertal nucleus	SubI	-	0.331916	
+856	"submedius thalamic nucleus, ventral part"	SubV	Ventromedial thalamus	0.127904	
+857	superficial gray layer of the superior colliculus	SuG	Superior colliculus	1.52005	
+858	supramammillary nucleus	SuM	Hypothalamus	0.140589	
+859	"supramammillary nucleus, lateral part"	SuML	Hypothalamus	0.0317117	
+860	"supramammillary nucleus, medial part"	SuMM	Hypothalamus	0.0475676	
+864	tuber cinereum area 	TC	Hypothalamus	2.08875	
+865	terete hypothalamic nucleus 	Te	Hypothalamus	0.0718799	
+866	temporal association cortex	TeA	Temporal association cortex	5.08445	
+867	transverse fibers of the pons	tfp	Pons	0.340901	
+869	tectospinal tract	ts	-	0.0237838	
+870	triangular septal nucleus 	TS	Septum	0.314475	
+871	trigeminothalamic tract	tth	-	0.128433	
+873	olfactory tubercle plexiform layer	TuPl	-	0.129490	
+882	"primary visual cortex, binocular area"	V1B	Sensory cortex	4.11566	
+883	"primary visual cortex, monocular area"	V1M	Sensory cortex	3.98299	
+884	"secondary visual cortex, lateral area"	V2L	Sensory cortex	10.3666	
+885	"secondary visual cortex, mediolateral area"	V2ML	Sensory cortex	2.27796	
+886	"secondary visual cortex, mediomedial area"	V2MM	Sensory cortex	2.52425	
+887	ventral anterior thalamic nucleus 	VA	Dorsolateral thalamus	0.697658	
+892	nucleus of the vertical limb of the diagonal band	VDB	Diagonal band	0.525886	
+895	ventral endopiriform nucleus	VEn	Piriform cortex	0.769538	
+897	ventral hippocampal commissure	vhc	-	0.787508	
+898	ventrolateral thalamic nucleus 	VL	Dorsolateral thalamus	1.11890	
+899	ventral lateral geniculate nucleus	VLG	Dorsolateral thalamus	0.0528529	
+900	"ventral lateral geniculate nucleus, magnocellular part"	VLGMC	Dorsolateral thalamus	0.275892	
+901	"ventral lateral geniculate nucleus, parvicellular part"	VLGPC	Dorsolateral thalamus	0.163315	
+902	ventrolateral hypothalamic nucleus	VLH	Hypothalamus	0.0755796	
+904	ventrolateral periaqueductal gray	VLPAG	Periaqueductal Grey	0.113105	
+905	ventrolateral preoptic nucleus	VLPO	-	0.0248409	
+907	ventromedial thalamic nucleus 	VM	Dorsolateral thalamus	1.11731	
+909	"ventromedial hypothalamic nucleus, anterior part "	VMHA	Hypothalamus	0.0465106	
+910	"ventromedial hypothalamic nucleus, central part "	VMHC	Hypothalamus	0.163315	
+911	"ventromedial hypothalamic nucleus,dorsomedial part "	VMHDM	Hypothalamus	0.210883	
+912	"ventromedial hypothalamic nucleus, ventrolateral part "	VMHVL	Hypothalamus	0.288048	
+914	ventromedial preoptic nucleus	VMPO	-	0.0359400	
+915	vomeronasal nerve	vn	-	0.0369970	
+917	ventral orbital cortex 	VO	Orbitofrontal cortex	4.34451	
+919	ventral pallidum	VP	Ventral pallidum	2.39688	
+920	ventral posterolateral thalamic nucleus	VPL	Dorsolateral thalamus	1.73886	
+921	ventral posteromedial thalamic nucleus	VPM	Dorsolateral thalamus	2.76791	
+922	"ventral posterior thalamic nucleus, parvicellular part"	VPPC	Dorsolateral thalamus	0.259508	
+924	ventral reuniens thalamic nucleus 	VRe	Ventromedial thalamus	0.225682	
+926	ventral tegmental area 	VTA	VTA	1.37470	
+927	polymorph layer of the dentate gyrus	PoDG	Hippocampus	0.241009	
+929	ventral tuberomammillary nucleus 	VTM	Hypothalamus	0.0285406	
+930	visual tegmental relay zone	VTRZ	-	0.0734655	
+934	decussation of the superior cerebellar peduncle	xscp	-	0.164901	
+937	zona incerta	ZI	-	0.423352	
+938	"zona incerta, dorsal part"	ZID	-	0.936025	
+939	"zona incerta, ventral part"	ZIV	-	0.868902	
+941	zonal layer of the superior colliculus	Zo	-	0.226210	
+1003	1	1	-	0.438679	
+1004	2	2	-	0.261622	
+1005	3	3	-	0.473033	
+1009	1 (caudal)	1'	-	0.101478	
+1010	2 (caudal)/LOT	2'	-	0.139003	
+1011	3 (caudal)	3'	-	0.0866788	
+1013	Piriform layer (region external to)	Pir/ext	Piriform cortex	6.24246	
+1014	Piriform layer	Pir	Piriform cortex	2.93756	
+1015	Piriform layer (region internal to)	Pir/int	Piriform cortex	8.50562	
+1016	Piriform cortex	PirCtx	Piriform cortex	3.96555	
+1018	"olfactory tubercle, granular layer"	Tu1	Olfactory tubercle	1.13052	
+1019	"olfactory tubercle, layer 2"	Tu2	Olfactory tubercle	0.800721	
+1020	"olfactory tubercle, polymorph layer"	Tu3	Olfactory tubercle	1.60197	
+1021	olfactory tubercle	Tu	Olfactory tubercle	1.86042	
+1554	ventral nucleus of the lateral lemniscus	VLL	-	0.0591952	

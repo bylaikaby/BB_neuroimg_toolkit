@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>exprealign</title>
+</head>
+<body>
+ EXPREALIGN - aligns image and save as time-course of each slices.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXPREALIGN(SESSION,ExpNo) creates .hdr/.img files that SPM can handle,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;then runs SPM_REALIGN and SPM_RESLICE.&nbsp;&nbsp;SPM_RESLICE creates realigned and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;resliced data with 'r' prefix.&nbsp;&nbsp;Finally, those r-xxxx.img files will be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;concatinated and the program saves data as time-couse of each slices.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For example, spm/m02th1_xxx.img/hdr will be created, then spm/rm02th1_x.img<br>
+&nbsp;&nbsp;&nbsp;&nbsp;as SPM generated files, then m02th1_slxxx.mat as time-course of slice xxx.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!!!! Several slices at edges may appear as uniform or nonsense<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;after processing by spm_reslice() due to outside of interpolation.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you don't like, maybe flags.mask = 0 for spm_reslice() may be fine, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;although I never did it.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Control flags parameters can be set in the description file like...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ANAP.exprealign.datname&nbsp;&nbsp;&nbsp;&nbsp;= 'tcImg';&nbsp;&nbsp;&nbsp;&nbsp;% '2dseq' or 'tcImg'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.exprealign.preproc&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;% takes alignment of each slices<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.exprealign.export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.exprealign.use_edges = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.exprealign.realign&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.exprealign.reslice&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.exprealign.confirm&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.exprealign.spm_realign.quality = 0.75;<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;10.07.05 YM :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spm_reslice() may change image dimension and due to bug, its size is different<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from .hdr file.... If the case, play arround imgcrop/slicrop until solved.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;17.04.07 YM :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPM5 now saves realignment into '.hdr', not '.mat'....<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;REQUIREMENT :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPM2 package<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 13.03.07 YM&nbsp;&nbsp;pre-release, modified from mnrealign.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 19.04.07 YM&nbsp;&nbsp;supports 'reference-volume' by correct trials.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also SESREALIGN SESSPMMASK TCIMG2SPM SPM2TCIMG SPM_REALIGN SPM_RESLICE ANZ_READ<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mvoxlogical</title>
+</head>
+<body>
+ MVOXLOGICAL - does logical operation of SIG_A and SIG_B.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SIG = MVOXLOGICAL(SIG_A,LOGOP,SIG_B) does logical operation (LOGOP) of <br>
+&nbsp;&nbsp;&nbsp;&nbsp;SIG_A and SIG_B.&nbsp;&nbsp;.dat/.coords/.stat/.resp will be updated, other data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;structure will remain the same as in SIG_A.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Supported logical operations are :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'and'&nbsp;&nbsp;: SIG_A and SIG_B<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'or'&nbsp;&nbsp;&nbsp;&nbsp;: SIG_A or&nbsp;&nbsp;SIG_B<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'xor'&nbsp;&nbsp;: SIG_A xor SIG_B<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'diff' : SIG_A and ~SIG_B,&nbsp;&nbsp;or SIG_A - SIG_B<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig1 = mvoxselect('e04ds1','visesmix','all','glm[2]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig2 = mvoxselect('e04ds1','visescomb','all','glm[1]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig12 = mvoxlogical(sig1,'and',sig2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> figure;&nbsp;&nbsp;plot([mean(sig1.dat,2), mean(sig12.dat,2)]);<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time length size(SIG_A.dat,1) and size(SIG_B.dat,1) should be the same,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;otherwise, set the property, 'coords_only' as 1 to get coordinates only.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.stat and .resp also selected but .stat may not be useful if two source <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;signals are selected by different way.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 23.08.07 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MVOXSELECT INTERSECT SETDIFF SETXOR<br>
+<br>
+</body>
+</html>

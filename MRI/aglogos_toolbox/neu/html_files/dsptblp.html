@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>dsptblp</title>
+</head>
+<body>
+ DSPTBLP - Display signals "SigName" of different trials <br>
+&nbsp;&nbsp;DSPTBLP(Sig, SigName) display the selected signal in different trial types.<br>
+ <br>
+&nbsp;&nbsp;info.band{ 1}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4] 'Delta'&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 0};<br>
+&nbsp;&nbsp;info.band{ 2}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8] 'Theta'&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 0};<br>
+&nbsp;&nbsp;info.band{ 3}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8] 'ThetaR'&nbsp;&nbsp;'LFP', 2};<br>
+&nbsp;&nbsp;info.band{ 4}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14] 'Alpha'&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 3};<br>
+&nbsp;&nbsp;info.band{ 5}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24] 'Beta'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 4};<br>
+&nbsp;&nbsp;info.band{ 6}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90] 'Gamma'&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 30};<br>
+&nbsp;&nbsp;info.band{ 7}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90] 'LFP'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 0};<br>
+&nbsp;&nbsp;info.band{ 8}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90] 'LFPR'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP', 30};<br>
+&nbsp;&nbsp;info.band{ 9}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {[ 400&nbsp;&nbsp;3000] 'MUA'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MUA', 30};<br>
+ <br>
+&nbsp;&nbsp;info.lBands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [1:8];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Bands in the LFP range<br>
+&nbsp;&nbsp;info.mBands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [9];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Bands in the MUA range<br>
+ <br>
+&nbsp;&nbsp;info.lcutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 500;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Before splitting the LFP region (to avoid singularities)<br>
+&nbsp;&nbsp;info.mcutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 100;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Before splitting the MUA region (to avoid singularities)<br>
+&nbsp;&nbsp;info.NewFs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 250;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% All signals will be resampled at 250Hz<br>
+&nbsp;&nbsp;info.NewFsTr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= info.NewFs*0.08;<br>
+ <br>
+&nbsp;&nbsp;Example:&nbsp;&nbsp;dsptblp(blp); will display the LFP signal (No=6) of BLPs<br>
+ <br>
+&nbsp;&nbsp;NKL, 19.11.05<br>
+<br>
+</body>
+</html>

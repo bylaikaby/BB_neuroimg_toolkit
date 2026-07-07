@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mnfix_tcimg</title>
+</head>
+<body>
+ MNFIX_TCIMG - fix the wrong voxel resolution in tcImg.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MNFIX_TCIMG(SESSION,GRPNAME) fixes the wrong voxel resolution in SIGS/tcImg.<br>
+ <br>
+&nbsp;&nbsp;HOW TO GET CORRECT VOXEL RESOLUTION<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Set SYSP.DataMri in the session file, to read original file, like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SYSP.DataMri	= '//Wks8/guest/nmr/';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Run getpvpars and compute voxel resolution, note that RECO_fox as in cm, not mm.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> pv = getpvpars('m02th1',1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> pv.reco.RECO_fov./pv.reco.RECO_size*10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Undo "1" or make the modification to "SYSP.DataMri" as a comment.<br>
+ <br>
+&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 06.06.05 YM<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 10.06.05 YM&nbsp;&nbsp;supports also d03se1<br>
+ <br>
+&nbsp;&nbsp;See also GETPVPARS<br>
+<br>
+</body>
+</html>

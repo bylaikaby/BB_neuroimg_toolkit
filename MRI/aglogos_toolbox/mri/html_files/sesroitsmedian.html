@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sesroitsmedian</title>
+</head>
+<body>
+ SESROITSMEDIAN - Compute the median of each ROI Time Series (for correlation analysis)<br>
+&nbsp;&nbsp;SESROITSMEDIAN Computes the average response of each voxel of each ROI. The function can be<br>
+&nbsp;&nbsp;used to increase the signal to noise ration in the roiTs data before applying the<br>
+&nbsp;&nbsp;correlation analysis. This is useful when we want to have always the same mask for the<br>
+&nbsp;&nbsp;study of responses to different trials/stimuli.<br>
+ <br>
+&nbsp;&nbsp;NOTE: In continuous observation periods this is not needed! In those experiments<br>
+&nbsp;&nbsp;(e.g. M02lx1, or all the old Nature sessions) the correlation analysis is performed<br>
+&nbsp;&nbsp;immediately after the creating of roiTs in the MAREATS functions, which calls MATSCOR. The<br>
+&nbsp;&nbsp;present function is good for experiments in which an observation period has several<br>
+&nbsp;&nbsp;trials. In the latter case roiTs selection on the basis of Roi.mat DOES NOT invoke<br>
+&nbsp;&nbsp;MATSCOR. Instead the SESAREATS if followed by the call of SESGETTRIAL which splits the<br>
+&nbsp;&nbsp;observation periods in trials. NO AVERAGING can be possible done before this step; due to<br>
+&nbsp;&nbsp;the clock-jitter. The present function is called immediately after the SESGETTRIAL to<br>
+&nbsp;&nbsp;generate group-averages of the troiTs structure.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;It is THIS AVERAGES that are used by SESATSCOR to create r-value maps!!!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;See also GETTRIAL SESGETTRIAL<br>
+ <br>
+&nbsp;&nbsp;NKL 23.07.04<br>
+<br>
+</body>
+</html>

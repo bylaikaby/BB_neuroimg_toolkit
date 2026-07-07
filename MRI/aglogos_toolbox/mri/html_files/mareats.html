@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mareats</title>
+</head>
+<body>
+ MAREATS - Select and process the time series of selected ROIs or Areas<br>
+&nbsp;&nbsp;MAREATS (SESSION, ExpNo, ARGS) extracts the time series for each of the permissible ROIs<br>
+&nbsp;&nbsp;defined with the sesroi(SesName) utility.&nbsp;&nbsp;The areas noted as "excluded"<br>
+&nbsp;&nbsp;(e.g. IEXCLUDE={'brain';'ele'}) are not taken into account.<br>
+ <br>
+&nbsp;&nbsp;The selection of time series depends on individual projects. There are two general<br>
+&nbsp;&nbsp;categories: (a) Projects in which the voxel identity is important; representative example is<br>
+&nbsp;&nbsp;the "dynamic connectivity" project, in which dependence measures are determining the strength<br>
+&nbsp;&nbsp;of connectivity between brain sites, and (b) Projects in which the exact voxel identity is<br>
+&nbsp;&nbsp;irrelevant; an example, here, is the study of BOLD nonlinearities during brief-pulse<br>
+&nbsp;&nbsp;stimulation. In this project the response of a region or area (e.g. V1, ele) is averaged<br>
+&nbsp;&nbsp;across all voxels in the area, and this average response is compared with neural activity and<br>
+&nbsp;&nbsp;so on and so forth.<br>
+ <br>
+&nbsp;&nbsp;Both the IEXCLUDE and the ICONCAT fields will be different in the two types of project. To<br>
+&nbsp;&nbsp;avoid editing this function or passing long lists of arguments, the IEXCLUDE, ICONCAT,<br>
+&nbsp;&nbsp;etc. may be defined in the description file, as follows:<br>
+ <br>
+&nbsp;&nbsp;DYNAMIC CONNECTIVITY<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mareats.IEXCLUDE = {'brain';'ele';};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mareats.ICONCAT&nbsp;&nbsp;= 0;<br>
+&nbsp;&nbsp;BRIEF PULSES<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mareats.IEXCLUDE = {'brain';'ele';'test'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mareats.ICONCAT&nbsp;&nbsp;= 1;<br>
+ <br>
+&nbsp;&nbsp;The 'test' ROI is not needed for the second type of projects. It is used in the dependence<br>
+&nbsp;&nbsp;studies to denote an area that is certainly not modulated by the stimulus.<br>
+ <br>
+&nbsp;&nbsp;The ROIs are assumed to be already determined in the Ses.roi structure, including the<br>
+&nbsp;&nbsp;following fields:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI.groups = {'all'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI.names	= {'brain';'v1';'v2';'test'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI.model	= 'v1';<br>
+&nbsp;&nbsp;For details regarding these definitions type "hroi" To define the actual ROIs type<br>
+&nbsp;&nbsp;"sesroi(SesName)".<br>
+ <br>
+&nbsp;&nbsp;In the first category of projects, MAREATS returns a cell array which has the time series of<br>
+&nbsp;&nbsp;each permissible (not excluded) ROI as defined by sesroi. This means, that multiple ROIs in a<br>
+&nbsp;&nbsp;single cortical area will appear as different members of the cell array. This arrangments<br>
+&nbsp;&nbsp;ensure the preservation of the convexity-constraint for ROI definition, which in turn<br>
+&nbsp;&nbsp;warrants a Euclidean distance definition that corresponds as closely as possible to axonal<br>
+&nbsp;&nbsp;distance (geodesic).<br>
+&nbsp;&nbsp;A sample output of the function is seen here for the first value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session: 'j02x31'&nbsp;&nbsp;&nbsp;&nbsp;Refers to the session name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grpname: 'gpatrc2'&nbsp;&nbsp;Refers to the group name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpNo: 80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experiment number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir: [1x1 struct]&nbsp;&nbsp;&nbsp;&nbsp;Some directories<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dsp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evt: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stm: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ele: {}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ds: [0.7500 0.7500 2]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dx: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ana: [90x64x5 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Brain'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Refers to the ROI selected<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slice: -1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coords: [20842x3 double]&nbsp;&nbsp;&nbsp;&nbsp;Tal Coords<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roiSlices: [1 2 3 4 5]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The number of slices to display<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dat: [128x20842 double]&nbsp;&nbsp;IMPORTANT THIS IS THE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACTUAL DATA FROM EACH VOXEL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mdl: {[128x1 double]&nbsp;&nbsp;[128x1 double]&nbsp;&nbsp;[128x1 double]&nbsp;&nbsp;[128x1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double]&nbsp;&nbsp;[128x1 double]}&nbsp;&nbsp;The model you would use for the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;General Linear Model<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r: {[20842x1 double]}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p: {[20842x1 double]}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info: [1x1 struct]<br>
+ <br>
+&nbsp;&nbsp;In the second category MAREATS returns a cell array, each member of which is a cortical area<br>
+&nbsp;&nbsp;as defined in the Ses.roi.names, barring the exclude areas.<br>
+ <br>
+&nbsp;&nbsp;Note that the output of the MAREATS in the first project-category can be still concatanated<br>
+&nbsp;&nbsp;by using the MROITSCAT (see below);<br>
+ <br>
+&nbsp;&nbsp;See also SESROI SESTCIMG MROI MROIGET MTCFROMCOORDS MROICAT MROITSCAT<br>
+ <br>
+&nbsp;&nbsp;MTIMESERIES - Function to obtain the time series of voxels of a ROI Usage: MTIMESERIES<br>
+&nbsp;&nbsp;(tcImg, Roi, RoiName) uses the ROI information in the structure Roi and select time series<br>
+&nbsp;&nbsp;for each defined area or subregion in the structure;<br>
+ <br>
+&nbsp;&nbsp;MROICAT - Concatanate all rois of the same area in a slice Usage: MyRoi = MROICAT (MyRoi);<br>
+&nbsp;&nbsp;If, for example, we have right/left "V1", this operation will make the separate "V1" (left)<br>
+&nbsp;&nbsp;and "V1" (right) one single area by or-ing the masks and concatanating the coordinates Called<br>
+&nbsp;&nbsp;by: MTIMESERIES<br>
+ <br>
+&nbsp;&nbsp;MROIGET - Select one area with one or multiple concatanated rois Usage: oRoi =<br>
+&nbsp;&nbsp;mroiget(oRoi,[],RoiName); Called by: MTIMESERIES<br>
+ <br>
+&nbsp;&nbsp;MTCFROMCOORDS - Get the time course of the signals for each voxel Usage:<br>
+&nbsp;&nbsp;tc=mtcfromcoords(tcImg,coords); The function returns the time series of the voxels having<br>
+&nbsp;&nbsp;coordinates "coords"; The coordinates are defined in the "save" case of the Main_Callback of<br>
+&nbsp;&nbsp;the MROIGUI script; The tc (time courses) are processed according to the switches defined in<br>
+&nbsp;&nbsp;"ARGS" Called by: MTIMESERIES<br>
+ <br>
+&nbsp;&nbsp;MROITSCAT - Concatanates the ROI-based roiTs cell array members Usage: roiTs = MROITSCAT<br>
+&nbsp;&nbsp;(roiTs);<br>
+ <br>
+&nbsp;&nbsp;MATSCOR - Compute correlation coefficients for model mdlsct roiTs = matscor(roiTs,mdlsct) can<br>
+&nbsp;&nbsp;be called with model(s) if not, then expgetstm(ses,expno,'hemo') is used Called by: MAREATS<br>
+ <br>
+&nbsp;&nbsp;CORMAP = MATSMAP(roiTs,0_6); can be called to obtain cor maps matsmap without arguments will<br>
+&nbsp;&nbsp;display the maps Called by: DSPROITS<br>
+ <br>
+&nbsp;&nbsp;DSPROITS (roiTs) displays the cor maps and time courses; The display-format of the function<br>
+&nbsp;&nbsp;depends on the roiTs type; Conctacatanated roiTs structures will display one time course per<br>
+&nbsp;&nbsp;area, while roiTs of the first project-category will display the time courese of each<br>
+&nbsp;&nbsp;independent ROI<br>
+ <br>
+&nbsp;&nbsp;MROITSSEL - Further selects roiTs on the basis of the r-value<br>
+&nbsp;&nbsp;Usage: roiTs = MROITSSEL (roiTs).<br>
+ <br>
+&nbsp;&nbsp;EXAMPLES:<br>
+&nbsp;&nbsp;====================================================================================<br>
+&nbsp;&nbsp;roiTs = mareats('f01pr1',1);&nbsp;&nbsp;Based on Ses.anap.mareats will<br>
+&nbsp;&nbsp;extract the area time series (individual time series are unimportant).<br>
+&nbsp;&nbsp;tmp = mroitssel(roiTs,0.5); or dsproits(mroitssel(roiTs,0.4))<br>
+ <br>
+&nbsp;&nbsp;roiTs = mareats('m02lx1',1);<br>
+&nbsp;&nbsp;ICONCAT = 0; matsfft. matscor. tosdu.dsproits(mroitssel(roiTs,0.25));<br>
+&nbsp;&nbsp;ICONCAT = 1; croiTs = mareats('m02lx1',1); dsproits(mroitssel(mroitscat(croiTs),0.25));<br>
+&nbsp;&nbsp;The result of the above actions should be equivalent..<br>
+ <br>
+&nbsp;&nbsp;NKL&nbsp;&nbsp;&nbsp;&nbsp;12.03.04<br>
+&nbsp;&nbsp;Chand 03 Nov 2005<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16.04.07&nbsp;&nbsp;if no ROI, then select all voxels for quick analysis.<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15.11.07&nbsp;&nbsp;ITOSDU can be a cell array of {'method','epoch'}<br>
+<br>
+</body>
+</html>

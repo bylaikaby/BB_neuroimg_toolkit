@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mn_tcslice_load_hor</title>
+</head>
+<body>
+ MN_TCSLICE_LOAD_HOR - Loads time course of given HORIZONTAL slice.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;TCIMG = MN_TCSLICE_LOAD_HOR(SESSION,GRPNAME,H_SLICE,[REALIGNED=1]) loads<br>
+&nbsp;&nbsp;&nbsp;&nbsp;time course of given HORIZONTAL slice as tcImg structure.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[TCIMG, MATFILE] = MN_TCSLICE_LOAD_HOR(SESSION,GRPNAME,H_SLICE,[REALIGNED=1]) also<br>
+&nbsp;&nbsp;&nbsp;&nbsp;loads and returns tcImg in addition to its associated filename.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcImg = mn_tcslice_load_hor('d03se1','mdeftinj',10);&nbsp;&nbsp;% load realigned tcImg of slice 10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcImg = mn_tcslice_load_hor('d03se1','mdeftinj',36);&nbsp;&nbsp;% load tcImg of slice 36<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mn_tcslice_load_hor('d03se1','mdeftinj',62);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% assign tcImg into "caller" workspace.<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 20.06.05 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MN_TCSLICE_LOAD, MN_SPM2MAT, ASSIGNIN<br>
+<br>
+</body>
+</html>

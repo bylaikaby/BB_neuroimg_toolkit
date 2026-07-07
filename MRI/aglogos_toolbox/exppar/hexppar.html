@@ -1,0 +1,1102 @@
+
+
+
+<h1 style="font-weight: normal; font-style: italic;"><a name="HEXPPAR_-_Help_for_Event_DGZ_handling"></a><small>HEXPPAR - Help for Event (DGZ) handling functions (20.Nov.2005)</small></h1>
+
+
+<br>
+
+
+<br>
+
+
+This help is organized as<br>
+
+
+<div style="margin-left: 40px;"><a href="#What_is_event_and_parameters_in">What is "event" and "parameters" in data ?</a> (dgz, stimulus,adf/adfw and ParaVision )<br>
+
+
+Function list : <a href="#Experiment_Parameters">Experment Parameters</a><br>
+
+
+Function list : <a href="#Information_Needed_Before_Sorgint">Information for sorting signals by trial or stimlus</a><br>
+
+
+Function list : <a href="#Sorting_Data_According_to_Trial_or">Signal sorting</a><br>
+
+
+Function list : <a href="#Vital_Signs_and_Eye_Movement">Vital sings and Eye movement</a><br>
+
+
+Function list : <a href="#Small_Utilities">Small Utilities</a><br>
+
+
+<br>
+
+
+<br>
+
+
+</div>
+
+
+<br>
+
+
+<br>
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+<h3><a name="What_is_event_and_parameters_in"></a>What is "event" and "parameters" in data ?</h3>
+
+
+<br>
+
+
+<div style="margin-left: 40px;">&nbsp;&nbsp;&nbsp; We use task control
+program (essXXXX) running on a QNX machine to record events of stimlus
+timing, subjects responses etc. &nbsp;A way of recording is dependent
+on implementaton in the conrol program. &nbsp;Our standard ess system
+is "MriGeneric". &nbsp;Once data files are opened from ESSGUI, .evt
+(raw event file before data compilatoin/conversion) will be created.
+&nbsp;In the case of our standard ess system, "MriGeneric", it
+normally&nbsp;communicates with the stimulus computer and stimulus
+control program (MriStim) and stimulus parameter files (.stm, .pdm and
+.hst) will be dumped. &nbsp;If the flag in ESSGUI is set corectly,
+analog data files (.adf or .adfw) will also be opened. &nbsp;After the
+end of experiments, those .evt should be compiled with eye movement
+and/or vital signals into .dgz. &nbsp;For mri parameters see <a href="../mri/hmri.htm">hmri</a> for detail. <br>
+
+
+&nbsp;&nbsp;&nbsp; Most of experiment parametes will be save as "SesPar.mat" by<br>
+
+
+&gt;&gt; sesdumppar(SESSION)<br>
+
+
+Parameters can be accessed like<br>
+
+
+&gt;&gt; par = expgetpar(SESSION, ExpNo)<br>
+
+
+par = <br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; evt: [1x1 struct] &nbsp; &nbsp;&lt;--- event&nbsp;<br>
+
+
+&nbsp;&nbsp;&nbsp; pvpar: [1x1 struct] &nbsp;&lt;--- MRI<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; adf: [1x1 struct] &nbsp; &nbsp;&lt;--- adf/adfw<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stm: [1x1 struct] &nbsp; &nbsp;&lt;---
+stimulus parameters, only if "SESSION/stmfiles/xxxx.stm" exists.<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rfp: [1x1 struct] &nbsp; &nbsp; &lt;---
+receptive field parameters, only if "SESSION/stmfiles/SESSION.rfp"
+exits.<br>
+
+
+<br>
+
+
+Usually .evt and .pvpar and .stm are usuful for data analysis.<br>
+
+
+For an example, (m02lx1, Exp=1), &nbsp;.evt.obs has event timings and parameters for all observation periods as a cell array.<br>
+
+
+<table style="text-align: left; width: 705px; height: 295px; font-family: monospace;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="background-color: rgb(255, 255, 204);">par.evt = <br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dgzfile: '//Win49/E/DataNeuro/M02.lx1/m02lx1_001.dgz'<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+physfile: '//Win49/E/DataNeuro/M02.lx1/m02lx1_001.adfw'<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nch: 5<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nobsp: 1<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dx: 4.8000e-005<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trigger: 1<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+evttypes: [19 20 22 23 26 27 29 46 128 133]<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; evtnames: {10x1 cell}<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prmnames: {}<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interVolumeTime: 250<br>
+
+
+&nbsp;&nbsp;&nbsp; numTriggersPerVolume: 4<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+obs: {[1x1 struct]} &nbsp;&lt;--- events for all observation periods as
+a cell array.<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; validobsp: 1<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+tfactor: 1.0051 &nbsp; &nbsp; &nbsp; &lt;--- value of clock correction
+between QNX and ParaVision<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+date: 'Tue Aug 26 14:57:46 2003'<br>
+
+
+      <br>
+
+
+par.evt.obs{1} = <br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; adflen: 4.2869e+005<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; beginE: 0<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endE: 3.9001e+005<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mri1E: 3.8693e+004<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trialE: 0<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fixE: [0x1 double]<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; t: [3x1 double]<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v: [0 1 2]<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trialID: 0<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; times: [1x1 struct] &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;--- event timings<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; params: [1x1 struct] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;--- event parameters<br>
+
+
+&nbsp;&nbsp;&nbsp; origtimes: [1x1 struct] &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp;&lt;--- original timing WITHOUT clock-correction.<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; status: 1<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+Stimulus information is like<br>
+
+
+<table style="text-align: left; width: 705px; height: 112px; font-family: monospace;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="background-color: rgb(255, 255, 204);">par.stm = <br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; labels: {'obsp1'}<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; ntrials: 1<br>
+
+
+&nbsp;&nbsp;&nbsp; stmtypes: {'blank'&nbsp; 'movie'&nbsp; 'blank'}<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; voldt: 0.2500 &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;--- &nbsp;volume TR in seconds<br>
+
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;========= FOLLOWINGS ARE CELL ARRAY OF EACH OBSERVATIO PERIODS ======<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v: {[0 1
+2]} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &lt; ---
+&nbsp;stimulus IDs for .stmtypes, Note to add +1 for matlab indexing.<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dt: {[60 300
+30]} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;--- expected stimulus durations
+in seonds<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; t: {[0 60
+360 390]} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&lt;---&nbsp;expected) timing in seconds<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tvol: {[0 240 1440 1560]}
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;----
+expected&nbsp;iming in volumes<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time: {[0.0010 60.0052 360.0193]} &nbsp;&lt;--- actual timing in seconds<br>
+
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ======================================================================<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; date: 'Tue Aug 26 14:57:46 2003'<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; stmpars: [1x1 struct]<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; pdmpars: [1x1 struct]<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; hstpars: [1x1 struct]</td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+As you see above, "MriGeneric" is a single observation period system
+not to miss any MRI trigger events (par.evt.obs ,
+par.stm.v/dt/t/tvol/time is a single cell array). &nbsp;For
+convinience, recorded (not expected) stimlus timing is accessible as
+par.stm.time while it originally comes from event data (par.evt.obs).
+&nbsp;To see indivisual stimulus parameters, look at
+par.stm.stmpars.stmobj. &nbsp;For an example, parameters for stimulus
+ID of "1" (par.stm.stmypes{1+1} = 'movie'), see
+par.stm.stmpars.stmobj{1+1}.<br>
+
+
+<br>
+
+
+In MRI experiments, par.pvpar would be like<br>
+
+
+<table style="text-align: left; width: 700px; height: 45px;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="background-color: rgb(255, 255, 204);"><span style="font-family: monospace;">par.pvpar = </span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+nx: 128 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;--- number
+of voxels in X</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ny: 64 &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;--- number of voxels in Y</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nt: 1560 &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;--- number&nbsp;of time points</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nsli: 2 &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;--- number of slices</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+nseg: 2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;---
+number of segments</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; imgtr: 0.2500 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;--- volume TR in seconds</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; slitr: 0.0597 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;--- slice TR</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; segtr: 0.1250 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;--- segment TR</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; effte: 0.0200</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp; recovtr: 0.1250</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vdtr: [0 0]</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp; gradtype: [1 1 2 2] &nbsp; &nbsp; &nbsp; &nbsp;&lt;--- gradient types</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp; graddur: 0.0554</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp; actsize: [128 64]</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fov: [96 48] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;--- Field of View in mm</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; res: [0.7500 0.7500] &nbsp;&lt;--- image resolution</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; actres: [0.7500 0.7500]</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; slithk: 2 &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&lt;--- slice thickness in mm</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp; isodist: [2x1 double]</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sligap: 0</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dstime: 6</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ds: 96</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; times: [1x1 struct]</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; acqp: [1x1 struct] &nbsp;
+&nbsp;&nbsp;&lt;----- contents of &nbsp;"imnd" and "acqp" files</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reco: [1x1 struct] &nbsp;
+&nbsp;&nbsp;&lt;----- contents of "reco" file</span><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+For debugging, <a href="html_files/dumpdgz.html">dumpdgz</a> and <a href="../plt/dgzviewer.m">dgzviewer</a> will be useful.<br>
+
+
+dgzviewer(dgzfile) appears as<br>
+
+
+<img style="width: 696px; height: 520px;" alt="dgzviewer image" src="html_files/dgzviewer.png"><br>
+
+
+<br>
+
+
+<br>
+
+
+dumpdgz(dgzfile) prints contents of dgzfile as
+<table style="text-align: left; width: 696px; height: 392px; font-family: monospace;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="background-color: rgb(255, 255, 204);">&gt;&gt; dumpdgz('//Win49/E/DataNeuro/M02.lx1/m02lx1_001.dgz')<br>
+
+
+      <br>
+
+
+      <br>
+
+
+System: MriGeneric<br>
+
+
+Evt&nbsp; Trial&nbsp;&nbsp; Time&nbsp; Type SubT NPrms&nbsp; Notes<br>
+
+
+&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp; 19&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; Start Obs Period<br>
+
+
+&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp; 26&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; EM Params<br>
+
+
+&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp; 23&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;
+4&nbsp; Obs Period Type<br>
+
+
+&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;
+16&nbsp;&nbsp;&nbsp; 22&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp; Trial Type<br>
+
+
+&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;
+17&nbsp;&nbsp; 133&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;
+String Parameters 1<br>
+
+
+&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;
+17&nbsp;&nbsp; 128&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 32&nbsp; Float
+Parameters 1<br>
+
+
+&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 38498&nbsp;&nbsp;&nbsp;
+27&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp; Stimulus<br>
+
+
+&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 38498&nbsp;&nbsp;&nbsp;
+29&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp; Stimulus Type<br>
+
+
+&nbsp;970&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 98198&nbsp;&nbsp;&nbsp;
+27&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp; Stimulus<br>
+
+
+&nbsp;971&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 98198&nbsp;&nbsp;&nbsp;
+29&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp; Stimulus Type<br>
+
+
+5772&nbsp;&nbsp;&nbsp;&nbsp; 1 396691&nbsp;&nbsp;&nbsp; 27&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp; Stimulus<br>
+
+
+5773&nbsp;&nbsp;&nbsp;&nbsp; 1 396691&nbsp;&nbsp;&nbsp; 29&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp; Stimulus Type<br>
+
+
+6254&nbsp;&nbsp;&nbsp;&nbsp; 1 426525&nbsp;&nbsp;&nbsp; 20&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; End Obs Period</td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+</div>
+
+
+<br>
+
+
+<div style="text-align: right;"><a href="#HEXPPAR_-_Help_for_Event_DGZ_handling">Back To TOP</a><br>
+
+
+</div>
+
+
+<br>
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+<h3><a name="Experiment_Parameters"></a>Experiment Parameters</h3>
+
+
+<table style="text-align: left; width: 790px; height: 88px;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td><a href="html_files/expgetpar.html">expgetpar (Ses, ExpNo)</a></td>
+
+
+      <td>Returns experiment parameters, evt, pvpar and stm (See sesdumppar)</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/expgetstm.html">expgetstm (Ses, ExpNo)</a></td>
+
+
+      <td>Provide stimulus-related information (stm, epoch, boxcar, hemo)</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/sesdumppar.html">sesdumppar (Ses, Exps/GrpName)</a></td>
+
+
+      <td>Get/Load all experimental parameteters of the session.</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/expgetevt.html">expgetevt (Ses, ExpNo)</a> </td>
+
+
+      <td>Uses adf_info/dg_read to get all events of experiment ExpNo</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/dumpdgz.html">dumpdgz (dgzfile)</a></td>
+
+
+      <td>print event information in given trials of DGZ.</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="../plt/dgzviewer.m">gui/ dgzviewer (Ses, ExpNo)</a><br>
+
+
+      <a href="../plt/dgzviewer.m">gui/ dgzviewer (dgzfile)</a></td>
+
+
+      <td>GUI utility to view the DGZ file</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="../toolbox/jpcode/html_files/getpvpars.html">jpcode/ getpvpars (Ses, ExpNo)</a></td>
+
+
+      <td>Get Reco/Acqp Paravision-Parameters for defined scan</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="../utils/mex_dg/html_files/dg_read.html">utils/mex_dg/ dg_read (dgzfile)</a></td>
+
+
+      <td>MEX utility to read the event (.dgz) file.</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="../utils/mex_adf/html_files/adf_info.html">utils/mex_adf/ adf_info (adffile)</a></td>
+
+
+      <td>MEX utility to get info of ADF/ADFW file.</td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<div style="text-align: right;"><br>
+
+
+<a href="#HEXPPAR_-_Help_for_Event_DGZ_handling">Back To TOP</a><br>
+
+
+</div>
+
+
+<br>
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+<br>
+
+
+<h3><a name="Information_Needed_Before_Sorgint"></a>Information Needed Before Sorgint Signals by trial or stimulus</h3>
+
+
+<table style="text-align: left; width: 790px; height: 144px;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td><a href="html_files/getstiminfo.html">getstiminfo (Ses, ExpNo/GrpName)</a></td>
+
+
+      <td>&nbsp;Returns information regarding individual stimuli</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/gettrialinfo.html">gettrialinfo (Ses, ExpNo/GrpName)</a></td>
+
+
+      <td>&nbsp;Returns information regarding individual trials</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/getexpinfo.html">getexpinfo (Ses, ExpNo/GrpName)</a></td>
+
+
+      <td>Get information about SesName, ExpNo and Group</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/getsortpars.html">getsortpars (Ses, ExpNo)</a></td>
+
+
+      <td>Get parameters required to reshape/sort signals with the sigsort function</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/findstimpar.html">findstimpar (SortPar, StimID)</a></td>
+
+
+      <td>Get index and parameters of stimID (SortPar is returned from getsortpar)</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/findtrialpar.html">findtrialpar (SortPar, TrialID)</a></td>
+
+
+      <td>Get index and parameters of trialID (SortPar is returned from getsortpar)</td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<div style="text-align: right;"><a href="#HEXPPAR_-_Help_for_Event_DGZ_handling">Back To TOP</a><br>
+
+
+</div>
+
+
+<br>
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+<br>
+
+
+<h3><a name="Sorting_Data_According_to_Trial_or"></a>Sorting Data According to Trial or Stimulus</h3>
+
+
+<table style="text-align: left; width: 789px; height: 116px;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td><a href="html_files/getsortpars.html">getsortpars (Ses, ExpNo)</a></td>
+
+
+      <td>Get parameters required to reshape/sort signals with the sigsort function</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/sigsort.html">sigsort (Sig, SortPar, preT, postT)</a></td>
+
+
+      <td>&nbsp;Sort out signals by given parameter</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/sesgettrial.html">sesgettrial (Ses, Exps, SigName)</a> </td>
+
+
+      <td>Split observation periods into trials</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/gettrial.html">gettrial (Sig)</a> </td>
+
+
+      <td>Split observation period in trials and return average response per trial</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/sesgetsortpars.html">sesgetsortpars (Ses, Exps)</a></td>
+
+
+      <td>Get parameters for re-sorting signal in trials</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/sessigsort.html">sessigsort (Ses, Exps, SigName)</a></td>
+
+
+      <td>Sort out signals by given parameter</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/sigselepoch.html">sigselepoch (Ses, Epoch, SortPar)</a></td>
+
+
+      <td>Select Epoch of Signal (blank, nonblank, stimXX, triaXX)</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/getstim.html">getstim (Sig, TrialID)</a></td>
+
+
+      <td>Return trial from observation period</td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<div style="text-align: right;"><a href="hexppar.html#HEXPPAR_-_Help_for_Event_DGZ_handling">Back To TOP</a><br>
+
+
+</div>
+
+
+<br>
+
+
+<hr style="width: 100%; height: 2px;">
+<h3><a name="Vital_Signs_and_Eye_Movement"></a>Vital Signs and Eye Movement</h3>
+
+
+<table style="text-align: left; width: 799px; height: 90px;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td><a href="html_files/expgeteyemov.html">expgeteyemov (Ses, ExpNo)</a></td>
+
+
+      <td>Read eye movement traces</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/sesgeteyemov.html">sesgeteyemov (Ses, Exps)</a></td>
+
+
+      <td>Read eye position data and save in MAT file</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/expgetvitevt.html">expgetvitevt (Ses, ExpNo)</a></td>
+
+
+      <td>Read vital signs, i.e. plethysmogram and respiration</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/sesgetvitevt.html">sesgetvitevt (Ses, Exps)</a></td>
+
+
+      <td>Read ecg/resp signals of entire session and save the in MAT files</td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<div style="text-align: right;">
+<div style="text-align: left;"></div>
+
+
+<a href="#HEXPPAR_-_Help_for_Event_DGZ_handling">Back To TOP</a><br>
+
+
+</div>
+
+
+<br>
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+<h3><a name="Small_Utilities"></a>Small Utilities</h3>
+
+
+<table style="text-align: left; width: 800px; height: 88px;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td><a href="html_files/getevtcodes.html">getevtcodes</a></td>
+
+
+      <td>Get event codes used by the QNX programs (E_MAGIC, E_NAME,...)</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/expgettfactor.html">expgettfactor (Ses, ExpNo)</a></td>
+
+
+      <td>returns timing factor for adf/evt/img.</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/selectevt.html">selectevt (data, obsp, evttype, subtype)</a></td>
+
+
+      <td>Select an event with certain type/subtype</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><a href="html_files/selectprm.html">selectprm (data, obsp, evttype)</a></td>
+
+
+      <td>Returns event parameters of certain type/subtype</td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<div style="text-align: right;"><a href="hexppar.html#HEXPPAR_-_Help_for_Event_DGZ_handling">Back To TOP</a><br>
+
+
+</div>
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+

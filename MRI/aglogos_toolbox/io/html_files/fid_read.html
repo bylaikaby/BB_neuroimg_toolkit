@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>fid_read</title>
+</head>
+<body>
+&nbsp;&nbsp;FID_READ - Read ParaVision K-space data, usually named 'fid'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[KDATA,ACQP] = FID_READ(FILENAME)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;KDATA = FID_READ(FILENAME,ACQP)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;KDATA = FID_READ(FILENAME,BYTEORDER,WORDTYPE)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;acqp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: a acqp sturcture returned by jpcode/PVrdPar.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byteorder&nbsp;&nbsp;: (s) swap, (n) non-swap is required<br>
+ 	 wordtype&nbsp;&nbsp;&nbsp;&nbsp;: _16BIT_SGN_INT or _32BIT_SGN_INT<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Returned KDATA is just a vector, use FID_RESHAPE to reconstruct<br>
+&nbsp;&nbsp;&nbsp;&nbsp;K-space dimension, like KRESHAPED = FID_RESHAPE(KDATA,ACQP).<br>
+ <br>
+&nbsp;&nbsp;VERSION : 0.90 12.11.04 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 18.11.04 YM&nbsp;&nbsp;supports restored data from tape<br>
+ <br>
+&nbsp;&nbsp;See also PVRDFID, PVRDPAR, FID_RESHAPE, FID_RESHAPE, FID_RECO<br>
+<br>
+</body>
+</html>

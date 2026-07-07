@@ -1,0 +1,33 @@
+YM@MPI 2017-2018
+
+
+[Phase correction: epi_phcorr]
+  - support 'double' precision.
+  - bug fix of scaling.
+
+  - CHECK: epi_phcorr() should gives the same result as phcorr_segm(), if scaled correctly.   !!!!!!DONE, CHECKED THE SAME RESULTS!!!!!
+
+
+[PSF reading: fidcopyreadnew]
+  - merge fidcopyreadnew(rat) and fidcopyreadnew(monkey).
+
+  - CHECK: merged fidcopyreadnew() should gives the same result for rat/monkey.
+  - CHECK: what about difference between psfread() and fidcopynew().
+  - CHECK: decide which one to use, psfread() or fidcopyreadnew().
+
+
+[PSF correction: epi_psfcorr]
+  - distcfast() supports 'double' precision.
+  - psdfread() and fidcopyreadnew() returns the same output.  !!!!!!DONE, CHECKED THE SAME RESULTS!!!!!
+
+  - FIDE A SOLUTION: DB uses: psfread()/distcfast() for rat, fidcopyreadnew()/interpft()/phcorr_segm() for monkey.
+
+
+
+
+-----------------------------------------------------------------
+[Dataset]
+  - 20161102_085012_K13_1_22: psf=37, epi=21/2/2dseq_orig
+  - 20161214_085104_F12_1_5:  psf=22, epi=15/2/2dseq_orig
+  - rat.K61:                  psf=29, epi=28/1/2dseq_orig
+  - rat.QN1:                  psf=32, epi=22/?             (something wrong in psdf?)

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mtcfromcoords</title>
+</head>
+<body>
+ MTCFROMCOORDS - Get time series of a ROI on the basis "coords"<br>
+&nbsp;&nbsp;oRoi = MTCFROMCOORDS (tcImg, coords) returns the time series of the<br>
+&nbsp;&nbsp;voxels having coordinates "coords". The coordinates are defined<br>
+&nbsp;&nbsp;in the "save" case of the Main_Callback of the MROIGUI<br>
+&nbsp;&nbsp;script.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;They are calculated as follows:<br>
+&nbsp;&nbsp;for RoiNo = 1:length(Roi.roi),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if isfield(Roi.roi{RoiNo},'anamask'),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{RoiNo}.mask=imresize(double(Roi.roi{RoiNo}.anamask),DIMS);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[x,y] = find(Roi.roi{RoiNo}.mask);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roi.roi{RoiNo}.coords = [x y ones(length(x),1)*Roi.roi{RoiNo}.slice];<br>
+&nbsp;&nbsp;end;<br>
+&nbsp;&nbsp;and stored in the field Roi.roi.coords. Scaling because of<br>
+&nbsp;&nbsp;differences in the size of tha anatomy and EPI images is taken<br>
+&nbsp;&nbsp;into account.<br>
+&nbsp;&nbsp;NKL 03.04.04&nbsp;&nbsp;<br>
+<br>
+</body>
+</html>

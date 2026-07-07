@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mnrealign</title>
+</head>
+<body>
+ MNREALIGN - aligns image and save as time-course of each slices.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MNREALIGN(SESSION,GRPNAME) creates .hdr/.img files that SPM can handle,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;then runs SPM_REALIGN and SPM_RESLICE.&nbsp;&nbsp;SPM_RESLICE creates realigned and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;resliced data with 'r' prefix.&nbsp;&nbsp;Finally, those r-xxxx.img files will be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;concatinated and the program saves data as time-couse of each slices.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For example, spm/m02th1_xxx.img/hdr will be created, then spm/rm02th1_x.img<br>
+&nbsp;&nbsp;&nbsp;&nbsp;as SPM generated files, then m02th1_slxxx.mat as time-course of slice xxx.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;INFO :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPM_REALIGN will take 15-30min for m02th1 (nexps=104).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPM_RESLICE will take 15-20min for m025h1 (nexps=104).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Of course, time is dependent on "flags" for spm_xxx function...<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!!! IMPORTANT&nbsp;&nbsp;!!!!!!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In some cases (j008v2 for example), very bright regions outside brain cause<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unexpected realignment. If images contain a water ball for normalization,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set masking threshold in the session file like...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnrealign.mask_thr = xxxxxx;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This value will be used as masking to peripheral regions.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!!!!!!!!!!!!!!!!!!!!!!<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!!!! Several slices at begging and end may appear as uniform or nonsense<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;after processing by spm_reslice() due to outside of interpolation.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you don't like, maybe flags.mask = 0 for spm_reslice() may be fine, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;although I never did it.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Control flags parameters can be set in the description file like...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnrealign.datname&nbsp;&nbsp;&nbsp;&nbsp;= '2dseq';&nbsp;&nbsp;&nbsp;&nbsp;% '2dseq' or 'tcImg'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnrealign.export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnrealign.use_edges = 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnrealign.realign&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnrealign.reslice&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnrealign.confirm&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mnrealign.spm_realign.quality = 0.75;<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;10.07.05 YM :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spm_reslice() may change image dimension and due to bug, its size is different<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from .hdr file.... If the case, play arround imgcrop/slicrop until solved.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;REQUIREMENT :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPM2 package<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 02.06.05 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 02.06.05 YM&nbsp;&nbsp;saves figures of the result.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 03.06.05 YM&nbsp;&nbsp;playing around with "flags" for spm functions.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 03.06.05 YM&nbsp;&nbsp;uses SPM's interactive window for progress watch.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.94 08.06.05 YM&nbsp;&nbsp;saves flags as text files.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.95 13.06.05 YM&nbsp;&nbsp;bug fix for d03se1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.96 10.07.05 YM&nbsp;&nbsp;use Ses.anap.mrealign for function control.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.97 08.09.05 YM&nbsp;&nbsp;supports masking. (obsolete, use flags.pw of spm_realign).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.98 13.09.05 YM&nbsp;&nbsp;tests edge detection.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MN_DAT2SPM, MN_SPM2MAT, SPM_REALIGN, SPM_RESLICE, MK_SPMMASK<br>
+<br>
+</body>
+</html>

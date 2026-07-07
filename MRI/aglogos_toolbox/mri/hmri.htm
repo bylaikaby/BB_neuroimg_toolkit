@@ -1,0 +1,1982 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 11">
+<meta name="Originator" content="Microsoft Word 11">
+<base target="_blank">
+<link rel="File-List" href="hmri_files/filelist.xml">
+<link rel="Edit-Time-Data" href="hmri_files/editdata.mso">
+<link rel="OLE-Object-Data" href="hmri_files/oledata.mso"><!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><title>MRI Analysis Conventions and Functions</title><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:LastAuthor>Nikos K. Logothetis</o:LastAuthor>
+  <o:Revision>24</o:Revision>
+  <o:TotalTime>413</o:TotalTime>
+  <o:Created>2005-11-01T10:46:00Z</o:Created>
+  <o:LastSaved>2005-11-01T18:32:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4700</o:Words>
+  <o:Characters>26793</o:Characters>
+  <o:Company>MPI</o:Company>
+  <o:Lines>223</o:Lines>
+  <o:Paragraphs>62</o:Paragraphs>
+  <o:CharactersWithSpaces>31431</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>120</w:Zoom>
+  <w:ActiveWritingStyle Lang="EN-US" VendorID="64" DLLVersion="131078"
+   NLCheck="1">1</w:ActiveWritingStyle>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+
+
+
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:14.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Arial;
+	color:red;
+	mso-font-kerning:16.0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:13.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:Arial;
+	color:navy;
+	font-style:italic;}
+h3
+	{mso-style-next:Normal;
+	margin-top:18.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-bidi-font-family:Arial;
+	font-variant:small-caps;
+	color:black;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:11.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-variant:small-caps;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:22.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:33.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:44.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:55.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:66.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:77.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:88.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo3;
+	tab-stops:list 18.0pt;
+	font-size:11.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo6;
+	tab-stops:list 54.0pt;
+	font-size:11.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:maroon;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	font-weight:bold;}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin-top:8.0pt;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:3.0cm;
+	line-height:200%;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:#33CC33;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoBlockText, li.MsoBlockText, div.MsoBlockText
+	{mso-style-update:auto;
+	mso-style-link:"Block Text Char";
+	margin-top:0cm;
+	margin-right:72.0pt;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	background:#E6E6E6;
+	font-size:9.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#000066;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	mso-no-proof:yes;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-no-proof:yes;}
+span.BlockTextChar
+	{mso-style-name:"Block Text Char";
+	mso-style-locked:yes;
+	mso-style-link:"Block Text";
+	mso-ansi-font-size:9.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";
+	color:#000066;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:AR-SA;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	mso-no-proof:yes;}
+span.StyleBoldCustomColorRGB00102
+	{mso-style-name:"Style Bold Custom Color\(RGB\(00102\)\)";
+	color:#000066;
+	border:none windowtext 1.0pt;
+	mso-border-alt:none windowtext 0cm;
+	padding:0cm;
+	background:#CCFFFF;
+	font-weight:bold;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 65.95pt 72.0pt 65.95pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:-130;
+	mso-list-type:simple;
+	mso-list-template-ids:1414062602;}
+@list l0:level1
+	{mso-level-style-link:"List Number 3";
+	mso-level-tab-stop:54.0pt;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;}
+@list l1
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:1224347714;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"List Bullet";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:929388017;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1929641440 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style><!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="6146"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]--></head><body lang="EN-US" link="blue" vlink="purple">
+
+<div class="Section1">
+
+<p class="MsoTitle"><a name="_Toc118630983">MRI Analysis Conventions and
+Functions</a></p>
+
+<p class="MsoToc1" style=""><span style=""></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-begin'></span><span style='mso-bookmark:_Toc118630983'><span
+style='mso-spacerun:yes'> </span>TOC \o &quot;2-3&quot; \h \z \t &quot;Heading
+1,1&quot; <span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><a href="#_Toc118631315"><span style=""><span style="">Introduction</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">.. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631315 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">1</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300310035000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; text-transform: none; font-weight: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc2" style=""><span style=""></span><a href="#_Toc118631316"><span style=""><span style="">Disclaimer</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631316 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">1</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300310036000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc2" style=""><span style=""></span><a href="#_Toc118631317"><span style=""><span style="">MRI Data: Initial Paravision Format and Directory
+Structures</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631317 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">1</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300310037000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc2"><span style=""></span><a href="#_Toc118631318"><span style=""><span style="">First Preparatory Steps for Data Analysis</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631318 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">2</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300310038000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631319"><span style=""><span style="">Handling the raw data</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631319 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">2</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300310039000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631320"><span style=""><span style="">Preparation of an Session Description File (DF)</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631320 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">3</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320030000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631321"><span style=""><span style="">Creating a Parameter File (SesPar.mat)</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631321 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">5</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320031000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc2" style=""><span style=""></span><a href="#_Toc118631322"><span style=""><span style="">Loading MRI Data</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">.. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631322 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">6</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320032000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631323"><span style=""><span style="">Loading Files: Setting Default Parameters</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631323 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">6</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320033000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631324"><span style=""><span style="">Data Directories and Structures</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631324 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">7</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320034000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631325"><span style=""><span style="">Visualization of Images</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631325 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">7</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320035000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631326"><span style=""><span style="">Creating of Regions of Interest (ROI)</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631326 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">8</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320036000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631327"><span style=""><span style="">Synopsis of Preparatory Steps</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631327 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">9</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320037000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc3" style=""><span style=""></span><a href="#_Toc118631328"><span style=""><span style="">Synopsis of Function Calls</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631328 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">10</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320038000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; font-style: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc2" style=""><span style=""></span><a href="#_Toc118631329"><span style=""><span style="">Extracting Time Series for Correlation/Multiple
+Regression Analysis</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631329 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">10</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300320039000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc2" style=""><span style=""></span><a href="#_Toc118631330"><span style=""><span style="">System Identification Techniques</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631330 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">10</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300330030000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc2" style=""><span style=""></span><a href="#_Toc118631331"><span style=""><span style="">Laminar Analysis</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631331 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">10</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300330031000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc1" style=""><span style=""></span><a href="#_Toc118631332"><span style=""><span style="">Projects</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">.. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631332 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">10</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300330032000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; text-transform: none; font-weight: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc1" style=""><span style=""></span><a href="#_Toc118631333"><span style=""><span style="">Examples</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">.. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631333 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">10</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300330033000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; text-transform: none; font-weight: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoToc1" style=""><span style=""></span><a href="#_Toc118631334"><span style=""><span style="">Figures</span></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;"><span style="">.. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc118630983'><span style='color:windowtext;display:none;
+mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:none'>
+PAGEREF _Toc118631334 \h </span><span style='mso-element:field-separator'></span></span><![endif]--><span style=""></span><span style=""><span style="color: windowtext; display: none; text-decoration: none;">10</span><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003100310038003600330031003300330034000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='mso-bookmark:_Toc118630983'></span><span
+style='mso-element:field-end'></span><![endif]--><span style=""></span><span style=""></span></a><span style=""><span style="font-size: 12pt; text-transform: none; font-weight: normal;"><o:p></o:p></span></span></p>
+
+<p class="MsoNormal"><span style=""></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc118630983'></span><span style='mso-element:field-end'></span><![endif]--><span style=""><o:p>&nbsp;</o:p></span></p>
+
+<span style=""></span>
+
+<h1><a name="_Toc118631315">Introduction</a></h1>
+
+<h2><a name="_Toc118631316"></a><a name="_Toc118630984"><span style="">Disclaimer</span></a></h2>
+
+<p class="MsoNormal">This software was basically written by NKL and YM. It needs
+a great deal of work to become compatible with all projects we have. In fact,
+it needs a dedicated person (we may get it in the future!) that updates and
+extends the existing functions, in particular with those dealing with data from
+combined physiology and fMRI. I (NKL, 1 Nov 2005) am starting to document some
+of the functions in HTM format and hope to get all bits and peaces of
+documentation we have in m-file format to organize our software. Currently the
+help conventions are as follows:</p>
+
+<p class="MsoNormal">Our software is on the <span class="StyleBoldCustomColorRGB00102">Win58</span> server, in the <span class="StyleBoldCustomColorRGB00102">//Win58/Mri/Matlab</span> directory. Every
+subdirectory is either a specialized set of functions (image loading functions
+in IO), or a set of functions pertaining to one project (e.g. glass, for the
+Glass Patterns project, hyperc, for the hypercapnia project).</p>
+
+<p class="MsoNormal">Every subdirectory has a Contents file and a Help file,
+named hXXX, where XXX is the name of the directory. The current file is a
+comprehensive help file for general functions to analyze functional MRI data. </p>
+
+<h2><a name="_Toc118631317"></a><a name="_Toc118630985"><span style="">MRI Data: Initial Paravision Format and Directory Structures</span></a></h2>
+
+<p class="MsoNormal">Data are from anesthetized or alert monkey experiments. They
+are collected at the 4.7T or 7T scanners using the Paravision software.
+Paravision saves the data in their so-called FID (free induction decay) files
+as sequential echoes. The order of the Echo trains depends on image
+segmentation and the used protocol. We have a number of dynamic off-resonance
+correction algorithms that were developed by <a href="http://www.kyb.tuebingen.mpg.de/%7Ejosef">Josef Pfeuffer</a>, which I leave
+(at this stage) out of description. I supposed (this will change in the near
+future) that all FID-file corrections were done by those understanding the
+details of the procedure and the typical user will be working with the
+so-called 2dseq files, which are reconstructed data generated after resorting
+and assembling different segments.</p>
+
+<p class="MsoNormal">Most data are saved on the <span class="StyleBoldCustomColorRGB00102">Wks8</span> data-server, in the directory (<a href="file:///%5C%5CWks8%5CGuest%5Cnmr">\\Wks8\Guest\nmr</a>). The structure of the
+Paravision directory is</p>
+
+<p class="MsoNormal"><span class="StyleBoldCustomColorRGB00102">Z:\A00.3c1\1\pdata\1
+(where Z is the mapped drive for \\Wks8\Guest\nmr)<o:p></o:p></span></p>
+
+<p class="MsoNormal"><!--[if gte vml 1]><v:shapetype id="_x0000_t75" coordsize="21600,21600"
+ o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
+ stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:30pt;
+ height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image008.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image005.gif" v:shapes="_x0000_i1025" border="0" height="51" width="40"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1192378716">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1026" type="#_x0000_t75"
+ style='width:32.25pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image010.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image007.gif" v:shapes="_x0000_i1026" border="0" height="51" width="43"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1026"
+  DrawAspect="Content" ObjectID="_1192378717">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1027" type="#_x0000_t75"
+ style='width:30pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image012.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image009.gif" v:shapes="_x0000_i1027" border="0" height="51" width="40"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1027"
+  DrawAspect="Content" ObjectID="_1192378718">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1028" type="#_x0000_t75"
+ style='width:30pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image014.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image011.gif" v:shapes="_x0000_i1028" border="0" height="51" width="40"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1028"
+  DrawAspect="Content" ObjectID="_1192378719">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1029" type="#_x0000_t75"
+ style='width:30pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image016.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image013.gif" v:shapes="_x0000_i1029" border="0" height="51" width="40"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1029"
+  DrawAspect="Content" ObjectID="_1192378720">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1030" type="#_x0000_t75"
+ style='width:30pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image018.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image015.gif" v:shapes="_x0000_i1030" border="0" height="51" width="40"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1030"
+  DrawAspect="Content" ObjectID="_1192378721">
+ </o:OLEObject>
+</xml><![endif]--></p>
+
+<p class="MsoNormal">Relevant to the analysis functions are the files <span class="StyleBoldCustomColorRGB00102">2dseq</span> and <span class="StyleBoldCustomColorRGB00102">Reco</span>, whereby the latter contains
+information regarding the acquired images. In certain cases, also the file <span class="StyleBoldCustomColorRGB00102">Acqp</span> in the parent directory (see
+below) is used to obtain information on additional parameters.</p>
+
+<p class="MsoNormal"><span class="StyleBoldCustomColorRGB00102">Z:\A00.3c1\1<o:p></o:p></span></p>
+
+<p class="MsoNormal"><!--[if gte vml 1]><v:shape id="_x0000_i1031" type="#_x0000_t75"
+ style='width:30pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image020.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image017.gif" v:shapes="_x0000_i1031" border="0" height="51" width="40"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1031"
+  DrawAspect="Content" ObjectID="_1192378722">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1032" type="#_x0000_t75"
+ style='width:45pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image022.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image019.gif" v:shapes="_x0000_i1032" border="0" height="51" width="60"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1032"
+  DrawAspect="Content" ObjectID="_1192378723">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1033" type="#_x0000_t75"
+ style='width:30pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image037.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image021.gif" v:shapes="_x0000_i1033" border="0" height="51" width="40"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1033"
+  DrawAspect="Content" ObjectID="_1192378724">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1034" type="#_x0000_t75"
+ style='width:61.5pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image038.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image034.gif" v:shapes="_x0000_i1034" border="0" height="51" width="82"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1034"
+  DrawAspect="Content" ObjectID="_1192378725">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte vml 1]><v:shape id="_x0000_i1035" type="#_x0000_t75"
+ style='width:36pt;height:38.25pt' o:ole="">
+ <v:imagedata src="hmri_files/image039.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image035.gif" v:shapes="_x0000_i1035" border="0" height="51" width="48"><!--[endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Package" ShapeID="_x0000_i1035"
+  DrawAspect="Content" ObjectID="_1192378726">
+ </o:OLEObject>
+</xml><![endif]--></p>
+
+<p class="MsoNormal">All the imaging parameters are accessed by invoking the <a href="../toolbox/jpcode/getpvpars.m">getpvpars</a> function which reads Acqp and Reco
+and picks the relevant variables. To ensure portability, i.e. to enable
+analysis of data on a laptop not connected to the network, a utility was
+developed that extracts all relevant physiology and MRI parameters/variables
+and subsequently stores them in a Mat file (<span class="StyleBoldCustomColorRGB00102">SesPar.mat</span>) in the session’s home
+directory (see below). Once this file is created analysis can be performed with
+no direct access to Wks8 or other servers with physiology data.</p>
+
+<h2><a name="_Toc118631318"></a><a name="_Toc118630986"><span style="">First Preparatory Steps for Data Analysis</span></a></h2>
+
+<h3><a name="_Toc118631319"></a><a name="_Toc118630987"><span style="">Handling the raw data</span></a></h3>
+
+<p class="MsoNormal">All people interested in using efficiently this software
+should collect event files (DGZ files) during the data acquisition. Consult
+Mark Augath, Yusuke Murayama or myself to ensure you are using the right
+software and you have collected all event information that facilitates your
+data analysis. If no event files exist you must enter manually information
+about the main events (e.g. stimulus onset/offset) into the description file
+(see below). If physiology data are collected you must ensure that your ADF or
+ADFW files are saved on the appropriate server. At the end of the session the
+DGZ/ADF(W) files must will be converted with the convasdfw.ksh shell-script.</p>
+
+<p class="MsoBlockText">#!/usr/bin/sh</p>
+
+<p class="MsoBlockText">#</p>
+
+<p class="MsoBlockText"># FILE - convadfw.ksh</p>
+
+<p class="MsoBlockText">#</p>
+
+<p class="MsoBlockText"># PURPOSE - Script to allow multiple data files to be
+converted using cnvadfw</p>
+
+<p class="MsoBlockText">#</p>
+
+<p class="MsoBlockText">adfdir="//MyComputer/DataNeuro/MyDirectly"</p>
+
+<p class="MsoBlockText">cvtdir="//MyDisk/DataNeuro/MyDirectory/cvt"</p>
+
+
+<h3><a name="_Toc118631320"></a><a name="_Toc118630988"><span style="">Preparation of a Session Description File (DF)</span></a></h3>
+
+<p class="MsoNormal">The software requires the generation of a session
+description file. The template to create a DF file is given below. An example
+of description file used for the Glass Pattern project is<span style="">&nbsp; </span><a href="../glass/j02x31.m" target="_blank">..\glass\j02x31.m</a>
+The meaning of the structures and various fields will be given in the near
+future. For now, just contact one of us…</p>
+
+<p class="MsoBlockText">%DF_TEMPLATE - Template for creating description files</p>
+
+<p class="MsoBlockText">%</p>
+
+<p class="MsoBlockText">% EXPERIMENTS : 104</p>
+
+<p class="MsoBlockText">% ROIS :<span style="">&nbsp; </span>Brain V1
+V2 XS</p>
+
+<p class="MsoBlockText">%</p>
+
+<p class="MsoBlockText">% NOTES <span style="">&nbsp;&nbsp;</span>: no
+physiology</p>
+
+<p class="MsoBlockText">%</p>
+
+<p class="MsoBlockText">% GROUPS: </p>
+
+<p class="MsoBlockText">%<span style="">&nbsp;&nbsp; </span>List groups</p>
+
+<p class="MsoBlockText">%</p>
+
+<p class="MsoBlockText">% DATE and AUTHOR</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">% basic information : data directories, session quality</p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">SYSP.DataNeuro<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+'//Win49/M/DataNeuro/';</p>
+
+<p class="MsoBlockText">SYSP.DataMri<span style="">&nbsp; </span>=
+'//Wks8/guest/nmr/';</p>
+
+<p class="MsoBlockText">SYSP.dirname<span style="">&nbsp; </span>=
+'J02.x31';</p>
+
+<p class="MsoBlockText">SYSP.date<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+'08.Aug.05';</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%=======================================================================</p>
+
+<p class="MsoBlockText">% CATEGORIES (CTG) OF EXPS/GROUPS/SIGS, if exist or
+needed</p>
+
+<p class="MsoBlockText">%=======================================================================</p>
+
+<p class="MsoBlockText">CTG.GrpPhysSigs<span style="">&nbsp; </span>=
+{};</p>
+
+<p class="MsoBlockText">CTG.GrpImgSigs<span style="">&nbsp; </span>=
+{'roiTs'};</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">% default analysis parameters</p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">ANAP.Quality<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 80;<span style="">&nbsp;&nbsp; </span>% Percent (all exps good activation)</p>
+
+<p class="MsoBlockText">ANAP.ImgDistort<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 1;<span style="">&nbsp;&nbsp;&nbsp; </span>% EPI-Ana can't be regist. due2distortions</p>
+
+<p class="MsoBlockText">ANAP.PreTime<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 16;<span style="">&nbsp;&nbsp; </span>% Allow pre time when selecting stim for
+sigsort</p>
+
+<p class="MsoBlockText">ANAP.PostTime<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 36;<span style="">&nbsp;&nbsp; </span>% Allow post time when selecting stim for
+sigsort </p>
+
+<p class="MsoBlockText">ANAP.aval<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0.01; % Type II error for
+the statistical tests</p>
+
+<p class="MsoBlockText">ANAP.bonferroni<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;<span style="">&nbsp;&nbsp;&nbsp; </span>% Bonferroni Correction</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">ANAP.mareats.IEXCLUDE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'V1';'V2';'XS'};<span style="">&nbsp;&nbsp;&nbsp; </span>% Exclude in MAREATS</p>
+
+<p class="MsoBlockText">ANAP.mareats.ICONCAT<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 1;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% 1= concatanate ROIs before
+creating roiTs</p>
+
+<p class="MsoBlockText">ANAP.mareats.IFFTFLT<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoBlockText">ANAP.mareats.IARTHURFLT<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoBlockText">ANAP.mareats.IMIMGPRO<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoBlockText">ANAP.mareats.ICUTOFF<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoBlockText">ANAP.mareats.ICUTOFFHIGH<span style="">&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoBlockText">ANAP.mareats.ICORANA<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 1;</p>
+
+<p class="MsoBlockText">ANAP.mareats.ITOSDU<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 2;</p>
+
+<p class="MsoBlockText">ANAP.mareats.IPLOT<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">% ROI for MRI experiments, if exist or needed, then put
+here</p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">ROI.groups<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'all'};</p>
+
+<p class="MsoBlockText">ROI.names<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'Brain','V1','V2','XS'};</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">% Anatomy scans (if exist gefi/mdeft/ir)</p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">ASCAN.mdeft{1}.info<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= '';</p>
+
+<p class="MsoBlockText">ASCAN.mdeft{1}.scanreco<span style="">&nbsp;&nbsp;&nbsp;
+</span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;</span>= [4 1];</p>
+
+<p class="MsoBlockText">ASCAN.mdeft{1}.imgcrop<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= [40 96 180 128];</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">% Control Scans</p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">CSCAN.epi13{1}.info<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 'Polars';</p>
+
+<p class="MsoBlockText">CSCAN.epi13{1}.ana<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'';1};</p>
+
+<p class="MsoBlockText">CSCAN.epi13{1}.scanreco<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>= [3 1];</p>
+
+<p class="MsoBlockText">CSCAN.epi13{1}.imgcrop<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= [20 48 90 64];</p>
+
+<p class="MsoBlockText">CSCAN.epi13{1}.v<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {[1 0 1 0 1 0 1 0]};</p>
+
+<p class="MsoBlockText">CSCAN.epi13{1}.t<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {[8 8 8 8 8 8 8 8]};</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">% Default Group Parameters</p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">GRPP.daqver<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>= 2.00;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% DAQ program
+version: 2=nl+ym; 1=nl;</p>
+
+<p class="MsoBlockText">GRPP.imgcrop<span style="">&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;</span>= [20 48 90 64];<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>% x, y, width, height</p>
+
+<p class="MsoBlockText">GRPP.ana<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>= {'mdeft';1;[56 60 64 68 72]};</p>
+
+<p class="MsoBlockText">GRPP.hwinfo<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>= '';<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% hardware info</p>
+
+<p class="MsoBlockText">GRPP.grproi<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>= 'RoiDef';<span style="">&nbsp;&nbsp; </span>% the name of a
+Group's ROI; RoiDef is the default</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">MULT_REGRESSION_ANALYSIS=0;</p>
+
+<p class="MsoBlockText">if MULT_REGRESSION_ANALYSIS,</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;
+</span>ANAP.mareats.IEXCLUDE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'V1','V2','XS'};<span style="">&nbsp;&nbsp;&nbsp; </span>% Exclude in MAREATS</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.v<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {[0 1 2 0];[0 1 0];[0 1 2 0]};</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.t<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {[20 44 44 20];[20 88 20];[20
+44 44 20]};</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.pVal<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0.001;</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.ConVector<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {[1 0 0 0]; [0.7 0.5 0 0]; [0.7 0.5 1
+0]};</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.model<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'hemo';'pulses';'pulses'};</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;
+</span>GRPP.modelname<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'pulse';'adapt';'adapt-rebound'};</p>
+
+<p class="MsoBlockText">else</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;
+</span>ANAP.mareats.IEXCLUDE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'Brain'};<span style="">&nbsp;&nbsp;&nbsp; </span>% Exclude in MAREATS</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.v<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>= {[0 1 2 0]};</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.t<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {[20 44 44 20]};</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.pVal<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0.001;</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;
+</span>GRPP.ConVector<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {[1 0 0 0]};</p>
+
+<p class="MsoBlockText"><span style="">&nbsp; </span>GRPP.model<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'pulses'};</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;
+</span>GRPP.modelname<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'pulse'};</p>
+
+<p class="MsoBlockText">end;</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">% experiment groups</p>
+
+<p class="MsoBlockText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoBlockText">GRP.MySpecialGroup.exps<span style="">&nbsp;&nbsp;&nbsp;
+</span>= [1 9 17 25 33 41 49 57 65 73 81 89 97];</p>
+
+<p class="MsoBlockText">GRP.MySpecialGroup.expinfo = {'imaging'}; </p>
+
+<p class="MsoBlockText">GRP.MySpecialGroup.stminfo = 'GP adapt C-C';</p>
+
+<p class="MsoBlockText">GRP.MySpecialGroup.stmtypes=
+{'blank','Conc-w0','Conc-w0','blank'};</p>
+
+<p class="MsoBlockText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBlockText">%=======================================================================</p>
+
+<p class="MsoBlockText">% Individual files (must cover all 'exps'.)</p>
+
+<p class="MsoBlockText">%=======================================================================</p>
+
+<p class="MsoBlockText">for N = 1:80</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;
+</span>EXPP(N).physfile<span style="">&nbsp; </span>=
+sprintf('FILENAME.adfw',N);</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;
+</span>EXPP(N).scanreco<span style="">&nbsp; </span>= [SCAN_NUMBER,
+1];</p>
+
+<p class="MsoBlockText">end</p>
+
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+<h3><a name="_Toc118631321"></a><a name="_Toc118630989"><span style="">Creating a Parameter File (SesPar.mat)</span></a></h3>
+
+<p class="MsoNormal">Once you have the description file, the first thing to do is
+the run <a href="../evt/sesdumppar.m" target="_blank">sesdumppar</a> for saving
+all necessary MRI and Physiology parameters in the SesPar.mat file. Possible
+problems during execution of this step are invariably due to faulty description
+files. Run the script <a href="../utils/sescheck.m">sescheck</a> to control
+your description file. For good description files it’s output will be
+approximately like this:</p>
+
+<p class="MsoBlockText">sescheck: j02x31</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>matlab grammer...
+OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>SYSP.DataNeuro,DataMri,dirname,date, ANAP.Quality...
+OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>ASCAN.mdeft{}... 1
+OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>CSCAN.epi13{}... 1
+2 3 4 OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatcc1...
+IsImg[1] IsRec[0] OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatcc1.exps... 1 9 17 25 33 41 49 57 65
+73 81 89 97 OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatcr1...
+IsImg[1] IsRec[0] OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatcr1.exps...
+2 10 18 26 34 42 50 58 66 74 82 90 98 OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatrr1...
+IsImg[1] IsRec[0] OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatrr1.exps... 3 11 19 27 35 43 51 59 67
+75 83 91 99 OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatrc1...
+IsImg[1] IsRec[0] OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatrc1.exps... 4 12 20 28 36 44 52 60 68
+76 84 92 100 OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatcc2...
+IsImg[1] IsRec[0] OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatcc2.exps... 5 13 21 29 37 45 53 61 69
+77 85 93 101 OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatcr2...
+IsImg[1] IsRec[0] OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatcr2.exps... 6 14 22 30 38 46 54 62 70
+78 86 94 102 OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatrr2...
+IsImg[1] IsRec[0] OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatrr2.exps...
+7 15 23 31 39 47 55 63 71 79 87 95 103 OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatrc2...
+IsImg[1] IsRec[0] OK.</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;</span>GRP.gpatrc2.exps... 8 16 24 32 40 48 56 64 72
+80 88 96 104 OK.</p>
+
+<p class="MsoBlockText">sescheck: Level1 PASSED.</p>
+
+<p class="MsoNormal">If everything is fine, at this point you are ready to load
+all data from the data-servers to your own directory. Those working directly
+with me together, please load your data onto the <span class="StyleBoldCustomColorRGB00102">Wks20</span> server, under the <span class="StyleBoldCustomColorRGB00102">DataMatlab</span> directory. You can still
+have a copy on your own computer, but it helps a lot if we can all access the
+same (analyzed) on the same computer.</p>
+
+<h3>Checking the Cardiac and Respiratory Signals</h3>
+
+<p class="MsoNormal">If you remember (you should!!) to collect the event files,
+you can use the <a href="sesvital.m">sesvital</a> function to create the
+Vital.mat file, which includes two signals: (a) a fast changing that is the
+plethysmogramm of the animal, that is the change of oxygen saturation over
+time. You expect this to be a low-pass filtered version of the EKG signal, and
+it should have an average frequency between 2 and 2.7Hz. Below 2 you have
+bradycardia, above 2.7 the techs are screwing badly. The lower-frequency signal
+is the output of the respirator. Please note that the pleth signal is composed
+by both respiration (modulatory low-frequency signal) and cardiac signal. Once
+the Vital.mat is created you can see the signals of an experiment or the entire
+session by typing <a href="showvital.m">showvital</a> with one or two
+arguments. showvital (Session Name) will generate a 3D plot with all the
+session’s data (see below).</p>
+
+<p class="MsoNormal"><!--[if gte vml 1]><v:shape id="_x0000_i1036" type="#_x0000_t75"
+ style='width:450pt;height:375pt'>
+ <v:imagedata src="hmri_files/image001.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image002.jpg" v:shapes="_x0000_i1036" border="0" height="500" width="600"><!--[endif]--></p>
+
+<p class="MsoNormal">Showvital (SesName, ExpNo) will plot the signals of
+experiment ExpNo</p>
+
+<p class="MsoNormal"><!--[if gte vml 1]><v:shape id="_x0000_i1037" type="#_x0000_t75"
+ style='width:420pt;height:315pt'>
+ <v:imagedata src="hmri_files/image004.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image006.jpg" v:shapes="_x0000_i1037" border="0" height="420" width="560"><!--[endif]--></p>
+
+<h2><a name="_Toc118631322"></a><a name="_Toc118630990"><span style="">Loading MRI Data</span></a></h2>
+
+<h3><a name="_Toc118631323"></a><a name="_Toc118630991"><span style="">Loading Files: Setting Default Parameters</span></a></h3>
+
+<p class="MsoNormal">The loading of the images (2dseq files) is done by invoking
+the <a href="sesimgload.m">sesimgload</a> function. This in turn calls <a href="../io/imgload.m">imgload</a> which does the actual reading by using the <a href="../io/read2dseq.m">read2dseq</a> function. The data read by these
+functions are saved under the session-directory (e.g. J02.x31), in the SIGS
+subdirectory. Similarly the anatomical and functional control scans can be read
+by calling the <a href="sesascan.m">sesascan</a> and <a href="sescscan.m">sescscan</a>
+functions.</p>
+
+<p class="MsoNormal">The function sesimgload uses a number of parameters that
+determine possible image processing steps to carry out after loading the
+images. They include normalization, filtering, artifact removal, etc. The
+selection of options is entirely project-dependent. Eventually we must generate
+project-specific parameter files to avoid having several options of the same
+function. Currently, however, we go around the problem of diversity by
+generating project specific sesimgload functions, e.g. <a href="../glass/gpimgload.m">gpimgload</a> for the Glass Pattern project. The
+parameters to be defined are:</p>
+
+<p class="MsoPlainText">DEFARGS.ISCANTYPE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+'EPI';<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% All MRI+Phis is EPI
+(one/multi shot)</p>
+
+<p class="MsoPlainText">DEFARGS.IDATATYPE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+'tcImg';<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Usually the name of the
+structure</p>
+
+<p class="MsoPlainText">DEFARGS.ICLIP<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+[0.1 0.9];<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Clipping</p>
+
+<p class="MsoPlainText">DEFARGS.IGAMMA<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0.8;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Gamma value</p>
+
+<p class="MsoPlainText">DEFARGS.IRESP_FREQ<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0.4;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% (Hz) 25 strokes / min</p>
+
+<p class="MsoPlainText">DEFARGS.ISUBSTITUDE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Substitude initial
+images to avoid trans</p>
+
+<p class="MsoPlainText">DEFARGS.<b style="">ICROP</b><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 1;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Crop images</p>
+
+<p class="MsoPlainText">DEFARGS.IADJUST<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Permit gamma/clip</p>
+
+<p class="MsoPlainText">DEFARGS.<b style="">INORMALIZE</b><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 1;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>%
+Ratio normalization</p>
+
+<p class="MsoPlainText">DEFARGS.INORMALIZE_THR<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+10;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Percent of max to include
+in normaliz.</p>
+
+<p class="MsoPlainText">DEFARGS.<b style="">IDETREND<span style="">&nbsp; </span></b><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Linear detrending</p>
+
+<p class="MsoPlainText">DEFARGS.IDETREND_AND_DENOISE = 0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>%
+Detrend and remove resp artifacts</p>
+
+<p class="MsoPlainText">DEFARGS.ITMPFLT_LOW<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Reduce samp. rate by
+this factor</p>
+
+<p class="MsoPlainText">DEFARGS.ITMPFLT_HIGH<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Remove slow oscillations</p>
+
+<p class="MsoPlainText">DEFARGS.IDENOISE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Remove respiratory art.
+(not used)</p>
+
+<p class="MsoPlainText">DEFARGS.<b style="">IFILTER<span style="">&nbsp;&nbsp; </span></b><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Filter w/ a small kernel</p>
+
+<p class="MsoPlainText">DEFARGS.IFILTER_KSIZE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+3;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% Kernel size</p>
+
+<p class="MsoPlainText">DEFARGS.IFILTER_SD<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+1;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% SD (if half about 90% of
+flt in kernel)</p>
+
+<p class="MsoPlainText">DEFARGS.ISAVE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+1;</p>
+
+<p class="MsoPlainText">DEFARGS.SAVEAS_IMG<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% tcImg.dat will be saved
+separately.</p>
+
+<p class="MsoPlainText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoPlainText">The fields shown in “bold” are usually selected to ensure
+data reduction, common grand-mean, linear trend removal, and some filtering for
+improving SNR, respectively.</p>
+
+<h3><a name="_Toc118631324"></a><a name="_Toc118630992"><span style="">Data Directories and Structures</span></a></h3>
+
+<p class="MsoNormal">Following the loading of the images into the corresponding
+experiment-based Mat file, the data can be examined by directly loading the Mat
+file using the appropriate pathname,</p>
+
+<p class="MsoBodyText2">Load //wks20/DataMatlab/J02.x31/j02x31_001_TCIMG.mat;</p>
+
+<p class="MsoNormal">Or by calling the <a href="../sigfunc/sigload.m">sigload</a>
+function</p>
+
+<p class="MsoBodyText2">Sigload (‘j02x31’, 1,’tcImg’);</p>
+
+<p class="MsoNormal">The tcImg structure contains the following fields:</p>
+<p class="MsoNormal">Older version example:<br>
+</p>
+
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp; </span>tcImg = </p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp; </span>session:
+'j02x31'</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp; </span>grpname:
+'gpatcc1'</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ExpNo: 1</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dir: [1x1
+struct]</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dsp: [1x1
+struct]</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>usr: [1x1
+struct]</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dat: [4-D
+double]</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ds:
+[0.7500 0.7500 2]</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dx: 1</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>grp: [1x1
+struct]</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>evt: [1x1
+struct]</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>stm: [1x1
+struct]</p>
+<small><span style="font-family: &quot;Courier New&quot;;"></span></small>
+<p class="MsoNormal">The stm field contains the stimulus information and is
+essential for running group statistics, correlation analysis or multiple
+regression analysis. If no event files were collected, then the description
+file must be edited and the following fields must be defined in the
+group-structures:</p>
+
+
+<p class="MsoPlainText"><span style="">&nbsp;</span><span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>GRPP.v<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style=""> </span>=
+{[0 1 2 0]};</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp; </span>GRPP.t <span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=""> </span>=
+{[20 44 44 20]};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">GRPP.stmtypes<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'blank','Conc-w0','Conc-w0','blank'};</p>
+
+<p class="MsoNormal">The v-field shows the stimulus state, whereby 0 is off and
+the non-zero entries show the stimulus ID. The numbers 20, 44, 44, and 20 show
+the number of images per epoch. They are internally converted into time
+(seconds). The field stmtypes shows the stimulus-type, here blank, concentric
+random dots with no “wondering”, etc.</p>
+<p class="MsoNormal">Newer version (Sept. 2013) example:</p>
+<small><span style="font-family: &quot;Courier New&quot;;">tcImg = <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; session: 'rathm1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp; grpname: 'spont'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExpNo: 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dir: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; usr: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dat: [4-D double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ds: [0.4000 0.4000 1]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dx: 1<br>
+&nbsp;&nbsp;&nbsp; centroid: [3x480 double]</span></small>
+
+<h3><a name="_Toc118631325"></a><a name="_Toc118630993"><span style="">Visualization of Images</span></a></h3>
+
+<p class="MsoNormal">The data can be visualized by a number of functions,
+including:</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>qview<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>- - Displays the tcImg data</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>mview<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Displays roiTs</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showimg<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - GUI interface to browse images</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showimginfo<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display information about image in
+specified file</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showascan<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - show any of the anatomical scans
+(e.g. gefi, mdeft, ir)</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showcscan<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Show control scans (e.g. epi13,
+tcImg, etc.)</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showvital<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display the plethysmogram signal</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showmodel<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Show model for SESSION and group
+GrpName</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showxcor<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display the correlation results (xcor)
+for SesName/ExpNo</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showxcorplot<span style="">&nbsp;&nbsp;&nbsp; </span>- - show sesroi results (ROIs xcor data
+etc.) for group</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>showexproits<span style="">&nbsp;&nbsp;&nbsp; </span>- - Display ROI time series of each
+experiment in the same plot</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspimg<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - GUI interface to view tcImg
+images</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspimginfo<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display Image info</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspimgdata<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display multislice image data
+(dat-fields)</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dsproi<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display ROI with name RoiName on
+slice "Slice"</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dsproibrain<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display multi-slice anatomical scans</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dsproitsdep<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display all time series roiTs based on
+roiTs{}.comidx</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dsproits<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display all time series in the
+structure roiTs</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspseqroits<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display time series of sequential ROIs
+(e.g. Riv-Waves)</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspmodel<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display the data of the mdlsct
+model-structure</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>spmask<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Displays the mask of a ROI</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspcorimg<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display multislice EPI13 test
+functional data</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspxcor<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display xcorr maps and time series
+(the xcor structure)</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspfused<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Superimpose a functional map on the
+corresponding anatomical scan</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dspxcorts<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display all time series in the
+structure roiTs</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>dsppleth<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display the plethysmogram signal</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>collage<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - shows a tcImg structure in
+collage-mode</p>
+
+<p class="MsoPlainText"><span style="">&nbsp; </span>mroidsp<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Display image in GCF to obtain
+ROIs</p>
+
+<h3><a name="_Toc118631326"></a><a name="_Toc118630994"><span style="">Creating of Regions of Interest (ROI)</span></a></h3>
+
+<p class="MsoNormal">Before continuing with the actual data analysis (e.g.
+correlation analysis, GLM etc.) the regions of interest ROIs must be defined by
+the user. The functions <a href="../mri/mroi/mroi.m">mroi</a> or <a href="sesroi.m">sesroi</a>
+can be used to define ROIs.<span style="">&nbsp; </span>The
+definable ROIs given in the description file:</p>
+
+<p class="MsoPlainText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoPlainText">% ROI for MRI experiments, if exist or needed, then put
+here</p>
+
+<p class="MsoPlainText">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+<p class="MsoPlainText">ROI.groups<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'all'};</p>
+
+<p class="MsoPlainText">ROI.names<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'Brain','V1','V2','XS'}; XS means extrastriate…</p>
+
+<p class="MsoPlainText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal"><!--[if gte vml 1]><v:shape id="_x0000_i1038" type="#_x0000_t75"
+ style='width:675pt;height:448.5pt'>
+ <v:imagedata src="hmri_files/image040.emz" o:title="j02x31_gpatcc1_17_14_26"/>
+</v:shape><![endif]--><!--[if !vml]--><img src="hmri_files/image036.gif" v:shapes="_x0000_i1038" border="0" height="598" width="900"><!--[endif]--></p>
+
+<p class="MsoNormal">To obtain help for the mroi program type <a href="hroi.m">hroi</a>
+in the Matlab command window.</p>
+
+<p class="MsoNormal">Once the ROIs are defined one can start the actual analysis
+of the data. If you have no reasons to define individual ROIs, you should at
+least define a brain ROI, to save computational time and enable the usage of
+the utilities extracting the time series of voxels (e.g. <a href="mareats.m">mareats</a>).
+</p>
+
+<h3><a name="_Toc118631327"></a><a name="_Toc118630995"><span style="">Synopsis of Preparatory Steps</span></a></h3>
+
+<p class="MsoListNumber3"><!--[if !supportLists]--><span style="">1.<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->Create
+the session's description file</p>
+
+<p class="MsoListNumber3"><!--[if !supportLists]--><span style="">2.<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->Generate
+the SesPar.mat file with all physiology/MRI parameters</p>
+
+<p class="MsoListNumber3"><!--[if !supportLists]--><span style="">3.<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->Check
+the preprocessing parameters in the sesimgload function. If necessary create a project-specific
+loading function (e.g. gpimgload instead of sesimgload).</p>
+
+<p class="MsoListNumber3"><!--[if !supportLists]--><span style="">4.<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->Load
+all images by using sesimgload (or the project specific loader)</p>
+
+<p class="MsoListNumber3"><!--[if !supportLists]--><span style="">5.<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->Load
+all anatomical and control (EPI13) scans</p>
+
+<p class="MsoListNumber3"><!--[if !supportLists]--><span style="">6.<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->Select
+ROIs</p>
+
+<h3><a name="_Toc118631328"></a><a name="_Toc118630996"><span style="">Synopsis of Function Calls</span></a></h3>
+
+<p class="MsoBlockText" style="text-indent: 36pt;">SESDUMPPAR<span style="">&nbsp;&nbsp;&nbsp; </span>- - Extract/dump all experiment paramters
+into SesPar.mat<span style="">&nbsp;&nbsp; </span></p>
+
+<p class="MsoBlockText" style="text-indent: 36pt;">SESVITAL<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>- - Extract all vital signs from the event
+(DGZ) files</p>
+
+<p class="MsoBlockText" style="text-indent: 36pt;">SESASCAN<span style="">&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp; </span>- -
+Load all anatomy files</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp; </span>SESCSCAN<span style="">&nbsp;&nbsp;&nbsp;
+</span><span style="">&nbsp; </span>- - Load and analyzed control
+scans</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp; </span>SESVITAL<span style="">&nbsp;&nbsp;&nbsp;
+</span><span style="">&nbsp; </span>- - Get respiration and
+plethysmogram signals and save in vitals</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp; </span>SESIMGLOAD<span style="">&nbsp;
+</span><span style="">&nbsp; </span>- - Append all Paravision 2dseq
+imagefiles of a Session</p>
+
+<p class="MsoBlockText"><span style="">&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp; </span>SESROI<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="">&nbsp; </span>- - Generate the regions of
+interest (ROIs) used for analysis</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;</span></p>
+
+<h2><a name="_Toc118631329">Extracting Time Series for Correlation/Multiple
+Regression Analysis</a></h2>
+
+<p class="MsoNormal">Extracting time series requires the definition of parameters
+in the description file that determine the signal-conditioning desired for a
+specific project.</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.IEXCLUDE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'V1';'V2';'XS'};<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>Exclude in MAREATS</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.ICONCAT<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 1;<span style="">&nbsp;
+</span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1= concatanate ROIs
+before creating roiTs</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.IFFTFLT<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.IARTHURFLT<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.IMIMGPRO<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.ICUTOFF<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.ICUTOFFHIGH<span style="">&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.ICORANA<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 1;</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.ITOSDU<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 2;</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.mareats.IPLOT<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;</p>
+
+<p class="MsoPlainText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal">The removal of respiratory artifacts is done by the
+functions <a href="matsart.m">matsart</a> and <a href="matsfft.m">matsfft</a>.
+The field ITOSDU shows the scale and baseline of the signal and it is used by
+the function <a href="../sigfunc/xform.m">xform</a> (see input arguments). ITOSDU
+= 1 means, subtract the mean value of the baseline and divide by the baseline’s
+SD. ITOSDU means to the first thing only.</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">ANAP.Quality<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 80;<span style="">&nbsp;&nbsp;&nbsp; </span>Percent (all exps good activation)</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.ImgDistort<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 1;<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>EPI-Ana can't be regist. due2distortions</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.PreTime<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 16;<span style="">&nbsp;&nbsp;&nbsp; </span>Allow pre time when selecting stim for
+sigsort</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.PostTime<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 36;<span style="">&nbsp;&nbsp;&nbsp; </span>Allow post time when selecting stim for
+sigsort </p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.aval<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0.01;<span style="">&nbsp; </span>Type II error for the statistical tests</p>
+
+<p class="MsoPlainText"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ANAP.bonferroni<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= 0;<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>Bonferroni Correction</p>
+
+<p class="MsoPlainText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal">Please note, that the PreTime and PostTime are fields that
+are only used in experiments, in which the observation period has multiple
+trials. When you convert the long observation period into trials, then you can
+select some time before and after the trigger event (e.g. stimulus onset) to
+see what’s going on. The fields aval and Bonferroni are self-explanatory.</p>
+
+<p class="MsoNormal">To extract time series we must call sesareats(Session-Name).
+This will subsequently call the function <a href="mareats.m">mareats</a> that
+does the following things:</p>
+
+<p class="MsoPlainText">%MAREATS - Select and process the time series of selected
+ROIs or Areas</p>
+
+<p class="MsoPlainText">% MAREATS (SESSION, ExpNo, ARGS) extracts the time series
+for each of the permissible ROIs</p>
+
+<p class="MsoPlainText">% defined with the sesroi(SesName) utility.<span style="">&nbsp; </span>The areas noted as "excluded"</p>
+
+<p class="MsoPlainText">% (e.g. IEXCLUDE={'brain';'ele'}) are not taken into
+account.</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp; </span></p>
+
+<p class="MsoPlainText">% The selection of time series depends on individual
+projects. There are two general</p>
+
+<p class="MsoPlainText">% categories: (a) Projects in which the voxel identity is
+important; representative example is</p>
+
+<p class="MsoPlainText">% the "dynamic connectivity" project, in which
+dependence measures are determining the strength</p>
+
+<p class="MsoPlainText">% of connectivity between brain sites, and (b) Projects
+in which the exact voxel identity is</p>
+
+<p class="MsoPlainText">% irrelevant; an example, here, is the study of BOLD
+nonlinearities during brief-pulse</p>
+
+<p class="MsoPlainText">% stimulation. In this project the response of a region
+or area (e.g. V1, ele) is averaged</p>
+
+<p class="MsoPlainText">% across all voxels in the area, and this average
+response is compared with neural activity and</p>
+
+<p class="MsoPlainText">% so on and so forth.</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% Both the IEXCLUDE and the ICONCAT fields will be
+different in the two types of project. To</p>
+
+<p class="MsoPlainText">% avoid editing this function or passing long lists of
+arguments, the IEXCLUDE, ICONCAT,</p>
+
+<p class="MsoPlainText">% etc. may be defined in the description file, as
+follows:</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% DYNAMIC CONNECTIVITY</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>ANAP.mareats.IEXCLUDE = {'brain';'ele';};</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>ANAP.mareats.ICONCAT<span style="">&nbsp; </span>= 0;</p>
+
+<p class="MsoPlainText">% BRIEF PULSES</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>ANAP.mareats.IEXCLUDE = {'brain';'ele';'test'};</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>ANAP.mareats.ICONCAT<span style="">&nbsp; </span>= 1;</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% The 'test' ROI is not needed for the second type of
+projects. It is used in the dependence</p>
+
+<p class="MsoPlainText">% studies to denote an area that is certainly not
+modulated by the stimulus.</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% The ROIs are assumed to be already determined in the
+Ses.roi structure, including the</p>
+
+<p class="MsoPlainText">% following fields:</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ROI.groups
+= {'all'};</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ROI.names<span style=""> </span>= {'brain';'v1';'v2';'test'};</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>ROI.model<span style=""> </span>= 'v1';</p>
+
+<p class="MsoPlainText">% For details regarding these definitions type
+"hroi" To define the actual ROIs type</p>
+
+<p class="MsoPlainText">% "sesroi(SesName)".</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% In the first category of projects, MAREATS returns a
+cell array which has the time series of</p>
+
+<p class="MsoPlainText">% each permissible (not excluded) ROI as defined by
+sesroi. This means, that multiple ROIs in a</p>
+
+<p class="MsoPlainText">% single cortical area will appear as different members
+of the cell array. This arrangments</p>
+
+<p class="MsoPlainText">% ensure the preservation of the convexity-constraint for
+ROI definition, which in turn</p>
+
+<p class="MsoPlainText">% warrants a Euclidean distance definition that
+corresponds as closely as possible to axonal</p>
+
+<p class="MsoPlainText">% distance (geodesic).</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% In the second category MAREATS returns a cell array,
+each member of which is a cortical area</p>
+
+<p class="MsoPlainText">% as defined in the Ses.roi.names, barring the exclude
+areas.</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% Note that the output of the MAREATS in the first
+project-category can be still concatanated</p>
+
+<p class="MsoPlainText">% by using the MROITSCAT (see below);</p>
+
+<p class="MsoPlainText">%<span style="">&nbsp; </span></p>
+
+<p class="MsoPlainText">% See also SESROI SESTCIMG MROI MROIGET MTCFROMCOORDS
+MROICAT MROITSCAT</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% MTIMESERIES - Function to obtain the time series of
+voxels of a ROI Usage: MTIMESERIES</p>
+
+<p class="MsoPlainText">% (tcImg, Roi, RoiName) uses the ROI information in the
+structure Roi and select time series</p>
+
+<p class="MsoPlainText">% for each defined area or subregion in the structure;</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% MROICAT - Concatanate all rois of the same area in a
+slice Usage: MyRoi = MROICAT (MyRoi);</p>
+
+<p class="MsoPlainText">% If, for example, we have right/left "V1",
+this operation will make the separate "V1" (left)</p>
+
+<p class="MsoPlainText">% and "V1" (right) one single area by or-ing
+the masks and concatanating the coordinates Called</p>
+
+<p class="MsoPlainText">% by: MTIMESERIES</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% MROIGET - Select one area with one or multiple
+concatanated rois Usage: oRoi =</p>
+
+<p class="MsoPlainText">% mroiget(oRoi,[],RoiName); Called by: MTIMESERIES</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% MTCFROMCOORDS - Get the time course of the signals for
+each voxel Usage:</p>
+
+<p class="MsoPlainText">% tc=mtcfromcoords(tcImg,coords); The function returns
+the time series of the voxels having</p>
+
+<p class="MsoPlainText">% coordinates "coords"; The coordinates are
+defined in the "save" case of the Main_Callback of</p>
+
+<p class="MsoPlainText">% the MROIGUI script; The tc (time courses) are processed
+according to the switches defined in</p>
+
+<p class="MsoPlainText">% "ARGS" Called by: MTIMESERIES</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% MROITSCAT - Concatanates the ROI-based roiTs cell array
+members Usage: roiTs = MROITSCAT</p>
+
+<p class="MsoPlainText">% (roiTs);</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% MATSCOR - Compute correlation coefficients for model
+mdlsct roiTs = matscor(roiTs,mdlsct) can</p>
+
+<p class="MsoPlainText">% be called with model(s) if not, then expgetstm(ses,expno,'hemo')
+is used Called by: MAREATS</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% CORMAP = MATSMAP(roiTs,0_6); can be called to obtain
+cor maps matsmap without arguments will</p>
+
+<p class="MsoPlainText">% display the maps Called by: DSPROITS</p>
+
+<p class="MsoPlainText">% </p>
+
+<p class="MsoPlainText">% DSPROITS (roiTs) displays the cor maps and time
+courses; The display-format of the function</p>
+
+<p class="MsoPlainText">% depends on the roiTs type; Conctacatanated roiTs
+structures will display one time course per</p>
+
+<p class="MsoPlainText">% area, while roiTs of the first project-category will
+display the time courese of each</p>
+
+<p class="MsoPlainText">% independent ROI</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% MROITSSEL - Further selects roiTs on the basis of the
+r-value</p>
+
+<p class="MsoPlainText">% Usage: roiTs = MROITSSEL (roiTs).</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% EXAMPLES:</p>
+
+<p class="MsoPlainText">%
+====================================================================================</p>
+
+<p class="MsoPlainText">% roiTs = mareats('f01pr1',1);<span style="">&nbsp; </span>Based on Ses.anap.mareats will</p>
+
+<p class="MsoPlainText">% extract the area time series (individual time series
+are unimportant).</p>
+
+<p class="MsoPlainText">% tmp = mroitssel(roiTs,0.5); or
+dsproits(mroitssel(roiTs,0.4))</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% roiTs = mareats('m02lx1',1);</p>
+
+<p class="MsoPlainText">% ICONCAT = 0; matsfft. matscor.
+tosdu.dsproits(mroitssel(roiTs,0.25));</p>
+
+<p class="MsoPlainText">% ICONCAT = 1; croiTs = mareats('m02lx1',1);
+dsproits(mroitssel(mroitscat(croiTs),0.25));</p>
+
+<p class="MsoPlainText">% The result of the above actions should be equivalent..</p>
+
+<p class="MsoPlainText">%</p>
+
+<p class="MsoPlainText">% NKL 12.03.04</p>
+
+<p class="MsoNormal">The part that is relevant to the development of Multiple
+Regression Analysis is in red:</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">if ICORANA,</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">. . . . . . .</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp;&nbsp;&nbsp; </span></p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp;&nbsp;&nbsp; </span>% CHECK WHETHER WE USE THE NEURAL SIGNAL AS
+MODEL</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp;&nbsp;&nbsp; </span>if isfield(grp,'model'),</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><b style=""><span style="color: red;"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>mdlsct = mkmultreg(Ses,ExpNo);<o:p></o:p></span></b></p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp;&nbsp;&nbsp; </span>else</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>mdlsct{1} = expgetstm(Ses,ExpNo,'hemo');</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp;&nbsp;&nbsp; </span>end;</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">. . . . . . .</p>
+
+<p class="MsoPlainText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal">The model is a field in the group structure in the
+description file. For the debug-example Chand will be using, the session is
+J02.x31, and the relevant part is:</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">MULT_REGRESSION_ANALYSIS=1;</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">if MULT_REGRESSION_ANALYSIS,</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>ANAP.mareats.IEXCLUDE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'V1','V2','XS'};<span style="">&nbsp;&nbsp;&nbsp; </span>% Exclude in MAREATS</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.v<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{[0 1 2 0];[0 1 0];[0 1 2 0]};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.t<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{[20 44 44 20];[20 88 20];[20 44 44 20]};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.pVal<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0.001;</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.ConVector<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{[1 0 0 0]; [0.7 0.5 0 0]; [0.7 0.5 1 0]};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.model<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'hemo';'pulses';'pulses'};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.modelname<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'pulse';'adapt';'adapt-rebound'};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">else</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>ANAP.mareats.IEXCLUDE<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= {'Brain'};<span style="">&nbsp;&nbsp;&nbsp; </span>% Exclude in MAREATS</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.v<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{[0 1 2 0]};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.t<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{[20 44 44 20]};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.pVal<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+0.001;</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.ConVector<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{[1 0 0 0]};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.model<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'pulses'};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;"><span style="">&nbsp; </span>GRPP.modelname<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>=
+{'pulse'};</p>
+
+<p class="MsoPlainText" style="text-indent: 36pt;">end;</p>
+
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal">NOTE TO CHAND:</p>
+
+<p class="MsoNormal">Go through the following function. It will tell you how far I
+went and how the PPT file was generated.</p>
+
+<p class="MsoNormal">mregTs = matsmulreg('o02x61','gpatcr2');</p>
+
+<p class="MsoNormal">CHAND: You will need the following things to start working:</p>
+
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+<ol style="margin-top: 0cm;" start="1" type="1">
+ <li class="MsoNormal" style="">Access
+     to the data (<a href="file:///%5C%5CWks20%5CDataMatlab">\\Wks20\DataMatlab</a>)</li>
+ <li class="MsoNormal" style="">Access
+     to the Mri/Matlab directory (feel free to copy it on your machine) on the
+     Win58 computer. DO NOT WORK on this computer.</li>
+ <li class="MsoNormal" style="">The
+     PPT file you saw is also under Mri/Matlab/glass</li>
+ <li class="MsoNormal" style="">This
+     file is under Mri/Matlab/mri</li>
+ <li class="MsoNormal" style="">I’ll
+     select further sessions for modeling respiration etc.</li>
+ <li class="MsoNormal" style="">For
+     now use sessions: J02x31 and o02?61 (all description files of a project
+     are in the project-directory)</li>
+</ol>
+
+<h2><a name="_Toc118631330">System Identification Techniques</a></h2>
+
+<h2><a name="_Toc118631331">Laminar Analysis</a></h2>
+
+<h1><a name="_Toc118631332">Projects</a></h1>
+
+<h1><a name="_Toc118631333">Examples</a></h1>
+
+<h1><a name="_Toc118631334">Figures</a></h1>
+
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body></html>

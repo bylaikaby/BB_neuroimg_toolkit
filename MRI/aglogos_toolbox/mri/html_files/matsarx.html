@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>matsarx</title>
+</head>
+<body>
+ MATSARX - Autoregression for filtering respiratory artifacts<br>
+&nbsp;&nbsp;MVITARX (data, srate) Applies autoregression to model single or<br>
+&nbsp;&nbsp;multiple-sinusoidals for removing respiratory artifacts from the<br>
+&nbsp;&nbsp;fMRI data.<br>
+ <br>
+&nbsp;&nbsp;06/03/04 Compared with breatheModel_MRI.m, this version<br>
+&nbsp;&nbsp;iteratively removes simusoidal components, starting with the<br>
+&nbsp;&nbsp;fundamental (which is largest). Thus phase is permitted to differ<br>
+&nbsp;&nbsp;between harmonics.<br>
+&nbsp;&nbsp;07/03/04 Compared with breatheModel_MRI2.m, this version finds<br>
+&nbsp;&nbsp;the phase by maximising the projection<br>
+&nbsp;&nbsp;of the sinusoid on the observations, rather than using the<br>
+&nbsp;&nbsp;reconstruction error.<br>
+&nbsp;&nbsp;We need a priori the correct frequency, the driving noise variance<br>
+&nbsp;&nbsp;for the autoregressive process, and the number of poles in the filter.<br>
+&nbsp;&nbsp;An improvement: you could:<br>
+&nbsp;&nbsp;1)&nbsp;&nbsp;Reconstruct max likelihood y-b*sin() using the b_est from<br>
+&nbsp;&nbsp;projection, and forwards/backwards kalman<br>
+&nbsp;&nbsp;2)&nbsp;&nbsp;Find a new b by subtracting reconstruction from original<br>
+&nbsp;&nbsp;observations (Gaussian noise is averaged out)<br>
+&nbsp;&nbsp;This might be more accurate, since you'd then get "natural"<br>
+&nbsp;&nbsp;components at the freq and phase of breathing<br>
+&nbsp;&nbsp;due to smoothing effect of AR filter.<br>
+&nbsp;&nbsp;harmonics MIGHT have different phase to fundamental (?)<br>
+&nbsp;&nbsp;Arthur Gretton<br>
+&nbsp;&nbsp;04/03/04<br>
+<br>
+</body>
+</html>

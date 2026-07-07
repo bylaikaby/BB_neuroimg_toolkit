@@ -1,0 +1,50 @@
+[SESSIONS]
+   h008r1               - - Mn Injection 03-12.07.01 (frontal cortex)
+    - transported to FEF(?)
+   j008v2               - - Mn Injection 07-16.07.01 (basal ganglia)
+    - no further transport beyond thalamus (VL-->SMA,preSMA
+    - water-ball normalization doesn't help at all...
+   c99sl1               - - Mn Injection 20-22.10.04 (left eye)
+    - tranported to sc, V1/V2/IT
+   d03se1               - - Mn Injection 13-18.10.04 (right eye)
+    - transpoted to sc, V1/V2/V4(?)/IT
+
+
+   m02th1               - - Mn Injection 17-22.12.04 (right eye)
+    - no transport beyond optic chiasm by 1 sample t-test.
+   o02wu1               - - Mn Injection 04,07,11.07.2005 (left eye)
+    - problem of normalization, upper parts are always brighter
+
+
+
+
+
+
+
+[REALIGNMENT/MOTION CORRECTION]
+  In general, it doesn't change things dramatically but it difinitely improve.
+  Recommended parameter for spm_realign() is
+    flags.fwhm : about 2.5 times of voxel resolution
+    flags.sep  : aoubt 2.0 times of voxel resolution
+
+[PCA-BASED DENOISE]
+  Mean time course of many voxels doesn't change much, but time course of individual 
+  voxel become smoother.
+
+[NORMALIZATION]
+  Simple division of each time point by that of...
+  "global"     :  time course become smooth.
+  "contra opn" :  moderate
+  "pituitary"  :  not good, time course become noisy.
+
+
+[PROJECTION OUT]
+  It is difficult to say which a region is good for projection out.
+  Usually "muscle" or "cerebellum" looks better while other regions, like
+  "pituitary" suppresses signals too much.
+  In addition to this, "projection out" may not work as we expected because
+  there is no guarantee that a "subtracting" component is orthogonal to desired
+  and remaining components.
+
+[TTEST]
+  Spatial XY filtering removed random "significant" voxels greatly.

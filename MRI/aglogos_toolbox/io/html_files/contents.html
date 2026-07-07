@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>contents</title>
+</head>
+<body>
+&nbsp;&nbsp;SHORTCUTS TO READ MOST COMMONLY USED SIGNALS<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clnload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Reads the Cln structure from the SIGS directory for Ses,ExpNo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Reads the contrast functions saved in the Contrasts directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcimgload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Loads the tcImg structure from the SIGS/ MAT-File<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plethload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Loads the MAT file with the recorded vital signs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;epi13load&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Loads the control scan EPI13<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anaload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - returns anatomy data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Loads the signal for Ses, ExpNo/GrpName.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigsave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Saves signal Sig with name SigName in mat file SesName/ExpNo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roiload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - load ROI for Ses, ExpNo/GrpName<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - generate stimulus data for plotting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmobjload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - load stimulus data for plotting.<br>
+ <br>
+&nbsp;&nbsp;READ/WRITE SIGNALS BY USING INFORMATION IN DESCRIPTION FILE<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Load matlab file of experiment ExpNo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;picksig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Loads a signal using Ses information (OBSOLETE)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expsigload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Loads Sig from matfile of SESSION and ExpNo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expsigsave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Saves Sig to matfile of SESSION and ExpNo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matsigload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Loads Sig from MAT file named catfilename(Ses,ExpNo,Sig)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matsigsave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Saves Sig to MAT file named catfilename(Ses,ExpNo,Sig)<br>
+ <br>
+&nbsp;&nbsp;READ/WRITE SIGNALS BY USING INFORMATION IN DESCRIPTION FILE<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Load Paravision 2dseq files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Load ScanNo/RecoNo directly from the server (2dseq file)<br>
+ <br>
+&nbsp;&nbsp;READING FID-FILES, EVENTS AND CONTROL SCANS<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fidload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Load Paravision fid files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dgread&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Read event (dgz) file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Loads a MAT file with our signals (Cln, tcImg, etc.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;medxload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Load Paravision 2dseq files<br>
+ <br>
+ <br>
+&nbsp;&nbsp;ADF FILE I/O<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adfinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read adf file information<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adfread&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read adf file<br>
+ <br>
+ <br>
+&nbsp;&nbsp;MRI FILE I/O<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read2dseq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Read Paravision Data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tdseq_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Read ParaVision 2dseq data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readimgraw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Reads .raw file, RGB or RGBA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rd2dseq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- %&nbsp;&nbsp;dat = rd2dseq(dirname, filenum, reconum, optin)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pvread_acqp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read "acqp" and returns contents as a structure.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pvread_imnd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read "imnd" and returns contents as a structure.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pvread_reco&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read "reco" and returns contents as a structure.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pvread_2dseq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Read ParaVision 2dseq data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actmapload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Load activity map from ROI file (if exists)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read2dseqcomplex - - Read Paravision Data reconstructed as complex numbers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cimgload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Load Paravision 2dseq files reconstructed as complex numbers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fid_reco&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - reconstruct image from K-space data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fid_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Read ParaVision K-space data, usually named 'fid'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fid_reshape&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - reshapes K-space data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fid_write&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - write K-space data as fid<br>
+ <br>
+ <br>
+&nbsp;&nbsp;FILE I/O for SPM<br>
+&nbsp;&nbsp;================================================================<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spm2tcimg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - creates tcImg from ANALIZE-7 format of SPM.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcimg2spm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - dumps tcImg structure into ANALIZE-7 format for SPM.<br>
+ <br>
+ <br>
+&nbsp;&nbsp;OTHER UTILITIES<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grdread&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read the gradient channel from an adf file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tcl_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - load a Tcl file into a cell array of lines.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - load a Tcl file into a cell array of lines.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Invokes Help browser for IO functions<br>
+ <br>
+&nbsp;&nbsp;READING STIMULUS PARAMETERS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stm_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - get stimulus parameters as a structure from a stmfile.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pdm_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Retrieves PDM information.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hst_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Retrieves HST information.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfp_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Get receptive field parameters from a RFP file.<br>
+ <br>
+&nbsp;&nbsp;READ/WRITE ADX (ADF-extended) formatted data<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adxread&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read an ADX file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adx_info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - get information of 'ADX' formatted file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adx_obsLengths&nbsp;&nbsp;&nbsp;&nbsp;- - reads obsp lenghs of 'ADX' formatted file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adx_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - reads 'ADX' formatted file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adx_readchan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read 'ADX' formatted data of the channels.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adx_readchans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - read 'ADX' formatted data of the channels.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adx_readobs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - reads 'ADX' formatted data of all channels.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adx_write&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - write signals as 'ADX' format.<br>
+ <br>
+&nbsp;&nbsp;READ/WRITE IMG formatted data<br>
+&nbsp;&nbsp;================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img_info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Get information of 'IMG' formatted file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img_read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Reads 'IMG' formatted file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img_write&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- - Writes imaging data as 'IMG' format.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Overloaded functions or methods (ones with the same name in other directories)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help icinterface/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help instrument/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help serial/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help timer/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help audioplayer/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help audiorecorder/Contents.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help strel/Contents.m<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sescscan</title>
+</head>
+<body>
+ SESCSCAN - Load and analyzed control scans<br>
+&nbsp;&nbsp;SESCSCAN (SesName, ScanType) loads all contol scans and selects<br>
+&nbsp;&nbsp;activated voxels. As control scans we define all those scans that<br>
+&nbsp;&nbsp;are collected in the beginning, middle or end of a session, to<br>
+&nbsp;&nbsp;check the quality of the signal. They do not require event (dgz)<br>
+&nbsp;&nbsp;files, and are usually Epi13 or Time-Course (50,50,156 images)<br>
+&nbsp;&nbsp;block design scans. The Epi13 typically has TR of 6s and the<br>
+&nbsp;&nbsp;Time-Course TR of 0.250 seconds. If ScanType is defined only that<br>
+&nbsp;&nbsp;type of scan is loaded and analyzed. If not, then the field<br>
+&nbsp;&nbsp;Ses.cscan is examined, and every subfields are subjected to<br>
+&nbsp;&nbsp;analysis.<br>
+&nbsp;&nbsp;NKL, 24.12.02<br>
+&nbsp;&nbsp;YM,&nbsp;&nbsp;05.10.07 bug fix, rewrite to supports GLM stuff, not compatible to old data.<br>
+ <br>
+&nbsp;&nbsp;See also READ2DSEQ GETPVPARS SESASCAN SESIMGLOAD SHOWCSCAN<br>
+<br>
+</body>
+</html>

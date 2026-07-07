@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mndenoise_pca</title>
+</head>
+<body>
+ MNDENOISE_PCA - Denoise tcImg based on PCA<br>
+&nbsp;&nbsp;MNDENOISE_PCA (SESSION,GRPNAME, NoPCs) extracts PCs of<br>
+&nbsp;&nbsp;data and project data onto them.<br>
+&nbsp;&nbsp;tcImg = MNDENOISE_PCA (SESSION,GRPNAME,NoPCs) does the same<br>
+&nbsp;&nbsp;things without saving data, instead returns the result.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;MNDENOISE_PCA(SESSION,GRPNAME,NoPCs,INTERACTIVE) will ask the user<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NoPCs during processing, if INTERACTIVE==1.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"feature('DumpMem')" tells you about largest available memory block.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It takes about 30min for m02th1.&nbsp;&nbsp;(17min for cov, 3min for reco, 10min for save)<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 12.12.04 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 14.06.05 YM&nbsp;&nbsp;adapted for m02th1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 15.06.05 YM&nbsp;&nbsp;adds the interacive mode.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MNALLCORR, MN_ROITS_DENOISE_PCA, MN_SPM2MAT<br>
+<br>
+</body>
+</html>

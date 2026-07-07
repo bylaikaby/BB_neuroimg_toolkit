@@ -1,0 +1,92 @@
+##############################################################################
+# Receptive Field Parameter File:
+# file:  L:\projects\igor\alexie_221100_bold.rfp
+# time:  19:50:29 Wed/Nov/22/2000
+# setup: stim=win12 con=win17
+# stim:  frame=60Hz(16.6667ms) halfsize=15.0000x11.5000deg.
+##############################################################################
+
+#------RECEPTIVE FIELD:  1--------
+PLOT::beginLoadNewRF
+PLOT::loadRFCenter   -1.895    2.449
+PLOT::loadRFSize      3.152    3.280
+PLOT::loadRFAngle    90.370
+PLOT::loadRFText   "RF01"
+PLOT::loadRFColor  red
+PLOT::endLoadNewRF
+#------RECEPTIVE FIELD:  2--------
+PLOT::beginLoadNewRF
+PLOT::loadRFCenter   -1.821    1.278
+PLOT::loadRFSize      6.836    8.178
+PLOT::loadRFAngle     0.000
+PLOT::loadRFText   "RF02"
+PLOT::loadRFColor  orange
+PLOT::endLoadNewRF
+#------RECEPTIVE FIELD:  3--------
+PLOT::beginLoadNewRF
+PLOT::loadRFCenter   -0.767    2.588
+PLOT::loadRFSize      2.428    3.322
+PLOT::loadRFAngle     0.000
+PLOT::loadRFText   "RF03"
+PLOT::loadRFColor  green
+PLOT::endLoadNewRF
+#------RECEPTIVE FIELD:  4--------
+PLOT::beginLoadNewRF
+PLOT::loadRFCenter   -3.769    2.428
+PLOT::loadRFSize      2.300    2.556
+PLOT::loadRFAngle     0.000
+PLOT::loadRFText   "RF04"
+PLOT::loadRFColor  blue
+PLOT::endLoadNewRF
+#------RECEPTIVE FIELD:  5--------
+PLOT::beginLoadNewRF
+PLOT::loadRFCenter   -3.322    2.843
+PLOT::loadRFSize      1.533    2.747
+PLOT::loadRFAngle     0.000
+PLOT::loadRFText   "RF05"
+PLOT::loadRFColor  cyan
+PLOT::endLoadNewRF
+#------RECEPTIVE FIELD:  6--------
+PLOT::beginLoadNewRF
+PLOT::loadRFCenter   -3.418    3.194
+PLOT::loadRFSize      3.147    5.622
+PLOT::loadRFAngle     0.000
+PLOT::loadRFText   "RF06"
+PLOT::loadRFColor  purple
+PLOT::endLoadNewRF
+#------RECEPTIVE FIELD:  7--------
+PLOT::beginLoadNewRF
+PLOT::loadRFCenter   -2.236    3.003
+PLOT::loadRFSize      3.322    2.747
+PLOT::loadRFAngle     0.000
+PLOT::loadRFText   "RF07"
+PLOT::loadRFColor  yellow
+PLOT::endLoadNewRF
+#------RECEPTIVE FIELD:  8--------
+PLOT::beginLoadNewRF
+PLOT::loadRFCenter   -2.779    2.715
+PLOT::loadRFSize      4.888    4.888
+PLOT::loadRFAngle     0.000
+PLOT::loadRFText   "RF08"
+PLOT::loadRFColor  black
+PLOT::endLoadNewRF
+
+#-----------STIMULUS--------------
+set ::CurrentPlotType Bar
+#-----------BACKGOUND-------------
+PBkg::loadType      none
+PBkg::loadSize      5
+PBkg::loadDensity   0.2
+PBkg::loadMargin    1.5
+PBkg::loadColor     0 0 0
+PBkg::loadTexColor  255 255 0
+#---------BAR STIMULUS------------
+PBar::beginLoadStim
+set PBar::orientation 90
+set PBar::contrast    100
+set PBar::disparity   0
+PBar::loadXYSize      1.0 0.1
+PBar::loadBarFgRGB    255 255 255
+PBar::loadBarBaseRGB  0 0 0
+PBar::endLoadStim
+

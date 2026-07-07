@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mtcimgfft</title>
+</head>
+<body>
+ MTCIMGFFT - Filters respiratory artifacts<br>
+&nbsp;&nbsp;MVITFFT(tcImg, cutoff, mask) filters respiratory artifacts by<br>
+&nbsp;&nbsp;examining the power spectrum of the signal and scaling all<br>
+&nbsp;&nbsp;frequencies accordingly. In specific, the 1 - abs(spectrum) is used<br>
+&nbsp;&nbsp;as scaling function for the spectrum of the MRI signal. The signal<br>
+&nbsp;&nbsp;is then reconstructed. This function works directly on the tcImg<br>
+&nbsp;&nbsp;signal, while MATSFFT on the roiTs. A "cutoff" can be defined by<br>
+&nbsp;&nbsp;the user for temporal smoothing, and a mask to avoid processing<br>
+&nbsp;&nbsp;of voxels outside the brain area.<br>
+ <br>
+&nbsp;&nbsp;See also MATSFFT<br>
+ <br>
+&nbsp;&nbsp;NKL, 10.02.01<br>
+<br>
+</body>
+</html>

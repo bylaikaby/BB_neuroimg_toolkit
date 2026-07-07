@@ -1,0 +1,19 @@
+function inforoits(roiTs)
+%INFOROITS - Display names and slice-number of roiTs structure
+% INFOROITS (roiTs) displays the .name and .slice fields of the
+% roiTs structure.
+% NKL 16.05.04
+
+for N=1:length(roiTs),
+  if iscell(roiTs{1}),
+    fprintf('%3d %s/%s/%d: %s Sli:%d\tRoiSize:%3d\t\tcoords(%5d,%5d), dat(%5d,%5d)\n', ...
+            N, roiTs{N}{1}.session, roiTs{N}{1}.grpname,...
+            roiTs{N}{1}.ExpNo, roiTs{N}{1}.name, roiTs{N}{1}.slice,...
+            size(roiTs{N}{1}.coords,1),...
+            size(roiTs{N}{1}.coords),size(roiTs{N}{1}.dat));
+  else
+    fprintf('%3d %s/%s/%d: %s Sli:%d\tRoiSize:%3d\t\tcoords(%5d,%5d), dat(%5d,%5d)\n', ...
+            N, roiTs{N}.session, roiTs{N}.grpname, roiTs{N}.ExpNo(1),roiTs{N}.name, ...
+            roiTs{N}.slice, size(roiTs{N}.coords,1), size(roiTs{N}.coords),size(roiTs{N}.dat));
+  end;
+end;

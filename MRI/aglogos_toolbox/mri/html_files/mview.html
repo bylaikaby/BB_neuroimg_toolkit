@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mview</title>
+</head>
+<body>
+ MVIEW - Displays roiTs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MVIEW(SESSION,GRPNAME/EXPNO)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MVIEW(ROITS)&nbsp;&nbsp;displays roiTs.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mview('f01m91','polar1');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mview(roiTs);<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTES :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This function assumes .ana as (x,y,z) as default.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scaling of anatomy can be controlled by ANAP.anascle in the description file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.anascale = maxv, [minv maxv] or [minv maxv gamma]<br>
+&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 26.10.05 YM&nbsp;&nbsp;&nbsp;&nbsp;pre-release, modified from mnview().<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 29.10.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports "light-box" mode.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 31.10.05 YM&nbsp;&nbsp;&nbsp;&nbsp;shows time course, bug fix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 02.11.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports "response" plot.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.94 05.11.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports "ALL" to plot all models.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.95 28.11.05 YM&nbsp;&nbsp;&nbsp;&nbsp;modified for GLM.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.96 19.12.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports .glmcontref of grp.refgrp as masking data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.97 21.12.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports "hold on" to plot time courses.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.98 03.01.06 YM&nbsp;&nbsp;&nbsp;&nbsp;bug fix on grp.refgrp.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.99 18.01.06 YM&nbsp;&nbsp;&nbsp;&nbsp;supports Z-reverse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.00 26.01.06 YM&nbsp;&nbsp;&nbsp;&nbsp;supports troiTs if only a single trial.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.01 28.01.06 YM&nbsp;&nbsp;&nbsp;&nbsp;stops to plot "ALL" models to supports troiTs fully.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.02 16.02.06 YM&nbsp;&nbsp;&nbsp;&nbsp;supports ANAP.mview.anascale, shows time-couse even in lightbox.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.03 23.02.06 YM&nbsp;&nbsp;&nbsp;&nbsp;supports ANAP.mview.xxxxx as default parameters.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.04 22.03.06 YM&nbsp;&nbsp;&nbsp;&nbsp;supports "Negative Corr' check box, bug fix when image is a vector.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.05 23.03.06 YM&nbsp;&nbsp;&nbsp;&nbsp;supports drawing ROIs, bug fix on refgrp.reftrial of the same group.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.06 26.03.06 YM&nbsp;&nbsp;&nbsp;&nbsp;supports "base-align" for plotting time courses.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.07 21.04.06 YM&nbsp;&nbsp;&nbsp;&nbsp;keeps min-max values mofified by the user.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.08 23.04.06 YM&nbsp;&nbsp;&nbsp;&nbsp;validates group-name, if the groupname changed after creating ROITS.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.09 08.07.06 YM&nbsp;&nbsp;&nbsp;&nbsp;supports drawing ELEs.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.10 21.02.07 YM&nbsp;&nbsp;&nbsp;&nbsp;can select T(1) of time courses as zero or vol-TR.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.11 16.03.07 YM&nbsp;&nbsp;&nbsp;&nbsp;supports saving the current data as a mask.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.12 28.03.07 YM&nbsp;&nbsp;&nbsp;&nbsp;supports ANAP.mview.nrowncol_xxx.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.13 22.05.07 NK&nbsp;&nbsp;&nbsp;&nbsp;supports user-defined ROIs (PickArea)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.14 04.12.07 NK&nbsp;&nbsp;&nbsp;&nbsp;supports neg/pos selection for corr analysis.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also ANALOAD ANAVIEW SETBACK SETFRONT MAREATS MROI GETSTIMINDICES MVOXSELECT<br>
+<br>
+</body>
+</html>

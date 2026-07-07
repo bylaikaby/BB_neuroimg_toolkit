@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>cohgram</title>
+</head>
+<body>
+ COHGRAM - time dependent coherence analysis<br>
+ 	COHGRAM(X,Y,Fs,NFFT,WinLen) performs time dependent analsysi on<br>
+ 	the band-pass filtered data.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See also COHERE, PSD, CSD, TFE, SIGSPC<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cxy = COHERE(X,Y,NFFT,Fs,WINDOW) estimates the coherence of X and Y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using Welch's averaged periodogram method.&nbsp;&nbsp;Coherence is a function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of frequency with values between 0 and 1 that indicate how well the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input X corresponds to the output Y at each frequency.&nbsp;&nbsp;X and Y are <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;divided into overlapping sections, each of which is detrended, then <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;windowed by the WINDOW parameter, then zero-padded to length NFFT.&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The magnitude squared of the length NFFT DFTs of the sections of X and <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the sections of Y are averaged to form Pxx and Pyy, the Power Spectral<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Densities of X and Y respectively. The products of the length NFFT DFTs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of the sections of X and Y are averaged to form Pxy, the Cross Spectral<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Density of X and Y.<br>
+ <br>
+ 	The coherence Cxy is given by&nbsp;&nbsp;Cxy = (abs(Pxy).^2)./(Pxx.*Pyy)<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cxy has length NFFT/2+1 for NFFT even, (NFFT+1)/2 for NFFT odd, or NFFT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if X or Y is complex. If you specify a scalar for WINDOW, a Hanning <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window of that length is used.&nbsp;&nbsp;Fs is the sampling frequency which does<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not effect the cross spectrum estimate but is used for scaling of plots.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Cxy,F] = COHERE(X,Y,NFFT,Fs,WINDOW,NOVERLAP) returns a vector of freq-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uencies the same size as Cxy at which the coherence is computed, and <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overlaps the sections of X and Y by NOVERLAP samples.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COHERE(X,Y,...,DFLAG), where DFLAG can be 'linear', 'mean' or 'none', <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specifies a detrending mode for the prewindowed sections of X and Y.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DFLAG can take the place of any parameter in the parameter list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(besides X and Y) as long as it is last, e.g. COHERE(X,Y,'mean');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COHERE with no output arguments plots the coherence in the current <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure window.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default values for the parameters are NFFT = 256 (or LENGTH(X),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whichever is smaller), NOVERLAP = 0, WINDOW = HANNING(NFFT), Fs = 2, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P = .95, and DFLAG = 'none'.&nbsp;&nbsp;You can obtain a default parameter by <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;leaving it off or inserting an empty matrix [], e.g. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COHERE(X,Y,[],10000).<br>
+ <br>
+ 	AUTH: NKL, 08.05.03<br>
+<br>
+</body>
+</html>

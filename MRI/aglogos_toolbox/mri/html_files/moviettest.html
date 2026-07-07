@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>moviettest</title>
+</head>
+<body>
+ MOVIETTEST - Generates zscore maps for the movie-sessions<br>
+&nbsp;&nbsp;MOVIETTEST (SESSION,ExpNo,BrainRoi,EleRoi) applies simple t-test<br>
+&nbsp;&nbsp;on the data. However, because it's hard to know what kind of<br>
+&nbsp;&nbsp;modulations are occurring during the long presentation of the<br>
+&nbsp;&nbsp;movies, the ttest is applied between the images in the "prestim"<br>
+&nbsp;&nbsp;epoch and those that are "prestim-long" after the movie onset; we<br>
+&nbsp;&nbsp;add a 2seconds hemodynamic delay.<br>
+&nbsp;&nbsp;PROBLEMS:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1. If no stimulus conditions must be a ref-scan<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2. First pass voxels selected on the basis of t-test<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3. Second pass we use one ref-scan and select for each experiment<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4. getstimindices, tosdu_ym<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showexproits</title>
+</head>
+<body>
+ SHOWEXPROITS - Display ROI time series of each experiment in the same plot<br>
+ <br>
+&nbsp;&nbsp;SHOWEXPROITS (SesName, ExpNo, RoiName, Thr, Mode) makes a figure with two subplots. The<br>
+&nbsp;&nbsp;uppers shows the correlation map, and the lower the time course of ROI voxels. If Mode is<br>
+&nbsp;&nbsp;zero the average time course is displayed; otherwise the function makes a surface plot<br>
+&nbsp;&nbsp;with all voxels of the ROI.<br>
+ <br>
+&nbsp;&nbsp;Defaults:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RoiName = 'v1';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thr = 0.01;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mode = 0;<br>
+ <br>
+&nbsp;&nbsp;Usage:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWEXPROITS ('k005x1', 3, 'v1', 0.3, 0);<br>
+ <br>
+&nbsp;&nbsp;NKL, 11.04.04<br>
+<br>
+</body>
+</html>

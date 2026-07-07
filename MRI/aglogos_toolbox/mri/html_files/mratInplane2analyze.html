@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mratInplane2analyze</title>
+</head>
+<body>
+ MRATINPLANE2ANALYZE - exports inplane anatomy as ANALYZE format.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MRATINPLANE2ANALYZE(SES,GRPNAME,INFO) exports inplane anatomy as ANALYZE format.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filename should be anat_GRPNAME.hdr/img.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;This function is called by MRATATLAS2ROI.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;!! IMPORTANT !!!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Inplane anatomy and functional images must be CORONAL section to match with ATLAS.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;+X=left, +Y=posterior, +Z=ventral.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Correct ASCAN.xxx.permute, GRPP.permute, GRP.xxx.permute if needed.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sesascan('rat7tHA1');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> anaview('rat7tHA1',1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % make sure CORONAL, otherwise edit "permute" then re-run sesascan()/mnimgload()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mratInplane2analyze('rat7tHA1','mdeftinj');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % do some photoshop work here, if needed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % mratraw2img('rat7tHA1','mdeftinj');&nbsp;&nbsp;% run this if needed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mratatlas2roi('rat7tHA1','mdeftinj')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> % modify the description file here.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> mroi('rat7tHA1','mdeftinj');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% check ROIs<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;IMAGE ORIENTATION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hdr.hist.orient:.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 transverse unflipped (ANALYZE default)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+X=left, +Y=anterior, +Z=superior<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 coronal unflipped<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 sagittal unflipped<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 transverse flipped<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 coronal flipped<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 sagittal flipped<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 08.08.07 YM&nbsp;&nbsp;pre-release, modified from m_inplaneAnatomy2analyze<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 10.10.07 YM&nbsp;&nbsp;bug fix when 'acqp' is somewhat different than usual.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also mratatlas2roi m_inplaneAnatomy2analyze mratatlas_defs mratraw2img hdr_init anz_write<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>gettrial</title>
+</head>
+<body>
+ GETTRIAL - Split observation period in trials and return average response per trial.<br>
+&nbsp;&nbsp;tSig = GETTRIAL(SIG,ANAP) <br>
+&nbsp;&nbsp;tSig = GETTRIAL(SES,EXPNO,SIGNAME) splits observation periods including repetition of <br>
+&nbsp;&nbsp;a stimulus condition.&nbsp;&nbsp;The function will average the trial responses and will return <br>
+&nbsp;&nbsp;the mean of the responses.<br>
+ <br>
+&nbsp;&nbsp;NOTE: GLM analysis may run by examining responses only during one of the trials and<br>
+&nbsp;&nbsp;subsequently selecting the time series of the other conditions by using the same voxel<br>
+&nbsp;&nbsp;map.<br>
+ <br>
+&nbsp;&nbsp;Sessions may have groups with trials and groups with continuous observation periods<br>
+&nbsp;&nbsp;(e.g. spontaneous activity, hyperc experiments, etc.). SESGETTRIAL examines the field <br>
+&nbsp;&nbsp;GRP.normo.anap.gettrial.status; If it's 1, then gettrial is called.<br>
+ <br>
+&nbsp;&nbsp;The sorting parameter (trial or stim) is defined by<br>
+&nbsp;&nbsp;GRPP.glm(1).sort = 'trial';<br>
+&nbsp;&nbsp;And the trial to be used for analysis by<br>
+&nbsp;&nbsp;GRPP.glm(1).selsort = 5;<br>
+ <br>
+ <br>
+&nbsp;&nbsp;TO DEBUG:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n03qv1/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mutliple same trials in obsp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n03qv1/81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mutliple different trials in obsp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m02lx1/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No trials<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;See also SESGETTRIAL XFORM<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;NKL 20.07.04<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;23.03.06 supports HemoDelay/HemoTail for tcImg/roiTs/troiTs.<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;21.04.06 supports "trial2obsp".<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;22.05.07 accepts "ANAP" as argument<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;23.11.07 accepts gettrial(Ses,ExpNo,SigName) to save memory.<br>
+<br>
+</body>
+</html>

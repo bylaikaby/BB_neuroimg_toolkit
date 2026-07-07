@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>sesspktrigpca</title>
+</head>
+<body>
+ SESSPKTRIGPCA - computes spike triggered PCA of signal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SESSPKTRIGPCA(SESSION,EXPS/GRPNAME)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SESSPKTRIGPCA(SESSION,EXPS/GRPNAME,SPKNAME,SIGNAME)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SESSPKTRIGPCA(SESSION,EXPS/GRPNAME,SPKNAME,SIGNAME,CONV_TO_BURST)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Spkt','atSpkt' can be used as SPKNAME.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'blp' and 'Cln' can be used as SIGNAME.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To use bursts of spikes, set CONV_TO_BURST as 1.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sesspktrigpca('s02nm1',[],'Spkt','Cln');	% spike-triggered average of Cln<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sesspktrigpca('s02nm1',[],'Spkt','Cln',1);&nbsp;&nbsp;% burst-triggered average of Cln<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION : 08.02.05 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also SESSPKTRIGAVR<br>
+<br>
+</body>
+</html>

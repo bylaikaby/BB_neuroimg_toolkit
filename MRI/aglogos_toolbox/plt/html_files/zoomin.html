@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>zoomin</title>
+</head>
+<body>
+ ZOOMIN - plots the selected axes to the new window.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ZOOMIN(SrcAxs,[Dst]) copies "SrcAxs" to "Dst".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If "Dst" is not given, then create a new figure and axes.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;H = ZOOMIN(SrcAxs,[Dst]) does the same thing but returns the handle of new axes.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Note that if "Dst" is a handle of axes, then source axes will be <br>
+&nbsp;&nbsp;&nbsp;&nbsp;fit into the "Dst" positon and size, then "Dst" will be deleted.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;In this case, the handle "Dst" will be no longer useful.&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> figure; imagesc(rand(10,10));&nbsp;&nbsp;&nbsp;&nbsp;% plot the source data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> hsrc = gca;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% keep the handle of the axes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> zoomin(hsrc);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% zoomin "hsrc"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> figure;&nbsp;&nbsp;hdst = subplot(221);&nbsp;&nbsp;&nbsp;&nbsp;% create destination<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> zoomin(hsrc,hdst);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% zoomin "hsrc" into "hdst" and delete "hdst".<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 30.11.05 YM&nbsp;&nbsp;pre-release<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also COPYOBJ<br>
+<br>
+</body>
+</html>

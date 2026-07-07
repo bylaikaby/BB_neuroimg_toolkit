@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>vregress</title>
+</head>
+<body>
+ VREGRESS - Vectorized version of Matlab's REGRESS.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[b,bint,r,rint,stats] = VREGRESS(y,X,alpha) is a vectorized version <br>
+&nbsp;&nbsp;&nbsp;&nbsp;of Matlab's REGRESS().&nbsp;&nbsp;'y' can be a matrix of (t,n).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[b,bint,r,rint,stats,TSTAT,RSS,TSS] = VREGRESS(y,X,alpha) returns also<br>
+&nbsp;&nbsp;&nbsp;&nbsp;TSTAT(T-statistics for coefficients), <br>
+&nbsp;&nbsp;&nbsp;&nbsp;RSS(Regression sum of squares) and TSS (Total sum of squares).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yhat&nbsp;&nbsp;&nbsp;&nbsp;= X*b;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Predicted responses at each data point.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSS(N) = norm(yhat(:,N) - mean_y(N))^2;&nbsp;&nbsp;% Regression sum of square<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TSS(N) = norm(y(:,N)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- mean_y(N))^2;&nbsp;&nbsp;% Total sum of squares<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VREGRESS('debug',[]) runs in the debug mode.<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;SEE REGRESS() FOR DETAIL.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTES :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlike "REGRESS", "y" and "X" MUST NOT CONTAIN "NaN".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I switched to use MULREGRESS() instead of this function.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;REFERENCES :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1] Chatterjee, S. and A.S. Hadi (1986) "Influential Observations,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High Leverage Points, and Outliers in Linear Regression",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statistical Science 1(3):379-416.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2] Draper N. and H. Smith (1981) Applied Regression Analysis, 2nd<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ed., Wiley.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 28.06.05 YM&nbsp;&nbsp;pre-release.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 29.06.05 YM&nbsp;&nbsp;adds a debug mode, clean up codes.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also REGRESS, MULREGRESS<br>
+<br>
+</body>
+</html>

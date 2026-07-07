@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mroiget</title>
+</head>
+<body>
+ MROIGET - Get Roi of name RoiName for slice 'Slice'.<br>
+&nbsp;&nbsp;oRoi = MROIGET (Roi,Slice,RoiName) is used to select a ROI (e.g. V1)<br>
+&nbsp;&nbsp;from the superstructure ROI containing all slices and all<br>
+&nbsp;&nbsp;possible user-defined ROIs.<br>
+&nbsp;&nbsp;oRoi = MROIGET (Roi,Slice,RoiName) - gets one ROI of one SLICE<br>
+&nbsp;&nbsp;oRoi = MROIGET (Roi,[],RoiName) - gets one ROI of all SLICES<br>
+&nbsp;&nbsp;oRoi = MROIGET (Roi,Slice,[]) - gets all ROIs of one SLICE<br>
+&nbsp;&nbsp;oRoi = MROIGET (Roi,Slice,{RoiName1,RoiName2}) - gets ROIs matches SLICE and RoiNames.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'V1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slice: 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mask: [34x22 logical]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;px: [26x1 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;py: [26x1 double]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anamask: [136x88 logical]	%%% OBSOLETE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coords: [15x3 double]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%%% OBSOLETE<br>
+ <br>
+&nbsp;&nbsp;See also MROI, MROICAT, ROILOAD, MAREATS, MCORANA, MTIMESERIES, HROI<br>
+ <br>
+&nbsp;&nbsp;NKL 10.06.03<br>
+&nbsp;&nbsp;NKL 20.11.04<br>
+&nbsp;&nbsp;YM&nbsp;&nbsp;08.06.05&nbsp;&nbsp;RoiName can be a cell array, tested with "m02th1'.<br>
+<br>
+</body>
+</html>

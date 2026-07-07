@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>dspmvox</title>
+</head>
+<body>
+ DSPMVOX - displays ROITS structure by mvoxselect<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DSPMVOX(ROITS,...) displays ROITS structure of that voxsels are <br>
+&nbsp;&nbsp;&nbsp;&nbsp;selected by mvoxselect based on the certain statistics/alpha.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[hMap hTimeCourse] = DSPMVOX(ROITS,...) does the same things,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;returning axes handles of the images and time courses.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Supported options are :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DatName&nbsp;&nbsp;: data name to plot, 'statv','resp'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Colormap : a color map for activated voxsels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: clipping range as [min max]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawROI&nbsp;&nbsp;: a flag to draw ROIs, 0 or 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;legend&nbsp;&nbsp;&nbsp;&nbsp;: text string(s) for legend<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig = mvoxselect('e04ds1','visesmix','all','glm[2]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> dspmvox(sig,'clip',[0 20],'colormap',hot(256))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig1 = mvoxselect('e04ds1','visesmix','v1','glm[1]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig2 = mvoxselect('e04ds1','visesmix','v2','glm[1]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> dspmvox({sig1 sig2},'color',{'r','g'},'legend',{'v1','v2'})<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> dspmvox(roiTs,'legend',{'pos','neg'},'Clip',[0 20],'gamma',1.8);<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 12.03.07 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 15.03.07 YM&nbsp;&nbsp;supports a cell array of ROITS<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also mvoxselect mvoxselectmask dspmvoxmap dspmvoxtc<br>
+<br>
+</body>
+</html>

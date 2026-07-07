@@ -11,6 +11,11 @@ __pycache__/
 *.dcm
 *.dicom
 
+# MATLAB autosave / backups
+*.asv
+*.m~
+*~
+
 # Virtual environments
 venv/
 .venv/

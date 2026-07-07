@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>checkexp</title>
+</head>
+<body>
+ CHECKEXP - Check the quality of signals in experiment ExpNo (used during data collection)<br>
+&nbsp;&nbsp;CHECKEXP (SesName, ExpNo) assumes online updating of the session description file. It also<br>
+&nbsp;&nbsp;expects that the "to be tested" scan was reconstracted and that adfw and dgz files were<br>
+&nbsp;&nbsp;converted. In addition, the disk of DataMatlab must be also defined. So, in short, to get<br>
+&nbsp;&nbsp;online feedback by using this function do the following:<br>
+ <br>
+&nbsp;&nbsp;1. Run your scan and collect MRI/Phys data<br>
+&nbsp;&nbsp;2. Reco Scan<br>
+&nbsp;&nbsp;3. Convert adfw/dgz<br>
+&nbsp;&nbsp;4. Enter the experiment entry into your description file (check directories)<br>
+&nbsp;&nbsp;5. Define output directory (e.g. //wks20/DataMatlab or ./DataMatlab<br>
+&nbsp;&nbsp;6. Call: checkexp(SesName, ExpNo);<br>
+ <br>
+&nbsp;&nbsp;NKL, 09.02.06<br>
+<br>
+</body>
+</html>

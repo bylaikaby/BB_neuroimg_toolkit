@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>msubplotcoord</title>
+</head>
+<body>
+ MSUBPLOTCOORD - create axes in tiled positions.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H = MSUBPLOTCOORD(m,n,p), or MSUBPLOTCOORD(mnp), breaks the Figure window<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;into an m-by-n matrix of small axes, selects the p-th axes for <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for the current plot, and returns the axis handle.&nbsp;&nbsp;The axes <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are counted along the top row of the Figure window, then the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;second row, etc.&nbsp;&nbsp;For example,<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSUBPLOTCOORD(2,1,1), PLOT(income)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSUBPLOTCOORD(2,1,2), PLOT(outgo)<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plots income on the top half of the window and outgo on the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bottom half.<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSUBPLOTCOORD(m,n,p), if the axis already exists, makes it current.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSUBPLOTCOORD(m,n,P), where P is a vector, specifies an axes position<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that covers all the msubplotcoord positions listed in P.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSUBPLOTCOORD(H), where H is an axis handle, is another way of making<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an axis current for subsequent plotting commands.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSUBPLOTCOORD('position',[left bottom width height]) creates an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis at the specified position in normalized coordinates (in <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in the range from 0.0 to 1.0).<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If a MSUBPLOTCOORD specification causes a new axis to overlap an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;existing axis, the existing axis is deleted.&nbsp;&nbsp;For example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the statement MSUBPLOTCOORD(1,2,1) deletes all existing axes overlapping<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the left side of the Figure window and creates a new axis on that<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;side.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSUBPLOTCOORD(111) is an exception to the rules above, and is not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;identical in behavior to MSUBPLOTCOORD(1,1,1).&nbsp;&nbsp;For reasons of backwards<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compatibility, it is a special case of msubplotcoord which does not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;immediately create an axes, but instead sets up the figure so that<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the next graphics command executes CLF RESET in the figure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(deleting all children of the figure), and creates a new axes in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the default position.&nbsp;&nbsp;This syntax does not return a handle, so it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is an error to specify a return argument.&nbsp;&nbsp;The delayed CLF RESET<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is accomplished by setting the figure's NextPlot to 'replace'.<br>
+<br>
+</body>
+</html>

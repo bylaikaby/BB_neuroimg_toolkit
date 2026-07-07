@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>decmain</title>
+</head>
+<body>
+ DECMAIN - Decimate signal collected with video stimuli.<br>
+&nbsp;&nbsp;DECMAIN(SESSION,ExpNo,ARGS) decimates the original signal from <br>
+&nbsp;&nbsp;&nbsp;&nbsp;22300Hz to about 7000Hz.&nbsp;&nbsp;Decimation of small files hardly needs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this modules, as the user can simply use directly the decimate.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function of Matlab.&nbsp;&nbsp;This function is mainly needed to handle<br>
+&nbsp;&nbsp;&nbsp;&nbsp;very long files that could not fit into Matlab's memory space.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Note that processing parameters can be passed as ANAP.clnpar.xxxx or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;GRP.xxx.anap.clnpar.yyyyy.&nbsp;&nbsp;"GRP.xxx.anap.clnpar" has the highest <br>
+&nbsp;&nbsp;&nbsp;&nbsp;priority.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.CLIP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;				% Clip signal values above "CLIPxSTD"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.DECFRAC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 3;				% Decimation factor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.SAVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;				% Create/Append MAT file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.SAVEAS_ADX = 0;				% Save decimated data into a separate data.<br>
+ <br>
+&nbsp;&nbsp;USAGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Cln = decmain(SESSION,ExpNo,ARGS)<br>
+ <br>
+&nbsp;&nbsp;STRUCTURE:<br>
+&nbsp;&nbsp;Sig.dat	= [NT,NoChan,NoObsp]<br>
+ <br>
+&nbsp;&nbsp;EXTENSION : if SAVEAS_ADX == 1, 'Cln.dat' will be saved into a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different file.&nbsp;&nbsp;06.02.04 YM<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Get multi-plexed data. 06.10.05 YM<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: supports ANAP.clnpar for setting parameters. 07.08.06 YM<br>
+ <br>
+&nbsp;&nbsp;See also GETCLN, VDECMAIN, CLNMAIN, VCLNMAIN<br>
+ 	CLNADF, CLNADJEVT, CLNHELP, GETCLOCKERROR,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GETCLN, CATFILENAME, ADX_WRITE, ADX_READ, ADX_INFO<br>
+<br>
+</body>
+</html>

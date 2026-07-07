@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>clnmain_pvavr</title>
+</head>
+<body>
+ CLNMAIN_PVAVR - Remove electromagnetic interference patterns from physiology signal.<br>
+ 	CLNMAIN_PVAVR(SESSION,ExpNo,ARGS) uses clnadf.m to denoise the<br>
+ 	physiology signal. It must be used after the MRI events have been<br>
+ 	readjusted and the file ClnAdjEvt.mat is created under the<br>
+ 	session's home directory. CLNMAIN_PVAVR will use these events to separate the<br>
+ 	gradient-interference patterns and compute the mean interference and<br>
+ 	the first 5 PCs of each gradient type. Removing mean the the<br>
+ 	first PCs proved to remove entirely the gradient inteference<br>
+ 	without affecting the signal.<br>
+ 	============================================<br>
+ 	Cln structure:<br>
+ 	============================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session: 'n00eb1'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grpname: 'injs'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpNo: 16<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dsp: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;usr: [1x1 struct]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dx: 1.4400e-004<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dat: [8575030x1 double]<br>
+ 	============================================<br>
+ 	History:<br>
+ 	============================================<br>
+ 	1.00 Written by N.K. Logothetis 11.03.00<br>
+ 	1.01 H.M. Mandelkow (includes generation of *.mat)<br>
+ 	1.02 D.A. Leopold (partial read/mult gradtypes)<br>
+ 	1.03 N.K. Logothetis 13.02.02<br>
+ 	1.04 NKL 26.10.02&nbsp;&nbsp;Needs more work w/ offsets/partial-events etc<br>
+ 	1.05 NKL 06.12.02&nbsp;&nbsp;It now works for all conditions and file sizes<br>
+ 	1.06 YM&nbsp;&nbsp;06.02.04&nbsp;&nbsp;supports to save 'Cln.dat' to a separate file.<br>
+ 	1.07 YM&nbsp;&nbsp;04.03.04&nbsp;&nbsp;does clnadjevt() if needed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.08 YM&nbsp;&nbsp;23.04.04&nbsp;&nbsp;adapted for new format.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.20 YM&nbsp;&nbsp;07.08.04&nbsp;&nbsp;optimized for old data.<br>
+ <br>
+&nbsp;&nbsp;EXTENSION : if SAVEAS_ADX == 1, 'Cln.dat' will be saved into a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different file. 06.02.04 YM<br>
+ <br>
+&nbsp;&nbsp;See also CLNADJEVT, CLNHELP, GETCLOCKERROR, DECMAIN, VCLNMAIN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CATFILENAME, ADX_WRITE, ADX_READ, ADX_INFO<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mn_dat2medx</title>
+</head>
+<body>
+ MN_DAT2MEDX - exports imaging data for MEDX.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MN_DAT2MEDX(SESSION,GRPNAME) will create .hdr/.img files, that MEDX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;can handle, from 2dseq or tcImg.dat data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FILES = MN_DAT2MEDX(...) will return exported .img files.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mn_dat2medx('m02th1','mdeftinj');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% from 2dseq to .img/.hdr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mn_dat2medx('m02th1','mdeftinj','tcImg');	% from tcImg to .img/.hdr<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THIS PROGRAM ASSUMES DATATYPE OF TCIMG.DAT/2DSEQ AS INT16.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 21.09.2005 YM&nbsp;&nbsp;pre-release.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also MN_DAT2SPM<br>
+<br>
+</body>
+</html>

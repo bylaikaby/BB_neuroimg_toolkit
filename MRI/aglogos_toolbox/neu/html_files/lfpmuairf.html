@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>lfpmuairf</title>
+</head>
+<body>
+ LFPMUAIRF - Compute the Impuse Response of the LFP-MUA system<br>
+ <br>
+&nbsp;&nbsp;irf = LFPMUAIRF(Sig1, Sig2, LagsInSec) - get IRF of an entire group To deconvolve the effects of<br>
+&nbsp;&nbsp;the response function, r, in the absenc of any noise, we simply divide C(f) by R(f) to get<br>
+&nbsp;&nbsp;the neural signal. This can derived immediately from the fundanmental equation: s(t) =<br>
+&nbsp;&nbsp;int(r(t-tau)*u(tau)*dr) <=> S(f) = R(f)*U(f)<br>
+ <br>
+ 	u - uncorrupted signal (neural activity, e.g. Lfp2080, Mua, Sdf)<br>
+ 	c - corrupted signal (BOLD, e.g. Pts, Nts)<br>
+ 	r - hemodynamic response function<br>
+ 	U, C, & R are the Fourier transforms of s,r,u, respectively.<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;Under real conditions c(r) is not just smeared out by a kernel determined by the system's<br>
+&nbsp;&nbsp;impulse response, but it is also corrupted by measurement error, in our case by the<br>
+&nbsp;&nbsp;instability of the B0, physiological noise, etc. etc.&nbsp;&nbsp;Thus an optimal (Wiener) filter,<br>
+&nbsp;&nbsp;phi(t) or PHI(f), must be found, which when applied to the measured signal c(t) or C(f), and<br>
+&nbsp;&nbsp;then deconvolved by r(t) or R(f), produced a signal hut(u(t)) or hut(U(f)) that is the best<br>
+&nbsp;&nbsp;estimate of the true signal u(t) or U(f).&nbsp;&nbsp;In other words: hut(U(f)) = [C(f) * PHI(f)] / R(f)<br>
+&nbsp;&nbsp;To asses how close the estimate is to the actual signal we shall ask how "close" the signals<br>
+&nbsp;&nbsp;are in the least-square sense.&nbsp;&nbsp;That is: int(|hut(u(t))-u(t)|^2 dt) must be minimized<br>
+ <br>
+&nbsp;&nbsp;The output-input data are given as z = [y u], with y as the output column vector and u as the<br>
+&nbsp;&nbsp;input column vector.&nbsp;&nbsp;Function 'cra' prewhitens the input sequence, i.e., filters u through a<br>
+&nbsp;&nbsp;filter chosen so that the result is as uncorrelated (white) as possible. The output y is<br>
+&nbsp;&nbsp;subjected to the same filter, and then the covariance functions of the filtered y and u are<br>
+&nbsp;&nbsp;computed and graphed. The cross correlation function between (prewhitened) input and output<br>
+&nbsp;&nbsp;is also computed and graphed. Positive values of the lag variable then corresponds to an<br>
+&nbsp;&nbsp;influence from u to later values of y. In other words, significant correlation for negative<br>
+&nbsp;&nbsp;lags is an indication of feedback from y to u in the data.<br>
+ <br>
+&nbsp;&nbsp;irf -- A properly scaled version of this correlation function is also an estimate of the<br>
+&nbsp;&nbsp;system's impulse response irf. This is also graphed along with 99% confidence levels. The<br>
+&nbsp;&nbsp;output argument irf is this impulse response estimate, so that its first entry corresponds to<br>
+&nbsp;&nbsp;lag zero. (Negative lags are excluded in irf.)&nbsp;&nbsp;covR -- The output argument R contains the<br>
+&nbsp;&nbsp;covariance/correlation information as follows: The first column of R contains the lag<br>
+&nbsp;&nbsp;indices. The second column contains the covariance function of the (possibly filtered)<br>
+&nbsp;&nbsp;output. The third column contains the covariance function of the (possibly prewhitened)<br>
+&nbsp;&nbsp;input, and the fourth column contains the correlation function. The plots can be redisplayed<br>
+&nbsp;&nbsp;by cra(R).<br>
+ <br>
+ 	NKL, 14.02.01<br>
+ 	NKL, 28.07.04<br>
+<br>
+</body>
+</html>

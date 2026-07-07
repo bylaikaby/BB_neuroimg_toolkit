@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>hmn2</title>
+</head>
+<body>
+ HMN2 - Analysis of data from tracer-injection studies<br>
+&nbsp;&nbsp;The project examines the precision of Manganese for tracing pathways. Of interest is the<br>
+&nbsp;&nbsp;degree of synapse-specificity of the tracer. We shall examine (a) whether the transmission<br>
+&nbsp;&nbsp;is transynaptic rarther than transneuronal (e.g. ocular specificity in LGN), (b) whether<br>
+&nbsp;&nbsp;pathways of different axonals sizes have different transport rate; (c) whether more than 2<br>
+&nbsp;&nbsp;synapses can be tracked down in the visual system.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;See also<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/MATLAB/MANGANESE2/CONTENTS&nbsp;&nbsp;&nbsp;&nbsp;-- Project Specific Functions<br>
+ <br>
+&nbsp;&nbsp;HIGH-LEVEL FUNCTIONS -------------------------------------------------------------------<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNBATCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Runs process<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESDUMPPAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Get/Load all experimental parameteters of the session<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SESASCAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Load all anatomy files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNIMGLOAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Load all images of a tracer-session (eg mdeft Anatomy Scans)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOTE!!!!!:&nbsp;&nbsp;&nbsp;&nbsp;If exists, IMGCROP/SLICOP/PERMUTE/FLIPDIM in session file must be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the same both of ASCAN.mdeft and GRPP.mdeftinj, otherwise mroi will crash.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNREALIGN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Aligns image and save as time-course of each slices.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOTE!!!!!!:&nbsp;&nbsp;&nbsp;&nbsp;MNREALIGN will save realigned data into TC_SLICE_REALIGNED and time<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;courses will be saved separately in each slice.<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNDENOISE_PCA&nbsp;&nbsp;&nbsp;&nbsp;-- Denoise tcImg based on PCA.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNNORMALIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- computes data for normalizaton or normalize the given signal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNALLCORR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Apply correlation analysis on the entire brain for Mn-Injections.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNTTEST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Applies T-test to tcImg in TC_SLICE_REALIGNED.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNREGRESS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Runs multi-regression analysis with given models.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNBARTELS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Exports tcImg structure for SPM analysis.<br>
+ <br>
+&nbsp;&nbsp;VISUALIZATION ----------------------------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNVIEW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- displays statistical map for Mn experiments.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNPLOT_ROITS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Plots time course of given ROIs.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNPLOT_ROITS_ALL -- Plots time courses of all ROIs.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNSEE_HORIZONTAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Plots images of optic pathway in different time<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNSEE_CORR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- shows results of MNALLCORR.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNSEE_TTEST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- shows results of MMTTEST<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNSEE_REGRESS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- shows results of MMREGRESS.<br>
+ <br>
+&nbsp;&nbsp;ROITS HANDLING ---------------------------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_ROITS_CAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- concatinates given roiTs.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_ROITS_DENOISE_PCA -- Denoise roiTs base on PCA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_ROITS_GET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- returns roiTs structure for the given roi.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_ROITS_PROJOUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- project a given component from roiTs.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_ROITS_TTEST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- applys T-test to given roiTs<br>
+ <br>
+&nbsp;&nbsp;MULTIPLE LINEAR REGRESION ----------------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MULREGRESS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- runs multiple linear regression analysis.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MULREGRESS_CONTRAST&nbsp;&nbsp;-- Returns statistics for given contrast vector.<br>
+ <br>
+&nbsp;&nbsp;CHECK/TEST PROBLEMS ----------------------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNPRINT_RECO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Prints reco information.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNRAWHIST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- plots a histgram of voxel value distribution.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNTCCENTROID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- plots a time course of centroids.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNTEST_REALIGN&nbsp;&nbsp;-- A batch file to test realignment.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNCHECK_REALIGN -- Compares RAW and REALIGNED images.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNCHECK_ROITS&nbsp;&nbsp;&nbsp;&nbsp;-- Plots roiTs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNCHECK_PROJOUT -- load roiTs and project baseline component and plot results.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNCHECK_VITAL&nbsp;&nbsp;&nbsp;&nbsp;-- Plots roiTs and vital signs.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNCHECK_OPN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Checks time course of optic nerve.<br>
+ <br>
+&nbsp;&nbsp;FILE-IO ----------------------------------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_DAT2SPM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- exports imaging data for SPM.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_SPM2MAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Converts SPM data into our data structre.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_TCSLICE_LOAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Loads time course of given slice.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTILS/MEX_ANZ/HDR_INIT -- initializes ANALIZE(TM) header structure.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTILS/MEX_ANZ/HDR_READ -- reads ANALYZE header.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTILS/MEX_ANZ/HDR_WRITE -- create a ANALYZE header file.<br>
+ <br>
+&nbsp;&nbsp;LOW-LEVEL FUNCTIONS ----------------------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_CENTROID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- computes and plot time course of centroid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNCOLORCODE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Get a color table<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MN_EXPTIME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- get experiment time in hours since Mn injection.<br>
+ <br>
+&nbsp;&nbsp;FIXING PROBLEM ---------------------------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNFIX_M02TH1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- fix the wrong voxel resolution in tcImg of m02th1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNFIX_ROIMAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- mnfix_roimat - makes .mask as logical<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MNFIX_TCIMG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- fix the wrong voxel resolution in tcImg.<br>
+ <br>
+&nbsp;&nbsp;OTHERS -----------------------------------------------------------------------------------<br>
+ <br>
+ <br>
+&nbsp;&nbsp;More Help!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/MATLAB/MRI/CONTENTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- General "MRI-Related" Utilities<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/MATLAB/NEU/CONTENTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- General "MRI-Related" Utilities<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/MATLAB/EVT/CONTENTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Event handling and observation-period/trial routines,<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;VERSION : 17.06.05 YM<br>
+<br>
+</body>
+</html>

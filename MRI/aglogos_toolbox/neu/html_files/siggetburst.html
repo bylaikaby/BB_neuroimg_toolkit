@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>siggetburst</title>
+</head>
+<body>
+ SIGGETBURST - Extract bursts from Spkt signal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BRST = SIGGETBURST(SPKT,NSPIKES,DURATION_MSEC,MIN_INTERVAL_MSEC)<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bursts are defined by <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Duration between spike and spike+NSPIKES must be less than DURATION_MSEC.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t(spk+NSPIKES) - t(spk) < DURATION_MSEC<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Burst interval must be greater than MIN_INTERVAL_MSEC.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t(burst+1) - t(burst) > MIN_INTERVAL_MSEC<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION : 0.90 18.01.05 YM&nbsp;&nbsp;first release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 20.01.05 YM&nbsp;&nbsp;changed algorythm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 25.01.05 YM&nbsp;&nbsp;avoid error for D98.at1/at2<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also SIGGETSPK<br>
+<br>
+</body>
+</html>

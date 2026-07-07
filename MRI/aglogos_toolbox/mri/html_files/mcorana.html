@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mcorana</title>
+</head>
+<body>
+ MCORANA - Correlation Analysis for functional MRI<br>
+&nbsp;&nbsp;roiTs = MCORANA(SesName, GrpExp) loads the roiTs structure of an experiment or group file<br>
+&nbsp;&nbsp;and runs cross-correlation analysis between each voxel's time series and one or more<br>
+&nbsp;&nbsp;models defined by the user.<br>
+ <br>
+&nbsp;&nbsp;The regressors (or models) used for correlation analysis can be diverse depending on<br>
+&nbsp;&nbsp;whether or not fMRI was combined with physiology. In the latter case, regressors can be<br>
+&nbsp;&nbsp;the usual models created on the basis of stimulus timing information, or alternatively can<br>
+&nbsp;&nbsp;be any of the neural signals (in the blp structure), which are first convolved with a real<br>
+&nbsp;&nbsp;(estimated from the data) or with a theoretically computed HRF.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Models are created by calling the EXPGETSTM function (see<br>
+&nbsp;&nbsp;arguments and coventions in expgetstm.m). In addition models can be defined by averaging<br>
+&nbsp;&nbsp;the neural activity in different frequency bands (LFP, MUA etc.).<br>
+ <br>
+&nbsp;&nbsp;MCORANA assumes that MAREATS is already invoked.<br>
+&nbsp;&nbsp;Note (NKL 5.1.2006) that as of this date the DETREND function in mareats, does NOT remove<br>
+&nbsp;&nbsp;the mean of the time courses, but only the linear trends. This is important for<br>
+&nbsp;&nbsp;experiments, such as those of the Hypercapnia project, in which the absolute value of<br>
+&nbsp;&nbsp;activation is used to compare different runs.<br>
+&nbsp;&nbsp;Default values for the preprocessing done during the selection of time series of<br>
+&nbsp;&nbsp;individual ROI by means of MAREATS are:<br>
+ <br>
+&nbsp;&nbsp;ANAP.mareats.IEXCLUDE&nbsp;&nbsp;&nbsp;&nbsp;= {'brain'};&nbsp;&nbsp;% Exclude in MAREATS<br>
+&nbsp;&nbsp;ANAP.mareats.ICONCAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% 1= concatanate ROIs before creating roiTs<br>
+&nbsp;&nbsp;ANAP.mareats.IFFTFLT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Respiratory artifact removal I<br>
+&nbsp;&nbsp;ANAP.mareats.IARTHURFLT = 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Respiratory artifact removal II (Default)<br>
+&nbsp;&nbsp;ANAP.mareats.IMIMGPRO&nbsp;&nbsp;&nbsp;&nbsp;= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% No imageprocessing for high temp/spat fMRI<br>
+&nbsp;&nbsp;ANAP.mareats.ICUTOFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% 1Hz low pass cutoff<br>
+&nbsp;&nbsp;ANAP.mareats.ICUTOFFHIGH= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% No highpass<br>
+&nbsp;&nbsp;ANAP.mareats.ITOSDU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% No transformation to SD-units (Default)<br>
+ <br>
+&nbsp;&nbsp;MCORANA will apply the correlation analysis to either observation-period or trial based<br>
+&nbsp;&nbsp;experiments. The selection of roiTs type is defined in the description file. For example,<br>
+&nbsp;&nbsp;for an experiment, in which positive and negative BOLD is studied, the defaults can be:<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;GRPP.corana{1}.mdlsct = 'hemo';<br>
+&nbsp;&nbsp;GRPP.corana{2}.mdlsct = 'invhemo';<br>
+ <br>
+&nbsp;&nbsp;At this point, it's a good idea to also define the signals to be grouped by<br>
+&nbsp;&nbsp;SESGRPMAKE. For the observation-based experiments this can be:<br>
+&nbsp;&nbsp;GRPP.grpsigs = {'blp';'roiTs'};<br>
+&nbsp;&nbsp;For the trial-based experiments:<br>
+&nbsp;&nbsp;GRPP.grpsigs = {'tblp';'troiTs'};<br>
+ <br>
+&nbsp;&nbsp;The following parameters must be defined appropriately in the description file to ensure<br>
+&nbsp;&nbsp;proper function of MCORANA:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;ANAP.aval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0.05;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% p-value for selecting time series<br>
+&nbsp;&nbsp;ANAP.rval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0.15;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% r (Pearson) coeff. for selecting time series<br>
+&nbsp;&nbsp;ANAP.shift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% nlags for xcor in seconds<br>
+&nbsp;&nbsp;ANAP.clustering&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% apply clustering after voxel-selection<br>
+&nbsp;&nbsp;ANAP.bonferroni&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Correction for multiple comparisons<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;Note: The selection of method was done by comparing results from different<br>
+&nbsp;&nbsp;analyses-types. According to NKL & YM (04.01.06) for the hypercapnia data (e.g. J04yz1,<br>
+&nbsp;&nbsp;but it can be generalized for any trial-based session):<br>
+ <br>
+&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selecting voxels by MCORANA for each trial does not give good results.<br>
+&nbsp;&nbsp;2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We'll adapt the method of selecting voxels on the basis of the strongest stimulus,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which is indicated by the reftrial field.<br>
+&nbsp;&nbsp;3.1&nbsp;&nbsp;&nbsp;&nbsp;We tried to run sescorana "indiscriminably" for all groups with stimulus.<br>
+&nbsp;&nbsp;3.2&nbsp;&nbsp;&nbsp;&nbsp;We then averaged by "or"ing p/r<br>
+&nbsp;&nbsp;3.3&nbsp;&nbsp;&nbsp;&nbsp;The normo works very well. All hypercapnia groups show a drop after the largest<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contrast and a further drop for the lowest contrast. Intermediate contrast effects<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are not well discriminable.<br>
+&nbsp;&nbsp;3.4&nbsp;&nbsp;&nbsp;&nbsp;The MION shows lack of sensitivity to contrast-changes, in general. With HYPERC the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;situation is obviously worse, because the signal is dominated by volume changes and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reduced sensitivity to CMRO2 changes.<br>
+&nbsp;&nbsp;4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To ensure that the analysis of individual experiments selects voxels that were<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;positively correlated with the stimulus, we analyzed the control group, we determine<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a mask with voxels above certain threshold, and we apply this mask to individual<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;experiments. In this way, each experiment can only be a "subset" of the control<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group. In other words, if we expect an inversion of BOLD, as is the case in the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hypercapnia project, then we know that the negative BOLD is coming from voxels that<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;were POSITIVELY correlated with the stimulus during the control experiment.<br>
+ <br>
+&nbsp;&nbsp;MCORANA will analyze session with diverse groups (trial-based, obsp-based, w/ stimulus,<br>
+&nbsp;&nbsp;and w/out stimulus). For proper function, make sure the following fields are defined in<br>
+&nbsp;&nbsp;your description file:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;GRP.normobase.stminfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'none | polar | pinwheel w/ Var-Contrast';&nbsp;&nbsp;etc...<br>
+&nbsp;&nbsp;GRP.normobase.condition&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {'normal | hypercapnia | injection'}; <br>
+ <br>
+&nbsp;&nbsp;If the session contains groups with stimulus and trial-format, then:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;Defaults:<br>
+&nbsp;&nbsp;GRPP.anap.gettrial.status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% IsTrial<br>
+&nbsp;&nbsp;GRPP.anap.gettrial.Xmethod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'tosdu';&nbsp;&nbsp;% Argument (Method)to xfrom in gettrial<br>
+&nbsp;&nbsp;GRPP.anap.gettrial.Xepoch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'prestim';% Argument (Epoch) to xfrom in gettrial<br>
+&nbsp;&nbsp;GRPP.anap.gettrial.Average&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Do not average tblp, but concat<br>
+&nbsp;&nbsp;GRPP.anap.gettrial.Convolve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% If =1, then use HRF; otherwise resample only<br>
+&nbsp;&nbsp;GRPP.anap.gettrial.RefChan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 2;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Reference channel (for DIFF)<br>
+&nbsp;&nbsp;GRPP.anap.gettrial.newFs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Filter envelop down to 4Hz (1/TR); if 0 no-resamp<br>
+&nbsp;&nbsp;GRPP.anap.gettrial.sort&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'trial';&nbsp;&nbsp;% sorting with SIGSORT, can be 'none|stimulus|trial<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;Group-Specific:<br>
+&nbsp;&nbsp;GRP.normostim.anap.gettrial.status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0;<br>
+&nbsp;&nbsp;GRP.normostim.anap.gettrial.Xmethod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'none';<br>
+&nbsp;&nbsp;GRP.normostim.anap.gettrial.reftrial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Use the .reftrial for analysis<br>
+&nbsp;&nbsp;GRP.normostim.grpsigs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= {'tblp';'troiTs'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;For the cross-correlation analysis the procedue we finally selected is:<br>
+&nbsp;&nbsp;(1) Run MCORANA for each experiment<br>
+&nbsp;&nbsp;(2) Group experiments according to the grp.exps. During this procedure the best voxels of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any experiment (logical OR) are selected.<br>
+&nbsp;&nbsp;(3) Use the control-groups to generate a mask from voxels always correlated with the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stimulus (quasi logical AND, in the sense that we can select 80-100% of the experiments as<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;criterion).<br>
+&nbsp;&nbsp;(4) When you need to obtain the best-correlated voxels of any experiment, which are within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the control-group defined mask, use roiTs = MAPPLYMASK(roiTs);<br>
+ <br>
+&nbsp;&nbsp;======================================================================================<br>
+&nbsp;&nbsp;In summary, typical preprocessing steps to run SESCORANA are:<br>
+&nbsp;&nbsp;======================================================================================<br>
+&nbsp;&nbsp;sesdumppars('j04yz1');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Extract parameters, generate SesPar.mat file<br>
+&nbsp;&nbsp;sesimgload('j04yz1');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Load all 2dseq files, generate tcImg structure<br>
+&nbsp;&nbsp;sesroi('j04yz1');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Define ROIs<br>
+&nbsp;&nbsp;sesareats('j04yz1');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Extract their time series<br>
+&nbsp;&nbsp;sesgettrial('j04yz1');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Sort by trial, if trial-based groups exist<br>
+&nbsp;&nbsp;sescorana('j04yz1');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Run correlation analysis for obsp/trial-based exps<br>
+&nbsp;&nbsp;sesgrpmake('j04yz1');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Group them<br>
+&nbsp;&nbsp;sesgetmask('j04yz1');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Get the masks generated in control experiments (e.g. normo)<br>
+ <br>
+&nbsp;&nbsp;See also SESCORANA, EXPMKMODEL, MATSCOR, MCOR, SHOWMODEL<br>
+ <br>
+&nbsp;&nbsp;NKL, 01.13.00, 07.10.01, 02.09.02, 23.10.02 17.04.04<br>
+&nbsp;&nbsp;NKL, 27.12.05, 05.01.06<br>
+&nbsp;&nbsp;YM,&nbsp;&nbsp;24.03.06&nbsp;&nbsp;modified so that this can be called from catsig, checked with n03ow1.<br>
+&nbsp;&nbsp;YM,&nbsp;&nbsp;22.05.07&nbsp;&nbsp;bug fix when anap.gettrial.status > 0<br>
+<br>
+</body>
+</html>

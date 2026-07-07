@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>getmpxdata</title>
+</head>
+<body>
+ GETMPXDATA - Get multiplexed data<br>
+&nbsp;&nbsp;PURPOSE : To get multi-plexed data in the adffile.<br>
+ <br>
+&nbsp;&nbsp;USAGE :&nbsp;&nbsp;&nbsp;&nbsp;oSig = getmpxdata(Ses,ExpNo,adfofsSec,adflenSec)<br>
+ <br>
+&nbsp;&nbsp;NOTES : <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- adfofs,adflen (in sec) must be the same as neural data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- GRP.(grpname).mpxdata field is used to get multi-plexed data info.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for example, GRP.(xxxx).mpxdata = { [10 11], {'contrL','contrR','oriL','oriR'} };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10 11] is [multiplexed-CHAN clock-CHAN] in the adffile.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'contrL',...} are data in multiplexed signal.<br>
+ <br>
+&nbsp;&nbsp;SEEALSO : decmain.m<br>
+&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 06.10.05 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 25.10.05 YM&nbsp;&nbsp;<br>
+ <br>
+&nbsp;&nbsp;See also ADFREAD, DECMAIN<br>
+<br>
+</body>
+</html>

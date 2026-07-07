@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>roiload</title>
+</head>
+<body>
+ ROILOAD - load ROI for Ses, ExpNo/GrpName<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI = ROILOAD(SES,EXPNO/GRPNAME)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI = ROILOAD(SES,EXPNO/GRPNAME,'') loads default ROIs set by grp.grproi.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI = ROILOAD(SES,EXPNO/GRPNAME,ROIVAR) loads a ROI variable (ROIVAR)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in the roifile.&nbsp;&nbsp;If ROIVAR is a empty string, ROILOAD will use<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grp.grproi or 'RoiDef' as a ROI variable name.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI = ROILOAD(SES,EXPNO/GRPNAME,ROIVAR,SLICE)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI = ROILOAD(SES,EXPNO/GRPNAME,ROIVAR,ROINAME) load the ROIs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;based on SLICE or ROINAME.&nbsp;&nbsp;If SLICE == [] or ROINAME == '',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then ROILOAD will return all ROIs.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROI = ROILOAD(SES,EXPNO/GRPNAME,ROIVAR,SLICE,ROINAME) load the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROIs based on both SLICE and ROINAME.&nbsp;&nbsp;If SLICE == [], then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROILOAD selects ROIs based on ROINAME.&nbsp;&nbsp;If ROINAME == '', then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROILOAD selects ROIs based on SLICE.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You may use MROIGET for further selection of ROI.<br>
+ <br>
+&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 25.04.04 YM&nbsp;&nbsp;&nbsp;&nbsp;first release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 28.11.07 YM&nbsp;&nbsp;&nbsp;&nbsp;RoiName can be a cell array.<br>
+ <br>
+&nbsp;&nbsp;See also HROI, MROIGET, MATSIGLOAD<br>
+<br>
+</body>
+</html>

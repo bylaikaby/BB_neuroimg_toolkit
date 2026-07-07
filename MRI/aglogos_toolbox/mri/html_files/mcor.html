@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>mcor</title>
+</head>
+<body>
+ MCOR - Computes the coeff of correlation of model x to the columns of y<br>
+&nbsp;&nbsp;MCOR Is used by mcorimg or mareats to compute cross correlation coefficients between a<br>
+&nbsp;&nbsp;model defined in x and the time series of voxels, which of which is a column in the<br>
+&nbsp;&nbsp;twodimensional matrix y.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;r = MCOR(x,y) returns the correlation coefficients of model x and time series y. Default<br>
+&nbsp;&nbsp;computation mode is 1 (see below).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;r = MCOR(x,y,nlags) computes correlations after shifting appropriately the model with<br>
+&nbsp;&nbsp;respect to the data or vice versa. Default nlags is 2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;[r, p] = MCOR(x,y,...) returns the correlation coefficients and their p value. Values<br>
+&nbsp;&nbsp;below 0.05 are significant.<br>
+ <br>
+&nbsp;&nbsp;Modes of computing r-values<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode == 0&nbsp;&nbsp;corrcoef([x(:) y]); (fastest by very little)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode == 1&nbsp;&nbsp;loops all y columns [r,p] = corrcoef(x, y(:,N)]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode == 2&nbsp;&nbsp;loops all y columns, computing manually r and p (not big advantage)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode == 3&nbsp;&nbsp;compensate model-data t-shifts, then compute r (20% slower - best results)<br>
+ <br>
+&nbsp;&nbsp;If no lags are defined the function is using mode 1, otherwise 3.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;NKL, 18.07.04<br>
+ <br>
+&nbsp;&nbsp;See also MCORTST MCORANA MCORIMG MKMODEL MKSTMMODEL<br>
+<br>
+</body>
+</html>

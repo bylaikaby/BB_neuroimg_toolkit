@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>showneumri</title>
+</head>
+<body>
+ SHOWNEUMRI - Displays the Neural Signals superimposed on the BOLD response.<br>
+&nbsp;&nbsp;SHOWNEUMRI (SesName, ExpNo, RoiName, Thr) makes a figure with two subplots. The<br>
+&nbsp;&nbsp;left shows the correlation map, and the right the time courses of the neural and MRI<br>
+&nbsp;&nbsp;signals.<br>
+ <br>
+&nbsp;&nbsp;USAGE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWNEUMRI (SesName, ExpORgrp, RoiName, Thr)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SesName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Name of the session (e.g. k005x1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpORgrp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Experiment number of Group Name; if negative uses RAW data and applies<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user-defined preprocessing (definition in description file under the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.mareats field.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RoiName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ROI name (e.g. V1, V2,...)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Threshold for r values<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWNEUMRI ('k005x1', 'p2c100');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWNEUMRI ('k005x1', -3) -- use tcImg of exp 3, preprocess, plot...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following function call shows good undershoot for brief pulses<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOWBPULSE ('f01pr1','polarflash');<br>
+ <br>
+&nbsp;&nbsp;NKL, 11.07.05<br>
+<br>
+</body>
+</html>

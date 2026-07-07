@@ -1,0 +1,82 @@
+% SPM2 TIPS
+% version
+% 02.06.2005 YM
+
+% example :
+% >> % read header and data
+% >> V = spm_vol('m02th1_001.img');
+% >> [Y,XYZ] = spm_read_vols(V);
+% >> % modify data and write out
+% >> V.fname = 'aaaaa.img';
+% >> Y(find(Y(:) > 30)) = 30;
+% >> spm_write_vol(V,Y);
+
+
+
+spm_vol =========================================================================
+  Get header information etc for images.
+  FORMAT V = spm_vol(P)
+  P - a matrix of filenames.
+  V - a vector of structures containing image volume information.
+  The elements of the structures are:
+        V.fname - the filename of the image.
+        V.dim   - the x, y and z dimensions of the volume, and the
+                  datatype of the image.
+        V.mat   - a 4x4 affine transformation matrix mapping from
+                  voxel coordinates to real world coordinates.
+        V.pinfo - plane info for each plane of the volume.
+               V.pinfo(1,:) - scale for each plane
+               V.pinfo(2,:) - offset for each plane
+                  The true voxel intensities of the jth image are given
+                  by: val*V.pinfo(1,j) + V.pinfo(2,j)
+               V.pinfo(3,:) - offset into image (in bytes).
+                  If the size of pinfo is 3x1, then the volume is assumed
+                  to be contiguous and each plane has the same scalefactor
+                  and offset.
+
+
+spm_read_vols ===================================================================
+  Read in entire image volumes
+  FORMAT [Y,XYZ] = spm_read_vols(V,mask)
+  V    - vector of mapped image volumes to read in (from spm_vol)
+  mask - implicit zero mask?
+  Y    - 4D matrix of image data, fourth dimension indexes images
+  XYZ  - 3xn matrix of XYZ locations returned
+
+
+spm_realign =====================================================================
+  Estimation of within modality rigid body movement parameters
+  FORMAT P = spm_realign(P,flags)
+ 
+  P     - matrix of filenames {one string per row}
+          All operations are performed relative to the first image.
+          ie. Coregistration is to the first image, and resampling
+          of images is into the space of the first image.
+          For multiple sessions, P should be a cell array, where each
+          cell should be a matrix of filenames.
+ 
+  flags - a structure containing various options.  The fields are:
+          quality - Quality versus speed trade-off.  Highest quality
+                    (1) gives most precise results, whereas lower
+                    qualities gives faster realignment.
+                    The idea is that some voxels contribute little to
+                    the estimation of the realignment parameters.
+                    This parameter is involved in selecting the number
+                    of voxels that are used.
+ 
+          fwhm    - The FWHM of the Gaussian smoothing kernel (mm)
+                    applied to the images before estimating the
+                    realignment parameters.
+ 
+          sep     - the default separation (mm) to sample the images.
+ 
+          rtm     - Register to mean.  If field exists then a two pass
+                    procedure is to be used in order to register the
+                    images to the mean of the images after the first
+                    realignment.
+ 
+          PW      - a filename of a weighting image (reciprocal of
+                    standard deviation).  If field does not exist, then
+                    no weighting is done.
+ 
+          interp  - B-spline degree used for interpolation

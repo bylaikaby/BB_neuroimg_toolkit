@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>clnadf</title>
+</head>
+<body>
+ CLNADF - Denoise adf data<br>
+ 	FILENAMES = CLNADF(Ses,ANAP,MriEvt) does the actual cleaning of MRI+Phys Data<br>
+ <br>
+&nbsp;&nbsp;NOTES :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This function is usually called by CLNMAIN.&nbsp;&nbsp;The function creates a temporally <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file having decimated and cleaned signal.&nbsp;&nbsp;Cleaning is based on PCA, and PCA is done<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by each segment/slice basis.&nbsp;&nbsp;A sequence of cleaning is following.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. decimation, if required.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. prepare PCA-data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. run PCA (for 'mean' subtracted PCA-data).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. find PCs that correlates with 'mean' of PCA-data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. subtracts 'mean' and correlated PCs from PCA-data.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. adjust gaps between edges of PCA-data, if required.<br>
+ <br>
+&nbsp;&nbsp;VERSION :	<br>
+ 	1.00 03.08.05 YM&nbsp;&nbsp;derived from clnadf.m of NKL.<br>
+ 	1.01 15.08.05 YM&nbsp;&nbsp;supports saving gradient noise too, checks gaps.<br>
+ 	1.02 15.08.05 YM&nbsp;&nbsp;bug fix of PREPCA, plot figures;<br>
+ 	1.03 08.12.05 YM&nbsp;&nbsp;modified to save PCA data for axel's papar.<br>
+ <br>
+&nbsp;&nbsp;See also CLNMAIN_2, CLNADJEVT<br>
+<br>
+</body>
+</html>

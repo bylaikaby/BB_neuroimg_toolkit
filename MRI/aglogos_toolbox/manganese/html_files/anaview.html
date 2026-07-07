@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>anaview</title>
+</head>
+<body>
+ ANAVIEW - displays anatomical images<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ANAVIEW(SESSION,GRPNAME) displays anatomical images for SESSION/GRPNAME.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ANAVIEW(SESSION,ANANAME,INDEX) displays anatomical images for ANANAME/INDEX.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ANAVIEW(SIG) displays anatomical data "SIG".<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;ANAVIEW(SESSION,GRPNAME,PERMUTE_VEC)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ANAVIEW(SESSION,ANANAME,INDEX,PERMUTE_VEC)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ANAVIEW(SIG,PERMUTE_VEC) performs permutation of image data.<br>
+ <br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTES :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This function assumes .dat as (x,y,z) as default.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Z-reverse" is enabled since usually 'y' starts from top.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> anaview('demo');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> anaview('m02lx1','movie1');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> anaview('m02lx1','gefi',1);<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 04.07.05 YM&nbsp;&nbsp;&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 05.07.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports permutation/gamma/crosshair.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 05.07.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports triplot.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 08.07.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports "lightbox" modes.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.94 19.08.05 YM&nbsp;&nbsp;&nbsp;&nbsp;supports "demo" mode, XYZrev for "Lightbox" modes.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also ANALOAD<br>
+<br>
+</body>
+</html>

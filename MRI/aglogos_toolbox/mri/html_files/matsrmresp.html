@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>matsrmresp</title>
+</head>
+<body>
+ MATSRMRESP - Remove respiratory artifacts by projecting out sinusoids<br>
+&nbsp;&nbsp;oSig = MATSRMRESP (Sig) projects out sinusoids that were found after "strong" zero-padding<br>
+&nbsp;&nbsp;(about 10x the initial data length).&nbsp;&nbsp;Detection of the breathing frequencies occurs on the<br>
+&nbsp;&nbsp;average of the voxel spectra.&nbsp;&nbsp;Removal takes place on the individual spectra, to account for<br>
+&nbsp;&nbsp;disparities in the phase between voxels.<br>
+ <br>
+&nbsp;&nbsp;Criterion for removal: choose a factor that is some fraction of largest component found.<br>
+&nbsp;&nbsp;Hypothesis: the units are comparable, i.e. a "large" perturbation due to breathing is<br>
+&nbsp;&nbsp;"large" on the same scale across all voxels.<br>
+ <br>
+&nbsp;&nbsp;Compared to matsart.m, this version uses the power spectrum to decide whether a breathing<br>
+&nbsp;&nbsp;component is present.<br>
+&nbsp;&nbsp;Idea: if fundamental too small, then assume remaining components are also not<br>
+&nbsp;&nbsp;removable. PROBLEM: sometimes fundamental is there, but not harmonics<br>
+ <br>
+&nbsp;&nbsp;New version: compared with matsart_powSpecOLD.m, check that ALL harmonics are significant<br>
+&nbsp;&nbsp;before removing (not just fundamental). But do not look for harmonics if fundamental<br>
+&nbsp;&nbsp;is absent.<br>
+ <br>
+&nbsp;&nbsp;Arthur Gretton, 13.05.04<br>
+<br>
+</body>
+</html>

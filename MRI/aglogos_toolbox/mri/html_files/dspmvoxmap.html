@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>dspmvoxmap</title>
+</head>
+<body>
+ DSPMVOXMAP - displays image maps of ROITS structure by mvoxselect<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DSPMVOXMAP(ROITS,...) displays image maps of ROITS structure of that voxsels are <br>
+&nbsp;&nbsp;&nbsp;&nbsp;selected by mvoxselect based on the certain statistics/alpha.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HAXES = DSPMVOXMAP(ROITS,...) does the same things, returing the axes handle.<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Supported options are :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: the axes handle to plot.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DatName&nbsp;&nbsp;: data name to plot, 'statv','resp'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Colormap : a color map for activated voxsels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: clipping range as [min max]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawROI&nbsp;&nbsp;: a flag to draw ROIs, 0 or 1, can be a cell array of RoiNames<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawELE&nbsp;&nbsp;: a flag to draw electrodes, 0 or 1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROIColor : a cell array of colors for ROIs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Slice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: slice selection<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NRowNCol : [NRow NCol] for display<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gamma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Gamma correction for color coding<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AnaGamma : Gamma correction for anatomy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Legend&nbsp;&nbsp;&nbsp;&nbsp;: text string(s) for legend<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig = mvoxselect('e04ds1','visesmix','all','glm[2]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> dspmvoxmap(sig,'clip',[0 20],'colormap',hot(256))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig1 = mvoxselect('e04ds1','visesmix','v1','glm[1]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> h = dspmvoxmap(sig1,'clip',[0 20],'colormap','red')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> sig2 = mvoxselect('e04ds1','visesmix','v2','glm[1]',[],0.01);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> h = dspmvoxmap(sig2,'clip',[0 20],'colormap','green','axes',h)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXAMPLE 3:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>> dspmvoxmap({sig1 sig2},'color',{'r','g'},'legend',{'v1','v2'})<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 12.03.07 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 14.03.07 YM&nbsp;&nbsp;supports new options 'NRowNCol', 'DrawROI'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.92 15.03.07 YM&nbsp;&nbsp;supports 'hold on' capability, ROITS as a cell array.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.93 19.03.07 YM&nbsp;&nbsp;'DrawROI' can be a cell array of RoiNames<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.94 14.11.07 YM&nbsp;&nbsp;supports 'DrawELE'<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;See also mvoxselect mvoxselectmask dspmvox dspmvoxtc anaload mview<br>
+<br>
+</body>
+</html>

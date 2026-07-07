@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>getelepos</title>
+</head>
+<body>
+ GETELEPOS - returns correct electrode position and distances<br>
+&nbsp;&nbsp;GETELEPOS is used to place the "electrodes" where they belong and<br>
+&nbsp;&nbsp;compute interelectrode distances<br>
+ <br>
+&nbsp;&nbsp;The numbers within the hardch array m u s t be absolutely correct<br>
+&nbsp;&nbsp;for the math analysis to make sense. each number m u s t<br>
+&nbsp;&nbsp;correspond to the location of the electrode in the brain. the way<br>
+&nbsp;&nbsp;our 4x4 grid is, electrode location is:<br>
+&nbsp;&nbsp;01 02 03 04<br>
+&nbsp;&nbsp;05 06 07 08<br>
+&nbsp;&nbsp;09 10 11 12<br>
+&nbsp;&nbsp;13 14 15 16<br>
+&nbsp;&nbsp;The math analysis computes inter-electrode distance by evaluating<br>
+&nbsp;&nbsp;the expression i = hardchan(i)<br>
+ <br>
+&nbsp;&nbsp;EXAMPLE OF DESCRIPTION FILE<br>
+&nbsp;&nbsp;ses.confunc.sigs		= {'LfpL', 'LfpM', 'LfpH', 'Mua', 'Sdf'};<br>
+&nbsp;&nbsp;ses.confunc.algs		= {'kc'};<br>
+&nbsp;&nbsp;ses.confunc.eleconfig	= [01 02 03 04; 05 06 07 08; ...<br>
+ 						&nbsp;&nbsp;&nbsp;&nbsp;09 10 11 12; 13 14 15 16];<br>
+&nbsp;&nbsp;===========================================================================<br>
+&nbsp;&nbsp;ALL RELATED TO OUR MATH-BIZZ<br>
+&nbsp;&nbsp;IMPORTANT NOTE:<br>
+&nbsp;&nbsp;We have our Sig.dat with NxM<br>
+&nbsp;&nbsp;N is the record length (depends on how long the obs period is)<br>
+&nbsp;&nbsp;M is the number of CHANNELS<br>
+&nbsp;&nbsp;**************************************************************<br>
+&nbsp;&nbsp;YOU CAN ONLY USE NUMBER IN THE RANGE 1:length(hardch)<br>
+&nbsp;&nbsp;When you want to take electrode 3 and 5 you should write:<br>
+&nbsp;&nbsp;x1 = Sig.dat(:,ses.grp.name.hardch(3))<br>
+&nbsp;&nbsp;x2 = Sig.dat(:,ses.grp.name.hardch(5))<br>
+&nbsp;&nbsp;These two time series correspond to the positions<br>
+&nbsp;&nbsp;ses.confunc.eleconfig(ses.grp.name.hardch(3))<br>
+&nbsp;&nbsp;ses.confunc.eleconfig(ses.grp.name.hardch(5))<br>
+&nbsp;&nbsp;In this file, where channel 12 was bad and the cable of electrode<br>
+&nbsp;&nbsp;16 was put into the 12, to get the channel 16 you have to do:<br>
+&nbsp;&nbsp;mychan = find(ses.grp.name.hardch == 16);<br>
+&nbsp;&nbsp;**************************************************************<br>
+&nbsp;&nbsp;<br>
+&nbsp;&nbsp;IF YOU WANT TO ACCESS ONE PARTICULAR ELECTRODE USE THE<br>
+&nbsp;&nbsp;EXPRESSION: Electrode 5 = ses.confunc.eleconfig(ses.grp.name.hardch(5))<br>
+&nbsp;&nbsp;===========================================================================<br>
+<br>
+</body>
+</html>

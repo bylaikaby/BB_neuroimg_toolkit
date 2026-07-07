@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>blp2sig</title>
+</head>
+<body>
+ BLP2SIG - Averages bands into traditional signal (Lfp, Mua, etc.)<br>
+&nbsp;&nbsp;BLP2SIG (Blp, SigType) averages the bands according to SigType<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANY PARAMETERS EXTRACTING BLP CAN BE MODIFIED THROUGH THE SESSION FILE.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.band{ 1}&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4] 'ep'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP',&nbsp;&nbsp;0};&nbsp;&nbsp;% Evoked potential<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.band{ 2}&nbsp;&nbsp;= {[&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12] 'stmnm' 'LFP',&nbsp;&nbsp;2};&nbsp;&nbsp;% Stim-related & Neuromodulatory?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.band{ 3}&nbsp;&nbsp;= {[&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60] 'nm'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'LFP',&nbsp;&nbsp;4};&nbsp;&nbsp;% Stim-unrelated; Neuromodulatory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.band{ 4}&nbsp;&nbsp;= {[&nbsp;&nbsp;70&nbsp;&nbsp;&nbsp;&nbsp;110] 'stm'&nbsp;&nbsp;&nbsp;&nbsp;'LFP',&nbsp;&nbsp;4};&nbsp;&nbsp;% Stim-related; independent of MUA (50%)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.band{ 5}&nbsp;&nbsp;= {[&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;110] 'lfp'&nbsp;&nbsp;&nbsp;&nbsp;'LFP',&nbsp;&nbsp;4};&nbsp;&nbsp;% Traditional LFPs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.band{ 6}&nbsp;&nbsp;= {[ 500&nbsp;&nbsp;3000] 'mua'&nbsp;&nbsp;&nbsp;&nbsp;'MUA', 45};&nbsp;&nbsp;% Traditional Analog MUA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.lBands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [1:5];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Bands in the LFP range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.mBands&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [6];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Bands in the MUA range<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PARAMETERS FOR FIR FILTER<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.flttype&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 'cheby2';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.lstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.mstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 50;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.hstop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 50;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.dB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 60;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.passripple = 0.1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.NewFsTr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 40;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% 60dB decay width for above resampling<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PARAMETERS TO MINIMIZE UNSTABLE PERIODS IN BOTH TIME EDGES<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANAP.siggetblp.mirror&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;See also EXPBLP2SIG<br>
+ <br>
+&nbsp;&nbsp;NKL 29.07.04<br>
+<br>
+</body>
+</html>

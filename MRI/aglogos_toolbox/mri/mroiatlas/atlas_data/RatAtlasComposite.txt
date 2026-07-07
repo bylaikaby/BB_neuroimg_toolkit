@@ -1,0 +1,73 @@
+Accumbens	79	80	441	78																											
+AcbC	79	78																													
+AcbSh	80	441																													
+Amygdala	70	72	73	74	83	97	99	126	143	163	164	165	167	168	174	203	205	206	245	357	377	380	442	446	447	529	530	537	538	652	658
+AmygBLA	163	164	165																												
+AmygBMA	167	168																													
+AmygCeA	203	205	206																												
+AmygMeA	529	530	537	538																											
+BNST	175	176	177	178	179	180	182	184	185	186	187	188																			
+BNSTlateral	175	176	177	178	179	180																									
+BNSTmedial	182	184	185	186	187																										
+CaudatePutamen	232																														
+CorpusCollosum	200	330	331																												
+CortexEntorhinal	254	309	456	690	895	535																									
+CortexPiriform	1013	1014	1015	1016																											
+CortexEntorhinalPiriform	254	309	456	690	1013	1014	1015	1016	895	535																					
+CortexMotor	506	507																
+CortexS1	749	750	751	752	753	754	755	758	759									
+CortexSomatosensory	749	750	751	752	753	754	755	758	759	760								
+CortexInsular	101	102	104	105	259	341												
+CortexAgranularInsular	101	102	104	105														
+CortexCingulate	212	213																
+CortexRetrosplenial	739	741	742															
+CortexVisual	882	883	884	885	886													
+CortexAuditory	145	146	147															
+CortexSensory	145	146	147	749	750	751	752	753	754	755	758	759	760	882	883	884	885	886
+CortexFrontalAssociation	333																	
+CortexParietalAssociation	699																	
+CortexTemporalAssociation	866																	
+CortexOrbitofrontal	266	468	560	917														
+CortexMedialPrefrontal	280	375	691															
+DiagonalBand	354	892																
+GlobusPallidus	458																																																											
+Hippocampus	196	256	358	359	746	360	197	747	257	927	748	620	673	693																																														
+HippocampusAnteroDorsal	196	256	358																																																									
+HippocampusPosteroDorsal	359																																																											
+HippocampusPDwithDS	359	746																																																										
+HippocampusVentral	197	360																																																										
+HippocampusVwithVS	197	360	747																																																									
+HippocampusDGposterior	257	927																																																										
+HippocampusPosterior	257	927	748	620	673	693																																																						
+HippocampusSubiculum	620	673	693	746	747	748																																																						
+Hypothalamus	40	41	94	95	100	136	137	138	139	140	222	249	270	271	278	301	339	439	459	465	486	513	533	534	553	555	556	565	566	570	572	573	576	583	611	612	613	615	617	618	621	640	641	646	656	659	663	715	798	858	859	860	864	865	902	909	910	911	912	929
+HypothalamusLateral	339	459	486	513	902																																																							
+HypothalamusMedial	40	41	94	95	100	136	137	138	139	140	222	249	270	271	278	301	439	465	533	534	553	555	556	565	566	570	572	573	576	583	611	612	613	615	617	618	621	640	641	646	656	659	663	715	798	858	859	860	864	865	909	910	911	912	929					
+HypothalamusArc	136	137	138	139	140																																																							
+HypothalamusPVN	611	612	613	615	617	618																																																						
+InterpeduncularNucleus	414	415	420	427	428	429																																																						
+IPAC	416	418	419																									
+MesencephalicRegion	279	130	383	384	552	619	718	727	732																			
+MedialGeniculate	543	546																										
+OlfactoryNuclei	116	117	118	119	120	82																						
+OlfactoryTubercle	1018	1019	1020	1021																								
+PeriaqueductalGrey	267	272	471	609	844	845	904																					
+Pons	457	664	667	744	745	867																						
+Raphe	225	287	288	289	291	292	661	726	559																			
+RapheDorsal	287	288	289	291	292																							
+RapheMedian	559	661																										
+RapheLinear	225	726																										
+Septum	255	323	449	493	494	498	578	653	775	780	790	870																
+SubstantiaInnominata	782	783	784	789																								
+SubstantiaNigra	624	665	801	802	804	805	806	807	808																			
+SuperiorColliculus	281	282	286	393	401	597	857	765																				
+ThalamusMidlineDorsal	223	227	332	362	379	382	386	460	461	462	517	518	520	521	522	598	627	643	672	698	700	701	702	704	796	797	832	833
+ThalamusDorsolateral	90	110	113	148	149	152	263	319	378	451	454	480	481	482	483	484	648	670	674	743	764	777	887	898	899	900	901	907	920	921	922																																					
+ThalamusVentromedial	112	363	580	716	720	847	853	856	924																																																											
+ThalamusSPF	832	833																																																																		
+ThalamusLP	480	481	482	483	484																																																															
+ThalamusVP	920	921																																																																		
+Thalamus	223	227	332	362	379	382	386	460	461	462	517	518	520	521	522	598	627	643	672	698	700	701	702	704	796	797	832	833	90	110	113	148	149	152	263	319	378	451	454	480	481	482	483	484	648	670	674	743	764	777	887	898	899	900	901	907	920	921	922	112	363	580	716	720	847	853	856	924
+VentralPallidum	919																																																																			
+VTA	926																																																																			
+ZonaIncerta	937	938	939																																																																	

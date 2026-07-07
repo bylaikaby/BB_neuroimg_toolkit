@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>getgrapat</title>
+</head>
+<body>
+ GETGRAPAT - Get gradient pattern vectors<br>
+ 	The gradient-inteference patterns depend on segment, slice etc.<br>
+ 	because the slice-slection, dephasing etc. pulse are different<br>
+ 	To perfectly denoise, we search for specific patterns (DAL, 2001).<br>
+ 	This function selects different gradient-interference patterns<br>
+ 	that are used to reallign the MRI events. They usually have<br>
+ 	some jitter because of ETS etc..<br>
+ 	DAL, NKL, 06.10.02, 26.10.02<br>
+ <br>
+ 	grapat = GETGRAPAT(Ses,ExpNo,ObspNo,mrievt)<br>
+ 	SESSION: Session name or Ses strucure<br>
+ 	ExpNo: Experiment number<br>
+ 	ObspNo: Observation period number<br>
+ 	mrievt: Original MRI events converted in seconds<br>
+ <br>
+ 	Returns:<br>
+ 	grapat: Vector with gradient interference<br>
+ 	if nargout == 0, plots the gradient pattern<br>
+ <br>
+ 	See also CLNADF, CLNEVT, GETGRAPAT<br>
+<br>
+</body>
+</html>

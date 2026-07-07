@@ -1,0 +1,24 @@
+Note for pval_adjust:
+
+none > bh > by > holm,hochberg,sidak > bonferroni
+
+----------------------------------------------------------------
+[data]
+M02.lx1
+  scan: 7
+  stimulus: "stim blank"
+  volumes:  "8 8"
+  repeats:  4
+  GLM
+
+[# of significant voxels (positive/negative): correction method]
+P < 0.01
+3946/256 : none
+2466/ 28 : bonferroni  (Bonferroni)
+2468/ 28 : holm        (Holm, Bonferroni-Holm)
+2468/ 28 : hochberg    (Hochberg)
+2990/ 49 : by          (Benjamini-Yekutieli)
+3316/ 89 : bh          (Benjamini-Hochbeg, fdr)
+2463/ 28 : sidak       (sidak)
+
+* 'hommel' tooks forever...

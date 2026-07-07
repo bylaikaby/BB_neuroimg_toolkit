@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>tdseq_read</title>
+</head>
+<body>
+&nbsp;&nbsp;TDSEQ_READ - Read ParaVision 2dseq data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[IDATA,ACQP,RECO] = TDSEQ_READ(FILENAME)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[IDATA,ACQP,RECO] = TDSEQ_READ(FILENAME,IMGCROP,TIMECROP)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;IDATA = TDSEQ_READ(FILENAME,IMGCROP,TIMECROP,ACQP,RECO)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;IDATA = TDSEQ_READ(FILENAME,IMGCROP,TIMECROP,IMGSIZE,BYTEORDER,WORDTYPE)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgcrop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: cropping as [x,y,width,height], can be empty. x,y>=1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reco/acqp&nbsp;&nbsp;: a reco sturcture returned by jpcode/PVrdPar.m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timecrop&nbsp;&nbsp;&nbsp;&nbsp;: cropping as [t,nt], can be empty.&nbsp;&nbsp;t>=1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgsize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: image size as [nx, ny, nslices, ntime], must not be empty.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byteorder&nbsp;&nbsp;: (s) swap, (n) non-swap is required<br>
+ 	 wordtype&nbsp;&nbsp;&nbsp;&nbsp;: _16BIT_SGN_INT or _32BIT_SGN_INT<br>
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Returned IDATA is NOT 'double', but 'wordtype'.<br>
+ <br>
+&nbsp;&nbsp;VERSION :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.90 18.11.04 YM&nbsp;&nbsp;pre-release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.91 07.03.07 YM&nbsp;&nbsp;bug fix on reading mdeft.<br>
+ <br>
+&nbsp;&nbsp;See also PVRDPAR, PVRDPARRECO, pvread_2dseq<br>
+<br>
+</body>
+</html>

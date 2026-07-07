@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>initdisppars</title>
+</head>
+<body>
+ INITDISPPARS - Initializes all global display parameters<br>
+&nbsp;&nbsp;INITDISPPARS (sumact, pptstate) initializes a number of<br>
+&nbsp;&nbsp;parameters that are used by all display functions. If SUMACT is<br>
+&nbsp;&nbsp;set, the average of all recording channels is displayed, if<br>
+&nbsp;&nbsp;pptstate is 1, then output is a metafile rather than the<br>
+&nbsp;&nbsp;display. The parameters initialized by INITDISPPARS are the<br>
+&nbsp;&nbsp;following:<br>
+ <br>
+&nbsp;&nbsp;DispPars.initialized	= 1;			% It's been called at least<br>
+&nbsp;&nbsp;DispPars.printer		= 0;			% Print results<br>
+&nbsp;&nbsp;DispPars.sumactivity	= sumact;		% Display overall activity<br>
+&nbsp;&nbsp;DispPars.pptstate		= pptstate;		% Display individual channels<br>
+&nbsp;&nbsp;DispPars.pptout		= 'meta';		%<br>
+&nbsp;&nbsp;DispPars.erase		= 1;			% Close plot after pptout<br>
+&nbsp;&nbsp;DispPars.holdon		= 0;			% Hold on<br>
+&nbsp;&nbsp;DispPars.SKIP			= 10;			% for Cln-type long signals<br>
+&nbsp;&nbsp;DispPars.SDU			= 0;			% ClnSpc Power/SDU<br>
+&nbsp;&nbsp;DispPars.dsp3			= 0;			% 3D Spectrograms<br>
+&nbsp;&nbsp;DispPars.mfigure		= 0;			% Call mfigure for new fig<br>
+ <br>
+&nbsp;&nbsp;Depending on output the following parameters are initialized<br>
+&nbsp;&nbsp;DispPars.figpos		= [60 60 900 700];<br>
+&nbsp;&nbsp;DispPars.xcolor		= [0 0 0];<br>
+&nbsp;&nbsp;DispPars.ycolor		= [0 0 0];<br>
+&nbsp;&nbsp;DispPars.color		= [1 1 1];<br>
+&nbsp;&nbsp;DispPars.figcolor		= [.8 .8 .8];<br>
+&nbsp;&nbsp;DispPars.sigcolor		= [0 0 0];<br>
+&nbsp;&nbsp;DispPars.lfplcolor	= [1 0.3 0];<br>
+&nbsp;&nbsp;DispPars.lfpmcolor	= [1 0 0];<br>
+&nbsp;&nbsp;DispPars.lfphcolor	= [1 0.8 0.2];<br>
+&nbsp;&nbsp;DispPars.muacolor		= [0 0 1];<br>
+&nbsp;&nbsp;DispPars.sdfcolor		= [0 1 0];<br>
+&nbsp;&nbsp;DispPars.titlecolor	= [0 0 0];<br>
+&nbsp;&nbsp;DispPars.titlesize	= 12;<br>
+&nbsp;&nbsp;DispPars.stimlines	= {'color',[1 0 0],'linestyle',':'};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;VERSION : 1.00 NKL, 01.05.03<br>
+<br>
+</body>
+</html>
