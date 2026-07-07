@@ -5,6 +5,9 @@ function add_imaging_toolkit_paths(varargin)
 %   add_imaging_toolkit_paths('verbose', true)
 %   add_imaging_toolkit_paths('aglogo', false)   % skip AgLogo toolbox
 %
+% For monline only (e.g. from cm_monkey_qst_bids Track L online QC):
+%   add_monline_paths('verbose', true)
+%
 % One-shot setup from any working directory:
 %
 %   run('D:\imaging_toolkit\matlab\add_imaging_toolkit_paths.m')

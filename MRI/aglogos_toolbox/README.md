@@ -83,3 +83,28 @@ Without those folders, many functions will fail at runtime even though the MATLA
 ## ParaVision manual
 
 Bruker ParaVision reference PDF lives once at `io/paravision/ParaVision 360 V3.4; PvManual.pdf` (~86 MB). A duplicate under `mri/monline/` was removed during repo import.
+
+## monline from cm_monkey_qst_bids (Track L)
+
+`monline` is the same-day ParaVision 2dseq GUI (stim/blank blocks, online t-test/GLM on 2dseq). It lives in `mri/monline/` and needs **SPM12** for `spm_hrf` options.
+
+From cm QST online QC (alongside `fmri_qc_spm` on exported NIfTI):
+
+```matlab
+cd('Z:/MRIdata/cm_monkey_qst_bids/code');
+setup_online_track_path;   % or: setup_qc_path; setup_monline_path;
+monline
+```
+
+`setup_monline_path` resolves `D:\imaging_toolkit` (or `IMAGING_TOOLKIT_ROOT`) and calls `add_monline_paths` from this repo's `matlab/` folder.
+
+Standalone (no cm QST):
+
+```matlab
+addpath('D:\imaging_toolkit\matlab');
+add_monline_paths;
+addpath('D:/spm12');   % or your SPM12 root
+monline
+```
+
+`monline` defaults include ICPBR scanner hostnames (`monline.m` v1.04+). Set the data directory in the GUI if your ParaVision export path differs.

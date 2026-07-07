@@ -77,16 +77,34 @@ See `config/env.example.json`, `config/env.optofmri.bids.json`, and `config/env.
 
 ## MATLAB path setup
 
-Add repo MATLAB code (flicker GUI, AgLogo in-repo sources) from any session:
+Add repo MATLAB code (flicker GUI, full AgLogo package) from any session:
 
 ```matlab
 addpath('D:\imaging_toolkit\matlab');
 add_imaging_toolkit_paths('verbose', true);
 ```
 
+**monline only** (ParaVision 2dseq online GUI — used from cm_monkey_qst_bids Track L):
+
+```matlab
+addpath('D:\imaging_toolkit\matlab');
+add_monline_paths();
+monline
+```
+
+From **cm_monkey_qst_bids** (recommended):
+
+```matlab
+cd('Z:/MRIdata/cm_monkey_qst_bids/code');
+setup_online_track_path;   % setup_qc_path + setup_monline_path
+monline
+```
+
+Set `IMAGING_TOOLKIT_ROOT` if the clone is not at `D:\imaging_toolkit`.
+
 **Persistent (recommended):** copy `matlab/startup.m` to `Documents\MATLAB\startup.m`, or append its `addpath` + `add_imaging_toolkit_paths()` lines to your existing user `startup.m`. Edit the `toolkit` path if the clone is not on `D:\imaging_toolkit`.
 
-AgLogo third-party bundles (`toolbox/`, `utils/`) are added automatically when present next to `MRI/aglogos_toolbox/`. See `MRI/aglogos_toolbox/README.md`.
+AgLogo third-party bundles (`toolbox/`, `utils/`) are added automatically when present next to `MRI/aglogos_toolbox/`. `monline` only needs `mri/monline/` + SPM12. See `MRI/aglogos_toolbox/README.md`.
 
 ---
 
