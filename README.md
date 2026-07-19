@@ -18,6 +18,7 @@ Upstream: [github.com/bylaikaby/BB_neuroimg_toolkit](https://github.com/bylaikab
 | **MRI** | `MRI/anat_to_binary_mask.sh` | FSL anatomical → binary mask helper |
 | **Workflow** | `workflow/`, `config/`, `normalization/`, `glm/`, `activation/` | Config-driven orchestrator (dry-run, ANTs, GLM, optional activation summaries) |
 | **Shell** | `afni_fsl/`, `ants/`, root `*.sh` | Motion correction, alignment, ICA, capture helpers |
+| **Tools** | `tools/neuro_injection_calculator/` | IV tubing volume and anesthesia reach-time calculator (web) |
 
 ---
 
